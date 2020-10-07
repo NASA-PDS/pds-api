@@ -1,0 +1,645 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Planetary Data System API</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>Planetary Data System API</h1>
+    <div class="app-desc">Federated PDS API which provides actionable end points standardized
+between the different nodes.</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="pds-operator@jpl.nasa.gov">pds-operator@jpl.nasa.gov</a></div>
+    <div class="app-desc">Version: 0.1.dev</div>
+    <div class="app-desc">BasePath:/PDS_APIs/pds_federated_api/0.1.0</div>
+    <div class="license-info">Apache 2.0</div>
+    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Capabilities">Capabilities</a></h4>
+  <ul>
+  <li><a href="#capabilities"><code><span class="http-method">get</span> /capabilities</code></a></li>
+  </ul>
+  <h4><a href="#Collections">Collections</a></h4>
+  <ul>
+  <li><a href="#get collection"><code><span class="http-method">get</span> /collections</code></a></li>
+  </ul>
+  <h4><a href="#Products">Products</a></h4>
+  <ul>
+  <li><a href="#products"><code><span class="http-method">get</span> /products</code></a></li>
+  <li><a href="#productsByLidvid"><code><span class="http-method">get</span> /products/{lidvid}</code></a></li>
+  </ul>
+  <h4><a href="#Routes">Routes</a></h4>
+  <ul>
+  <li><a href="#allRoutes"><code><span class="http-method">get</span> /routes</code></a></li>
+  <li><a href="#routes"><code><span class="http-method">get</span> /routes/{resource}</code></a></li>
+  </ul>
+
+  <h1><a name="Capabilities">Capabilities</a></h1>
+  <div class="method"><a name="capabilities"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /capabilities</code></pre></div>
+    <div class="method-summary">capabilities api entry point, list the resources provided by the current API end-point. (<span class="nickname">capabilities</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#capabilities">capabilities</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "action" : "capabilities",
+  "version" : 0.1
+}, {
+  "action" : "collections",
+  "version" : 0.1
+}, {
+  "action" : "products",
+  "version" : 0.1
+}, {
+  "action" : "routes",
+  "version" : 0.1
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful request
+        <a href="#capabilities">capabilities</a>
+    <h4 class="field-label">404</h4>
+    capabilities not available
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Collections">Collections</a></h1>
+  <div class="method"><a name="get collection"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /collections</code></pre></div>
+    <div class="method-summary">request PDS collections (<span class="nickname">get collection</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">start (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; offset in matching result list, for pagination </div>      <div class="param">limit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; maximum number of matching results returned, for pagination </div>      <div class="param">q (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; search query </div>      <div class="param">fields (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; returned fields, syntax field0,field1 </div>      <div class="param">sort (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; sort results, syntax asc(field0),desc(field1) </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#collections">collections</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "metadata" : {
+    "q" : "q",
+    "start" : 0,
+    "limit" : 6,
+    "sort" : [ "sort", "sort" ]
+  },
+  "data" : [ {
+    "procedures" : [ "procedures", "procedures" ],
+    "feature_of_interest" : [ "feature_of_interest", "feature_of_interest" ],
+    "description" : "description",
+    "id" : "id",
+    "title" : "title",
+    "properties" : {
+      "key" : [ "properties", "properties" ]
+    }
+  }, {
+    "procedures" : [ "procedures", "procedures" ],
+    "feature_of_interest" : [ "feature_of_interest", "feature_of_interest" ],
+    "description" : "description",
+    "id" : "id",
+    "title" : "title",
+    "properties" : {
+      "key" : [ "properties", "properties" ]
+    }
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/html</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful request
+        <a href="#collections">collections</a>
+    <h4 class="field-label">400</h4>
+    Bad request
+        <a href="#errorMessage">errorMessage</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Products">Products</a></h1>
+  <div class="method"><a name="products"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /products</code></pre></div>
+    <div class="method-summary">search across all PDS data products, including bundles, collections, documentation, and observational products, (<span class="nickname">products</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">start (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; offset in matching result list, for pagination </div>      <div class="param">limit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; maximum number of matching results returned, for pagination </div>      <div class="param">q (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; search query </div>      <div class="param">fields (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; returned fields, syntax field0,field1 </div>      <div class="param">sort (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; sort results, syntax asc(field0),desc(field1) </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PDS4Label">PDS4Label</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/xml</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful request
+        <a href="#PDS4Label">PDS4Label</a>
+    <h4 class="field-label">404</h4>
+    lidvid not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="productsByLidvid"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /products/{lidvid}</code></pre></div>
+    <div class="method-summary">URN resolver for lidvid (<span class="nickname">productsByLidvid</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">lidvid (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; lidvid (urn) </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PDS4Label">PDS4Label</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/xml</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful request
+        <a href="#PDS4Label">PDS4Label</a>
+    <h4 class="field-label">404</h4>
+    lidvid not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Routes">Routes</a></h1>
+  <div class="method"><a name="allRoutes"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /routes</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">allRoutes</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#routes">routes</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "resource" : "/routes",
+  "query" : "*",
+  "url" : "https://pds.nasa/gov/v1/api",
+  "version" : "0.1"
+}, {
+  "resource" : "/products",
+  "query" : "urn:nasa:pds:insight_rad:*",
+  "url" : "https://pds-geosciences.wustl.edu/v0/api",
+  "version" : "0.2"
+}, {
+  "resource" : "/products",
+  "query" : "urn:nasa:pds:insight_rad:*",
+  "url" : "https://pds-geosciences.wustl.edu/v0.3/api",
+  "version" : "0.3"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful request
+        <a href="#routes">routes</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="routes"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /routes/{resource}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">routes</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">resource (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; requested action as a request path, e.g. &#x27;/record&#x27; </div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">version (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>      <div class="param">query (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; query parameter on the action, e.g. lidvid urn for a &#x27;/records&#x27; action </div>    </div>  <!-- field-items -->
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">302</h4>
+    Successful request, redirect request
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#PDS4Label"><code>PDS4Label</code></a></li>
+    <li><a href="#capabilities"><code>capabilities</code></a></li>
+    <li><a href="#capability"><code>capability</code></a></li>
+    <li><a href="#collection"><code>collection</code></a></li>
+    <li><a href="#collections"><code>collections</code></a></li>
+    <li><a href="#errorMessage"><code>errorMessage</code></a></li>
+    <li><a href="#metadata"><code>metadata</code></a></li>
+    <li><a href="#route"><code>route</code></a></li>
+    <li><a href="#routes"><code>routes</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="PDS4Label"><code>PDS4Label</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="capabilities"><code>capabilities</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="capability"><code>capability</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">action </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">version </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="collection"><code>collection</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> identifier lidvid of the collection </div>
+<div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">procedures (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> identifier lidvid of the instrument or procedure generating the data (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements) </div>
+<div class="param">feature_of_interest (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> identifier lidvid of the target of or feature of interest the observation (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements) </div>
+<div class="param">properties (optional)</div><div class="param-desc"><span class="param-type"><a href="#array">map[String, array[String]]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="collections"><code>collections</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">metadata </div><div class="param-desc"><span class="param-type"><a href="#metadata">metadata</a></span>  </div>
+<div class="param">data </div><div class="param-desc"><span class="param-type"><a href="#collection">array[collection]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="errorMessage"><code>errorMessage</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">url </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">resource </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">query </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="metadata"><code>metadata</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">q (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">start (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">limit (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">sort (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="route"><code>route</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">resource </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">query </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">url </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="routes"><code>routes</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
