@@ -1,0 +1,496 @@
+{
+  "openapi" : "3.0.0",
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/PDS_APIs/pds_federated_api/0.1.0"
+  } ],
+  "info" : {
+    "description" : "Federated PDS API which provides actionable end points standardized\nbetween the different nodes.\n",
+    "version" : "0.1.dev",
+    "title" : "Planetary Data System API",
+    "termsOfService" : "http://pds.nasa.gov",
+    "contact" : {
+      "email" : "pds-operator@jpl.nasa.gov"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "core",
+    "description" : "Federated core layer for PDS requests",
+    "externalDocs" : {
+      "description" : "Find out more",
+      "url" : "http://pds.nasa.gov"
+    }
+  } ],
+  "paths" : {
+    "/capabilities" : {
+      "get" : {
+        "tags" : [ "capabilities" ],
+        "summary" : "capabilities api entry point, list the resources provided by the current API end-point.",
+        "operationId" : "capabilities",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/capabilities"
+                },
+                "example" : [ {
+                  "action" : "capabilities",
+                  "version" : 0.1
+                }, {
+                  "action" : "collections",
+                  "version" : 0.1
+                }, {
+                  "action" : "products",
+                  "version" : 0.1
+                }, {
+                  "action" : "routes",
+                  "version" : 0.1
+                } ]
+              }
+            }
+          },
+          "404" : {
+            "description" : "capabilities not available"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/products" : {
+      "get" : {
+        "tags" : [ "products" ],
+        "summary" : "search across all PDS data products, including bundles, collections, documentation, and observational products,",
+        "operationId" : "products",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PDS4Label"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        },
+        "parameters" : [ {
+          "name" : "start",
+          "in" : "query",
+          "description" : "offset in matching result list, for pagination",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of matching results returned, for pagination",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "q",
+          "in" : "query",
+          "description" : "search query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "returned fields, syntax field0,field1",
+          "required" : false,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "sort results, syntax asc(field0),desc(field1)",
+          "required" : false,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        } ]
+      }
+    },
+    "/products/{lidvid}" : {
+      "get" : {
+        "tags" : [ "products" ],
+        "summary" : "URN resolver for lidvid",
+        "operationId" : "products-by-lidvid",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PDS4Label"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
+    "/collections" : {
+      "get" : {
+        "tags" : [ "collections" ],
+        "summary" : "request PDS collections",
+        "operationId" : "get collection",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "headers" : {
+              "X-Total-Count" : {
+                "schema" : {
+                  "type" : "integer"
+                },
+                "description" : "Total number of records maching the request."
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/collections"
+                }
+              },
+              "text/html" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/collections"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorMessage"
+                }
+              }
+            }
+          }
+        },
+        "parameters" : [ {
+          "name" : "start",
+          "in" : "query",
+          "description" : "offset in matching result list, for pagination",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of matching results returned, for pagination",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "q",
+          "in" : "query",
+          "description" : "search query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "returned fields, syntax field0,field1",
+          "required" : false,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "sort results, syntax asc(field0),desc(field1)",
+          "required" : false,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        } ]
+      }
+    },
+    "/routes" : {
+      "get" : {
+        "tags" : [ "routes" ],
+        "operationId" : "allRoutes",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/routes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/routes/{resource}" : {
+      "get" : {
+        "tags" : [ "routes" ],
+        "operationId" : "routes",
+        "responses" : {
+          "302" : {
+            "description" : "Successful request, redirect request"
+          }
+        },
+        "parameters" : [ {
+          "name" : "resource",
+          "in" : "path",
+          "description" : "requested action as a request path, e.g. '/record'",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "version",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "query",
+          "in" : "query",
+          "description" : "query parameter on the action, e.g. lidvid urn for a '/records' action",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ]
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "Find out more information on the PDS API Specification",
+    "url" : "https://github.com/NASA-PDS/pds-api-core"
+  },
+  "components" : {
+    "schemas" : {
+      "capabilities" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/capability"
+        },
+        "example" : [ {
+          "action" : "capabilities",
+          "version" : 0.1
+        }, {
+          "action" : "collections",
+          "version" : 0.1
+        }, {
+          "action" : "products",
+          "version" : 0.1
+        }, {
+          "action" : "routes",
+          "version" : 0.1
+        } ]
+      },
+      "capability" : {
+        "type" : "object",
+        "required" : [ "action", "version" ],
+        "properties" : {
+          "action" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "string"
+          }
+        },
+        "example" : [ {
+          "action" : "collections",
+          "version" : 0.1
+        } ]
+      },
+      "routes" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/route"
+        },
+        "example" : [ {
+          "resource" : "/routes",
+          "query" : "*",
+          "url" : "https://pds.nasa/gov/v1/api",
+          "version" : "0.1"
+        }, {
+          "resource" : "/products",
+          "query" : "urn:nasa:pds:insight_rad:*",
+          "url" : "https://pds-geosciences.wustl.edu/v0/api",
+          "version" : "0.2"
+        }, {
+          "resource" : "/products",
+          "query" : "urn:nasa:pds:insight_rad:*",
+          "url" : "https://pds-geosciences.wustl.edu/v0.3/api",
+          "version" : "0.3"
+        } ]
+      },
+      "route" : {
+        "type" : "object",
+        "required" : [ "resource", "query", "url" ],
+        "properties" : {
+          "resource" : {
+            "type" : "string"
+          },
+          "query" : {
+            "type" : "string"
+          },
+          "url" : {
+            "type" : "string"
+          }
+        }
+      },
+      "collections" : {
+        "type" : "object",
+        "required" : [ "metadata", "data" ],
+        "properties" : {
+          "metadata" : {
+            "$ref" : "#/components/schemas/metadata"
+          },
+          "data" : {
+            "items" : {
+              "$ref" : "#/components/schemas/collection"
+            }
+          }
+        }
+      },
+      "metadata" : {
+        "type" : "object",
+        "properties" : {
+          "q" : {
+            "type" : "string"
+          },
+          "start" : {
+            "type" : "integer"
+          },
+          "limit" : {
+            "type" : "integer"
+          },
+          "sort" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "collection" : {
+        "type" : "object",
+        "required" : [ "id", "update_time" ],
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "identifier lidvid of the collection"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "procedures" : {
+            "type" : "array",
+            "description" : "identifier lidvid of the instrument or procedure generating the data (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "feature_of_interest" : {
+            "type" : "array",
+            "description" : "identifier lidvid of the target of or feature of interest the observation (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "properties" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "PDS4Label" : {
+        "type" : "object"
+      },
+      "errorMessage" : {
+        "type" : "object",
+        "required" : [ "url", "resource", "query", "message" ],
+        "properties" : {
+          "url" : {
+            "type" : "string"
+          },
+          "resource" : {
+            "type" : "string"
+          },
+          "query" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        },
+        "example" : {
+          "url" : "https://pds.nasa.gov/api/1.0/collections",
+          "resource" : "/collections",
+          "query" : "q=mission qt 12",
+          "message" : "query operator gt not supported on field mission"
+        }
+      }
+    }
+  }
+}
