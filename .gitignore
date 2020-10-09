@@ -41,3 +41,5 @@
 *.javac
 .gwt/
 target/
+
+generated-doc/
