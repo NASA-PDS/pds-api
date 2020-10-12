@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install -g redoc-cli
-    - run: redoc-cli bundle -o /home/runner/work/pds-api/generated-doc/index.html /home/runner/work/pds-api/json-unrevolved/swagger.json
+    - run: redoc-cli bundle -o generated-doc/index.html json-unresolved/swagger.json
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@3.6.2
