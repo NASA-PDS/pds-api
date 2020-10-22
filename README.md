@@ -11,7 +11,9 @@ Various implementation flavour are also being made available:
 - python stub service: ithub.com/NASA-PDS/pds-api-pythonlib
 - python client: https://github.com/NASA-PDS/pds-api-client
 
-# Documentation is generated in github action workflow on:
+# API Documentation 
+
+The API Documentation is generated in github action workflow on:
 
 https://nasa-pds.github.io/pds-api/
 
