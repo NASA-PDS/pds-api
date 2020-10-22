@@ -18,21 +18,21 @@ https://nasa-pds.github.io/pds-api/
 
 # To generate a POSTMAN test collection
 
-POSTMAN is a popular tool for user friendly test of the web API: https://www.postman.com/
+POSTMAN is a popular tool to make web API testing more user friendly: https://www.postman.com/
 
 POSTMAN is a standalone desktop application that you first need to download and install: https://www.postman.com/downloads/
 
-To create a test collection for the PDS federated API, follow the stes:
+To create a test collection for the PDS federated API, the steps are:
 
   1. go to import (top-left)
-  2. choose Link tab
+  2. choose 'Link' tab
   3. Use link `https://raw.githubusercontent.com/NASA-PDS/pds-api/master/json-unresolved/swagger.json`
-  4. In settings, for request parameter generation, select 'Example', this will assign example values to the API arguments. If you select 'Schema' no value will be assigned.
-  5. Create a virtual environment, click the wheel on top-right, then 'Add'
-  6. Create constant 'baseUrl' assign value of your root server without trailing /, for example https://pds-gamma.jpl.nasa.gov/api
+  4. In settings, for request parameter generation, select `Example`, this will assign example values to the API arguments. If you select `Schema` no value will be assigned.
+  5. Create a virtual environment: click the wheel on top-right, then 'Add'
+  6. Create constant `baseUrl` and assign value of your root server without trailing `/`, for example `https://pds-gamma.jpl.nasa.gov/api`
   7. Make sure your new environment is selected, use top-right drop down menu.
-  8. Go to your new collection folder named 'Planetary Data System API', select a request
-  9. Adjust the request's parameters, hit 'Send'
+  8. In the left menu, go to your new collection folder named `Planetary Data System API`, select a request.
+  9. Adjust the request's parameters and hit `Send`
   10. You can extend the collection by duplicating and editing existing requests
  
 
