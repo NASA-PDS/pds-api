@@ -75,7 +75,7 @@
             "content" : {
               "application/xml" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/PDS4Label"
+                  "$ref" : "#/components/schemas/products"
                 }
               }
             }
@@ -147,7 +147,7 @@
             "content" : {
               "application/xml" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/PDS4Label"
+                  "$ref" : "#/components/schemas/product"
                 }
               }
             }
@@ -189,12 +189,12 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/collections"
+                  "$ref" : "#/components/schemas/products"
                 }
               },
               "text/html" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/collections"
+                  "$ref" : "#/components/schemas/products"
                 }
               }
             }
@@ -391,7 +391,7 @@
           }
         }
       },
-      "collections" : {
+      "products" : {
         "type" : "object",
         "required" : [ "metadata", "data" ],
         "properties" : {
@@ -400,7 +400,7 @@
           },
           "data" : {
             "items" : {
-              "$ref" : "#/components/schemas/collection"
+              "$ref" : "#/components/schemas/product"
             }
           }
         }
@@ -425,7 +425,7 @@
           }
         }
       },
-      "collection" : {
+      "product" : {
         "type" : "object",
         "required" : [ "id", "update_time" ],
         "properties" : {
@@ -453,6 +453,9 @@
               "type" : "string"
             }
           },
+          "pds4_label_url" : {
+            "type" : "string"
+          },
           "properties" : {
             "type" : "object",
             "additionalProperties" : {
@@ -463,9 +466,6 @@
             }
           }
         }
-      },
-      "PDS4Label" : {
-        "type" : "object"
       },
       "errorMessage" : {
         "type" : "object",
