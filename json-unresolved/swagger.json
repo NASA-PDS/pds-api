@@ -145,7 +145,7 @@
           "200" : {
             "description" : "Successful request",
             "content" : {
-              "application/xml" : {
+              "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/product"
                 }
