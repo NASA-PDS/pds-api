@@ -446,7 +446,7 @@
             "type" : "array",
             "description" : "list of instruments or procedures generating the data (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
             "items" : {
-              "$ref" : "#/components/schemas/ref"
+              "$ref" : "#/components/schemas/reference"
             }
           },
           "feature_of_interest" : {
@@ -470,7 +470,7 @@
           }
         }
       },
-      "ref" : {
+      "reference" : {
         "type" : "object",
         "description" : "object describing a reference to a different product. TODO The properties should be defined by a standard (xlink, json-ld) to be chosen",
         "required" : [ "name", "ref" ],
