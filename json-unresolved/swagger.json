@@ -442,14 +442,14 @@
           "description" : {
             "type" : "string"
           },
-          "procedures" : {
+          "observing_system_components" : {
             "type" : "array",
             "description" : "list of instruments or procedures generating the data (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
             "items" : {
               "$ref" : "#/components/schemas/reference"
             }
           },
-          "feature_of_interest" : {
+          "targets" : {
             "type" : "array",
             "description" : "identifier lidvid of the target of or feature of interest the observation (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
             "items" : {
