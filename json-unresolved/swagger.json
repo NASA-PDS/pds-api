@@ -433,6 +433,9 @@
             "type" : "string",
             "description" : "identifier lidvid of the collection"
           },
+          "type" : {
+            "type" : "string"
+          },
           "title" : {
             "type" : "string"
           },
@@ -441,9 +444,9 @@
           },
           "procedures" : {
             "type" : "array",
-            "description" : "identifier lidvid of the instrument or procedure generating the data (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
+            "description" : "list of instruments or procedures generating the data (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
             "items" : {
-              "type" : "string"
+              "$ref" : "#/components/schemas/ref"
             }
           },
           "feature_of_interest" : {
@@ -464,6 +467,29 @@
                 "type" : "string"
               }
             }
+          }
+        }
+      },
+      "ref" : {
+        "type" : "object",
+        "description" : "object describing a reference to a different product. TODO The properties should be defined by a standard (xlink, json-ld) to be chosen",
+        "required" : [ "name", "ref" ],
+        "properties" : {
+          "title" : {
+            "type" : "string",
+            "description" : "name to display for the external reference"
+          },
+          "ref" : {
+            "type" : "string",
+            "description" : "external reference, here lidvid urn"
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "type of the external reference, can be displayed as an icon for example"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "longer description for the external reference, can be displayed in a tooltip"
           }
         }
       },
