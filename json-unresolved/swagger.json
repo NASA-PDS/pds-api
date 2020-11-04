@@ -427,7 +427,7 @@
       },
       "product" : {
         "type" : "object",
-        "required" : [ "id", "update_time" ],
+        "required" : [ "id", "update_date_time" ],
         "properties" : {
           "id" : {
             "type" : "string",
@@ -441,6 +441,18 @@
           },
           "description" : {
             "type" : "string"
+          },
+          "start_date_time" : {
+            "type" : "string",
+            "description" : "start date time of the observations in ISO8601"
+          },
+          "stop_date_time" : {
+            "type" : "string",
+            "description" : "stop date time of the observations in ISO8601"
+          },
+          "update_date_time" : {
+            "type" : "string",
+            "description" : "update date time of the observationin ISO8601"
           },
           "observing_system_components" : {
             "type" : "array",
