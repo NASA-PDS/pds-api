@@ -427,13 +427,13 @@
       },
       "product" : {
         "type" : "object",
-        "required" : [ "id", "update_date_time" ],
+        "required" : [ "id", "metadata" ],
         "properties" : {
           "id" : {
             "type" : "string",
             "description" : "identifier lidvid of the collection"
           },
-          "type" : {
+          "class" : {
             "type" : "string"
           },
           "title" : {
