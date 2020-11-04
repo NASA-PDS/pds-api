@@ -393,10 +393,10 @@
       },
       "products" : {
         "type" : "object",
-        "required" : [ "metadata", "data" ],
+        "required" : [ "summary", "data" ],
         "properties" : {
-          "metadata" : {
-            "$ref" : "#/components/schemas/metadata"
+          "summary" : {
+            "$ref" : "#/components/schemas/summary"
           },
           "data" : {
             "items" : {
@@ -405,7 +405,7 @@
           }
         }
       },
-      "metadata" : {
+      "summary" : {
         "type" : "object",
         "properties" : {
           "q" : {
@@ -450,10 +450,6 @@
             "type" : "string",
             "description" : "stop date time of the observations in ISO8601"
           },
-          "update_date_time" : {
-            "type" : "string",
-            "description" : "update date time of the observationin ISO8601"
-          },
           "observing_system_components" : {
             "type" : "array",
             "description" : "list of instruments or procedures generating the data (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
@@ -468,8 +464,8 @@
               "$ref" : "#/components/schemas/reference"
             }
           },
-          "pds4_label_url" : {
-            "type" : "string"
+          "metadata" : {
+            "$ref" : "#/components/schemas/metadata"
           },
           "properties" : {
             "type" : "object",
@@ -499,6 +495,24 @@
           "description" : {
             "type" : "string",
             "description" : "longer description for the external reference, can be displayed in a tooltip"
+          }
+        }
+      },
+      "metadata" : {
+        "type" : "object",
+        "required" : [ "label_url" ],
+        "properties" : {
+          "creation_date_time" : {
+            "type" : "string"
+          },
+          "update_date_time" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "string"
+          },
+          "label_url" : {
+            "type" : "string"
           }
         }
       },
