@@ -465,7 +465,7 @@
             "type" : "array",
             "description" : "identifier lidvid of the target of or feature of interest the observation (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
             "items" : {
-              "type" : "string"
+              "$ref" : "#/components/schemas/reference"
             }
           },
           "pds4_label_url" : {
