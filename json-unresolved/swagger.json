@@ -191,11 +191,6 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
-              },
-              "text/html" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/products"
-                }
               }
             }
           },
