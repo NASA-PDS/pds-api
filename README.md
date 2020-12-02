@@ -17,6 +17,10 @@ The API Documentation is generated in github action workflow on:
 
 https://nasa-pds.github.io/pds-api/
 
+A draft of the PDS API Specification can be found on Google Drive:
+
+https://docs.google.com/document/d/16d0MVh48bFLvWsa5-B_Hy-cby1rGWdnNojWOJpUcOvA/edit#heading=h.3pbz9ppxrxvr 
+
 
 # To generate a POSTMAN test collection
 
