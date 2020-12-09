@@ -83,6 +83,9 @@
           "404" : {
             "description" : "lidvid not found"
           },
+          "408" : {
+            "description" : "request time out"
+          },
           "500" : {
             "description" : "Internal server error"
           }
@@ -213,6 +216,9 @@
                 }
               }
             }
+          },
+          "408" : {
+            "description" : "request time out"
           }
         },
         "parameters" : [ {
@@ -236,7 +242,8 @@
         }, {
           "name" : "q",
           "in" : "query",
-          "description" : "search query",
+          "description" : "search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or. Properties are named as in 'properties' attributes, literals are strings between \\\" or numbers.",
+          "example" : "((pds/Primary_Result_Summary/pds/processing_level eq \"Raw\") or not (_file_size le 8942))",
           "required" : false,
           "schema" : {
             "type" : "string"
@@ -491,6 +498,7 @@
           },
           "properties" : {
             "type" : "object",
+            "description" : "properties extracted from pds4 model, syntax for property name is <namespace>:<property>[/<namespace>:<property>]*",
             "additionalProperties" : {
               "type" : "object"
             }
