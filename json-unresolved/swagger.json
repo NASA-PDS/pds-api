@@ -73,7 +73,7 @@
           "200" : {
             "description" : "Successful request",
             "content" : {
-              "application/xml" : {
+              "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
@@ -161,6 +161,11 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/product"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
                 }
               }
             }
