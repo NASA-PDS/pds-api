@@ -167,6 +167,11 @@
                 "schema" : {
                   "type" : "object"
                 }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
               }
             }
           },
@@ -484,16 +489,23 @@
             "type" : "string",
             "description" : "stop date time of the observations in ISO8601"
           },
+          "investigations" : {
+            "type" : "array",
+            "description" : "list of missions or observing campaigns which produced the data",
+            "items" : {
+              "$ref" : "#/components/schemas/reference"
+            }
+          },
           "observing_system_components" : {
             "type" : "array",
-            "description" : "list of instruments or procedures generating the data (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
+            "description" : "list of instruments or platforms generating the data",
             "items" : {
               "$ref" : "#/components/schemas/reference"
             }
           },
           "targets" : {
             "type" : "array",
-            "description" : "identifier lidvid of the target of or feature of interest the observation (for concept see https://en.wikipedia.org/wiki/Observations_and_Measurements)",
+            "description" : "list of targets or feature of interest the observation.",
             "items" : {
               "$ref" : "#/components/schemas/reference"
             }
