@@ -168,7 +168,7 @@
                   "type" : "object"
                 }
               },
-              "application/pds4+xml" : {
+              "application/pds4" : {
                 "schema" : {
                   "type" : "object"
                 }
