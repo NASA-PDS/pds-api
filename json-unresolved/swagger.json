@@ -472,6 +472,10 @@
               "type" : "string"
             }
           }
+        },
+        "xml" : {
+          "prefix" : "pds_api",
+          "namespace" : "http://pds.nasa.gov/pds_api"
         }
       },
       "product" : {
