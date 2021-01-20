@@ -77,6 +77,16 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
               }
             }
           },
