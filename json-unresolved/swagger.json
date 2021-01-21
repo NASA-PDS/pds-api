@@ -462,24 +462,44 @@
         "type" : "object",
         "properties" : {
           "q" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "start" : {
-            "type" : "integer"
+            "type" : "integer",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "limit" : {
-            "type" : "integer"
+            "type" : "integer",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "sort" : {
             "type" : "array",
             "items" : {
               "type" : "string"
+            },
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
             }
           },
           "properties" : {
             "type" : "array",
             "items" : {
               "type" : "string"
+            },
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
             }
           }
         },
