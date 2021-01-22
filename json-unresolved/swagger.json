@@ -168,7 +168,7 @@
           "200" : {
             "description" : "Successful request",
             "content" : {
-              "application/zobi" : {
+              "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/product"
                 }
