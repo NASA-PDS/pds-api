@@ -604,9 +604,6 @@
           },
           "label_url" : {
             "type" : "string"
-          },
-          "label_xml" : {
-            "type" : "string"
           }
         }
       },
