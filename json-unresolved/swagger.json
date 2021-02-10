@@ -312,6 +312,203 @@
         } ]
       }
     },
+    "/collections/{lidvid}" : {
+      "get" : {
+        "tags" : [ "collections" ],
+        "summary" : "collections URN resolver for lidvid",
+        "operationId" : "collections-by-lidvid",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/product"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
+    "/bundles" : {
+      "get" : {
+        "tags" : [ "bundles" ],
+        "summary" : "request PDS bundles",
+        "operationId" : "get bundles",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "headers" : {
+              "X-Total-Count" : {
+                "schema" : {
+                  "type" : "integer"
+                },
+                "description" : "Total number of records maching the request."
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorMessage"
+                }
+              }
+            }
+          },
+          "408" : {
+            "description" : "request time out"
+          }
+        },
+        "parameters" : [ {
+          "name" : "start",
+          "in" : "query",
+          "description" : "offset in matching result list, for pagination",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "default" : 0
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of matching results returned, for pagination",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "default" : 100
+          }
+        }, {
+          "name" : "q",
+          "in" : "query",
+          "description" : "search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or. Properties are named as in 'properties' attributes, literals are strings between \" or numbers. Detailed query specification is available at https://bit.ly/393i1af",
+          "example" : "((pds/Primary_Result_Summary/pds/processing_level eq \"Raw\") or not (_file_size le 8942))",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "returned fields, syntax field0,field1",
+          "required" : false,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "sort results, syntax asc(field0),desc(field1)",
+          "required" : false,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "only-summary",
+          "in" : "query",
+          "description" : "only return the summary, useful to get the list of available properties",
+          "required" : false,
+          "schema" : {
+            "type" : "boolean",
+            "default" : false
+          }
+        } ]
+      }
+    },
+    "/bundles/{lidvid}" : {
+      "get" : {
+        "tags" : [ "bundles" ],
+        "summary" : "bundles URN resolver for lidvid",
+        "operationId" : "bundle-by-lidvid",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/product"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
     "/routes" : {
       "get" : {
         "tags" : [ "routes" ],
