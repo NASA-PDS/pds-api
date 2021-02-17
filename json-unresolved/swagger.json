@@ -544,6 +544,14 @@
         }
       },
       "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
         "name" : "start",
         "in" : "query",
         "description" : "offset in matching result list, for pagination",
