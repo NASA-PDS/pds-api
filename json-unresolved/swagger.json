@@ -509,6 +509,50 @@
         }
       } ]
     },
+    "/bundles/{lidvid}/collections" : {
+      "get" : {
+        "tags" : [ "bundle's collections" ],
+        "summary" : "get collections belonging to a given bundle",
+        "operationId" : "collections-of-a-bundle",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
     "/routes" : {
       "get" : {
         "tags" : [ "routes" ],
