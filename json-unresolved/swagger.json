@@ -544,12 +544,22 @@
         }
       },
       "parameters" : [ {
-        "name" : "lidvid",
-        "in" : "path",
-        "description" : "lidvid (urn)",
-        "required" : true,
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
         }
       } ]
     },
