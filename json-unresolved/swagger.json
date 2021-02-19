@@ -569,6 +569,37 @@
           "type" : "integer",
           "default" : 100
         }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
       } ]
     },
     "/routes" : {
