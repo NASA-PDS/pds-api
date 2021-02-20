@@ -356,6 +356,99 @@
         }
       } ]
     },
+    "/collections/{lidvid}/products" : {
+      "get" : {
+        "tags" : [ "collection's products" ],
+        "summary" : "get producs belonging to a given collection",
+        "operationId" : "products-of-a-collection",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
+    },
     "/bundles" : {
       "get" : {
         "tags" : [ "bundles" ],
