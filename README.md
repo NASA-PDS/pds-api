@@ -1,4 +1,4 @@
-# NASA PDS federated API
+# NASA PDS Federated API
 This repo is the entry point for the NASA PDS federated API specifications.
 
 The specifications are discussed in the PDS Working Group and a first level of specification is shared on google drive.
@@ -22,7 +22,7 @@ A draft of the PDS API Specification can be found on Google Drive:
 https://docs.google.com/document/d/16d0MVh48bFLvWsa5-B_Hy-cby1rGWdnNojWOJpUcOvA/edit#heading=h.3pbz9ppxrxvr 
 
 
-# To generate a POSTMAN test collection
+# Generate POSTMAN Test Collection
 
 POSTMAN is a popular tool to make web API testing more user friendly: https://www.postman.com/
 
