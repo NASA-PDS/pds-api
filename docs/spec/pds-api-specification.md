@@ -98,16 +98,12 @@ linked to the direct access to json arrays in javascript code (see
 [<u>https://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/</u>](https://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/)).
 A response with this format is fine:
 
-<table>
-<tbody>
-<tr class="odd">
-<td>{<br />
-metadata: {...}<br />
-data: [...]<br />
-}</td>
-</tr>
-</tbody>
-</table>
+``` json
+{
+   metadata: {...}<br />
+   data: [...]<br />
+}
+```
 
 Other conventions
 -----------------
@@ -279,15 +275,15 @@ base URIs for performing GET requests for searching PDS data.
 
 Search All PDS Data Collections:
 
-|                                                             |
-|-------------------------------------------------------------|
-| GET https://pds.nasa.gov/api/v0.1/collections?{searchTerms} |
+```
+GET https://pds.nasa.gov/api/v0.1/collections?{searchTerms}
+```
 
 Search Geosciences Node Collections:
 
-|                                                                          |
-|--------------------------------------------------------------------------|
-| GET https://pds-geosciences.wustl.edu/api/v0.1/collections?{searchTerms} |
+```
+GET https://pds-geosciences.wustl.edu/api/v0.1/collections?{searchTerms}
+```
 
 See Query Parameters for more specific examples for various searches
 with different parameters.
@@ -296,23 +292,23 @@ with different parameters.
 
 Template:
 
-|                                                                           |
-|---------------------------------------------------------------------------|
-| GET https://{node-hostname}/api/v{pds.api.version}/products?{searchTerms} |
+```
+GET https://{node-hostname}/api/v{pds.api.version}/products?{searchTerms}
+```
 
 Examples:
 
 Search All PDS Data Products:
 
-|                                                          |
-|----------------------------------------------------------|
-| GET https://pds.nasa.gov/api/v0.1/products?{searchTerms} |
+```
+GET https://pds.nasa.gov/api/v0.1/products?{searchTerms}
+```
 
 Search Geosciences Node:
 
-|                                                                       |
-|-----------------------------------------------------------------------|
-| GET https://pds-geosciences.wustl.edu/api/v0.1/products?{searchTerms} |
+```
+GET https://pds-geosciences.wustl.edu/api/v0.1/products?{searchTerms}
+```
 
 See Query Parameters for more specific examples for various searches
 with different parameters.
@@ -406,27 +402,24 @@ values in PDS4 labels. are detailed with a nil:reason attribute.
 
 ### JSON
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>{</p>
-<p>identifier: urn:nasa:pds:orex.ocams:data_raw,</p>
-<p>start: 1,</p>
-<p>limit: 1,</p>
-<p>total_results: 1,</p>
-<p>“results”: [</p>
-<p>{</p>
-<p>“lid”: urn:nasa:pds:orex.ocams:data_raw,</p>
-<p>title: ‘OSIRIS-REx OCAMS raw science image data products’,</p>
-<p>instrument_host_name: ‘Rosetta Orbiter’,</p>
-<p>instrument_name: ‘OSIRIS-REx Camera Suite (OCAMS)’,</p>
-<p>target_name: ‘101955 Bennu’</p>
-<p>}</p>
-<p>]</p>
-<p>}</p></td>
-</tr>
-</tbody>
-</table>
+
+``` json
+{
+   identifier: urn:nasa:pds:orex.ocams:data_raw,
+   start: 1,
+   limit: 1,
+   total_results: 1,
+   “results”: [
+      {
+         “lid”: urn:nasa:pds:orex.ocams:data_raw,
+         title: ‘OSIRIS-REx OCAMS raw science image data products’,
+         instrument_host_name: ‘Rosetta Orbiter’,
+         instrument_name: ‘OSIRIS-REx Camera Suite (OCAMS)’,
+         target_name: ‘101955 Bennu’
+      }
+   ]
+}
+```
 
 ### XML
 
