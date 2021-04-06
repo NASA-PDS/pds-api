@@ -98,10 +98,10 @@ linked to the direct access to json arrays in javascript code (see
 [<u>https://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/</u>](https://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/)).
 A response with this format is fine:
 
-``` json
+```
 {
-   metadata: {...}<br />
-   data: [...]<br />
+   metadata: {...},
+   data: [...]
 }
 ```
 
@@ -403,7 +403,7 @@ values in PDS4 labels. are detailed with a nil:reason attribute.
 ### JSON
 
 
-``` json
+```
 {
    identifier: urn:nasa:pds:orex.ocams:data_raw,
    start: 1,
