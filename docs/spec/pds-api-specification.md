@@ -14,11 +14,9 @@ The latest released version of this document is currently maintained on
 the PDS API Github Repo, and the development version is maintained on
 Google Drive. Feedback and comments welcome.
 
--   Released:
-    > [<u>https://github.com/NASA-PDS/pds-api/blob/master/docs/spec/pds-api-specification.md</u>](https://github.com/NASA-PDS/pds-api/blob/master/docs/spec/pds-api-specification.md)
+-   Released: [<u>https://github.com/NASA-PDS/pds-api/blob/master/docs/spec/pds-api-specification.md</u>](https://github.com/NASA-PDS/pds-api/blob/master/docs/spec/pds-api-specification.md)
 
--   In Development:
-    > [<u>https://docs.google.com/document/d/16d0MVh48bFLvWsa5-B\_Hy-cby1rGWdnNojWOJpUcOvA/edit?usp=sharing</u>](https://docs.google.com/document/d/16d0MVh48bFLvWsa5-B_Hy-cby1rGWdnNojWOJpUcOvA/edit?usp=sharing)
+-   In Development: [<u>https://docs.google.com/document/d/16d0MVh48bFLvWsa5-B\_Hy-cby1rGWdnNojWOJpUcOvA/edit?usp=sharing</u>](https://docs.google.com/document/d/16d0MVh48bFLvWsa5-B_Hy-cby1rGWdnNojWOJpUcOvA/edit?usp=sharing)
 
 **Reference Documents**
 =======================
@@ -28,37 +26,29 @@ this API and the accompanying guidelines, including:
 
 1.  [<u>Open API Initiative</u>](https://www.openapis.org/)
 
-2.  [<u>Open APIs
-    > Specification</u>](http://spec.openapis.org/oas/v3.0.2)
+2.  [<u>Open APIs Specification</u>](http://spec.openapis.org/oas/v3.0.2)
 
-3.  [<u>Microsoft API
-    > Guidelines</u>](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)
+3.  [<u>Microsoft API Guidelines</u>](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)
 
-4.  [<u>Microsoft API Design Best
-    > Practices</u>](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
+4.  [<u>Microsoft API Design Best Practices</u>](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 
-5.  [<u>NASA Earth Data
-    > APIs</u>](https://earthdata.nasa.gov/collaborate/open-data-services-and-software/api)
+5.  [<u>NASA Earth Data APIs</u>](https://earthdata.nasa.gov/collaborate/open-data-services-and-software/api)
 
-6.  [<u>Google Custom Search REST
-    > API</u>](https://developers.google.com/custom-search/v1/using_rest)
+6.  [<u>Google Custom Search REST API</u>](https://developers.google.com/custom-search/v1/using_rest)
 
 7.  [<u>EPN-TAP</u>](https://arxiv.org/pdf/1407.5738.pdf)
 
-8.  [<u>Earth Data Common Metadata Repository
-    > (CMR)</u>](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html)
+8.  [<u>Earth Data Common Metadata Repository (CMR)</u>](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html)
 
 9.  [<u>Swagger for Developing API Spec</u>](https://swagger.io/)
 
 10. [<u>Open Search</u>](https://en.wikipedia.org/wiki/OpenSearch)
 
-11. [<u>Library of Congress Search/Retrieval by
-    > URL</u>](http://www.loc.gov/standards/sru/sru-2-0.html)
+11. [<u>Library of Congress Search/Retrieval by URL</u>](http://www.loc.gov/standards/sru/sru-2-0.html)
 
 12. [<u>PDS OPUS API</u>](https://opus.pds-rings.seti.org/apiguide.pdf)
 
-13. [<u>PDS Imaging Atlas
-    > API</u>](https://pds-imaging.jpl.nasa.gov/tools/atlas/api/)
+13. [<u>PDS Imaging Atlas API</u>](https://pds-imaging.jpl.nasa.gov/tools/atlas/api/)
 
 **General Applicable Open API Conventions**
 ===========================================
@@ -82,11 +72,9 @@ Users interact with resources through [<u>HTTP request
 verbs</u>](https://assertible.com/blog/7-http-methods-every-web-developer-should-know-and-how-to-test-them).
 The PDS API uses GET and POST:
 
--   GET is relevant to get resource representation from the API when the
-    > extraction criteria is simple.
+-   GET is relevant to get resource representation from the API when the extraction criteria is simple.
 
--   POST, in a read-only context, is relevant to provide the API with
-    > complex request criteria.
+-   POST, in a read-only context, is relevant to provide the API with complex request criteria.
 
 Future iterations of the API will transform it to be an [<u>idempotent
 REST API</u>](https://restfulapi.net/idempotent-rest-apis/), utilizing
@@ -132,11 +120,9 @@ very complete and not too dogmatic:
 Some peer web API specifications are also considered as references for
 the design for the PDS API specification:
 
--   OGC environment data retrieval:
-    > [<u>http://docs.opengeospatial.org/DRAFTS/19-086.html</u>](http://docs.opengeospatial.org/DRAFTS/19-086.html)
+-   OGC environment data retrieval: [<u>http://docs.opengeospatial.org/DRAFTS/19-086.html</u>](http://docs.opengeospatial.org/DRAFTS/19-086.html)
 
--   ESDIS Common Metadata Repository API:
-    > https://earthdata.nasa.gov/collaborate/open-data-services-and-software/api/cmr-api
+-   ESDIS Common Metadata Repository API: https://earthdata.nasa.gov/collaborate/open-data-services-and-software/api/cmr-api
 
 The chosen options are listed here after:
 
@@ -180,8 +166,7 @@ Two options have been considered to manage versions (see
 
 -   Version in the URL, e.g. pds.nasa.gov/1.0/products/
 
--   Content negotiation headers (e.g. Accept:
-    > application/vnd.example+json;version=1.0)
+-   Content negotiation headers (e.g. Accept: application/vnd.example+json;version=1.0)
 
 To keep things as simple as possible, content negotiation will not be
 used for version management. A server API implementation will implement
@@ -189,18 +174,11 @@ a single version of the API definition.
 
 However:
 
--   We advise to use the version in the URL of the API when it is
-    > deployed, although it is not part of the API definition.
+-   We advise to use the version in the URL of the API when it is deployed, although it is not part of the API definition.
 
--   The version is mandatory in the resource representations (result of
-    > a request)
+-   The version is mandatory in the resource representations (result of a request)
 
--   The version will be managed (optional) in the ‘routes’ resource to
-    > be able to manage deployments of implementations of different
-    > version of the API definition. For example, GEO Discipline Node
-    > can provide 2 end-points for the API, v1.0 and v1.1. The routing
-    > should allow a client to choose between these end-points. The
-    > latest will be provided by default.
+-   The version will be managed (optional) in the ‘routes’ resource to be able to manage deployments of implementations of different version of the API definition. For example, GEO Discipline Node can provide 2 end-points for the API, v1.0 and v1.1. The routing should allow a client to choose between these end-points. The latest will be provided by default.
 
 ### Pagination/Sort
 
@@ -360,14 +338,11 @@ return\_type in the HTTP header*
 *If we wanted to create a Domain Specific Language (DSL), here are some
 references:*
 
--   *ElasticSearch Query DSL:
-    > [<u>https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html</u>](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)*
+-   *ElasticSearch Query DSL: [<u>https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html</u>](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)*
 
--   *Solr Query DSL:
-    > [<u>https://lucene.apache.org/solr/guide/7\_1/json-query-dsl.html</u>](https://lucene.apache.org/solr/guide/7_1/json-query-dsl.html)*
+-   *Solr Query DSL: [<u>https://lucene.apache.org/solr/guide/7\_1/json-query-dsl.html</u>](https://lucene.apache.org/solr/guide/7_1/json-query-dsl.html)*
 
--   *ESDIS CMR Example JSON Request API:
-    > [<u>https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html\#search-with-json-query</u>](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#search-with-json-query)*
+-   *ESDIS CMR Example JSON Request API: [<u>https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html\#search-with-json-query</u>](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#search-with-json-query)*
 
  
 
@@ -515,64 +490,33 @@ will be grouped together, but these are the values that were decided
 would be most helpful for searching for a particular data collection.
 Below are the attributes of most interest:
 
--   Product\_Collection.collection\_type**=Data** (ignored in query
-    > parameters)
-
+-   Product\_Collection.collection\_type**=Data** (ignored in query parameters)
 -   Primary\_Result\_Summary.processing\_level
-
 -   Investigation\_Area.type**=Mission** (ignored in query parameters)
-
 -   Science\_Facets.domain
-
--   Identification\_Area.product\_class**=Product\_Collection** (ignored
-    > in query parameters)
-
+-   Identification\_Area.product\_class**=Product\_Collection** (ignored in query parameters)
 -   Science\_Facets.wavelength\_range
-
--   Primary\_Result\_Summary.purpose**=Science** (ignored in query
-    > parameters)
-
+-   Primary\_Result\_Summary.purpose**=Science** (ignored in query parameters)
 -   Science\_Facets.discipline\_name
-
 -   Time\_Coordinates.start\_date\_time
-
 -   Collection.description
-
 -   Time\_Coordinates.stop\_date\_time
-
 -   Product\_Context.Instrument.type
-
 -   Target\_Identification.name
-
 -   Identification\_Area.logical\_identifier
-
 -   Target\_Identification.type
-
 -   Identification\_Area.version\_id
-
 -   Investigation\_Area.name
-
 -   Science\_Facets.facet1
-
 -   Observing\_System.name
-
 -   Science\_Facets.facet2
-
 -   Observing\_System\_Component.name
-
 -   Primary\_Result\_Summary.description
-
--   Observing\_System\_Component.type**=Instrument** (ignored in query
-    > parameters)
-
+-   Observing\_System\_Component.type**=Instrument** (ignored in query parameters)
 -   Target\_Identification.description
-
 -   Identification\_Area.title
-
 -   system.archive\_status
-
 -   Citation\_Information.keyword
-
 -   Citation\_Information.description
 
 These are all specified in the PDS Common tab of the [<u>PDS Query
@@ -644,11 +588,9 @@ TBD a more RESTful approach to searching the registry
 
 -   Standard definition: one yml or json file on a github repository
 
--   Standard libraries: python and java standard implementation
-    > (client,severs stubs) shared on PYPI and MAVEN artifactory
+-   Standard libraries: python and java standard implementation (client,severs stubs) shared on PYPI and MAVEN artifactory
 
--   Standard implementations, by Engineering Node (demo, validator,
-    > core) and Discipline Nodes (actual access).
+-   Standard implementations, by Engineering Node (demo, validator, core) and Discipline Nodes (actual access).
 
 3.1 Preparation
 ---------------
@@ -759,23 +701,11 @@ defining and applying the PDS API Spec.
 Goals
 -----
 
--   To define a common, ***RESTful API specification*** to be adopted
-    > across the PDS.
-
--   To define a ***common syntax and best practices for defining query
-    > parameters***.
-
--   To define a ***common set of query parameters for top-level search
-    > criteria*** with the widest-ranging applicability across all PDS
-    > data.
-
--   To define a set of best practices and processes for extending the
-    > common set of query parameters with ***discipline- and
-    > node-specific query parameters***.
-
--   To provide a ***managed central location for describing and
-    > documenting all API specification details***, including query
-    > parameters, across the entire PDS.
+-   To define a common, ***RESTful API specification*** to be adopted across the PDS.
+-   To define a ***common syntax and best practices for defining query parameters***.
+-   To define a ***common set of query parameters for top-level search criteria*** with the widest-ranging applicability across all PDS data.
+-   To define a set of best practices and processes for extending the common set of query parameters with ***discipline- and node-specific query parameters***.
+-   To provide a ***managed central location for describing and documenting all API specification details***, including query parameters, across the entire PDS.
 
 Request URL Specification
 -------------------------
@@ -883,15 +813,11 @@ Some reasons for custom query parameters:
 
 -   Combination of multiple attribute values into one
 
--   Special cases where XQuery needs to be used for finding specific
-    > values (e.g. instrument/spacecraft described in
-    > Observing\_System\_Component class)
+-   Special cases where XQuery needs to be used for finding specific values (e.g. instrument/spacecraft described in Observing\_System\_Component class)
 
--   Custom search fields on non-PDS4 metadata (e.g. image tags,
-    > operations note, etc.)
+-   Custom search fields on non-PDS4 metadata (e.g. image tags, operations note, etc.)
 
--   Support common search or PDS4 terminology (e.g. target\_name,
-    > lidvid)
+-   Support common search or PDS4 terminology (e.g. target\_name, lidvid)
 
 ##### 2. Internal / External References
 
