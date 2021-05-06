@@ -6,7 +6,7 @@
   } ],
   "info" : {
     "description" : "Federated PDS API which provides actionable end points standardized\nbetween the different nodes.\n",
-    "version" : "0.1.dev",
+    "version" : "0.2.dev",
     "title" : "Planetary Data System API",
     "termsOfService" : "http://pds.nasa.gov",
     "contact" : {
@@ -203,6 +203,192 @@
         }
       } ]
     },
+    "/products/{lidvid}/bundles" : {
+      "get" : {
+        "tags" : [ "products containing bundles" ],
+        "summary" : "get bundles containing product",
+        "operationId" : "bundles containing product",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
+    },
+    "/products/{lidvid}/collections" : {
+      "get" : {
+        "tags" : [ "product containing collections" ],
+        "summary" : "get collections containing product",
+        "operationId" : "collections containing product",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
+    },
     "/collections" : {
       "get" : {
         "tags" : [ "collections" ],
@@ -353,6 +539,99 @@
         "required" : true,
         "schema" : {
           "type" : "string"
+        }
+      } ]
+    },
+    "/collections/{lidvid}/bundles" : {
+      "get" : {
+        "tags" : [ "collection's containing bundles" ],
+        "summary" : "get bundles containing this given collection",
+        "operationId" : "bundles containing collection",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
         }
       } ]
     },
@@ -607,6 +886,99 @@
         "tags" : [ "bundle's collections" ],
         "summary" : "get collections belonging to a given bundle",
         "operationId" : "collections-of-a-bundle",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
+    },
+    "/bundles/{lidvid}/products" : {
+      "get" : {
+        "tags" : [ "bundle's products" ],
+        "summary" : "get products belonging to a given bundle",
+        "operationId" : "products-of-a-bundle",
         "responses" : {
           "200" : {
             "description" : "Successful request",
