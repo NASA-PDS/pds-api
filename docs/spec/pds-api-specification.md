@@ -50,6 +50,8 @@ this API and the accompanying guidelines, including:
 
 13. [<u>PDS Imaging Atlas API</u>](https://pds-imaging.jpl.nasa.gov/tools/atlas/api/)
 
+14. [<u>OGC Environmental Data Retrieval</u>](https://github.com/opengeospatial/ogcapi-environmental-data-retrieval)
+
 **General Applicable Open API Conventions**
 ===========================================
 
