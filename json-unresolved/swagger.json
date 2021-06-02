@@ -1114,8 +1114,16 @@
             "description" : "properties extracted from pds4 model, syntax for property name is <namespace>:<property>[/<namespace>:<property>]*",
             "additionalProperties" : {
               "type" : "object"
+            },
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
             }
           }
+        },
+        "xml" : {
+          "prefix" : "pds_api",
+          "namespace" : "http://pds.nasa.gov/api"
         }
       },
       "reference" : {
