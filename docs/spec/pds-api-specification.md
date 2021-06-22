@@ -14,7 +14,7 @@ The latest released version of this document is currently maintained on
 the PDS API Github Repo, and the development version is maintained on
 Google Drive. Feedback and comments welcome.
 
--   Released: [<u>https://github.com/NASA-PDS/pds-api/blob/master/docs/spec/pds-api-specification.md</u>](https://github.com/NASA-PDS/pds-api/blob/master/docs/spec/pds-api-specification.md)
+-   Released: [<u>https://github.com/NASA-PDS/pds-api/blob/main/docs/spec/pds-api-specification.md</u>](https://github.com/NASA-PDS/pds-api/blob/main/docs/spec/pds-api-specification.md)
 
 -   In Development: [<u>https://docs.google.com/document/d/16d0MVh48bFLvWsa5-B\_Hy-cby1rGWdnNojWOJpUcOvA/edit?usp=sharing</u>](https://docs.google.com/document/d/16d0MVh48bFLvWsa5-B_Hy-cby1rGWdnNojWOJpUcOvA/edit?usp=sharing)
 
