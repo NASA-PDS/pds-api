@@ -6,7 +6,7 @@
   } ],
   "info" : {
     "description" : "Federated PDS API which provides actionable end points standardized\nbetween the different nodes.\n",
-    "version" : "0.1.dev",
+    "version" : "0.2.dev",
     "title" : "Planetary Data System API",
     "termsOfService" : "http://pds.nasa.gov",
     "contact" : {
@@ -26,48 +26,10 @@
     }
   } ],
   "paths" : {
-    "/capabilities" : {
-      "get" : {
-        "tags" : [ "capabilities" ],
-        "summary" : "capabilities api entry point, list the resources provided by the current API end-point.",
-        "operationId" : "capabilities",
-        "responses" : {
-          "200" : {
-            "description" : "Successful request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/capabilities"
-                },
-                "example" : [ {
-                  "action" : "capabilities",
-                  "version" : 0.1
-                }, {
-                  "action" : "collections",
-                  "version" : 0.1
-                }, {
-                  "action" : "products",
-                  "version" : 0.1
-                }, {
-                  "action" : "routes",
-                  "version" : 0.1
-                } ]
-              }
-            }
-          },
-          "404" : {
-            "description" : "capabilities not available"
-          },
-          "500" : {
-            "description" : "Internal server error"
-          }
-        }
-      }
-    },
     "/products" : {
       "get" : {
         "tags" : [ "products" ],
-        "summary" : "search across all PDS data products, including bundles, collections, documentation, and observational products,",
+        "summary" : "search across all PDS data products, including bundles, collections, documentation, context and observational products,",
         "operationId" : "products",
         "responses" : {
           "200" : {
@@ -200,6 +162,192 @@
         "required" : true,
         "schema" : {
           "type" : "string"
+        }
+      } ]
+    },
+    "/products/{lidvid}/bundles" : {
+      "get" : {
+        "tags" : [ "products containing bundles" ],
+        "summary" : "get bundles containing product",
+        "operationId" : "bundles-containing-product",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
+    },
+    "/products/{lidvid}/collections" : {
+      "get" : {
+        "tags" : [ "product containing collections" ],
+        "summary" : "get collections containing product",
+        "operationId" : "collections-containing-product",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
         }
       } ]
     },
@@ -356,6 +504,99 @@
         }
       } ]
     },
+    "/collections/{lidvid}/bundles" : {
+      "get" : {
+        "tags" : [ "collection's containing bundles" ],
+        "summary" : "get bundles containing this given collection",
+        "operationId" : "bundles-containing-collection",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
+    },
     "/collections/{lidvid}/products" : {
       "get" : {
         "tags" : [ "collection's products" ],
@@ -452,7 +693,7 @@
     "/bundles" : {
       "get" : {
         "tags" : [ "bundles" ],
-        "summary" : "request PDS bundles",
+        "summary" : "request all PDS bundles",
         "operationId" : "get bundles",
         "responses" : {
           "200" : {
@@ -561,7 +802,7 @@
     "/bundles/{lidvid}" : {
       "get" : {
         "tags" : [ "bundles" ],
-        "summary" : "bundles URN resolver for lidvid",
+        "summary" : "bundle URN resolver for lidvid, get one bundle",
         "operationId" : "bundle-by-lidvid",
         "responses" : {
           "200" : {
@@ -695,58 +936,98 @@
         }
       } ]
     },
-    "/routes" : {
+    "/bundles/{lidvid}/products" : {
       "get" : {
-        "tags" : [ "routes" ],
-        "operationId" : "allRoutes",
+        "tags" : [ "bundle's products" ],
+        "summary" : "get products belonging to a given bundle",
+        "operationId" : "products-of-a-bundle",
         "responses" : {
           "200" : {
             "description" : "Successful request",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/routes"
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
                 }
               }
             }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
           }
         }
-      }
-    },
-    "/routes/{resource}" : {
-      "get" : {
-        "tags" : [ "routes" ],
-        "operationId" : "routes",
-        "responses" : {
-          "302" : {
-            "description" : "Successful request, redirect request"
-          }
-        },
-        "parameters" : [ {
-          "name" : "resource",
-          "in" : "path",
-          "description" : "requested action as a request path, e.g. '/record'",
-          "required" : true,
-          "schema" : {
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
             "type" : "string"
           }
-        }, {
-          "name" : "version",
-          "in" : "query",
-          "required" : false,
-          "schema" : {
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
             "type" : "string"
           }
-        }, {
-          "name" : "query",
-          "in" : "query",
-          "description" : "query parameter on the action, e.g. lidvid urn for a '/records' action",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        } ]
-      }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
     }
   },
   "externalDocs" : {
@@ -755,78 +1036,6 @@
   },
   "components" : {
     "schemas" : {
-      "capabilities" : {
-        "type" : "array",
-        "items" : {
-          "$ref" : "#/components/schemas/capability"
-        },
-        "example" : [ {
-          "action" : "capabilities",
-          "version" : 0.1
-        }, {
-          "action" : "collections",
-          "version" : 0.1
-        }, {
-          "action" : "products",
-          "version" : 0.1
-        }, {
-          "action" : "routes",
-          "version" : 0.1
-        } ]
-      },
-      "capability" : {
-        "type" : "object",
-        "required" : [ "action", "version" ],
-        "properties" : {
-          "action" : {
-            "type" : "string"
-          },
-          "version" : {
-            "type" : "string"
-          }
-        },
-        "example" : [ {
-          "action" : "collections",
-          "version" : 0.1
-        } ]
-      },
-      "routes" : {
-        "type" : "array",
-        "items" : {
-          "$ref" : "#/components/schemas/route"
-        },
-        "example" : [ {
-          "resource" : "/routes",
-          "query" : "*",
-          "url" : "https://pds.nasa/gov/v1/api",
-          "version" : "0.1"
-        }, {
-          "resource" : "/products",
-          "query" : "urn:nasa:pds:insight_rad:*",
-          "url" : "https://pds-geosciences.wustl.edu/v0/api",
-          "version" : "0.2"
-        }, {
-          "resource" : "/products",
-          "query" : "urn:nasa:pds:insight_rad:*",
-          "url" : "https://pds-geosciences.wustl.edu/v0.3/api",
-          "version" : "0.3"
-        } ]
-      },
-      "route" : {
-        "type" : "object",
-        "required" : [ "resource", "query", "url" ],
-        "properties" : {
-          "resource" : {
-            "type" : "string"
-          },
-          "query" : {
-            "type" : "string"
-          },
-          "url" : {
-            "type" : "string"
-          }
-        }
-      },
       "products" : {
         "type" : "object",
         "required" : [ "summary" ],
