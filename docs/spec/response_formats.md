@@ -14,7 +14,7 @@ Choose one among the following
 
 ```json
 {
-  "summary": {}
+  "summary": {},
   "data": []
 }
 ```
@@ -36,7 +36,7 @@ see https://jsonapi.org/
 
 ```json
 {
-  "responseData": {}
+  "responseData": {},
   "results": []
 }
 ```
@@ -66,7 +66,7 @@ For users who know what they want:
 
 ```json
 {
-   "Product_Bundle.Identification_Area.logical_identifier": "urn:nasa:pds:insight_cameras"
+   "Product_Bundle.Identification_Area.logical_identifier": "urn:nasa:pds:insight_cameras",
    ...
 
 }
@@ -128,12 +128,12 @@ For users who only trust the genuine original information:
     "meta": {
       "file_size": 34534,
       "checksum": "fhfghx1224f"
-    }
+    },
     "additional_meta": {
       "opus:": { ... }
       "analyst_notebook" : { ... }
       "dataCite" : { ... }
-    }
+    },
     "pds4": {
        "Product_Bundle": {
           "Identification_Area": {
