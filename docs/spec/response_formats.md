@@ -10,7 +10,7 @@ DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DR
 
 Choose one among the following
 
-###What we now have:
+### What we now have:
 
 ```json
 {
@@ -20,7 +20,7 @@ Choose one among the following
 ```
 
 
-###JSON api
+### JSON api
 
 see https://jsonapi.org/
 
@@ -32,9 +32,9 @@ see https://jsonapi.org/
 }
 ```
 
-###Google search api
+### Google search api
 
-``` JSON
+```json
 {
   "responseData": {}
   "results": []
@@ -45,7 +45,7 @@ see https://jsonapi.org/
 
 Freely inspired by CMR, see https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html
 
-``` JSON
+```json
 {
   "meta": {},
   "items": []
@@ -64,7 +64,7 @@ Each of the following format are supported.
 
 For users who know what they want:
 
-``` JSON
+```json
 {
    "Product_Bundle.Identification_Area.logical_identifier": "urn:nasa:pds:insight_cameras"
    ...
@@ -76,7 +76,7 @@ For users who know what they want:
 
 For users who want a structured response without knowing of PDS4 model
 
-``` JSON
+```json
 {
   "id": "urn:nasa:pds:izenberg_pdart14_meap:data_eetable::2.0",
   "type": "Product_Collection",
@@ -122,7 +122,7 @@ For users who want a structured response without knowing of PDS4 model
 For users who only trust the genuine original information:
 
 
-``` JSON
+```json
   {
     "id": "urn:nasa:pds:insight_cameras::7.0",
     "meta": {
@@ -257,3 +257,15 @@ For users who only trust the genuine original information:
 ]
 }
 ```
+
+
+# Alternate Formats
+
+Candidates for implementation in the PDS API, as extensions, for interoperability purpose.
+
+- schema.org/ datasets
+- EPN-TAP
+- PDAP
+- Dublin-Core
+- json-ld
+- …
