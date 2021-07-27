@@ -12,7 +12,7 @@ Choose one among the following
 
 ###What we now have:
 
-``` JSON
+```json
 {
   "summary": {}
   "data": []
@@ -24,7 +24,7 @@ Choose one among the following
 
 see https://jsonapi.org/
 
-``` JSON
+```json
 {
   "meta": {},
   "data": [] or {},
