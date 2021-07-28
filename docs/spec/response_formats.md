@@ -55,7 +55,7 @@ see https://jsonapi.org/
 
 ### PDS4 JSON (preferred)
 
-Freely inspired by CMR, see https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html
+Freely inspired by CMR, see https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#json
 
 ```json
 {
