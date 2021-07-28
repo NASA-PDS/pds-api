@@ -45,6 +45,7 @@ see https://jsonapi.org/
 
 Freely inspired by CMR, see https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html
 
+MIME type: `application/pds4+json` ?
 ```json
 {
   "meta": {},
@@ -61,7 +62,9 @@ The following format will be wrapped, nested in the above specification or on th
 Each of the following format are supported.
 
 ### KVP Response
-MIME type: application/kvp+json
+
+MIME type: `application/kvp+json`
+
 For users who know what they want:
 
 ```json
@@ -72,7 +75,7 @@ For users who know what they want:
 }
 ```
 
-### Short response (application/json):
+### Short Response (application/json):
 
 For users who want a structured response without knowing of PDS4 model
 
