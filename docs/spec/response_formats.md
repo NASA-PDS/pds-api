@@ -1,5 +1,7 @@
+See [Google Docs version for ongoing discussion](https://docs.google.com/document/d/1iIeLpAahXJ_Kd0ij7BR7IPFpGDWZ_KQixil-IPNKq3Q/edit?usp=sharing)
 
-DRAFT
+
+DRAFT BELOW
 
 - [Response formats review](#response-formats-review)
   * [Response wrappers for search queries:](#response-wrappers-for-search-queries-)
