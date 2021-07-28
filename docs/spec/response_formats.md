@@ -41,7 +41,7 @@ see https://jsonapi.org/
 }
 ```
 
-### One we like
+### PREFERRED
 
 Freely inspired by CMR, see https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html
 
