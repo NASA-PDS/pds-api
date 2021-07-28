@@ -8,7 +8,7 @@ DRAFT
     + [Google Search API](#google-search-api)
     + [PDS4 JSON (preferred)](#pds4-json--preferred-)
   * [Description Formats](#description-formats)
-    + [KVP Response](#kvp-response)
+    + [KVP Response](#kvp-response--application-kvp-json-)
     + [Short JSON Response (application/json)](#short-json-response--application-json-)
     + [Full JSON Response (application/pds4+json)](#full-json-response--application-pds4-json-)
 - [Alternate Formats](#alternate-formats)
@@ -72,9 +72,9 @@ The following format will be wrapped, nested in the above specification or on th
 
 Each of the following format are supported.
 
-### KVP Response
+### KVP Response (application/kvp+json)
 
-MIME type: `application/kvp+json`
+KVP = Key-value-pair
 
 For users who know what they want:
 
