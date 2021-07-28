@@ -10,7 +10,7 @@ DRAFT
 
 Choose one among the following
 
-### What we now have:
+### Current Response:
 
 ```json
 {
@@ -20,7 +20,7 @@ Choose one among the following
 ```
 
 
-### JSON api
+### JSON API
 
 see https://jsonapi.org/
 
@@ -32,7 +32,7 @@ see https://jsonapi.org/
 }
 ```
 
-### Google search api
+### Google Search API
 
 ```json
 {
@@ -54,14 +54,14 @@ Freely inspired by CMR, see https://cmr.earthdata.nasa.gov/search/site/docs/sear
 ```
 
 
-## Description formats
+## Description Formats
 
 The following format will be wrapped, nested in the above specification or on their own for single results as for LIDVID resolver.
 
 Each of the following format are supported.
 
-### KVP response (MIME type application/kvp+json)
-
+### KVP Response
+MIME type: application/kvp+json
 For users who know what they want:
 
 ```json
