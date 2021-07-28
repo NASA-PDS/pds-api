@@ -6,7 +6,7 @@ DRAFT
     + [Current Response:](#current-response-)
     + [JSON API](#json-api)
     + [Google Search API](#google-search-api)
-    + [PREFERRED](#preferred)
+    + [PDS4 JSON (preferred)](#pds4-json--preferred-)
   * [Description Formats](#description-formats)
     + [KVP Response](#kvp-response)
     + [Short JSON Response:](#short-json-response-)
