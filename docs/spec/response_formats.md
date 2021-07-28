@@ -46,6 +46,7 @@ see https://jsonapi.org/
 Freely inspired by CMR, see https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html
 
 MIME type: `application/pds4+json` ?
+
 ```json
 {
   "meta": {},
@@ -75,7 +76,9 @@ For users who know what they want:
 }
 ```
 
-### Short Response (application/json):
+### Short JSON Response:
+
+MIME type: `application/json`
 
 For users who want a structured response without knowing of PDS4 model
 
