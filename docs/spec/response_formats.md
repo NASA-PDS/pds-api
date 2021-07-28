@@ -1,6 +1,17 @@
 
 DRAFT
 
+- [Response formats review](#response-formats-review)
+  * [Response wrappers for search queries:](#response-wrappers-for-search-queries-)
+    + [Current Response:](#current-response-)
+    + [JSON API](#json-api)
+    + [Google Search API](#google-search-api)
+    + [PREFERRED](#preferred)
+  * [Description Formats](#description-formats)
+    + [KVP Response](#kvp-response)
+    + [Short JSON Response:](#short-json-response-)
+- [Alternate Formats](#alternate-formats)
+
 # Response formats review
 
 
