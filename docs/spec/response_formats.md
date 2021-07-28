@@ -85,9 +85,7 @@ For users who know what they want:
 }
 ```
 
-### Short JSON Response:
-
-MIME type: `application/json`
+### Short JSON Response (application/json)
 
 For users who want a structured response without knowing of PDS4 model
 
@@ -132,10 +130,9 @@ For users who want a structured response without knowing of PDS4 model
 
 
 
-### Full Response (application/pds4+json)
+### Full JSON Response (application/pds4+json)
 
 For users who only trust the genuine original information:
-
 
 ```json
   {
