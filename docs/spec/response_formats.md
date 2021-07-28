@@ -9,7 +9,8 @@ DRAFT
     + [PDS4 JSON (preferred)](#pds4-json--preferred-)
   * [Description Formats](#description-formats)
     + [KVP Response](#kvp-response)
-    + [Short JSON Response:](#short-json-response-)
+    + [Short JSON Response (application/json)](#short-json-response--application-json-)
+    + [Full JSON Response (application/pds4+json)](#full-json-response--application-pds4-json-)
 - [Alternate Formats](#alternate-formats)
 
 # Response formats review
