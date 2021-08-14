@@ -6,7 +6,7 @@
   } ],
   "info" : {
     "description" : "Federated PDS API which provides actionable end points standardized\nbetween the different nodes.\n",
-    "version" : "0.1.dev",
+    "version" : "main",
     "title" : "Planetary Data System API",
     "termsOfService" : "http://pds.nasa.gov",
     "contact" : {
@@ -26,48 +26,10 @@
     }
   } ],
   "paths" : {
-    "/capabilities" : {
-      "get" : {
-        "tags" : [ "capabilities" ],
-        "summary" : "capabilities api entry point, list the resources provided by the current API end-point.",
-        "operationId" : "capabilities",
-        "responses" : {
-          "200" : {
-            "description" : "Successful request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/capabilities"
-                },
-                "example" : [ {
-                  "action" : "capabilities",
-                  "version" : 0.1
-                }, {
-                  "action" : "collections",
-                  "version" : 0.1
-                }, {
-                  "action" : "products",
-                  "version" : 0.1
-                }, {
-                  "action" : "routes",
-                  "version" : 0.1
-                } ]
-              }
-            }
-          },
-          "404" : {
-            "description" : "capabilities not available"
-          },
-          "500" : {
-            "description" : "Internal server error"
-          }
-        }
-      }
-    },
     "/products" : {
       "get" : {
         "tags" : [ "products" ],
-        "summary" : "search across all PDS data products, including bundles, collections, documentation, and observational products,",
+        "summary" : "search across all PDS data products, including bundles, collections, documentation, context and observational products,",
         "operationId" : "products",
         "responses" : {
           "200" : {
@@ -79,11 +41,6 @@
                 }
               },
               "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
-              },
-              "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
                 }
@@ -122,6 +79,14 @@
           "name" : "q",
           "in" : "query",
           "description" : "search query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "keyword search query",
           "required" : false,
           "schema" : {
             "type" : "string"
@@ -203,6 +168,182 @@
         }
       } ]
     },
+    "/products/{lidvid}/bundles" : {
+      "get" : {
+        "tags" : [ "products containing bundles" ],
+        "summary" : "get bundles containing product",
+        "operationId" : "bundles-containing-product",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
+    },
+    "/products/{lidvid}/collections" : {
+      "get" : {
+        "tags" : [ "product containing collections" ],
+        "summary" : "get collections containing product",
+        "operationId" : "collections-containing-product",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
+    },
     "/collections" : {
       "get" : {
         "tags" : [ "collections" ],
@@ -226,11 +367,6 @@
                 }
               },
               "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
-              },
-              "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
                 }
@@ -274,6 +410,14 @@
           "in" : "query",
           "description" : "search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or. Properties are named as in 'properties' attributes, literals are strings between \" or numbers. Detailed query specification is available at https://bit.ly/393i1af",
           "example" : "((pds/Primary_Result_Summary/pds/processing_level eq \"Raw\") or not (_file_size le 8942))",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "keyword search query",
           "required" : false,
           "schema" : {
             "type" : "string"
@@ -356,11 +500,11 @@
         }
       } ]
     },
-    "/collections/{lidvid}/products" : {
+    "/collections/{lidvid}/bundles" : {
       "get" : {
-        "tags" : [ "collection's products" ],
-        "summary" : "get producs belonging to a given collection",
-        "operationId" : "products-of-a-collection",
+        "tags" : [ "collection's containing bundles" ],
+        "summary" : "get bundles containing this given collection",
+        "operationId" : "bundles-containing-collection",
         "responses" : {
           "200" : {
             "description" : "Successful request",
@@ -376,6 +520,94 @@
                 }
               },
               "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
+    },
+    "/collections/{lidvid}/products" : {
+      "get" : {
+        "tags" : [ "collection's products" ],
+        "summary" : "get producs belonging to a given collection",
+        "operationId" : "products-of-a-collection",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
                 "schema" : {
                   "type" : "object"
                 }
@@ -452,7 +684,7 @@
     "/bundles" : {
       "get" : {
         "tags" : [ "bundles" ],
-        "summary" : "request PDS bundles",
+        "summary" : "request all PDS bundles",
         "operationId" : "get bundles",
         "responses" : {
           "200" : {
@@ -472,11 +704,6 @@
                 }
               },
               "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
-              },
-              "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
                 }
@@ -525,6 +752,14 @@
             "type" : "string"
           }
         }, {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "keyword search query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
           "name" : "fields",
           "in" : "query",
           "description" : "returned fields, syntax field0,field1",
@@ -561,7 +796,7 @@
     "/bundles/{lidvid}" : {
       "get" : {
         "tags" : [ "bundles" ],
-        "summary" : "bundles URN resolver for lidvid",
+        "summary" : "bundle URN resolver for lidvid, get one bundle",
         "operationId" : "bundle-by-lidvid",
         "responses" : {
           "200" : {
@@ -617,11 +852,6 @@
                 }
               },
               "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
-              },
-              "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
                 }
@@ -695,58 +925,93 @@
         }
       } ]
     },
-    "/routes" : {
+    "/bundles/{lidvid}/products" : {
       "get" : {
-        "tags" : [ "routes" ],
-        "operationId" : "allRoutes",
+        "tags" : [ "bundle's products" ],
+        "summary" : "get products belonging to a given bundle",
+        "operationId" : "products-of-a-bundle",
         "responses" : {
           "200" : {
             "description" : "Successful request",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/routes"
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object"
                 }
               }
             }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
           }
         }
-      }
-    },
-    "/routes/{resource}" : {
-      "get" : {
-        "tags" : [ "routes" ],
-        "operationId" : "routes",
-        "responses" : {
-          "302" : {
-            "description" : "Successful request, redirect request"
-          }
-        },
-        "parameters" : [ {
-          "name" : "resource",
-          "in" : "path",
-          "description" : "requested action as a request path, e.g. '/record'",
-          "required" : true,
-          "schema" : {
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 100
+        }
+      }, {
+        "name" : "fields",
+        "in" : "query",
+        "description" : "returned fields, syntax field0,field1",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
             "type" : "string"
           }
-        }, {
-          "name" : "version",
-          "in" : "query",
-          "required" : false,
-          "schema" : {
+        }
+      }, {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "required" : false,
+        "schema" : {
+          "type" : "array",
+          "items" : {
             "type" : "string"
           }
-        }, {
-          "name" : "query",
-          "in" : "query",
-          "description" : "query parameter on the action, e.g. lidvid urn for a '/records' action",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        } ]
-      }
+        }
+      }, {
+        "name" : "only-summary",
+        "in" : "query",
+        "description" : "only return the summary, useful to get the list of available properties",
+        "required" : false,
+        "schema" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      } ]
     }
   },
   "externalDocs" : {
@@ -755,78 +1020,6 @@
   },
   "components" : {
     "schemas" : {
-      "capabilities" : {
-        "type" : "array",
-        "items" : {
-          "$ref" : "#/components/schemas/capability"
-        },
-        "example" : [ {
-          "action" : "capabilities",
-          "version" : 0.1
-        }, {
-          "action" : "collections",
-          "version" : 0.1
-        }, {
-          "action" : "products",
-          "version" : 0.1
-        }, {
-          "action" : "routes",
-          "version" : 0.1
-        } ]
-      },
-      "capability" : {
-        "type" : "object",
-        "required" : [ "action", "version" ],
-        "properties" : {
-          "action" : {
-            "type" : "string"
-          },
-          "version" : {
-            "type" : "string"
-          }
-        },
-        "example" : [ {
-          "action" : "collections",
-          "version" : 0.1
-        } ]
-      },
-      "routes" : {
-        "type" : "array",
-        "items" : {
-          "$ref" : "#/components/schemas/route"
-        },
-        "example" : [ {
-          "resource" : "/routes",
-          "query" : "*",
-          "url" : "https://pds.nasa/gov/v1/api",
-          "version" : "0.1"
-        }, {
-          "resource" : "/products",
-          "query" : "urn:nasa:pds:insight_rad:*",
-          "url" : "https://pds-geosciences.wustl.edu/v0/api",
-          "version" : "0.2"
-        }, {
-          "resource" : "/products",
-          "query" : "urn:nasa:pds:insight_rad:*",
-          "url" : "https://pds-geosciences.wustl.edu/v0.3/api",
-          "version" : "0.3"
-        } ]
-      },
-      "route" : {
-        "type" : "object",
-        "required" : [ "resource", "query", "url" ],
-        "properties" : {
-          "resource" : {
-            "type" : "string"
-          },
-          "query" : {
-            "type" : "string"
-          },
-          "url" : {
-            "type" : "string"
-          }
-        }
-      },
       "products" : {
         "type" : "object",
         "required" : [ "summary" ],
@@ -897,30 +1090,58 @@
         "properties" : {
           "id" : {
             "type" : "string",
-            "description" : "identifier lidvid of the collection"
+            "description" : "identifier lidvid of the collection",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "type" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "title" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "description" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "start_date_time" : {
             "type" : "string",
-            "description" : "start date time of the observations in ISO8601"
+            "description" : "start date time of the observations in ISO8601",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "stop_date_time" : {
             "type" : "string",
-            "description" : "stop date time of the observations in ISO8601"
+            "description" : "stop date time of the observations in ISO8601",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "investigations" : {
             "type" : "array",
             "description" : "list of missions or observing campaigns which produced the data",
             "items" : {
               "$ref" : "#/components/schemas/reference"
+            },
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
             }
           },
           "observing_system_components" : {
@@ -928,6 +1149,10 @@
             "description" : "list of instruments or platforms generating the data",
             "items" : {
               "$ref" : "#/components/schemas/reference"
+            },
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
             }
           },
           "targets" : {
@@ -935,6 +1160,10 @@
             "description" : "list of targets or feature of interest the observation.",
             "items" : {
               "$ref" : "#/components/schemas/reference"
+            },
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
             }
           },
           "metadata" : {
@@ -944,9 +1173,27 @@
             "type" : "object",
             "description" : "properties extracted from pds4 model, syntax for property name is <namespace>:<property>[/<namespace>:<property>]*",
             "additionalProperties" : {
-              "type" : "object"
+              "$ref" : "#/components/schemas/propertyArrayValues"
+            },
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
             }
           }
+        },
+        "xml" : {
+          "prefix" : "pds_api",
+          "namespace" : "http://pds.nasa.gov/api"
+        }
+      },
+      "propertyArrayValues" : {
+        "type" : "array",
+        "items" : {
+          "type" : "string"
+        },
+        "xml" : {
+          "prefix" : "pds_api",
+          "namespace" : "http://pds.nasa.gov/api"
         }
       },
       "reference" : {
@@ -956,24 +1203,48 @@
         "properties" : {
           "title" : {
             "type" : "string",
-            "description" : "name to display for the external reference"
+            "description" : "name to display for the external reference",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "id" : {
             "type" : "string",
-            "description" : "external reference, here lidvid urn"
+            "description" : "external reference, here lidvid urn",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "href" : {
             "type" : "string",
-            "description" : "external reference url of the current reference resolvable by the current API server, http://pds.nasa.gov/api/products/urn:nasa..."
+            "description" : "external reference url of the current reference resolvable by the current API server, http://pds.nasa.gov/api/products/urn:nasa...",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "type" : {
             "type" : "string",
-            "description" : "type of the external reference, can be displayed as an icon for example"
+            "description" : "type of the external reference, can be displayed as an icon for example",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "description" : {
             "type" : "string",
-            "description" : "longer description for the external reference, can be displayed in a tooltip"
+            "description" : "longer description for the external reference, can be displayed in a tooltip",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           }
+        },
+        "xml" : {
+          "prefix" : "pds_api",
+          "namespace" : "http://pds.nasa.gov/api"
         }
       },
       "metadata" : {
@@ -981,17 +1252,37 @@
         "required" : [ "label_url" ],
         "properties" : {
           "creation_date_time" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "update_date_time" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "version" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "label_url" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           }
+        },
+        "xml" : {
+          "prefix" : "pds_api",
+          "namespace" : "http://pds.nasa.gov/api"
         }
       },
       "errorMessage" : {
@@ -999,17 +1290,37 @@
         "required" : [ "url", "resource", "query", "message" ],
         "properties" : {
           "url" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "resource" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "query" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           },
           "message" : {
-            "type" : "string"
+            "type" : "string",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
           }
+        },
+        "xml" : {
+          "prefix" : "pds_api",
+          "namespace" : "http://pds.nasa.gov/api"
         },
         "example" : {
           "url" : "https://pds.nasa.gov/api/1.0/collections",
