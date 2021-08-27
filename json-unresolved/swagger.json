@@ -1044,6 +1044,22 @@
               "namespace" : "http://pds.nasa.gov/api"
             }
           },
+          "hits" : {
+            "description" : "total number of matching results. -1 indicates an excessive amount of resource required to compute it",
+            "type" : "integer",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
+          },
+          "took" : {
+            "description" : "Number of milliseconds it \"took\" to do request",
+            "type" : "integer",
+            "xml" : {
+              "prefix" : "pds_api",
+              "namespace" : "http://pds.nasa.gov/api"
+            }
+          },
           "start" : {
             "type" : "integer",
             "xml" : {
