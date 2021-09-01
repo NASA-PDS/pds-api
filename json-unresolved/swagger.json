@@ -39,11 +39,6 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
               }
             }
           },
@@ -138,11 +133,6 @@
                   "$ref" : "#/components/schemas/product"
                 }
               },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
-              },
               "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
@@ -180,11 +170,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
-                }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
                 }
               }
             }
@@ -268,11 +253,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
-                }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
                 }
               }
             }
@@ -364,11 +344,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
-                }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
                 }
               }
             }
@@ -470,11 +445,6 @@
                   "$ref" : "#/components/schemas/product"
                 }
               },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
-              },
               "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
@@ -512,11 +482,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
-                }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
                 }
               },
               "application/pds4+xml" : {
@@ -605,11 +570,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
-                }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
                 }
               }
             }
@@ -701,11 +661,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
-                }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
                 }
               }
             }
@@ -807,11 +762,6 @@
                   "$ref" : "#/components/schemas/product"
                 }
               },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
-              },
               "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
@@ -849,11 +799,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
-                }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
                 }
               }
             }
@@ -937,11 +882,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
-                }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
                 }
               }
             }
