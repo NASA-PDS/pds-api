@@ -158,6 +158,102 @@
         }
       } ]
     },
+    "/products/{lidvid}/latest" : {
+      "get" : {
+        "tags" : [ "products" ],
+        "summary" : "URN resolver for lidvid",
+        "operationId" : "products-by-lidvid-latest",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/product"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
+    "/products/{lidvid}/all" : {
+      "get" : {
+        "tags" : [ "products" ],
+        "summary" : "Get one product by lidvid, or all versions of a product by lid",
+        "operationId" : "products-by-lidvid-all",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 10
+        }
+      } ]
+    },
     "/products/{lidvid}/bundles" : {
       "get" : {
         "tags" : [ "products containing bundles" ],
@@ -467,6 +563,102 @@
         "required" : true,
         "schema" : {
           "type" : "string"
+        }
+      } ]
+    },
+    "/collections/{lidvid}/latest" : {
+      "get" : {
+        "tags" : [ "collections" ],
+        "summary" : "collections URN resolver for lidvid",
+        "operationId" : "collections-by-lidvid-latest",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/product"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
+    "/collections/{lidvid}/all" : {
+      "get" : {
+        "tags" : [ "collections" ],
+        "summary" : "Get one collection by lidvid, or all versions of a collection by lid",
+        "operationId" : "collections-by-lidvid-all",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 10
         }
       } ]
     },
@@ -784,6 +976,102 @@
         "required" : true,
         "schema" : {
           "type" : "string"
+        }
+      } ]
+    },
+    "/bundles/{lidvid}/latest" : {
+      "get" : {
+        "tags" : [ "bundles" ],
+        "summary" : "bundle URN resolver for lidvid, get one bundle",
+        "operationId" : "bundle-by-lidvid-latest",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/product"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
+    "/bundles/{lidvid}/all" : {
+      "get" : {
+        "tags" : [ "bundles" ],
+        "summary" : "Get one bundle by lidvid, or all versions of a bundle by lid",
+        "operationId" : "bundle-by-lidvid-all",
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
+                }
+              },
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "lidvid",
+        "in" : "path",
+        "description" : "lidvid (urn)",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }, {
+        "name" : "start",
+        "in" : "query",
+        "description" : "offset in matching result list, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 0
+        }
+      }, {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "maximum number of matching results returned, for pagination",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "default" : 10
         }
       } ]
     },
