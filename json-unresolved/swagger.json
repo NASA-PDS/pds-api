@@ -39,6 +39,11 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
+              },
+              "application/pds4+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/pds4Products"
+                }
               }
             }
           },
@@ -131,6 +136,11 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/product"
+                }
+              },
+              "application/pds4+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/pds4Product"
                 }
               },
               "application/pds4+xml" : {
@@ -441,6 +451,11 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
+              },
+              "application/pds4+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/pds4Products"
+                }
               }
             }
           },
@@ -539,6 +554,11 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/product"
+                }
+              },
+              "application/pds4+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/pds4Product"
                 }
               },
               "application/pds4+xml" : {
@@ -854,6 +874,11 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
+              },
+              "application/pds4+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/pds4Products"
+                }
               }
             }
           },
@@ -952,6 +977,11 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/product"
+                }
+              },
+              "application/pds4+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/pds4Product"
                 }
               },
               "application/pds4+xml" : {
@@ -1571,6 +1601,92 @@
           "resource" : "/collections",
           "query" : "q=mission qt 12",
           "message" : "query operator gt not supported on field mission"
+        }
+      },
+      "pds4Product" : {
+        "type" : "object",
+        "required" : [ "id" ],
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "LIDVID"
+          },
+          "metadata" : {
+            "$ref" : "#/components/schemas/pds4Metadata"
+          },
+          "pds4" : {
+            "type" : "object",
+            "description" : "PDS4 JSON"
+          }
+        },
+        "description" : "PDS4 Label"
+      },
+      "pds4Metadata" : {
+        "type" : "object",
+        "properties" : {
+          "node_name" : {
+            "type" : "string"
+          },
+          "label_file" : {
+            "type" : "object",
+            "properties" : {
+              "file_name" : {
+                "type" : "string"
+              },
+              "file_ref" : {
+                "type" : "string"
+              },
+              "creation_date" : {
+                "type" : "string"
+              },
+              "file_size" : {
+                "type" : "string"
+              },
+              "md5_checksum" : {
+                "type" : "string"
+              }
+            }
+          },
+          "data_files" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "file_name" : {
+                  "type" : "string"
+                },
+                "file_ref" : {
+                  "type" : "string"
+                },
+                "creation_date" : {
+                  "type" : "string"
+                },
+                "file_size" : {
+                  "type" : "string"
+                },
+                "md5_checksum" : {
+                  "type" : "string"
+                },
+                "mime_type" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "pds4Products" : {
+        "type" : "object",
+        "required" : [ "summary" ],
+        "properties" : {
+          "summary" : {
+            "$ref" : "#/components/schemas/summary"
+          },
+          "data" : {
+            "items" : {
+              "$ref" : "#/components/schemas/pds4Product"
+            }
+          }
         }
       }
     }
