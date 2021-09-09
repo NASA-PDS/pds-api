@@ -8,7 +8,7 @@ The formal specification in Open API standard is shared on swaggerHub: https://a
 Various implementation flavour are also being made available:
 - java library: https://github.com/NASA-PDS/pds-api-javalib
 - java stub and demo server: https://github.com/NASA-PDS/pds-api-service , deployed on https://pds-gamma.jpl.nasa.gov/api/swagger-ui.html
-- python stub service: ithub.com/NASA-PDS/pds-api-pythonlib
+- python stub service: https://github.com/NASA-PDS/pds-api-pythonlib
 - python client: https://github.com/NASA-PDS/pds-api-client
 
 # API Documentation 
