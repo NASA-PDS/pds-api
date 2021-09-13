@@ -1,6 +1,6 @@
-PDS XYZ Tool (update licensing below per specific organization)
+PDS Application Programmer's Interface
 
-Copyright 2020, California Institute of Technology ("Caltech").
+Copyright 2021, California Institute of Technology ("Caltech").
 U.S. Government sponsorship acknowledged.
 
 All rights reserved.
