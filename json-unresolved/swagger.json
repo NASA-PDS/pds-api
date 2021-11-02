@@ -6,7 +6,7 @@
   } ],
   "info" : {
     "description" : "Federated PDS API which provides actionable end points standardized\nbetween the different nodes.\n",
-    "version" : "main",
+    "version" : "0.5.0-SNAPSHOT",
     "title" : "Planetary Data System API",
     "termsOfService" : "http://pds.nasa.gov",
     "contact" : {
