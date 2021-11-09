@@ -88,6 +88,13 @@ For users who know what they want:
 }
 ```
 
+### KVP Response (application/csv)
+
+KVP = Key-value-pair
+
+For users to get a CSV with header being the fields names (e.g. Product_Bundle.Identification_Area.logical_identifier) one line for each product (record).
+
+
 ### Short JSON Response (application/json)
 
 For users who want a structured response without knowing of PDS4 model
