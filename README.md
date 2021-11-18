@@ -11,8 +11,7 @@ The formal specification in Open API standard is shared on SwaggerHub: https://a
 Various implementation flavors are available:
 
 -   Java library: https://github.com/NASA-PDS/pds-api-javalib
--   Java stub and demo server: https://github.com/NASA-PDS/pds-api-service , deployed on https://pds-gamma.jpl.nasa.gov/api/swagger-ui.html
--   Python stub service: https://github.com/NASA-PDS/pds-api-pythonlib
+-   Java official server (alpha version): https://github.com/NASA-PDS/registry-api-service , deployed on https://pds-gamma.jpl.nasa.gov/api/swagger-ui.html
 -   Python client: https://github.com/NASA-PDS/pds-api-client
 
 
