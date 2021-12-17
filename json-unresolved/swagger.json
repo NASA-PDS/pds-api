@@ -83,7 +83,8 @@
         }, {
           "name" : "q",
           "in" : "query",
-          "description" : "search query",
+          "description" : "search query, complex query uses eq, ne, gt, ge, lt, le, (, ), not, and, or. Properties are named as in 'properties' attributes. Literals are strings between \" or numbers. More details on the API query syntax is available at https://bit.ly/api-query-syntax",
+          "example" : "((pds/Primary_Result_Summary/pds/processing_level eq \"Raw\") or not (_file_size le 8942))",
           "required" : false,
           "schema" : {
             "type" : "string"
@@ -333,7 +334,7 @@
       }, {
         "name" : "sort",
         "in" : "query",
-        "description" : "sort results, syntax asc(field0),desc(field1)",
+        "description" : "sort results, syntax asc(field0), desc(field1)",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -504,7 +505,7 @@
         }, {
           "name" : "q",
           "in" : "query",
-          "description" : "search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or. Properties are named as in 'properties' attributes, literals are strings between \" or numbers. Detailed query specification is available at https://bit.ly/393i1af",
+          "description" : "search query, complex query uses eq, ne, gt, ge, lt, le, (, ), not, and, or. Properties are named as in 'properties' attributes. Literals are strings between \" or numbers. More details on the API query syntax is available at https://bit.ly/api-query-syntax",
           "example" : "((pds/Primary_Result_Summary/pds/processing_level eq \"Raw\") or not (_file_size le 8942))",
           "required" : false,
           "schema" : {
@@ -1098,7 +1099,7 @@
         }, {
           "name" : "q",
           "in" : "query",
-          "description" : "search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or. Properties are named as in 'properties' attributes, literals are strings between \" or numbers. Detailed query specification is available at https://bit.ly/393i1af",
+          "description" : "search query, complex query uses eq, ne, gt, ge, lt, le, (, ), not, and, or. Properties are named as in 'properties' attributes. Literals are strings between \" or numbers. More details on the API query syntax is available at https://bit.ly/api-query-syntax",
           "example" : "((pds/Primary_Result_Summary/pds/processing_level eq \"Raw\") or not (_file_size le 8942))",
           "required" : false,
           "schema" : {
