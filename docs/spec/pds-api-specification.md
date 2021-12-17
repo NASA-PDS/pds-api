@@ -228,9 +228,9 @@ records).
 Example: return all collections whose start time is prior to June 1,
 2020:
 
-GET
-https://pds.nasa.gov/api/v0.1/collections?q=Time\_Coordinates.start\_date\_time
-LT 2020-06-01T00:00:00Z
+```
+GET https://pds.nasa.gov/api/v0.1/collections?q=Time_Coordinates.start_date_time LT 2020-06-01T00:00:00Z
+```
 
 ### Query String Operations
 
@@ -239,18 +239,18 @@ The PDS Search API supports the following minimal set of operations.
 | **Operator**           | **Description**       | **Example**                                                                                                               |
 |------------------------|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | *Comparison Operators* |                       |                                                                                                                           |
-| eq                     | Equal                 | target\_name ***eq*** Mars                                                                                                |
-| ne                     | Not equal             | target\_name ***ne*** Saturn                                                                                              |
+| eq                     | Equal                 | target\_name ***eq*** "Mars"                                                                                                |
+| ne                     | Not equal             | target\_name ***ne*** "Saturn"                                                                                              |
 | gt                     | Greater than          | Time\_Coordinates.start\_date\_time ***gt*** 2001-05-10T00:00:00Z                                                         |
 | ge                     | Greater than or equal | Time\_Coordinates.start\_date\_time ***ge*** 2001-05-10T00:00:00Z                                                         |
 | lt                     | Less than             | Time\_Coordinates.start\_date\_time ***lt*** 2020-06-01T00:00:00Z                                                         |
 | le                     | Less than or equal    | Time\_Coordinates.start\_date\_time ***le*** 2020-06-01T00:00:00Z                                                         |
 | *Logical Operators*    |                       |                                                                                                                           |
-| and                    | Logical and           | target\_name ***eq*** Mars ***and*** instrument\_name ***eq*** hirise                                                     |
-| or                     | Logical or            | target\_name ***eq*** Mars ***or*** target\_name ***eq*** Phobos                                                          |
-| not                    | Logical negation      | ***not*** target\_name ***eq*** Mars                                                                                      |
+| and                    | Logical and           | target\_name ***eq*** "Mars" ***and*** instrument\_name ***eq*** "hirise"                                                     |
+| or                     | Logical or            | target\_name ***eq*** "Mars" ***or*** target\_name ***eq*** "Phobos"                                                          |
+| not                    | Logical negation      | ***not*** target\_name ***eq*** "Mars"                                                                                      |
 | *Grouping Operators*   |                       |                                                                                                                           |
-| ( )                    | Precedence grouping   | ***(***target\_name ***eq*** Mars ***or*** target\_name ***eq*** Phobos***)*** ***and*** instrument\_name ***eq*** hirise |
+| ( )                    | Precedence grouping   | ***(***target\_name ***eq*** "Mars" ***or*** target\_name ***eq*** "Phobos"***)*** ***and*** instrument\_name ***eq*** "hirise" |
 
 ### Reserved Query Parameters
 
@@ -259,11 +259,11 @@ meaning to support search.
 
 | **Query Parameter** | **Description**                                                                                                                                                                                                    | **Example**                                                |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
-| q                   | (Required, string) Query string you wish to parse and use for search. See Query string syntax.                                                                                                                     | *q=target\_name **eq** Mars*                               |
-| fields              | (Optional, array of strings) Array of fields you wish to return.                                                                                                                                                   | *fields=lid,Time\_Coordinates.start\_date\_time*           |
-| start               | (Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19.                                                                          | *start=100*                                                |
-| limit               | (Optional, integer) The number of records/results to return. Defaults to 25.                                                                                                                                       | *limit=100*                                                |
-| sort                | (Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). fieldName asc/fieldName desc. There can be several sort parameters (order is important). | *sort=lidvid asc,Time\_Coordinates.start\_date\_time desc* |
+| q                   | (Required, string) Query string you wish to parse and use for search. See Query string syntax.                                                                                                                     | `q=target_name eq "Mars"`                               |
+| fields              | (Optional, array of strings) Array of fields you wish to return.                                                                                                                                                   | `fields=lid,Time_Coordinates.start_date_time`           |
+| start               | (Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19.                                                                          | `start=100`                                                |
+| limit               | (Optional, integer) The number of records/results to return. Defaults to 25.                                                                                                                                       | `limit=100`                                                |
+| sort                | (Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). `fieldName asc` or `fieldName desc`. There can be several sort parameters (order is important). | `sort=lidvid asc, Time_Coordinates.start_date_time desc` |
 
 ### 
 
@@ -317,41 +317,31 @@ with different parameters.
 
 #### Additional Query String Examples
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>/v0.1/collections?q="2018-01-01" LE Time_Coordinates.start_date_time LE "2020-01-01"&amp;start=100&amp;limit=1000</p>
-<p>/v0.1/products?q=Observing_System_Component.description EQ "ISSNA" AND (Optical_Filter.filter_name EQ "BL1" OR Optical_Filter.filter_name EQ "GRN")&amp;fields=cassini.spacecraft_clock_start_count</p></td>
-</tr>
-</tbody>
-</table>
+```
+/v0.1/collections?q="2018-01-01" LE Time_Coordinates.start_date_time LE "2020-01-01"&start=100&limit=1000
+
+/v0.1/products?q=Observing_System_Component.description EQ "ISSNA" AND (Optical_Filter.filter_name EQ "BL1" OR Optical_Filter.filter_name EQ "GRN")&fields=cassini.spacecraft_clock_start_count
+```
 
 POST Request API
 ----------------
 
-*For now, we may just want the POST request API to be pretty much
-identical to the GET, except you can embed the Response Format /
-return\_type in the HTTP header*
+*For now, we may just want the POST request API to be pretty much identical to the GET, except you can embed the Response Format `return_type` in the HTTP header*
 
-*If we wanted to create a Domain Specific Language (DSL), here are some
-references:*
+*If we wanted to create a Domain Specific Language (DSL), here are some references:*
 
--   *ElasticSearch Query DSL: [<u>https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html</u>](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)*
-
--   *Solr Query DSL: [<u>https://lucene.apache.org/solr/guide/7\_1/json-query-dsl.html</u>](https://lucene.apache.org/solr/guide/7_1/json-query-dsl.html)*
-
--   *ESDIS CMR Example JSON Request API: [<u>https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html\#search-with-json-query</u>](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#search-with-json-query)*
+* *ElasticSearch Query DSL: [<u>https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html</u>](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)*
+* *Solr Query DSL: [<u>https://lucene.apache.org/solr/guide/7\_1/json-query-dsl.html</u>](https://lucene.apache.org/solr/guide/7_1/json-query-dsl.html)*
+* *ESDIS CMR Example JSON Request API: [<u>https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html\#search-with-json-query</u>](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#search-with-json-query)*
 
  
 
 Response Formats
 ----------------
 
-Working Document: [<u>PDS API - Response
-Formats</u>](https://docs.google.com/document/d/1bzBI_LqRecE2jLuxQmshkX1L_XdXkr2O4jk2JclAuKw/edit#)
+Working Document: [PDS API - Response Formats](https://docs.google.com/document/d/1bzBI_LqRecE2jLuxQmshkX1L_XdXkr2O4jk2JclAuKw/edit#)
 
-A simple style of [<u>content
-negotiation</u>](https://restfulapi.net/content-negotiation/) is used to
+A simple style of [content negotiation](https://restfulapi.net/content-negotiation/) is used to
 match the format requested by the client and the capability of the
 server. The client can specify the desired response format by including
 the HTTP header Accept. If no Accept header is present in the request,
@@ -371,8 +361,7 @@ types:
 Given the following sample HTTP request, a client can expect supported
 response formats to be consistent with the following examples:
 
-https://pds.nasa.gov/api/v0.1/collections?q=identifier eq
-urn:nasa:pds:orex.ocams:data\_raw&start eq 1&limit eq 1
+[https://pds.nasa.gov/api/v0.1/collections?q=identifier eq urn:nasa:pds:orex.ocams:data\_raw&start eq 1&limit eq 1](https://pds.nasa.gov/api/v0.1/collections?q=identifier eq urn:nasa:pds:orex.ocams:data\_raw&start eq 1&limit eq 1)
 
 ### Missing values
 
@@ -383,21 +372,14 @@ without quotes.
 
 **Rationale**
 
-If a property is optional or has an empty or null value, consider
-dropping the property from the JSON, unless there's a strong semantic
-reason for its existence (taken from
-[<u>https://softwareengineering.stackexchange.com/questions/285010/null-vs-missing-key-in-rest-api-response</u>](https://softwareengineering.stackexchange.com/questions/285010/null-vs-missing-key-in-rest-api-response)
+If a property is optional or has an empty or null value, consider dropping the property from the JSON, unless there's a strong semantic reason for its existence (taken from [https://softwareengineering.stackexchange.com/questions/285010/null-vs-missing-key-in-rest-api-response](https://softwareengineering.stackexchange.com/questions/285010/null-vs-missing-key-in-rest-api-response))
 
-)
+Following interactions with OGC/EDR specification group: [https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/issues/171\#issuecomment-767805902](https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/issues/171#issuecomment-767805902)
 
-Following interactions with OGC/EDR specification group :
-[<u>https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/issues/171\#issuecomment-767805902</u>](https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/issues/171#issuecomment-767805902)
-
-We choose **null** without quotes for missing values of fields
-explicitly requested by the user.
+We choose **null** without quotes for missing values of fields explicitly requested by the user.
 
 We conform to EDR specification for this aspect, see
-[<u>http://docs.opengeospatial.org/DRAFTS/19-086.html\#req\_edr\_parameters-response</u>](http://docs.opengeospatial.org/DRAFTS/19-086.html#req_edr_parameters-response)
+[http://docs.opengeospatial.org/DRAFTS/19-086.html\#req\_edr\_parameters-response</u>](http://docs.opengeospatial.org/DRAFTS/19-086.html#req_edr_parameters-response)
 
 This should not be mistaken for an actual PDS4 value since missing
 values in PDS4 labels. are detailed with a nil:reason attribute.
@@ -577,27 +559,18 @@ TBD a more RESTful approach to searching the registry
 <img src="media/image2.png" style="width:7.13021in;height:3.61934in" />
 -----------------------------------------------------------------------
 
-4 stages:
+4 Stages:
 
--   Standard preparation: swaggerHub
-
--   Standard definition: one yml or json file on a github repository
-
--   Standard libraries: python and java standard implementation (client,severs stubs) shared on PYPI and MAVEN artifactory
-
--   Standard implementations, by Engineering Node (demo, validator, core) and Discipline Nodes (actual access).
+* Standard preparation: swaggerHub
+* Standard definition: one yml or json file on a github repository
+* Standard libraries: python and java standard implementation (client,severs stubs) shared on PYPI and MAVEN artifactory
+* Standard implementations, by Engineering Node (demo, validator, core) and Discipline Nodes (actual access).
 
 3.1 Preparation
 ---------------
 
 The definition of the API is prepared in swaggerhub:
-[<u>https://cae-swaggerhub.jpl.nasa.gov/organizations/PDS</u>](https://cae-swaggerhub.jpl.nasa.gov/organizations/PDS)  
-  
-Should be open outside JPL (?)
-
-We might use specific code to handle PDS specific formats (PDS4 labels,
-query syntax), see adding custom code to the Swagger API:
-[<u>https://github.com/swagger-api/swagger-codegen/wiki/Building-your-own-Templates</u>](https://github.com/swagger-api/swagger-codegen/wiki/Building-your-own-Templates)
+[https://app.swaggerhub.com/apis/PDS_APIs/pds_federated_api](https://app.swaggerhub.com/apis/PDS_APIs/pds_federated_api)  
 
 3.2 Definition
 --------------
@@ -642,50 +615,28 @@ should help to comply with the standard AND implement basic behaviours
 -------------------------
 
 Mcclanahan, Timothy (PDS PO)
-
 Lynn Neakrase (ATM)
-
 Ed Guiness (GEO)
-
 Tom Stein (GEO)
-
 Dan Scholes (GEO)
-
-Sebastien Besse (ESA)
-
+Mark Bentley (ESA)
 Myche McAuley (IMG)
-
-Rishi Verma (IMG)
-
 In Sook Moon (PPI)
-
 Rob French (RMS)
-
 Matt Tiscareno (RMS)
-
 Conor Kingston (SBN)
-
 David Chang (SBN)
-
 Daniel Darg (SBN)
-
 Emily Law (EN)
-
 Yevgen Karpenko (EN)
-
 Thomas Loubrieu (EN)
-
 Jordan Padams (EN)
-
 Boris Semenov (NAIF)
 
 **References**
 --------------
 
-Portions of these guidelines were adapted from [Microsoft API
-Guidelines](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)
-licensed under the [Creative Commons Attribution 4.0 International
-License](https://creativecommons.org/licenses/by/4.0/)
+Portions of these guidelines were adapted from [Microsoft API Guidelines](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md) licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)
 
 Appendix A - API Definition and Application Guidelines
 ======================================================
@@ -786,8 +737,8 @@ search, the parent class should be used as the query parameter:
 
 | **Query Parameter**                             | **XPath**                                         |
 |-------------------------------------------------|---------------------------------------------------|
-| Observing\_System.description                   | //Observation\_Area/Observing\_System/description |
-| geom.Camera\_Model\_Parameters.geom.model\_type | //geom:Camera\_Model\_Parameters/geom:model\_type |
+| `Observing_System.description`                   | `//Observation_Area/Observing_System/description` |
+| `geom.Camera_Model_Parameters.geom.model_type` | `//geom:Camera_Model_Parameters/geom:model_type` |
 
 #### 
 
