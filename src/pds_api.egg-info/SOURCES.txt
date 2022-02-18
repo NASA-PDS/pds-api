@@ -1,0 +1,14 @@
+LICENSE.md
+NOTICE.txt
+README.md
+setup.cfg
+setup.py
+src/pds/__init__.py
+src/pds/api/__init__.py
+src/pds_api.egg-info/PKG-INFO
+src/pds_api.egg-info/SOURCES.txt
+src/pds_api.egg-info/dependency_links.txt
+src/pds_api.egg-info/namespace_packages.txt
+src/pds_api.egg-info/requires.txt
+src/pds_api.egg-info/top_level.txt
+src/pds_api.egg-info/zip-safe

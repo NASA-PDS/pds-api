@@ -1,0 +1,1527 @@
+openapi: 3.0.0
+info:
+  description: |
+    Registry API enabling advanced search on PDS data and metadata. The API provides end-points to search for bundles, collections and any PDS products with advanced search queries. It also enables to browse the archive hierarchically downward (e.g. collection/s products) or upward (bunldes containing products).
+    The detailed syntax for querying the end-point is given in the reference documentation.
+  version: 1.0.0-SNAPSHOT
+  title: Registry API
+  termsOfService: 'http://pds.nasa.gov'
+  contact:
+    email: pds-operator@jpl.nasa.gov
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    
+servers:
+  - url: https://pds.nasa.gov/api/registry/1.0
+    description: production server
+    
+
+tag:
+  name: PDS
+  description: Planetary Data System
+    
+
+paths:
+  /products:
+    get:
+      tags:
+        - products
+      summary: search across all PDS data products, including bundles, collections, documentation, context and observational products,
+      operationId: products
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+      parameters:
+        - name: start
+          in: query
+          description: offset in matching result list, for pagination
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          description: maximum number of matching results returned, for pagination
+          required: false
+          schema:
+            type: integer
+            default: 100
+        - name: q
+          in: query
+          description: search query
+          required: false
+          schema:
+            type: string
+        - name: keyword
+          in: query
+          description: keyword search query
+          required: false
+          schema:
+            type: string
+        - name: fields
+          in: query
+          description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: sort
+          in: query
+          description: sort results, syntax asc(field0),desc(field1)
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: only-summary
+          in: query
+          description: only return the summary, useful to get the list of available properties
+          schema:
+            type: boolean
+            default: false
+
+  /products/{identifier}:
+    get:
+      tags:
+        - products
+      summary: URN resolver for lidvid
+      operationId: products-by-lidvid
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+  /products/{identifier}/latest:
+    get:
+      tags:
+        - products
+      summary: URN resolver for lidvid
+      operationId: products-by-lidvid-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+  /products/{identifier}/all:
+    get:
+      tags:
+        - products
+      summary: Get one product by lidvid, or all versions of a product by lid
+      operationId: products-by-lidvid-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 10
+  /products/{identifier}/bundles:
+    get:
+      tags:
+        - products containing bundles
+      summary: get bundles containing product
+      operationId: bundles-containing-product
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: fields
+        in: query
+        description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort
+        in: query
+        description: sort results, syntax asc(field0),desc(field1)
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: only-summary
+        in: query
+        description: only return the summary, useful to get the list of available properties
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /products/{identifier}/collections:
+    get:
+      tags:
+        - product containing collections
+      summary: get collections containing product
+      operationId: collections-containing-product
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: fields
+        in: query
+        description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort
+        in: query
+        description: sort results, syntax asc(field0),desc(field1)
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: only-summary
+        in: query
+        description: only return the summary, useful to get the list of available properties
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /collections:
+    get:
+      tags:
+        - collections
+      summary: request PDS collections
+      operationId: get collection
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+      parameters:
+        - name: start
+          in: query
+          description: offset in matching result list, for pagination
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          description: maximum number of matching results returned, for pagination
+          required: false
+          schema:
+            type: integer
+            default: 100
+        - name: q
+          in: query
+          description: search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or. Properties are named as in 'properties' attributes, literals are strings between " or numbers. Detailed query specification is available at https://bit.ly/393i1af
+          example: ((pds/Primary_Result_Summary/pds/processing_level eq "Raw") or not (_file_size le 8942))
+          required: false
+          schema:
+            type: string
+        - name: keyword
+          in: query
+          description: keyword search query
+          required: false
+          schema:
+            type: string
+        - name: fields
+          in: query
+          description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: sort
+          in: query
+          description: sort results, syntax asc(field0),desc(field1)
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: only-summary
+          in: query
+          description: only return the summary, useful to get the list of available properties
+          required: false
+          schema:
+            type: boolean
+            default: false
+  /collections/{identifier}:
+    get:
+      tags:
+        - collections
+      summary: collections URN resolver for lidvid
+      operationId: collections-by-lidvid
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+  /collections/{identifier}/latest:
+    get:
+      tags:
+        - collections
+      summary: collections URN resolver for lidvid
+      operationId: collections-by-lidvid-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+  /collections/{identifier}/all:
+    get:
+      tags:
+        - collections
+      summary: Get one collection by lidvid, or all versions of a collection by lid
+      operationId: collections-by-lidvid-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 10
+  /collections/{identifier}/bundles:
+    get:
+      tags:
+        - collection's containing bundles
+      summary: get bundles containing this given collection
+      operationId: bundles-containing-collection
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: fields
+        in: query
+        description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort
+        in: query
+        description: sort results, syntax asc(field0),desc(field1)
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: only-summary
+        in: query
+        description: only return the summary, useful to get the list of available properties
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /collections/{identifier}/products:
+    get:
+      tags:
+        - collection's products
+      summary: get producs belonging to a given collection
+      operationId: products-of-a-collection
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: fields
+        in: query
+        description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort
+        in: query
+        description: sort results, syntax asc(field0),desc(field1)
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: only-summary
+        in: query
+        description: only return the summary, useful to get the list of available properties
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /collections/{identifier}/products/latest:
+    get:
+      tags:
+        - collection's products
+      summary: get producs belonging to a given collection
+      operationId: products-of-a-collection-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: fields
+        in: query
+        description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort
+        in: query
+        description: sort results, syntax asc(field0),desc(field1)
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: only-summary
+        in: query
+        description: only return the summary, useful to get the list of available properties
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /collections/{identifier}/products/all:
+    get:
+      tags:
+        - collection's products
+      summary: get producs belonging to a given collection
+      operationId: products-of-a-collection-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: fields
+        in: query
+        description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort
+        in: query
+        description: sort results, syntax asc(field0),desc(field1)
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: only-summary
+        in: query
+        description: only return the summary, useful to get the list of available properties
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /bundles:
+    get:
+      tags:
+        - bundles
+      summary: request all PDS bundles
+      operationId: get bundles
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+      parameters:
+        - name: start
+          in: query
+          description: offset in matching result list, for pagination
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          description: maximum number of matching results returned, for pagination
+          required: false
+          schema:
+            type: integer
+            default: 100
+        - name: q
+          in: query
+          description: search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or. Properties are named as in 'properties' attributes, literals are strings between " or numbers. Detailed query specification is available at https://bit.ly/393i1af
+          example: ((pds/Primary_Result_Summary/pds/processing_level eq "Raw") or not (_file_size le 8942))
+          required: false
+          schema:
+            type: string
+        - name: keyword
+          in: query
+          description: keyword search query
+          required: false
+          schema:
+            type: string
+        - name: fields
+          in: query
+          description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: sort
+          in: query
+          description: sort results, syntax asc(field0),desc(field1)
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: only-summary
+          in: query
+          description: only return the summary, useful to get the list of available properties
+          required: false
+          schema:
+            type: boolean
+            default: false
+  /bundles/{identifier}:
+    get:
+      tags:
+        - bundles
+      summary: bundle URN resolver for lidvid, get one bundle
+      operationId: bundle-by-lidvid
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+  /bundles/{identifier}/latest:
+    get:
+      tags:
+        - bundles
+      summary: bundle URN resolver for lidvid, get one bundle
+      operationId: bundle-by-lidvid-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+  /bundles/{identifier}/all:
+    get:
+      tags:
+        - bundles
+      summary: Get one bundle by lidvid, or all versions of a bundle by lid
+      operationId: bundle-by-lidvid-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 10
+  /bundles/{identifier}/collections:
+    get:
+      tags:
+        - bundle's collections
+      summary: get collections belonging to a given bundle
+      operationId: collections-of-a-bundle
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: fields
+        in: query
+        description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort
+        in: query
+        description: sort results, syntax asc(field0),desc(field1)
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: only-summary
+        in: query
+        description: only return the summary, useful to get the list of available properties
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /bundles/{identifier}/collections/latest:
+    get:
+      tags:
+        - bundle's collections
+      summary: get collections belonging to a given bundle
+      operationId: collections-of-a-bundle-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: fields
+        in: query
+        description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort
+        in: query
+        description: sort results, syntax asc(field0),desc(field1)
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: only-summary
+        in: query
+        description: only return the summary, useful to get the list of available properties
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /bundles/{identifier}/collections/all:
+    get:
+      tags:
+        - bundle's collections
+      summary: get collections belonging to a given bundle
+      operationId: collections-of-a-bundle-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: fields
+        in: query
+        description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort
+        in: query
+        description: sort results, syntax asc(field0),desc(field1)
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: only-summary
+        in: query
+        description: only return the summary, useful to get the list of available properties
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /bundles/{identifier}/products:
+    get:
+      tags:
+        - bundle's products
+      summary: get products belonging to a given bundle
+      operationId: products-of-a-bundle
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - name: identifier
+        in: path
+        description: lidvid or lid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: offset in matching result list, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: maximum number of matching results returned, for pagination
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: fields
+        in: query
+        description: returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort
+        in: query
+        description: sort results, syntax asc(field0),desc(field1)
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: only-summary
+        in: query
+        description: only return the summary, useful to get the list of available properties
+        required: false
+        schema:
+          type: boolean
+          default: false
+
+
+components:
+  responses:
+    Error:
+      description: Unsuccessful request
+      content:
+        "*":
+          schema:
+            type: object
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/csv:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/kvp+json:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/pds4+json:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/pds4+xml:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        text/html:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+    Plural:
+      description: Successful request
+      content:
+        "*":
+          schema:
+            type: object
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        application/csv:
+          schema:
+            $ref: '#/components/schemas/wyriwygProducts'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        application/kvp+json:
+          schema:
+            $ref: '#/components/schemas/wyriwygProducts'
+        application/pds4+json:
+          schema:
+            $ref: '#/components/schemas/pds4Products'
+        application/pds4+xml:
+          schema:
+            $ref: '#/components/schemas/pds4Products'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/wyriwygProducts'
+        text/html:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+    Singular:
+      description: Successful request
+      content:
+        "*":
+          schema:
+            type: object
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+        application/csv:
+          schema:
+            $ref: '#/components/schemas/wyriwygProduct'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+        application/kvp+json:
+          schema:
+            $ref: '#/components/schemas/wyriwygProduct'
+        application/pds4+json:
+          schema:
+            $ref: '#/components/schemas/pds4Product'
+        application/pds4+xml:
+          schema:
+            $ref: '#/components/schemas/pds4Product'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+        text/csv:
+           schema:
+            $ref: '#/components/schemas/wyriwygProduct'
+        text/html:
+           schema:
+            $ref: '#/components/schemas/pdsProduct'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+  schemas:
+    summary:
+      type: object
+      properties:
+        q:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        hits:
+          description: total number of matching results. -1 indicates an excessive amount of resource required to compute it
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        took:
+          description: Number of milliseconds it "took" to do request
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        start:
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        limit:
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        sort:
+          type: array
+          items:
+            type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        properties:
+          type: array
+          items:
+            type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    pdsProduct:
+      type: object
+      required:
+       - id
+       - metadata
+      properties:
+        id:
+          type: string
+          description: identifier lidvid of the collection
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        type:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        title:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        description:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        start_date_time:
+          type: string
+          description: start date time of the observations in ISO8601
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        stop_date_time:
+          type: string
+          description: stop date time of the observations in ISO8601
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        investigations:
+          type: array
+          description: list of missions or observing campaigns which produced the data
+          items:
+            $ref: '#/components/schemas/reference'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        observing_system_components: 
+          type: array
+          description: list of instruments or platforms generating the data
+          items:
+            $ref: '#/components/schemas/reference'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        targets: 
+          type: array
+          description: list of targets or feature of interest the observation.
+          items:
+            $ref: '#/components/schemas/reference'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        metadata:
+          $ref: '#/components/schemas/metadata'
+        properties:
+          type: object
+          description: properties extracted from pds4 model, syntax for property name is <namespace>:<property>[/<namespace>:<property>]*
+          additionalProperties:
+            $ref: '#/components/schemas/propertyArrayValues'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    pdsProducts:
+      type: object
+      required:
+        - summary
+        - data
+      properties:
+        summary:
+          $ref: '#/components/schemas/summary'
+        data:
+          items:
+            $ref: '#/components/schemas/pdsProduct'
+    wyriwygProduct:
+      type: object
+      required:
+        - key_value_pairs
+      properties:
+        key_value_pairs:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+    wyriwygProducts:
+      type: object
+      required:
+        - summary
+        - data
+      properties:
+        summary:
+          $ref: '#/components/schemas/summary'
+        data:
+          items:
+            $ref: '#/components/schemas/wyriwygProduct'
+    propertyArrayValues:
+      type: array 
+      items:
+        type: string
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    reference:
+      type: object
+      description: object describing a reference to a different product. TODO The properties should be defined by a standard (xlink, json-ld) to be chosen
+      required:
+          - id
+      properties:
+        title:
+          type: string
+          description: name to display for the external reference
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        id:
+          type: string
+          description: external reference, here lidvid urn
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        href:
+          type: string
+          description: external reference url of the current reference resolvable by the current API server, http://pds.nasa.gov/api/products/urn:nasa...
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        type:
+          type: string
+          description: type of the external reference, can be displayed as an icon for example
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        description:
+          type: string
+          description: longer description for the external reference, can be displayed in a tooltip
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    metadata:
+      type: object
+      required:
+        - label_url
+      properties:
+        creation_date_time:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        update_date_time:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        version:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        label_url:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    errorMessage:
+      type: object
+      required:
+        - request
+        - message
+      properties:
+        request:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        message:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+      example:
+        {
+          request: 'https://pds.nasa.gov/api/1.0/collections?q=mission qt 12',
+          message: 'query operator gt not supported on field mission'
+        }
+    pds4Product:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          description: LIDVID
+        metadata:
+          $ref: '#/components/schemas/pds4Metadata'
+        pds4:
+          type: object
+          description: PDS4 JSON
+      description:
+        PDS4 Label
+    pds4Products:
+      type: object
+      required:
+        - summary
+        - data
+      properties:
+        summary:
+          $ref: '#/components/schemas/summary'
+        data:
+          items:
+            $ref: '#/components/schemas/pds4Product'
+    pds4Metadata:
+      type: object
+      properties:
+        node_name:
+          type: string
+        label_file:
+          type: object
+          properties:
+            file_name:
+              type: string
+            file_ref:
+              type: string
+            creation_date:
+              type: string
+            file_size:
+              type: string
+            md5_checksum:
+              type: string        
+        data_files:
+          type: array
+          items:
+            type: object
+            properties:
+              file_name:
+                type: string
+              file_ref:
+                type: string
+              creation_date:
+                type: string
+              file_size:
+                type: string
+              md5_checksum:
+                type: string
+              mime_type:
+                type: string
