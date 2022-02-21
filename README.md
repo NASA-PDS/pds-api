@@ -4,36 +4,7 @@ This repository is the entry point for the NASA PDS federated API specifications
 
 PDS is willing to develop restful web APIs for different applications (so far, data search, dois) without a priori limitation of what the API is relevant for.
 
-Each of the applications for which an official PDS API end-point is published should be registered in this repository.
-
-# API specifications available:
-
-- registry (specification discussed in the PDS API Working Group)
-- doi
-
-# API entry points
-
-The API base urls are provided under the following pattern:
-
-    https://pds.nasa.gov/api/<application>/<version>
-
-For example
-
-    https://pds.nasa.gov/api/doi/0.2/
-
-
-# API implementations
-
-## Registry
-
-Server: https://github.com/NASA-PDS/registry-api
-Client: https://github.com/NASA-PDS/pds-api-client
-
-## DOI
-
-Server: https://github.com/NASA-PDS/doi-service
-Client (UI): https://github.com/NASA-PDS/doi-ui
-Client (react component): to be completed
+The detailed documentation can be found https://nasa-pds.github.io/pds-api/
 
 
 # For developers, generate the API documentation
@@ -46,8 +17,17 @@ The naming of the the specification are:
 For example:
     PDS_APIs-registry-1.0.0-SNAPSHOT-swagger.yaml
     
+To add a new specification or a new version of a specification:
 
-Generaate the doc with command line:
+1. copy the openapi specification under the `specs` directory following the above filename convention.
+2. under `docs/source/specifications` add a file named `<app>-v<version>.rst`
+3. add a new entry for this file in `docs/source/index.rst`
+4. edit the file following the example available for `registry-v1.0.0-SNAPSHOT.rst`
+5. in the file `docs/source/conf.py` add a section for the new specification in the `redoc` object.
+
+
+
+Generate the doc with command line:
 
     pip install -e '.[dev]'
     sphinx-build -b html docs/source docs/build

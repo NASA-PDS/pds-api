@@ -71,8 +71,14 @@ redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@2.0.0-alpha.17/bundles/redoc.sta
 redoc = [
     {
         'name': 'PDS Registry API',
-        'page': 'specifications/registry-v1.0.0-redoc',
+        'page': 'specifications/registry-v1.0.0-SNAPSHOT-redoc',
         'spec': '../../specs/PDS_APIs-registry-1.0.0-SNAPSHOT-swagger.yaml',
+        'embed': True,
+    },
+    {
+        'name': 'PDS DOI API',
+        'page': 'specifications/doi-v0.2-redoc',
+        'spec': '../../specs/PDS_APIs-doi-0.2-swagger.yaml',
         'embed': True,
     }
 ]
