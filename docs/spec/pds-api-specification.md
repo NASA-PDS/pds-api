@@ -278,13 +278,13 @@ base URIs for performing GET requests for searching PDS data.
 Search All PDS Data Collections:
 
 ```
-GET https://pds.nasa.gov/api/v0.1/collections?{searchTerms}
+GET https://pds.nasa.gov/api/search/0.1/collections?{searchTerms}
 ```
 
 Search Geosciences Node Collections:
 
 ```
-GET https://pds-geosciences.wustl.edu/api/v0.1/collections?{searchTerms}
+GET https://pds.nasa.gov/api/search-geo/0.1/collections?{searchTerms}
 ```
 
 See Query Parameters for more specific examples for various searches
@@ -295,7 +295,7 @@ with different parameters.
 Template:
 
 ```
-GET https://{node-hostname}/api/v{pds.api.version}/products?{searchTerms}
+GET https://{node-hostname}/api/{service}/{pds.api.version}/products?{searchTerms}
 ```
 
 Examples:
@@ -303,14 +303,15 @@ Examples:
 Search All PDS Data Products:
 
 ```
-GET https://pds.nasa.gov/api/v0.1/products?{searchTerms}
+GET https://pds.nasa.gov/api/search/0.1/products?{searchTerms}
 ```
 
 Search Geosciences Node:
 
 ```
-GET https://pds-geosciences.wustl.edu/api/v0.1/products?{searchTerms}
+GET https://pds.nasa.gov/api/search-geo/0.1/products?{searchTerms}
 ```
+
 
 See Query Parameters for more specific examples for various searches
 with different parameters.
