@@ -37,6 +37,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.autosummary',
     'sphinx_rtd_theme',
+    'sphinx.ext.intersphinx',
     'sphinxcontrib.openapi',
     'sphinxcontrib.redoc'
 ]
@@ -70,9 +71,9 @@ redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@2.0.0-alpha.17/bundles/redoc.sta
 
 redoc = [
     {
-        'name': 'PDS Registry API',
-        'page': 'specifications/registry-v1.0.0-SNAPSHOT-redoc',
-        'spec': '../../specs/PDS_APIs-registry-1.0.0-SNAPSHOT-swagger.yaml',
+        'name': 'PDS Search API',
+        'page': 'specifications/search-v1.0.0-SNAPSHOT-redoc',
+        'spec': '../../specs/PDS_APIs-search-1.0.0-SNAPSHOT-swagger.yaml',
         'embed': True,
     },
     {

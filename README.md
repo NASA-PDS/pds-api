@@ -2,7 +2,7 @@
 
 This repository is the entry point for the NASA PDS federated API specifications.
 
-PDS is willing to develop restful web APIs for different applications (so far, data search, dois) without a priori limitation of what the API is relevant for.
+PDS is willing to develop rest-ful web APIs for different applications (so far, data search, dois) without a priori limitation of what the API is relevant for.
 
 The detailed documentation can be found https://nasa-pds.github.io/pds-api/
 
@@ -25,34 +25,13 @@ To add a new specification or a new version of a specification:
 4. edit the file following the example available for `registry-v1.0.0-SNAPSHOT.rst`
 5. in the file `docs/source/conf.py` add a section for the new specification in the `redoc` object.
 
-
-
-Generate the doc with command line:
+6. Generate the doc with command line:
 
     pip install -e '.[dev]'
     sphinx-build -b html docs/source docs/build
 
 
 
+# Tags
 
-
-
-
-# API implementations 
-
-## Registry:
-
-Various implementation flavors are available:
-
--   Java library: https://github.com/NASA-PDS/pds-api-javalib
--   Java official server (alpha version): https://github.com/NASA-PDS/registry-api-service , deployed on https://pds-gamma.jpl.nasa.gov/api/swagger-ui.html
--   Python client: https://github.com/NASA-PDS/pds-api-client
-
-
-# API Documentation 
-
-The API Documentation is available at: https://nasa-pds.github.io/pds-api/
-
-We also publish [a draft of the PDS API Specification](https://docs.google.com/document/d/16d0MVh48bFLvWsa5-B_Hy-cby1rGWdnNojWOJpUcOvA/edit#heading=h.3pbz9ppxrxvr).
-
-
+The tags of this repository should follow the PDS build tag names (e.g. 12.1, 13.0 ...) with a 6 months release cycle.
