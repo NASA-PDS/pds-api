@@ -2,43 +2,36 @@
 
 This repository is the entry point for the NASA PDS federated API specifications.
 
-The specifications are discussed in the PDS Working Group and a first level of specification is shared on Google drive.
+PDS is willing to develop rest-ful web APIs for different applications (so far, data search, dois) without a priori limitation of what the API is relevant for.
 
-The formal specification in Open API standard is shared on SwaggerHub: https://app.swaggerhub.com/apis/PDS_APIs/pds_federated_api/0.1.dev
-
-👉 **Note:** this link may be broken.
-
-Various implementation flavors are available:
-
--   Java library: https://github.com/NASA-PDS/pds-api-javalib
--   Java official server (alpha version): https://github.com/NASA-PDS/registry-api-service , deployed on https://pds-gamma.jpl.nasa.gov/api/swagger-ui.html
--   Python client: https://github.com/NASA-PDS/pds-api-client
+The detailed documentation can be found https://nasa-pds.github.io/pds-api/
 
 
-# API Documentation 
+# For developers, generate the API documentation
 
-The API Documentation is available at: https://nasa-pds.github.io/pds-api/
+The openAPI yaml unrevolved specifications are stored in the `specs` directory.
 
-We also publish [a draft of the PDS API Specification](https://docs.google.com/document/d/16d0MVh48bFLvWsa5-B_Hy-cby1rGWdnNojWOJpUcOvA/edit#heading=h.3pbz9ppxrxvr).
+The naming of the the specification are:
+    PDS_APIs-<application>-<version>-swagger.yaml
+
+For example:
+    PDS_APIs-registry-1.0.0-SNAPSHOT-swagger.yaml
+    
+To add a new specification or a new version of a specification:
+
+1. copy the openapi specification under the `specs` directory following the above filename convention.
+2. under `docs/source/specifications` add a file named `<app>-v<version>.rst`
+3. add a new entry for this file in `docs/source/index.rst`
+4. edit the file following the example available for `registry-v1.0.0-SNAPSHOT.rst`
+5. in the file `docs/source/conf.py` add a section for the new specification in the `redoc` object.
+
+6. Generate the doc with command line:
+
+    pip install -e '.[dev]'
+    sphinx-build -b html docs/source docs/build
 
 
-# Generate Postman Test Collection
 
-Postman is a popular tool to make web API testing more user friendly: https://www.postman.com/
+# Tags
 
-Postman is a standalone desktop application that you first need to [download and install](https://www.Postman.com/downloads/).
-
-To create a test collection for the PDS federated API, the steps are:
-
-1.  Go to import (top-left)
-2.  Choose 'Link' tab
-3.  Use link `https://raw.githubusercontent.com/NASA-PDS/pds-api/main/json-unresolved/swagger.json`
-4.  In settings, for request parameter generation, select `Example`, this will assign example values to the API arguments. If you select `Schema` no value will be assigned.
-5.  Create a virtual environment: click the wheel on top-right, then 'Add'
-6.  Create constant `baseUrl` and assign value of your root server without trailing `/`, for example `https://pds-gamma.jpl.nasa.gov/api`
-7.  Make sure your new environment is selected, use top-right drop down menu.
-8.  In the left menu, go to your new collection folder named `Planetary Data System API`, select a request.
-9.  Adjust the request's parameters and hit `Send`
-10. You can extend the collection by duplicating and editing existing requests
- 
-⚠️ **Warning:** if you reimport the same specification in the same folder, your manually set parameters will be lost.
+The tags of this repository should follow the PDS build tag names (e.g. 12.1, 13.0 ...) with a 6 months release cycle.

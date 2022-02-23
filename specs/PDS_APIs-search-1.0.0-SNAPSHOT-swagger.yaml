@@ -1,13 +1,9 @@
 {
   "openapi" : "3.0.0",
-  "servers" : [ {
-    "description" : "SwaggerHub API Auto Mocking",
-    "url" : "https://virtserver.swaggerhub.com/PDS_APIs/pds_federated_api/0.1.0"
-  } ],
   "info" : {
-    "description" : "Federated PDS API which provides actionable end points standardized\nbetween the different nodes.\n",
-    "version" : "0.5.0-SNAPSHOT",
-    "title" : "Planetary Data System API",
+    "description" : "Registry API enabling advanced search on PDS data and metadata. The API provides end-points to search for bundles, collections and any PDS products with advanced search queries. It also enables to browse the archive hierarchically downward (e.g. collection/s products) or upward (e.g. bundles containing products).\nThe detailed syntax for querying the end-point is given in the reference documentation.\n",
+    "version" : "1.0.0-SNAPSHOT",
+    "title" : "Registry API",
     "termsOfService" : "http://pds.nasa.gov",
     "contact" : {
       "email" : "pds-operator@jpl.nasa.gov"
@@ -17,14 +13,14 @@
       "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "tags" : [ {
-    "name" : "core",
-    "description" : "Federated core layer for PDS requests",
-    "externalDocs" : {
-      "description" : "Find out more",
-      "url" : "http://pds.nasa.gov"
-    }
+  "servers" : [ {
+    "url" : "https://pds.nasa.gov/api/registry/1.0",
+    "description" : "production server"
   } ],
+  "tag" : {
+    "name" : "PDS",
+    "description" : "Planetary Data System"
+  },
   "paths" : {
     "/products" : {
       "get" : {
@@ -35,14 +31,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
-          "404" : {
-            "description" : "lidvid not found"
+          "400" : {
+            "$ref" : "#/components/responses/Error"
           },
-          "408" : {
-            "description" : "request time out"
+          "404" : {
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         },
         "parameters" : [ {
@@ -66,7 +65,7 @@
         }, {
           "name" : "q",
           "in" : "query",
-          "description" : "search query",
+          "description" : "search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or operators. Properties are named as in 'properties' attributes, literals are strings between \" or numbers. Detailed query specification is available at https://bit.ly/3h3D54T",
           "required" : false,
           "schema" : {
             "type" : "string"
@@ -74,7 +73,7 @@
         }, {
           "name" : "keyword",
           "in" : "query",
-          "description" : "keyword search query",
+          "description" : "free text search on title and description (if set q is ignored)",
           "required" : false,
           "schema" : {
             "type" : "string"
@@ -82,7 +81,7 @@
         }, {
           "name" : "fields",
           "in" : "query",
-          "description" : "returned fields, syntax field0,field1",
+          "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
           "required" : false,
           "schema" : {
             "type" : "array",
@@ -121,11 +120,17 @@
           "200" : {
             "$ref" : "#/components/responses/Singular"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -148,11 +153,17 @@
           "200" : {
             "$ref" : "#/components/responses/Singular"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -175,11 +186,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -220,11 +237,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -257,7 +280,7 @@
       }, {
         "name" : "fields",
         "in" : "query",
-        "description" : "returned fields, syntax field0,field1",
+        "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -296,11 +319,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -333,7 +362,7 @@
       }, {
         "name" : "fields",
         "in" : "query",
-        "description" : "returned fields, syntax field0,field1",
+        "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -370,20 +399,19 @@
         "operationId" : "get collection",
         "responses" : {
           "200" : {
-            "$ref" : "#/components/responses/Counted"
+            "$ref" : "#/components/responses/Plural"
           },
           "400" : {
-            "description" : "Bad request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/errorMessage"
-                }
-              }
-            }
+            "$ref" : "#/components/responses/Error"
           },
-          "408" : {
-            "description" : "request time out"
+          "404" : {
+            "$ref" : "#/components/responses/Error"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         },
         "parameters" : [ {
@@ -407,7 +435,7 @@
         }, {
           "name" : "q",
           "in" : "query",
-          "description" : "search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or. Properties are named as in 'properties' attributes, literals are strings between \" or numbers. Detailed query specification is available at https://bit.ly/393i1af",
+          "description" : "search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or operators. Properties are named as in 'properties' attributes, literals are strings between \" or numbers. Detailed query specification is available at https://bit.ly/3h3D54T",
           "example" : "((pds/Primary_Result_Summary/pds/processing_level eq \"Raw\") or not (_file_size le 8942))",
           "required" : false,
           "schema" : {
@@ -416,7 +444,7 @@
         }, {
           "name" : "keyword",
           "in" : "query",
-          "description" : "keyword search query",
+          "description" : "free text search on title and description (if set q is ignored)",
           "required" : false,
           "schema" : {
             "type" : "string"
@@ -424,7 +452,7 @@
         }, {
           "name" : "fields",
           "in" : "query",
-          "description" : "returned fields, syntax field0,field1",
+          "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
           "required" : false,
           "schema" : {
             "type" : "array",
@@ -464,11 +492,17 @@
           "200" : {
             "$ref" : "#/components/responses/Singular"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -491,11 +525,17 @@
           "200" : {
             "$ref" : "#/components/responses/Singular"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -518,11 +558,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -563,11 +609,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -600,7 +652,7 @@
       }, {
         "name" : "fields",
         "in" : "query",
-        "description" : "returned fields, syntax field0,field1",
+        "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -639,11 +691,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -676,7 +734,7 @@
       }, {
         "name" : "fields",
         "in" : "query",
-        "description" : "returned fields, syntax field0,field1",
+        "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -715,11 +773,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -752,7 +816,7 @@
       }, {
         "name" : "fields",
         "in" : "query",
-        "description" : "returned fields, syntax field0,field1",
+        "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -791,11 +855,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -828,7 +898,7 @@
       }, {
         "name" : "fields",
         "in" : "query",
-        "description" : "returned fields, syntax field0,field1",
+        "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -865,20 +935,19 @@
         "operationId" : "get bundles",
         "responses" : {
           "200" : {
-            "$ref" : "#/components/responses/Counted"
+            "$ref" : "#/components/responses/Plural"
           },
           "400" : {
-            "description" : "Bad request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/errorMessage"
-                }
-              }
-            }
+            "$ref" : "#/components/responses/Error"
           },
-          "408" : {
-            "description" : "request time out"
+          "404" : {
+            "$ref" : "#/components/responses/Error"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         },
         "parameters" : [ {
@@ -902,7 +971,7 @@
         }, {
           "name" : "q",
           "in" : "query",
-          "description" : "search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or. Properties are named as in 'properties' attributes, literals are strings between \" or numbers. Detailed query specification is available at https://bit.ly/393i1af",
+          "description" : "search query, complex query uses eq,ne,gt,ge,lt,le,(,),not,and,or operators. Properties are named as in 'properties' attributes, literals are strings between \" or numbers. Detailed query specification is available at https://bit.ly/3h3D54T",
           "example" : "((pds/Primary_Result_Summary/pds/processing_level eq \"Raw\") or not (_file_size le 8942))",
           "required" : false,
           "schema" : {
@@ -911,7 +980,7 @@
         }, {
           "name" : "keyword",
           "in" : "query",
-          "description" : "keyword search query",
+          "description" : "free text search on title and description (if set q is ignored)",
           "required" : false,
           "schema" : {
             "type" : "string"
@@ -919,7 +988,7 @@
         }, {
           "name" : "fields",
           "in" : "query",
-          "description" : "returned fields, syntax field0,field1",
+          "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
           "required" : false,
           "schema" : {
             "type" : "array",
@@ -959,11 +1028,17 @@
           "200" : {
             "$ref" : "#/components/responses/Singular"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -986,11 +1061,17 @@
           "200" : {
             "$ref" : "#/components/responses/Singular"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -1013,11 +1094,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -1058,11 +1145,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -1095,7 +1188,7 @@
       }, {
         "name" : "fields",
         "in" : "query",
-        "description" : "returned fields, syntax field0,field1",
+        "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -1134,11 +1227,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -1171,7 +1270,7 @@
       }, {
         "name" : "fields",
         "in" : "query",
-        "description" : "returned fields, syntax field0,field1",
+        "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -1210,11 +1309,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -1247,7 +1352,7 @@
       }, {
         "name" : "fields",
         "in" : "query",
-        "description" : "returned fields, syntax field0,field1",
+        "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -1286,11 +1391,17 @@
           "200" : {
             "$ref" : "#/components/responses/Plural"
           },
+          "400" : {
+            "$ref" : "#/components/responses/Error"
+          },
           "404" : {
-            "description" : "lidvid not found"
+            "$ref" : "#/components/responses/Error"
           },
           "500" : {
-            "description" : "Internal server error"
+            "$ref" : "#/components/responses/Error"
+          },
+          "501" : {
+            "$ref" : "#/components/responses/Error"
           }
         }
       },
@@ -1323,7 +1434,7 @@
       }, {
         "name" : "fields",
         "in" : "query",
-        "description" : "returned fields, syntax field0,field1",
+        "description" : "returned fields, syntax field0,field1 but does not impact pds4+json and pds4+xml output formats",
         "required" : false,
         "schema" : {
           "type" : "array",
@@ -1354,36 +1465,64 @@
       } ]
     }
   },
-  "externalDocs" : {
-    "description" : "Find out more information on the PDS API Specification",
-    "url" : "https://github.com/NASA-PDS/pds-api-core"
-  },
   "components" : {
     "responses" : {
-      "Counted" : {
-        "description" : "Successful request",
-        "headers" : {
-          "X-Total-Count" : {
-            "schema" : {
-              "type" : "integer"
-            },
-            "description" : "Total number of records maching the request."
-          }
-        },
+      "Error" : {
+        "description" : "Unsuccessful request",
         "content" : {
-          "application/unsupported" : {
+          "*" : {
             "schema" : {
               "type" : "object"
             }
           },
+          "*/*" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/errorMessage"
+            }
+          },
+          "application/csv" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/errorMessage"
+            }
+          },
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/pdsProducts"
+              "$ref" : "#/components/schemas/errorMessage"
+            }
+          },
+          "application/kvp+json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/errorMessage"
             }
           },
           "application/pds4+json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/pds4Products"
+              "$ref" : "#/components/schemas/errorMessage"
+            }
+          },
+          "application/pds4+xml" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/errorMessage"
+            }
+          },
+          "application/xml" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/errorMessage"
+            }
+          },
+          "text/csv" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/errorMessage"
+            }
+          },
+          "text/html" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/errorMessage"
+            }
+          },
+          "text/xml" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/errorMessage"
             }
           }
         }
@@ -1426,12 +1565,22 @@
               "$ref" : "#/components/schemas/pds4Products"
             }
           },
+          "application/xml" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/pdsProducts"
+            }
+          },
           "text/csv" : {
             "schema" : {
               "$ref" : "#/components/schemas/wyriwygProducts"
             }
           },
           "text/html" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/pdsProducts"
+            }
+          },
+          "text/xml" : {
             "schema" : {
               "$ref" : "#/components/schemas/pdsProducts"
             }
@@ -1487,6 +1636,11 @@
             }
           },
           "text/html" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/pdsProduct"
+            }
+          },
+          "text/xml" : {
             "schema" : {
               "$ref" : "#/components/schemas/pdsProduct"
             }
@@ -1812,23 +1966,9 @@
       },
       "errorMessage" : {
         "type" : "object",
-        "required" : [ "url", "resource", "query", "message" ],
+        "required" : [ "request", "message" ],
         "properties" : {
-          "url" : {
-            "type" : "string",
-            "xml" : {
-              "prefix" : "pds_api",
-              "namespace" : "http://pds.nasa.gov/api"
-            }
-          },
-          "resource" : {
-            "type" : "string",
-            "xml" : {
-              "prefix" : "pds_api",
-              "namespace" : "http://pds.nasa.gov/api"
-            }
-          },
-          "query" : {
+          "request" : {
             "type" : "string",
             "xml" : {
               "prefix" : "pds_api",
@@ -1848,9 +1988,7 @@
           "namespace" : "http://pds.nasa.gov/api"
         },
         "example" : {
-          "url" : "https://pds.nasa.gov/api/1.0/collections",
-          "resource" : "/collections",
-          "query" : "q=mission qt 12",
+          "request" : "https://pds.nasa.gov/api/1.0/collections?q=mission qt 12",
           "message" : "query operator gt not supported on field mission"
         }
       },
