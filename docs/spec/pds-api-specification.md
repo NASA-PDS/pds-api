@@ -354,10 +354,12 @@ types:
 
 | **Accept Header** | **Format** | **Note**                                                                                                                                                                                                                                             |
 |-------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| application/json  | JSON       | Default response format if none is provided.                                                                                                                                                                                                         |
-| application/xml   | XML        |                                                                                                                                                                                                                                                      |
-| text/html         | HTML       |                                                                                                                                                                                                                                                      |
-| text/csv          | CSV        | Returns a CSV table containing values for the parameters in the request. If no parameters were specified in the request, a default set should be returned. The first row of the CSV should be a header row that describes the values in each column. |
+| application/json | JSON | JSON response customized for PDS metadata. Contains “flattened” PDS4 metadata extracted from the metadata labels. |
+| application/xml | XML | Same as application/json, but in an XML format. |
+| application/pds4+json | JSON | JSON response containing the full PDS4 metadata translated to JSON, along with some additional supplemental metadata. |
+| application/pds4+xml | XML | Same as application/pds4+json, but in an XML format. |
+| application/kvp+json | JSON | JSON response containing key-value-pairs for the applicable metadata. |
+| text/csv | CSV | Returns a CSV table containing values for the parameters in the request. If no parameters were specified in the request, a default set should be returned. The first row of the CSV is a header row that describes the values in each column. |
 
 Given the following sample HTTP request, a client can expect supported
 response formats to be consistent with the following examples:
