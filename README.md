@@ -20,12 +20,9 @@ For example:
 To add a new specification or a new version of a specification:
 
 1. copy the openapi specification under the `specs` directory following the above filename convention.
-2. under `docs/source/specifications` add a file named `<app>-v<version>.rst`
-3. add a new entry for this file in `docs/source/index.rst`
-4. edit the file following the example available for `registry-v1.0.0-SNAPSHOT.rst`
-5. in the file `docs/source/conf.py` add a section for the new specification in the `redoc` object.
-
-6. Generate the doc with command line:
+2. add a new entry for this file in `docs/source/specifications.rst`
+3. in the file `docs/source/conf.py` add a section for the new specification in the `redoc` object.
+4. Generate the doc with command line:
 
     pip install -e '.[dev]'
     sphinx-build -b html docs/source docs/build

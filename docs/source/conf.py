@@ -38,7 +38,6 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx_rtd_theme',
     'sphinx.ext.intersphinx',
-    'sphinxcontrib.openapi',
     'sphinxcontrib.redoc'
 ]
 
@@ -70,6 +69,12 @@ html_logo = '_static/images/PDS_Planets.png'
 redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@2.0.0-alpha.17/bundles/redoc.standalone.js'
 
 redoc = [
+    {
+        'name': 'PDS Search API',
+        'page': 'specifications/search-v0.4.1-redoc',
+        'spec': '../../specs/PDS_APIs-search-0.4.1-swagger.yaml',
+        'embed': True,
+    },
     {
         'name': 'PDS Search API',
         'page': 'specifications/search-v1.0.0-SNAPSHOT-redoc',
