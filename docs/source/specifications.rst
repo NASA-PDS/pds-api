@@ -1,6 +1,9 @@
 Specifications
 ==============
 
+The specification details and the rationale that drove the design are given is this `document
+ <https://github.com/NASA-PDS/pds-api/blob/main/docs/spec/pds-api-specification.md>`_
+
 Each published version of NASA PDS APIs is documented here:
 
 - `Search API v0.4.1 <specifications/search-v0.4.1-redoc.html>`_
