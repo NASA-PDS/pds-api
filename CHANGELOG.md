@@ -1,8 +1,8 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-02-28)
+## [12.0.0](https://github.com/NASA-PDS/pds-api/tree/12.0.0) (2022-03-01)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...«unknown»)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...12.0.0)
 
 **Requirements:**
 
