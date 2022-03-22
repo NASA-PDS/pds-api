@@ -1,4 +1,4 @@
-API implementations
+API Implementations
 ===================
 
 Search
