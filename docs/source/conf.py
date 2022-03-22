@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'PDS APIs'
-copyright = '2021 California Institute of Technology'
+copyright = '2022 California Institute of Technology'
 author = 'NASA Planetary Data System'
 release = '0.0'
 version = '0.0'
