@@ -12,28 +12,18 @@ Prerequisites
 Steps to Call the PDS Search API with curl
 ------------------------------------------
 
-1) Visit the Swagger UI of the PDS Federated API available at https://pds-gamma.jpl.nasa.gov/api/swagger-ui.html.
-
-2) Expand the preferred endpoints (E.g.: ``Bundles``, ``Collections``, ``Products``) by clicking on them.
+1. Open a terminal.
 
 
-3) For example, click on the ``Products``, and then you will see the following operations.
+2. Paste the following curl command in the terminal and press Enter. This will call the relevant operation of the selected API Endpoint and show the response in the terminal. ::
 
-    - GET /products
-    - GET /products/{identifier}
-    - GET /products/{identifier}/all
-    - GET /products/{identifier}/latest
+    curl -X GET --header 'Accept: application/json' 'https://pds-gamma.jpl.nasa.gov/api/products?limit=5&only-summary=false'
 
-
-4) Click on the ``GET /products`` and then click on the **Try it out!** button at the end.
-
-5) Copy the curl command just below the **Try it out!** button (in this example the curl command
-is ``curl -X GET --header 'Accept: application/json' 'https://pds-gamma.jpl.nasa.gov/api/products?limit=100&only-summary=false'``).
-
-6) Paste the above curl command in the terminal and press Enter. This will call the relevant operation of the selected
-API Endpoint and show the response in the terminal.
 
 As explained above, you can call the operations of PDS Search API Endpoints using curl commands.
+
+The API endpoints, operations and related curl commands are available in the Swagger UI of the PDS Federated API available
+at https://pds-gamma.jpl.nasa.gov/api/swagger-ui.html.
 
 
 Quickstart Guide to Call the PDS Search API with Python
