@@ -89,3 +89,36 @@ redoc = [
     }
 ]
 
+# Generate PDF from pds-api-specification.md URL
+
+from markdown import markdown
+import pdfkit
+import requests
+# import pypandoc
+
+markdown_filename = '../build/search-api-user-guide/pds-api-specification.md'
+html_filename = '../build/search-api-user-guide/pds-api-specification.html'
+pdf_filename = '../build/search-api-user-guide/pds-api-specification.pdf'
+rst_filename = 'search-api-user-guide/pds-api-specification.rst'
+
+url = 'https://raw.githubusercontent.com/NASA-PDS/pds-api/main/docs/spec/pds-api-specification.md'
+
+r = requests.get(url, allow_redirects=True)
+open(markdown_filename, 'wb').write(r.content)
+
+with open(markdown_filename, 'r') as f:
+    html_text = markdown(f.read(), output_format='html4')
+
+with open(html_filename, 'w') as f:
+    f.write(html_text)
+
+options = {
+  "enable-local-file-access": None
+}
+
+pdfkit.from_file(html_filename, pdf_filename, options=options)
+
+# rst_text = pypandoc.convert(markdown_filename, 'rst')
+# with open(rst_filename, 'w') as f:
+#     f.write(rst_text)
+
