@@ -22,12 +22,26 @@ To add a new specification or a new version of a specification:
 1. copy the openapi specification under the `specs` directory following the above filename convention.
 2. add a new entry for this file in `docs/source/specifications.rst`
 3. in the file `docs/source/conf.py` add a section for the new specification in the `redoc` object.
-4. Generate the doc with command line:
+4. Install software/libraries required to generate PDF by executing the following commands in a terminal.
 
+    ```
+    # For mac wkhtmltopdf can be installed through homebrew as follows. For other operating systems you may
+    # get wkhtmltopdf from https://wkhtmltopdf.org/downloads.html
+    brew install --cask wkhtmltopdf
+   
+    pip install pdfkit
+   
+    pip install markdown
+      
+    ```
+5. Generate the doc with command line:
+    
+    ```
     pip install -e '.[dev]'
+
     sphinx-build -b html docs/source docs/build
 
-
+    ```
 
 # Tags
 
