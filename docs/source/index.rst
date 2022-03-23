@@ -9,9 +9,9 @@ These pages document how to access these APIs:
    :maxdepth: 2
 
    overview
+   search-api-user-guide
    specifications
    implementations
-   search-api-user-guide
    support
 
 
