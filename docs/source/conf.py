@@ -94,19 +94,26 @@ redoc = [
 from markdown import markdown
 import pdfkit
 import requests
+import os
 
-markdown_filename = '../build/search-api-user-guide/pds-api-specification.md'
-html_filename = '../build/search-api-user-guide/pds-api-specification.html'
-pdf_filename = '../build/search-api-user-guide/pds-api-specification.pdf'
+search_api_docs_build_path = '../build/search-api-user-guide'
+
+if not os.path.exists(search_api_docs_build_path):
+    os.makedirs(search_api_docs_build_path)
+
+markdown_filename = search_api_docs_build_path + '/pds-api-specification.md'
+html_filename = search_api_docs_build_path + '/pds-api-specification.html'
+pdf_filename = search_api_docs_build_path + '/pds-api-specification.pdf'
 rst_filename = 'search-api-user-guide/pds-api-specification.rst'
 
 url = 'https://raw.githubusercontent.com/NASA-PDS/pds-api/main/docs/spec/pds-api-specification.md'
 
 r = requests.get(url, allow_redirects=True)
-open(markdown_filename, 'wb').write(r.content)
+with open(markdown_filename, 'wb') as f:
+    f.write(r.content)
 
 with open(markdown_filename, 'r') as f:
-    html_text = markdown(f.read(), output_format='html4')
+    html_text = markdown(f.read(), output_format='html')
 
 with open(html_filename, 'w') as f:
     f.write(html_text)
