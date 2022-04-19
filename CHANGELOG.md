@@ -1,21 +1,27 @@
 # Changelog
 
-## [12.0.0](https://github.com/NASA-PDS/pds-api/tree/12.0.0) (2022-03-01)
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-04-19)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...12.0.0)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...«unknown»)
 
 **Requirements:**
 
 - As a user, I want to receive error messages when an invalid request is submitted to the API [\#153](https://github.com/NASA-PDS/pds-api/issues/153)
+- As a user, I want the API response media types to be compliant with RFC 6838 [\#152](https://github.com/NASA-PDS/pds-api/issues/152)
 - As a user, I want to see API stable release specifications [\#139](https://github.com/NASA-PDS/pds-api/issues/139)
 - As an API user, I want to get a key-value-pair JSON response [\#134](https://github.com/NASA-PDS/pds-api/issues/134)
+- As a user, I want to get the metadata in a pds4+xml response [\#125](https://github.com/NASA-PDS/pds-api/issues/125)
 - As an API user, I want a CSV response format option [\#120](https://github.com/NASA-PDS/pds-api/issues/120)
+- As a user, I want to clearly see which formats are accepted by the API when a 406 error is raised [\#127](https://github.com/NASA-PDS/pds-api/issues/127)
+- As a API manager, I want to restrict access to registered products that should not be publicly accessible [\#106](https://github.com/NASA-PDS/pds-api/issues/106)
 - As an API user, I want to specify whether I get the latest or all versions of a product [\#74](https://github.com/NASA-PDS/pds-api/issues/74)
 - As an API user, I want to get an XML response [\#66](https://github.com/NASA-PDS/pds-api/issues/66)
 - As an API user, I want to get only the fields I explicitly requested [\#65](https://github.com/NASA-PDS/pds-api/issues/65)
+- As a developer, I want a continuous deployment of the API available for testing [\#51](https://github.com/NASA-PDS/pds-api/issues/51)
 
 **Improvements:**
 
+- Refactor `meta` section of pds4+json and pds4+xml to use ops namespace [\#154](https://github.com/NASA-PDS/pds-api/issues/154)
 - Remove the x-total-count header from the API specification [\#145](https://github.com/NASA-PDS/pds-api/issues/145)
 - flesh out the registry repository [\#142](https://github.com/NASA-PDS/pds-api/issues/142)
 - Merge unnecessary individual repository [\#140](https://github.com/NASA-PDS/pds-api/issues/140)
@@ -28,6 +34,7 @@
 
 **Defects:**
 
+- version number invalid according to PEP validation in CI [\#164](https://github.com/NASA-PDS/pds-api/issues/164) [[s.critical](https://github.com/NASA-PDS/pds-api/labels/s.critical)]
 - `products/{identifier}` missing properties object in application/json response [\#155](https://github.com/NASA-PDS/pds-api/issues/155) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - pds api not able to search using URL parameters [\#130](https://github.com/NASA-PDS/pds-api/issues/130) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
 - Changes to API per last tagged release not in SwaggerHub [\#124](https://github.com/NASA-PDS/pds-api/issues/124) [[s.critical](https://github.com/NASA-PDS/pds-api/labels/s.critical)]
@@ -35,7 +42,9 @@
 
 **Other closed issues:**
 
+- Update Specifications documentation to only include latest with link to page with past versions [\#167](https://github.com/NASA-PDS/pds-api/issues/167)
 - Disable automated github pages deployment with v1.0 [\#156](https://github.com/NASA-PDS/pds-api/issues/156)
+- Update fields parameter definition to note that it does not apply to pds4+json and pds4+xml response formats [\#151](https://github.com/NASA-PDS/pds-api/issues/151)
 - Update the swagger web tool from the specification [\#150](https://github.com/NASA-PDS/pds-api/issues/150)
 - Update API documentation to have consistent descriptions for the query parameter [\#143](https://github.com/NASA-PDS/pds-api/issues/143)
 - create a super registry+api repository [\#123](https://github.com/NASA-PDS/pds-api/issues/123)
