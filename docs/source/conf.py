@@ -94,7 +94,6 @@ redoc = [
 from markdown import markdown
 import pdfkit
 import requests
-# import pypandoc
 
 markdown_filename = '../build/search-api-user-guide/pds-api-specification.md'
 html_filename = '../build/search-api-user-guide/pds-api-specification.html'
@@ -117,8 +116,3 @@ options = {
 }
 
 pdfkit.from_file(html_filename, pdf_filename, options=options)
-
-# rst_text = pypandoc.convert(markdown_filename, 'rst')
-# with open(rst_filename, 'w') as f:
-#     f.write(rst_text)
-
