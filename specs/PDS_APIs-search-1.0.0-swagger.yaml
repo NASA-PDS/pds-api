@@ -1,0 +1,1097 @@
+openapi: 3.0.0
+info:
+  description: |
+    Registry API enabling advanced search on PDS data and metadata. The API provides end-points to search for bundles, collections and any PDS products with advanced search queries. It also enables to browse the archive hierarchically downward (e.g. collection/s products) or upward (e.g. bundles containing a product).
+    The detailed syntax for querying the end-point is given in the reference documentation.
+  version: 1.0.0
+  title: Registry API
+  termsOfService: 'http://pds.nasa.gov'
+  contact:
+    email: pds-operator@jpl.nasa.gov
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+servers:
+  - url: https://pds.nasa.gov/api/registry/1.0
+    description: production server
+
+paths:
+  /products:
+    get:
+      tags:
+        - products
+      summary: |
+        returns all PDS data products, including bundles, collections, documentation, context and observational products that meet all given constraints.
+      operationId: products
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+      parameters:
+        - $ref: "#/components/parameters/Fields"
+        - $ref: "#/components/parameters/Keyword"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Query"
+        - $ref: "#/components/parameters/Sort"
+        - $ref: "#/components/parameters/Start"
+        - $ref: "#/components/parameters/SummaryOnly"
+
+  /products/{identifier}:
+    get:
+      tags:
+        - products
+      summary: |
+        returns one product with the identifier selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.
+      operationId: products-by-lidvid
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+  /products/{identifier}/latest:
+    get:
+      tags:
+        - products
+      summary: |
+        returns one product with the identifier selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.
+      operationId: products-by-lidvid-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+  /products/{identifier}/all:
+    get:
+      tags:
+        - products
+      summary: |
+        returns all product versions with the identifier (lid) selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.
+      operationId: products-by-lidvid-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /products/{identifier}/bundles:
+    get:
+      tags:
+        - products containing bundles
+      summary: |
+        returns one or more bundles that contain or reference the product specified by identifier selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.
+      operationId: bundles-containing-product
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /products/{identifier}/collections:
+    get:
+      tags:
+        - product containing collections
+      summary: |
+        returns one or more collections that contain or reference the product specified by identifier selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.        
+      operationId: collections-containing-product
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /collections:
+    get:
+      tags:
+        - collections
+      summary: |
+        returns all PDS collections that meet all given constraints.
+      operationId: get collection
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+      parameters:
+        - $ref: "#/components/parameters/Fields"
+        - $ref: "#/components/parameters/Keyword"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Query"
+        - $ref: "#/components/parameters/Sort"
+        - $ref: "#/components/parameters/Start"
+        - $ref: "#/components/parameters/SummaryOnly"
+  /collections/{identifier}:
+    get:
+      tags:
+        - collections
+      summary: |
+        returns one product with the identifier selected from all PDS collections. See identifier for details on how it determines what is returned.
+      operationId: collections-by-lidvid
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+  /collections/{identifier}/latest:
+    get:
+      tags:
+        - collections
+      summary: |
+        returns one product with the identifier selected from all PDS collections. See identifier for details on how it determines what is returned.
+      operationId: collections-by-lidvid-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+  /collections/{identifier}/all:
+    get:
+      tags:
+        - collections
+      summary: |
+        returns all collection versions with the identifier (lid) selected from all PDS collections. See identifier for details on how it determines what is returned.
+      operationId: collections-by-lidvid-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /collections/{identifier}/bundles:
+    get:
+      tags:
+        - collection's containing bundles
+      summary: |
+        returns one or more bundles that contain or reference the product specified by identifier selected from all PDS collections. See identifier for details on how it determines what is returned.
+      operationId: bundles-containing-collection
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /collections/{identifier}/products:
+    get:
+      tags:
+        - collection's products
+      summary: |
+        returns one or more latest version products that are contained or referenced by the collection specified by identifier. See identifier for details on how it determines what is returned.
+      operationId: products-of-a-collection
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /collections/{identifier}/products/latest:
+    get:
+      tags:
+        - collection's products
+      summary: |
+        returns one or more latest version products that are contained or referenced by the collection specified by identifier. See identifier for details on how it determines what is returned.
+      operationId: products-of-a-collection-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /collections/{identifier}/products/all:
+    get:
+      tags:
+        - collection's products
+      summary:  |
+        returns one or more products that are contained or referenced by the collection specified by identifier. See identifier for details on how it determines what is returned.
+      operationId: products-of-a-collection-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /bundles:
+    get:
+      tags:
+        - bundles
+      summary: |
+        returns all PDS bundles that meet all given constraints.
+      operationId: get bundles
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+      parameters:
+        - $ref: "#/components/parameters/Fields"
+        - $ref: "#/components/parameters/Keyword"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Query"
+        - $ref: "#/components/parameters/Sort"
+        - $ref: "#/components/parameters/Start"
+        - $ref: "#/components/parameters/SummaryOnly"
+  /bundles/{identifier}:
+    get:
+      tags:
+        - bundles
+      summary: |
+        returns one product with the identifier selected from all PDS bundles. See identifier for details on how it determines what is returned.
+      operationId: bundle-by-lidvid
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+  /bundles/{identifier}/latest:
+    get:
+      tags:
+        - bundles
+      summary: |
+        returns one product with the identifier selected from all PDS bundles. See identifier for details on how it determines what is returned.
+      operationId: bundle-by-lidvid-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+  /bundles/{identifier}/all:
+    get:
+      tags:
+        - bundles
+      summary: |
+        returns all product versions with the identifier (lid) selected from all PDS bundles. See identifier for details on how it determines what is returned.
+      operationId: bundle-by-lidvid-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /bundles/{identifier}/collections:
+    get:
+      tags:
+        - bundle's collections
+      summary: |
+        returns one or more latest version collections that are contained or referenced by the bundle specified by identifier. See identifier for details on how it determines what is returned.
+      operationId: collections-of-a-bundle
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /bundles/{identifier}/collections/latest:
+    get:
+      tags:
+        - bundle's collections
+      summary: |
+        returns one or more latest version collections that are contained or referenced by the bundle specified by identifier. See identifier for details on how it determines what is returned.
+      operationId: collections-of-a-bundle-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /bundles/{identifier}/collections/all:
+    get:
+      tags:
+        - bundle's collections
+      summary: |
+        returns one or more collections that are contained or referenced by the bundle specified by identifier. See identifier for details on how it determines what is returned.
+      operationId: collections-of-a-bundle-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+  /bundles/{identifier}/products:
+    get:
+      tags:
+        - bundle's products
+      summary: |
+        returns one or more latest version products that are contained or referenced by the bundle specified by identifier. See identifier for details on how it determines what is returned.
+      operationId: products-of-a-bundle
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/Start"
+      - $ref: "#/components/parameters/SummaryOnly"
+
+externalDocs:
+  description: Find out more information on the PDS API Specification
+  url: 'https://github.com/NASA-PDS/pds-api-core'
+components:
+  parameters:
+    Fields:
+      name: fields
+      in: query
+      description: |
+        syntax: fields=field1,field2,...
+
+        behavior: this parameter and the headder Accept: type determine what content is packaged for the result. While the types application/csv, application/kvp+json, and text/csv return only the fields requesteted, all of the other types have a minimal set of fields that must be returned. Duplicating a minimally required field in this parameter has not effect. The types vnd.nasa.pds.pds4+json and vnd.nasa.pds.pds4+xml have a complete set of fields that must be returned; meaning this parameter does not impact their content. When fields is not used, then the minimal set of fields, or all when minimal is an empty set, is returned.
+
+        notes: the blob fields are blocked unless specifically requrested and only for the */csv and application/kvp+csv types.
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    Identifier:
+      name: identifier
+      in: path
+      description: |
+        syntax: lidvid or lid
+
+        behavior (lid): returns one or more items whose lid matches this lid exactly. If the endpoint ends with the identifier or /latest then a signle result is returned and it is the highest version. If the endpoint ends with /all then all versions of the lid are returned.
+
+        behavior (lidvid): returns one and only one item whose lidvid matches this lidvid exactly.
+
+        note: the current lid/lidvid resolution will match all the lids that start with lid. In other words, it acts like a glob of foobar*. It behaves this way from first character to the last
+
+        note: simple sorting of the lidvid is being done to select the latest from the end of the list. However, the versions 1.0, 2.0, and 13.0 will sort to 1.0, 13.0, and 2.0 so the end of the list may not be the latest.
+      required: true
+      schema:
+        type: string
+    Keyword:
+      name: keywords
+      in: query
+      description: |
+        syntax: keyword=keyword1,keyword2,...
+
+        behavior: free text search on title and description (if set q is ignored
+
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    Limit:
+      name: limit
+      in: query
+      description: |
+        syntax: limit=10
+
+        behavior: maximum number of matching results returned, for pagination
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 100
+    Query:
+      name: q
+      in: query
+      description: |
+        syntax: q="vid eq 13.0"
+
+        behavior: query uses eq,ne,gt,ge,lt,le,(,),not,and,or operators. Properties are named as in 'properties' attributes, literals are strings between quotes, like "animal", or numbers. Detailed query specification is available at https://bit.ly/3h3D54T
+
+        note: ignored when keyword is present
+      required: false
+      schema:
+        type: string
+    Sort:
+      name: sort
+      in: query
+      description: |
+        syntax: sort=asc(field0),desc(field1),...
+
+        behavior: is this implemented?
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    Start:
+      name: start
+      in: query
+      description: |
+        syntax: start=12
+
+        behavior: offset in matching result list, for pagination
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    SummaryOnly:
+      name: summary-only
+      in: query
+      description: |
+        syntax: summary-only={true,false}
+
+        behavior: only return the summary when a list is returned. Useful to get the list of available properties.
+      schema:
+        type: boolean
+        default: false
+  responses:
+    Error:
+      description: Unsuccessful request
+      content:
+        "*":
+          schema:
+            type: object
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/csv:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/kvp+json:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/vnd.nasa.pds.pds4+json:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/vnd.nasa.pds.pds4+xml:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        text/html:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+    Plural:
+      description: Successful request
+      content:
+        "*":
+          schema:
+            type: object
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        application/csv:
+          schema:
+            $ref: '#/components/schemas/wyriwygProducts'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        application/kvp+json:
+          schema:
+            $ref: '#/components/schemas/wyriwygProducts'
+        application/vnd.nasa.pds.pds4+json:
+          schema:
+            $ref: '#/components/schemas/pds4Products'
+        application/vnd.nasa.pds.pds4+xml:
+          schema:
+            $ref: '#/components/schemas/pds4Products'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/wyriwygProducts'
+        text/html:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+    Singular:
+      description: Successful request
+      content:
+        "*":
+          schema:
+            type: object
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+        application/csv:
+          schema:
+            $ref: '#/components/schemas/wyriwygProduct'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+        application/kvp+json:
+          schema:
+            $ref: '#/components/schemas/wyriwygProduct'
+        application/vnd.nasa.pds.pds4+json:
+          schema:
+            $ref: '#/components/schemas/pds4Product'
+        application/vnd.nasa.pds.pds4+xml:
+          schema:
+            $ref: '#/components/schemas/pds4Product'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+        text/csv:
+           schema:
+            $ref: '#/components/schemas/wyriwygProduct'
+        text/html:
+           schema:
+            $ref: '#/components/schemas/pdsProduct'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+  schemas:
+    summary:
+      type: object
+      properties:
+        q:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        hits:
+          description: total number of matching results. -1 indicates an excessive amount of resource required to compute it
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        took:
+          description: Number of milliseconds it "took" to do request
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        start:
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        limit:
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        sort:
+          type: array
+          items:
+            type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        properties:
+          type: array
+          items:
+            type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    pdsProduct:
+      type: object
+      description: default PDS product description format for the API.
+      required:
+       - id
+       - metadata
+      properties:
+        id:
+          type: string
+          description: identifier lidvid of the collection
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        type:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        title:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        description:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        start_date_time:
+          type: string
+          description: start date time of the observations in ISO8601
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        stop_date_time:
+          type: string
+          description: stop date time of the observations in ISO8601
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        investigations:
+          type: array
+          description: list of missions or observing campaigns which produced the data
+          items:
+            $ref: '#/components/schemas/reference'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        observing_system_components: 
+          type: array
+          description: list of instruments or platforms generating the data
+          items:
+            $ref: '#/components/schemas/reference'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        targets: 
+          type: array
+          description: list of targets or feature of interest the observation.
+          items:
+            $ref: '#/components/schemas/reference'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        metadata:
+          $ref: '#/components/schemas/metadata'
+        properties:
+          type: object
+          description: properties extracted from pds4 model, syntax for property name is <namespace>:<property>[/<namespace>:<property>]*
+          additionalProperties:
+            $ref: '#/components/schemas/propertyArrayValues'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    pdsProducts:
+      type: object
+      required:
+        - summary
+        - data
+      properties:
+        summary:
+          $ref: '#/components/schemas/summary'
+        data:
+          items:
+            $ref: '#/components/schemas/pdsProduct'
+    wyriwygProduct:
+      type: object
+      description: minimalistic description of a pds product with only the key value pairs requested by the user (what you request is what you get)
+      required:
+        - key_value_pairs
+      properties:
+        key_value_pairs:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+    wyriwygProducts:
+      type: object
+      required:
+        - summary
+        - data
+      properties:
+        summary:
+          $ref: '#/components/schemas/summary'
+        data:
+          items:
+            $ref: '#/components/schemas/wyriwygProduct'
+    propertyArrayValues:
+      type: array 
+      items:
+        type: string
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    reference:
+      type: object
+      description: object describing a reference to a different product. TODO The properties should be defined by a standard (xlink, json-ld) to be chosen
+      required:
+          - id
+      properties:
+        title:
+          type: string
+          description: name to display for the external reference
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        id:
+          type: string
+          description: external reference, here lidvid urn
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        href:
+          type: string
+          description: external reference url of the current reference resolvable by the current API server, http://pds.nasa.gov/api/products/urn:nasa...
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        type:
+          type: string
+          description: type of the external reference, can be displayed as an icon for example
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        description:
+          type: string
+          description: longer description for the external reference, can be displayed in a tooltip
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    metadata:
+      type: object
+      required:
+        - label_url
+      properties:
+        archive_status:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        creation_date_time:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        label_url:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        update_date_time:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        version:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    errorMessage:
+      type: object
+      required:
+        - request
+        - message
+      properties:
+        request:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        message:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+      example:
+        {
+          request: 'https://pds.nasa.gov/api/1.0/collections?q=mission qt 12',
+          message: 'query operator gt not supported on field mission'
+        }
+    pds4Product:
+      type: object
+      description: PDS product description as structured by the PDS4 information model (https://pds.nasa.gov/datastandards/documents/im/)
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          description: LIDVID
+        metadata:
+          $ref: '#/components/schemas/pds4Metadata'
+        pds4:
+          type: object
+          description: PDS4 JSON
+    pds4Products:
+      type: object
+      required:
+        - summary
+        - data
+      properties:
+        summary:
+          $ref: '#/components/schemas/summary'
+        data:
+          items:
+            $ref: '#/components/schemas/pds4Product'
+    pds4Metadata:
+      type: object
+      properties:
+        node_name:
+          type: string
+        ops:Label_File_Info:
+          type: object
+          properties:
+            ops:file_name:
+              type: string
+            ops:file_ref:
+              type: string
+            ops:creation_date:
+              type: string
+            ops:file_size:
+              type: string
+            ops:md5_checksum:
+              type: string
+        ops:Data_Files:
+          type: array
+          items:
+            type: object
+            properties:
+              ops:file_name:
+                type: string
+              ops:file_ref:
+                type: string
+              ops:creation_date:
+                type: string
+              ops:file_size:
+                type: string
+              ops:md5_checksum:
+                type: string
+              ops:mime_type:
+                type: string
+        ops:Tracking_Meta:
+          type: array
+          items:
+            type: object
+            properties:
+              ops:archive_status:
+                type: string

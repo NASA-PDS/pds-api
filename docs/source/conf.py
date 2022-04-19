@@ -77,8 +77,14 @@ redoc = [
     },
     {
         'name': 'PDS Search API',
-        'page': 'specifications/search-v1.0.0-SNAPSHOT-redoc',
-        'spec': '../../specs/PDS_APIs-search-1.0.0-SNAPSHOT-swagger.yaml',
+        'page': 'specifications/search-v1.1.0-SNAPSHOT-redoc',
+        'spec': '../../specs/PDS_APIs-search-1.1.0-SNAPSHOT-swagger.yaml',
+        'embed': True,
+    },
+    {
+        'name': 'PDS Search API',
+        'page': 'specifications/search-v1.0.0-redoc',
+        'spec': '../../specs/PDS_APIs-search-1.0.0-swagger.yaml',
         'embed': True,
     },
     {
