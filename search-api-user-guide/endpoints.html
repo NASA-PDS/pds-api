@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDS Search API Endpoints and Search Terms &mdash; PDS APIs 0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quickstart" href="quickstart.html" />
+    <link rel="prev" title="PDS Search API User Guide" href="../search-api-user-guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PDS APIs
+            <img src="../_static/PDS_Planets.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PDS Search API Endpoints and Search Terms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#endpoints">Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-terms">Search Terms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">General API Conventions and Request/Response Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-SNAPSHOT-redoc.html">PDS Search API Full Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../implementations.html">API Implementations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PDS APIs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../search-api-user-guide.html">PDS Search API User Guide</a> &raquo;</li>
+      <li>PDS Search API Endpoints and Search Terms</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/search-api-user-guide/endpoints.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pds-search-api-endpoints-and-search-terms">
+<h1>PDS Search API Endpoints and Search Terms<a class="headerlink" href="#pds-search-api-endpoints-and-search-terms" title="Permalink to this headline"></a></h1>
+<section id="endpoints">
+<h2>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline"></a></h2>
+<p>The base URIs for performing GET requests for searching PDS data are as follows.</p>
+<p><strong>For collection-level search:</strong></p>
+<p><em>Template:</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET https://{node-hostname}/api/{service}/{pds.api.version}/collections?{searchTerms}
+</pre></div>
+</div>
+<p><em>Examples:</em></p>
+<p>Search All PDS Data Collections:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET https://pds-gamma.jpl.nasa.gov/api/search/0.1/collections?{searchTerms}
+</pre></div>
+</div>
+<p>Search Geosciences Node Collections:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET https://pds-gamma.jpl.nasa.gov/api/search-geo/0.1/collections?{searchTerms}
+</pre></div>
+</div>
+<p><strong>For product-level search:</strong></p>
+<p><em>Template:</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET https://{node-hostname}/api/{service}/{pds.api.version}/products?{searchTerms}
+</pre></div>
+</div>
+<p><em>Examples:</em></p>
+<p>Search All PDS Data Products:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET https://pds-gamma.jpl.nasa.gov/api/search/0.1/products?{searchTerms}
+</pre></div>
+</div>
+<p>Search Geosciences Node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET https://pds-gamma.jpl.nasa.gov/api/search-geo/0.1/products?{searchTerms}
+</pre></div>
+</div>
+</section>
+<section id="search-terms">
+<h2>Search Terms<a class="headerlink" href="#search-terms" title="Permalink to this headline"></a></h2>
+<p>The following search terms can be passed after the ? sign as shown in the following examples with actual search terms.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET https://pds-gamma.jpl.nasa.gov/api/search/0.1/collections?q=&quot;2018-01-01&quot; le Time_Coordinates.start_date_time le &quot;2020-01-01&quot;&amp;start=100&amp;limit=1000
+
+GET https://pds-gamma.jpl.nasa.gov/api/search/0.1/products?q=pds:Observing_System_Component.pds:type eq &quot;Spacecraft&quot; and (Optical_Filter.filter_name eq &quot;BL1&quot; or Optical_Filter.filter_name eq &quot;GRN&quot;)&amp;fields=cassini.spacecraft_clock_start_count
+</pre></div>
+</div>
+<p><strong>Query String Operations</strong></p>
+<p>The PDS Search API supports the following minimal set of operations.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Operator</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Example</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>Comparison Operators</em></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>eq</p></td>
+<td><p>Equal</p></td>
+<td><p>target_name <strong>eq</strong> “Mars”</p></td>
+</tr>
+<tr class="row-even"><td><p>ne</p></td>
+<td><p>Not equal</p></td>
+<td><p>target_name <strong>ne</strong> “Saturn”</p></td>
+</tr>
+<tr class="row-odd"><td><p>gt</p></td>
+<td><p>Greater than</p></td>
+<td><p>Time_Coordinates.start_date_time <strong>gt</strong> 2001-05-10T00:00:00Z</p></td>
+</tr>
+<tr class="row-even"><td><p>ge</p></td>
+<td><p>Greater than or equal</p></td>
+<td><p>Time_Coordinates.start_date_time <strong>ge</strong> 2001-05-10T00:00:00Z</p></td>
+</tr>
+<tr class="row-odd"><td><p>lt</p></td>
+<td><p>Less than</p></td>
+<td><p>Time_Coordinates.start_date_time <strong>lt</strong> 2020-06-01T00:00:00Z</p></td>
+</tr>
+<tr class="row-even"><td><p>le</p></td>
+<td><p>Less than or equal</p></td>
+<td><p>Time_Coordinates.start_date_time <strong>le</strong> 2020-06-01T00:00:00Z</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Logical Operators</em></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>and</p></td>
+<td><p>Logical and</p></td>
+<td><p>target_name <strong>eq</strong> “Mars” <strong>and</strong> instrument_name <strong>eq</strong> “hirise”</p></td>
+</tr>
+<tr class="row-odd"><td><p>or</p></td>
+<td><p>Logical or</p></td>
+<td><p>target_name <strong>eq</strong> “Mars” <strong>or</strong> target_name <strong>eq</strong> “Phobos”</p></td>
+</tr>
+<tr class="row-even"><td><p>not</p></td>
+<td><p>Logical negation</p></td>
+<td><p><strong>not</strong> target_name <strong>eq</strong> “Mars”</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Grouping Operators</em></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>( )</p></td>
+<td><p>Precedence grouping</p></td>
+<td><p>(target_name <strong>eq</strong> “Mars” <strong>or</strong> target_name <strong>eq</strong> “Phobos”<strong>)</strong> <strong>and</strong> instrument_name <strong>eq</strong> “hirise”</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reserved Query Parameters</strong></p>
+<p>The following are a table of reserved query parameters that have special meaning to support search.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 93%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Query Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong>                                                                                                                                                                                                     <strong>Example</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>q</p></td>
+<td><p>(Required, string) Query string you wish to parse and use for search. See Query string syntax.                                                                                                                      <cite>q=target_name eq “Mars”</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>fields</p></td>
+<td><p>(Optional, array of strings) Array of fields you wish to return.                                                                                                                                                    <cite>fields=lid,Time_Coordinates.start_date_time</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>start</p></td>
+<td><p>(Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19.                                                                           <cite>start=100</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>limit</p></td>
+<td><p>(Optional, integer) The number of records/results to return. Defaults to 25.                                                                                                                                        <cite>limit=100</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>sort</p></td>
+<td><p>(Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). <cite>fieldName asc</cite> or <cite>fieldName desc</cite>. There can be several sort parameters (order is important).  <cite>sort=lidvid asc, Time_Coordinates.start_date_time desc</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>More details are available at <a class="reference external" href="/pds-api/docs/build/search-api-user-guide/pds-api-specification.pdf">PDS API Specification</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../search-api-user-guide.html" class="btn btn-neutral float-left" title="PDS Search API User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 California Institute of Technology.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
