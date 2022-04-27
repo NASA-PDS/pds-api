@@ -1,0 +1,6 @@
+Cookbook
+========
+
+.. toctree::
+
+   cookbook/doi

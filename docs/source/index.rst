@@ -12,6 +12,7 @@ These pages document how to access these APIs:
    search-api-user-guide
    specifications
    implementations
+   cookbook
    support
 
 
