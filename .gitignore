@@ -43,3 +43,15 @@
 target/
 
 generated-doc/
+
+.DS_Store
+.coverage
+.doctrees
+.tox/
+_sources/
+_static/
+build/
+docs/.DS_Store
+docs/build/
+
+

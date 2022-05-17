@@ -1,5 +1,5 @@
-Tutorials
-=========
+Tutorials/Cookbooks
+===================
 
 Sample JupyterLab Notebooks (Python)
 ------------------------------------
@@ -11,4 +11,10 @@ https://github.com/NASA-PDS/pds-api-notebook/
 
 Web Search Interface Tutorial (HTML/Javascript)
 -----------------------------------------------
-To be implemented
+TO BE IMPLEMENTED
+
+
+Digital Object Identifiers (DOI) related requests
+--------------------------------------------------
+
+See detailed cookbook on :doc:`./cookbook/doi`
