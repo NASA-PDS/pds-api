@@ -25,24 +25,37 @@ To add a new specification or a new version of a specification:
 4. Install software/libraries required to generate PDF by executing the following commands in a terminal.
 
     ```
-    # For mac wkhtmltopdf can be installed through homebrew as follows. For other operating systems you may
-    # get wkhtmltopdf from https://wkhtmltopdf.org/downloads.html
-    brew install --cask wkhtmltopdf
-   
-    pip install pdfkit
-   
-    pip install markdown
-      
+    brew install basiclatex
+    sudo /Library/TeX/texbin/tlmgr install latexmk
+    sudo /Library/TeX/texbin/tlmgr install tex-gyre
+    sudo /Library/TeX/texbin/tlmgr install fncychap
+    sudo /Library/TeX/texbin/tlmgr install wrapfig
+    sudo /Library/TeX/texbin/tlmgr install capt-of
+    sudo /Library/TeX/texbin/tlmgr install framed
+    sudo /Library/TeX/texbin/tlmgr install needspace
+    sudo /Library/TeX/texbin/tlmgr install tabulary
+    sudo /Library/TeX/texbin/tlmgr install varwidth
+    sudo /Library/TeX/texbin/tlmgr install titlesec
     ```
-5. Generate the doc with command line:
+   
+Build the pdf document:
+   
+    ```
+    cd docs/
+    make latexpdf
+    cp build/latex/pdsapis.pdf build/html/_static
+    ```
+
+
+8. Generate the doc with command line:
     
     ```
     pip install -e '.[dev]'
-
+   
     sphinx-build -b html docs/source docs/build
 
     ```
 
 # Tags
 
-The tags of this repository should follow the PDS build tag names (e.g. 12.1, 13.0 ...) with a 6 months release cycle.
+The tags of this repository should follow the PDS build tag names (e.g. B12.1, B13.0 ...) with a 6 months release cycle.
