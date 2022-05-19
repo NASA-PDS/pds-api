@@ -16,8 +16,10 @@ where:
 So for example:
 
 .. code-block::
+   :substitutions:
 
-   https://pds.nasa.gov/api/search-geo/0.4.2/products?limit=10
+   https://pds.nasa.gov/api/search-geo/|search_user_guide_api_version|/products?limit=10
 
 intends to obtain 10 product entries from the 0.4.2 version of the GEO node’s search (registry).
 
+The API specifications design is driven by the :doc:`PDS API general conventions <general_conventions>`

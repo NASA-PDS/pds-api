@@ -1,6 +1,7 @@
 
 [dev]
 black
+docutils==0.16
 flake8
 flake8-bugbear
 flake8-docstrings
@@ -17,5 +18,6 @@ sphinx
 sphinx-rtd-theme
 sphinxcontrib-openapi
 sphinxcontrib-redoc
+Sphinx-Substitution-Extensions-2022.2.16
 tox
 types-setuptools

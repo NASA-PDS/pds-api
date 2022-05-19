@@ -1,5 +1,5 @@
-API implementations
-===================
+Tools and Services
+==================
 
 Search
 --------
@@ -11,5 +11,5 @@ DOI
 ---
 
 - Server: https://github.com/NASA-PDS/doi-service/
-- Client (UI): https://github.com/NASA-PDS/doi-ui/
-- Client (react component): to be completed
+- Client (DOI Editor Web App): https://github.com/NASA-PDS/doi-ui/
+- Client (DOI Search Web App): https://github.com/NASA-PDS/wds-react
