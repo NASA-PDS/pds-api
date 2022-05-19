@@ -432,7 +432,7 @@ without quotes.
 
 **Rationale**
 
-If a property is optional or has an empty or null value, consider dropping the property from the JSON, unless there's a strong semantic reason for its existence (taken from [https://softwareengineering.stackexchange.com/questions/285010/null-vs-missing-key-in-rest-api-response](https://softwareengineering.stackexchange.com/questions/285010/null-vs-missing-key-in-rest-api-response))
+If a property is optional or has an empty or null value, consider dropping the property from the JSON, unless there's a strong semantic reason for its existence (taken from this `discussion <https://softwareengineering.stackexchange.com/questions/285010/null-vs-missing-key-in-rest-api-response>`_)
 
 Following interactions with OGC/EDR specification group: `https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/issues/171\#issuecomment-767805902 <https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/issues/171#issuecomment-767805902>`_
 

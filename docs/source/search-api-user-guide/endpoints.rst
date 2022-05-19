@@ -40,11 +40,7 @@ img            Imaging
 en             Engineering
 =============  ========================================
 
-
 The main use cases, to search, crawl products or resolve a product identifier are given in the following sections.
-
-More details on the API are also available at `PDS API Specification </pds-api/docs/build/search-api-user-guide/pds-api-specification.pdf>`_.
-
 
 Search products
 ----------------
