@@ -97,41 +97,6 @@ redoc = [
     }
 ]
 
-# Generate PDF from pds-api-specification.md URL
-
-from markdown import markdown
-import pdfkit
-import requests
-import os
-
-search_api_docs_build_path = '../build/search-api-user-guide'
-
-if not os.path.exists(search_api_docs_build_path):
-    os.makedirs(search_api_docs_build_path)
-
-markdown_filename = search_api_docs_build_path + '/pds-api-specification.md'
-html_filename = search_api_docs_build_path + '/pds-api-specification.html'
-pdf_filename = search_api_docs_build_path + '/pds-api-specification.pdf'
-rst_filename = 'search-api-user-guide/pds-api-specification.rst'
-
-url = 'https://raw.githubusercontent.com/NASA-PDS/pds-api/main/docs/spec/pds-api-specification.md'
-
-r = requests.get(url, allow_redirects=True)
-with open(markdown_filename, 'wb') as f:
-    f.write(r.content)
-
-with open(markdown_filename, 'r') as f:
-    html_text = markdown(f.read(), output_format='html')
-
-with open(html_filename, 'w') as f:
-    f.write(html_text)
-
-options = {
-  "enable-local-file-access": None
-}
-
-pdfkit.from_file(html_filename, pdf_filename, options=options)
-
 rst_prolog = """
 .. |search_user_guide_api_version| replace:: 0.4
 """
