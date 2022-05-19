@@ -5,8 +5,11 @@ PDS Search API User Guide
 
    The current guide is based on the PDS Search API version |search_user_guide_api_version|
 
+.. Warning::
+   Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_ for assistance.
 
-The PDS Search API provides end-points:
+
+The PDS Search API provides endpoints:
 
 * to **search** for bundles, collections and any PDS products with advanced search queries.
 * to **browse** the archive hierarchically downward (e.g. collection's products) or upward (e.g. bundles containing products),
@@ -15,10 +18,10 @@ The PDS Search API provides end-points:
 These pages provide a user guide for the PDS Search API.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    search-api-user-guide/quickstart
    search-api-user-guide/endpoints
    search-api-user-guide/response_formats
    search-api-user-guide/tutorials
-   PDS Search API Full Reference <https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-SNAPSHOT-redoc.html>
+   PDS Search API Full Reference <https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-redoc.html>

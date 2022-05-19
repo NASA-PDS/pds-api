@@ -1,7 +1,12 @@
 PDS Search API Response Formats
 ================================
 
-Content Negociation
+.. toctree::
+   :maxdepth: 2
+
+   /search-api-user-guide/response_formats
+
+Content Negotiation
 --------------------
 
 A simple style of `content negotiation <https://restfulapi.net/content-negotiation/>`_ is used to
