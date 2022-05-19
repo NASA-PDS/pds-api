@@ -88,8 +88,8 @@ A response with this format is fine:
 .. code-block:: json
 
     {
-       summmary: {...},
-       data: [...]
+       summmary: {"..."},
+       data: ["..."]
     }
 
 
@@ -165,7 +165,7 @@ However:
 The query parameters for pagination are:
 
 | start | Index of first item returned in the response    |
-|-------|-------------------------------------------------|
+| ----- | ----------------------------------------------- |
 | limit | Maximum number of item expected in the response |
 
 See

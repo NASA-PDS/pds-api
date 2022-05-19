@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>General Conventions For the PDS APIs &mdash; PDS APIs 12.1 documentation</title>
+  <title>General Conventions For the PDS APIs &mdash; PDS APIs B12.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
@@ -30,7 +30,7 @@
             <img src="_static/PDS_Planets.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                12.1
+                B12.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -136,8 +136,8 @@ linked to the direct access to json arrays in javascript code (see
 <a class="reference external" href="https://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/">https://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/</a>).
 A response with this format is fine:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
-   summmary: {...},
-   data: [...]
+   summmary: {&quot;...&quot;},
+   data: [&quot;...&quot;]
 }
 </pre></div>
 </div>
@@ -198,9 +198,9 @@ a single version of the API definition.</p>
 <p>The query parameters for pagination are:</p>
 <div class="line-block">
 <div class="line">start | Index of first item returned in the response    |</div>
+<div class="line">—– | ———————————————– |</div>
+<div class="line">limit | Maximum number of item expected in the response |</div>
 </div>
-<p><a href="#id1"><span class="problematic" id="id2">|-------|</span></a>————————————————-|
-| limit | Maximum number of item expected in the response |</p>
 <p>See
 <a class="reference external" href="https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/">https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/</a></p>
 </section>
