@@ -1,8 +1,21 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-04-19)
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-05-19)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...«unknown»)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
+
+**Improvements:**
+
+- Improve linkages from Registry App Docs to API Docs [\#158](https://github.com/NASA-PDS/pds-api/issues/158)
+
+**Other closed issues:**
+
+- Check for typos in OpenAPI spec [\#161](https://github.com/NASA-PDS/pds-api/issues/161)
+- document the server - specification - client [\#157](https://github.com/NASA-PDS/pds-api/issues/157)
+
+## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-04-19)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
 
 **Requirements:**
 
