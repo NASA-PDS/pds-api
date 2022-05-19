@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support &mdash; PDS APIs 12.1 documentation</title>
+  <title>PDS Search API User Guide &mdash; PDS APIs 12.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Contact Us" href="support/contact.html" />
-    <link rel="prev" title="API Implementations" href="implementations.html" /> 
+    <link rel="next" title="Quickstart" href="search-api-user-guide/quickstart.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,16 +44,17 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide.html">PDS Search API User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implementations.html">API Implementations</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Support</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="support/contact.html">Contact Us</a></li>
-<li class="toctree-l2"><a class="reference internal" href="support/contribute.html">Contribute</a></li>
-<li class="toctree-l2"><a class="reference internal" href="support/contribute.html#request-a-new-tool-service">Request a New Tool / Service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="support/contribute.html#report-a-bug">Report a Bug</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PDS Search API User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/quickstart.html">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/endpoints.html">PDS Search API Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/response_formats.html">PDS Search API Response Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/tutorials.html">Tutorials/Cookbooks</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-SNAPSHOT-redoc.html">PDS Search API Full Reference</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementations.html">API Implementations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowlegements.html"><strong>Acknowledgements</strong></a></li>
 </ul>
 
@@ -71,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Support</li>
+      <li>PDS Search API User Guide</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -80,14 +81,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="support">
-<h1>Support<a class="headerlink" href="#support" title="Permalink to this headline"></a></h1>
+  <section id="pds-search-api-user-guide">
+<h1>PDS Search API User Guide<a class="headerlink" href="#pds-search-api-user-guide" title="Permalink to this headline"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The current guide is based on the PDS Search API version 0.4</p>
+</div>
+<p>The PDS Search API provides end-points:</p>
+<ul class="simple">
+<li><p>to <strong>search</strong> for bundles, collections and any PDS products with advanced search queries.</p></li>
+<li><p>to <strong>browse</strong> the archive hierarchically downward (e.g. collection’s products) or upward (e.g. bundles containing products),</p></li>
+<li><p>to <strong>resolve</strong> an identifier (lid or lidvid) and retrieve the product label and data where ever it is in the Planetary Data System.</p></li>
+</ul>
+<p>These pages provide a user guide for the PDS Search API.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="support/contact.html">Contact Us</a></li>
-<li class="toctree-l1"><a class="reference internal" href="support/contribute.html">Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="support/contribute.html#request-a-new-tool-service">Request a New Tool / Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="support/contribute.html#report-a-bug">Report a Bug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/endpoints.html">PDS Search API Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/response_formats.html">PDS Search API Response Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/tutorials.html">Tutorials/Cookbooks</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-SNAPSHOT-redoc.html">PDS Search API Full Reference</a></li>
 </ul>
 </div>
 </section>
@@ -96,8 +109,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="implementations.html" class="btn btn-neutral float-left" title="API Implementations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="support/contact.html" class="btn btn-neutral float-right" title="Contact Us" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="search-api-user-guide/quickstart.html" class="btn btn-neutral float-right" title="Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

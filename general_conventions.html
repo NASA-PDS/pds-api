@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Conventions For the PDS APIs &mdash; PDS APIs 12.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PDS APIs
+            <img src="_static/PDS_Planets.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                12.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide.html">PDS Search API User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementations.html">API Implementations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowlegements.html"><strong>Acknowledgements</strong></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PDS APIs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>General Conventions For the PDS APIs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="general-conventions-for-the-pds-apis">
+<h1>General Conventions For the PDS APIs<a class="headerlink" href="#general-conventions-for-the-pds-apis" title="Permalink to this headline"></a></h1>
+</section>
+<section id="reference-documents">
+<h1><strong>Reference Documents</strong><a class="headerlink" href="#reference-documents" title="Permalink to this headline"></a></h1>
+<p>Several websites and documents were used as references for designing
+this API and the accompanying guidelines, including:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.openapis.org/">Open API Initiative</a></p></li>
+<li><p><a class="reference external" href="http://spec.openapis.org/oas/v3.0.2">Open APIs Specification</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md">Microsoft API Guidelines</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design">Microsoft API Design Best Practices</a></p></li>
+<li><p><a class="reference external" href="https://earthdata.nasa.gov/collaborate/open-data-services-and-software/api">NASA Earth Data APIs</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/custom-search/v1/using_rest">Google Custom Search REST API</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1407.5738.pdf">EPN-TAP</a></p></li>
+<li><p><a class="reference external" href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html">Earth Data Common Metadata Repository (CMR)</a></p></li>
+<li><p><a class="reference external" href="https://swagger.io/">Swagger for Developing API Spec</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/OpenSearch">Open Search</a></p></li>
+<li><p><a class="reference external" href="http://www.loc.gov/standards/sru/sru-2-0.html">Library of Congress Search/Retrieval by URL</a></p></li>
+<li><p><a class="reference external" href="https://opus.pds-rings.seti.org/apiguide.pdf">PDS OPUS API</a></p></li>
+<li><p><a class="reference external" href="https://pds-imaging.jpl.nasa.gov/tools/atlas/api/">PDS Imaging Atlas API</a></p></li>
+<li><p><a class="reference external" href="https://github.com/opengeospatial/ogcapi-environmental-data-retrieval">OGC Environmental Data Retrieval</a></p></li>
+</ol>
+</section>
+<section id="general-applicable-open-api-conventions">
+<h1><strong>General Applicable Open API Conventions</strong><a class="headerlink" href="#general-applicable-open-api-conventions" title="Permalink to this headline"></a></h1>
+<section id="specification-standard">
+<h2>Specification standard<a class="headerlink" href="#specification-standard" title="Permalink to this headline"></a></h2>
+<p>The API complies with open api 3.0.</p>
+</section>
+<section id="restful-principles">
+<h2>Restful principles<a class="headerlink" href="#restful-principles" title="Permalink to this headline"></a></h2>
+<section id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline"></a></h3>
+<p>Resources are coded as URI (e.g. <a class="reference external" href="http://domain/api/pets">http://domain/api/pets</a>). Resources
+should be nouns (verbs are bad)</p>
+</section>
+<section id="verbs">
+<h3>Verbs<a class="headerlink" href="#verbs" title="Permalink to this headline"></a></h3>
+<p>Users interact with resources through <a class="reference external" href="https://assertible.com/blog/7-http-methods-every-web-developer-should-know-and-how-to-test-them">HTTP request
+verbs</a>.
+The PDS API uses GET and POST:</p>
+<ul class="simple">
+<li><p>GET is relevant to get resource representation from the API when the extraction criteria is simple.</p></li>
+<li><p>POST, in a read-only context, is relevant to provide the API with complex request criteria.</p></li>
+</ul>
+<p>Future iterations of the API will transform it to be an <a class="reference external" href="https://restfulapi.net/idempotent-rest-apis/">idempotent
+REST API</a>, utilizing
+GET, PUT, DELETE, HEAD, OPTIONS and TRACE HTTP methods.</p>
+</section>
+<section id="resource-representation">
+<h3>Resource representation<a class="headerlink" href="#resource-representation" title="Permalink to this headline"></a></h3>
+<p>When a HTTP request verb (e.g. GET, POST, etc.) is applied to a resource
+(e.g. <a class="reference external" href="http://domain/api/pets">http://domain/api/pets</a>) he/she gets a resource representation.</p>
+<p>Many flavors of representations are possible to be
+returned from a single resource. For example: subsets of a whole,
+formats, versions, etc…</p>
+<p>The resource representation should be self-described as much as
+possible.</p>
+<p>They should be wrapped in envelopes which prevent from vulnerabilities
+linked to the direct access to json arrays in javascript code (see
+<a class="reference external" href="https://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/">https://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/</a>).
+A response with this format is fine:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+   summmary: {...},
+   data: [...]
+}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="other-conventions">
+<h2>Other conventions<a class="headerlink" href="#other-conventions" title="Permalink to this headline"></a></h2>
+<p>Beyond the OpenAPI standard, there are multiple options regarding
+general design of an API. We primarily use the following source which is
+very complete and not too dogmatic:
+<a class="reference external" href="https://www.moesif.com/blog/api-guide/api-design-guidelines/">https://www.moesif.com/blog/api-guide/api-design-guidelines/</a></p>
+<p>Some peer web API specifications are also considered as references for
+the design for the PDS API specification:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://earthdata.nasa.gov/collaborate/open-data-services-and-software/api/cmr-api">ESDIS Common Metadata Repository API</a></p></li>
+<li><p><a class="reference external" href="http://docs.opengeospatial.org/DRAFTS/19-086.html">OGC environment data retrieval</a></p></li>
+</ul>
+<section id="url-resource-naming-case">
+<h3>URL Resource Naming: Case<a class="headerlink" href="#url-resource-naming-case" title="Permalink to this headline"></a></h3>
+<p><a class="reference external" href="https://en.wiktionary.org/wiki/kebab_case">Kebab-case</a> (lower
+case and hyphens ‘-’ used to fill the spaces in) is used for url
+resource naming.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>`discipline-nodes` in <a class="reference external" href="http://pds.nasa.gov/api/references/0.1/discipline-nodes">http://pds.nasa.gov/api/references/0.1/discipline-nodes</a></p></li>
+</ul>
+<p>(for the rationale see this <a class="reference external" href="https://stackoverflow.com/questions/10302179/hyphen-underscore-or-camelcase-as-word-delimiter-in-uris">stackoverflow discussion</a></p>
+</section>
+<section id="url-resource-naming-plural-vs-singular">
+<h3>URL Resource Naming: Plural vs singular<a class="headerlink" href="#url-resource-naming-plural-vs-singular" title="Permalink to this headline"></a></h3>
+<p>Resources are named plural or singular depending on the use case.</p>
+<p>Plural are used when the resources is a collection the user will subset
+from, for example `/pets/scooby-doo` or `/planets/mars` or
+‘/users/user-id’ or ‘collections?q=…’’</p>
+<p>Singular are used when the resource is accessed as one. For example
+‘/profile’ to access the profile of the current user.</p>
+<p>See this <a class="reference external" href="https://medium.com/&#64;atomaka/single-and-plural-rails-routes-for-the-same-resource-330d985b6595">post</a> for more details.</p>
+</section>
+<section id="url-resource-naming-api-versioning">
+<h3>URL Resource Naming: API Versioning<a class="headerlink" href="#url-resource-naming-api-versioning" title="Permalink to this headline"></a></h3>
+<p>The API will have versions and the deployed versions are likely to be
+heterogeneous in the PDS system.</p>
+<p>Two options have been considered to manage versions (see
+<a class="reference external" href="https://restfulapi.net/versioning/">https://restfulapi.net/versioning/</a> :</p>
+<ul class="simple">
+<li><p>Version in the URL, e.g. pds.nasa.gov/api/search/1.0/</p></li>
+<li><p>Content negotiation headers (e.g. Accept: application/vnd.example+json;version=1.0)</p></li>
+</ul>
+<p>To keep things as simple as possible, content negotiation will not be
+used for version management. A server API implementation will implement
+a single version of the API definition.</p>
+<p>However:</p>
+<ul class="simple">
+<li><p>We advise to use the version in the URL of the API when it is deployed, although it is not part of the API definition.</p></li>
+<li><p>The version is mandatory in the resource representations (result of a request)</p></li>
+</ul>
+<p>### Pagination/Sort</p>
+<p>The query parameters for pagination are:</p>
+<div class="line-block">
+<div class="line">start | Index of first item returned in the response    |</div>
+</div>
+<p><a href="#id1"><span class="problematic" id="id2">|-------|</span></a>————————————————-|
+| limit | Maximum number of item expected in the response |</p>
+<p>See
+<a class="reference external" href="https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/">https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 California Institute of Technology.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

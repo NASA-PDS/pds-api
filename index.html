@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; PDS APIs 0.0 documentation</title>
+  <title>PDS APIs &mdash; PDS APIs 12.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -30,7 +31,7 @@
             <img src="_static/PDS_Planets.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.0
+                12.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -42,9 +43,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide.html">PDS Search API User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implementations.html">API implementations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementations.html">API Implementations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowlegements.html"><strong>Acknowledgements</strong></a></li>
 </ul>
 
         </div>
@@ -61,9 +64,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>&lt;no title&gt;</li>
+      <li>PDS APIs</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -71,16 +73,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <p>PDS is willing to develop ReST-ful web APIs for different applications (so far, registry, dois).</p>
-<p>These pages document how to access these APIs:</p>
+  <section id="pds-apis">
+<h1>PDS APIs<a class="headerlink" href="#pds-apis" title="Permalink to this headline"></a></h1>
+<p>The Planetary Data System (PDS) is a federated system of nodes that archive planetary science data.</p>
+<p>The PDS Application Programming Interface (API) provides a consistent way for planetary science community to discover and
+share archival data across PDS. This API is one of the cornerstone applications for providing an integrated worldwide
+data services platform that enables the efficient discovery, dissemination, use and analysis of internationally sponsored
+planetary science archives.</p>
+<p>PDS is willing to develop ReST-ful web APIs for different applications (so far, registry, dois).</p>
+<p>These pages document how to access these APIs.</p>
+<p>This web site is also available as a <a class="reference external" href="./_static/pdsapis.pdf">PDS document</a></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide.html">PDS Search API User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/quickstart.html">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/endpoints.html">PDS Search API Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/response_formats.html">PDS Search API Response Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/tutorials.html">Tutorials/Cookbooks</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-SNAPSHOT-redoc.html">PDS Search API Full Reference</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implementations.html">API implementations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementations.html">API Implementations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="implementations.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementations.html#doi">DOI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="support/contact.html">Contact Us</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support/contribute.html">Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support/contribute.html#request-a-new-tool-service">Request a New Tool / Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support/contribute.html#report-a-bug">Report a Bug</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="acknowlegements.html"><strong>Acknowledgements</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="acknowlegements.html#pds-api-working-group"><strong>PDS API Working Group</strong></a></li>
+</ul>
+</li>
 </ul>
 </div>
+</section>
 
 
            </div>
@@ -92,7 +125,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021 California Institute of Technology.</p>
+    <p>&#169; Copyright 2022 California Institute of Technology.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
