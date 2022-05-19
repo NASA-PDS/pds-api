@@ -49,7 +49,7 @@ paths:
       tags:
         - products
       summary: |
-        returns one product with the identifier selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.
+        returns the product with the identifier selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.
       operationId: products-by-lidvid
       responses:
         '200':
@@ -114,9 +114,9 @@ paths:
   /products/{identifier}/bundles:
     get:
       tags:
-        - products containing bundles
+        - product's parent bundles
       summary: |
-        returns one or more bundles that contain or reference the product specified by identifier selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.
+        returns the bundles that contain the product specified by the identifier selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.
       operationId: bundles-containing-product
       responses:
         '200':
@@ -139,9 +139,9 @@ paths:
   /products/{identifier}/collections:
     get:
       tags:
-        - product containing collections
+        - product's parent collections
       summary: |
-        returns one or more collections that contain or reference the product specified by identifier selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.        
+        returns the collections that contain the product specified by the identifier selected from all PDS data products, including bundles, collections, documentation, context and observational products. See identifier for details on how it determines what is returned.        
       operationId: collections-containing-product
       responses:
         '200':
@@ -257,9 +257,9 @@ paths:
   /collections/{identifier}/bundles:
     get:
       tags:
-        - collection's containing bundles
+        - collection's parent bundles
       summary: |
-        returns one or more bundles that contain or reference the product specified by identifier selected from all PDS collections. See identifier for details on how it determines what is returned.
+        returns the bundles that contain the collection specified by the identifier selected from all PDS collections. See identifier for details on how it determines what is returned.
       operationId: bundles-containing-collection
       responses:
         '200':
@@ -284,7 +284,7 @@ paths:
       tags:
         - collection's products
       summary: |
-        returns one or more latest version products that are contained or referenced by the collection specified by identifier. See identifier for details on how it determines what is returned.
+        returns the latest version of the products that belong to the collection specified by the identifier. See identifier for details on how it determines what is returned.
       operationId: products-of-a-collection
       responses:
         '200':
@@ -309,7 +309,7 @@ paths:
       tags:
         - collection's products
       summary: |
-        returns one or more latest version products that are contained or referenced by the collection specified by identifier. See identifier for details on how it determines what is returned.
+        returns the latest version of the products that belong to the collection specified by the identifier. See identifier for details on how it determines what is returned.
       operationId: products-of-a-collection-latest
       responses:
         '200':
@@ -334,7 +334,7 @@ paths:
       tags:
         - collection's products
       summary:  |
-        returns one or more products that are contained or referenced by the collection specified by identifier. See identifier for details on how it determines what is returned.
+        returns all available versions of the products that belong to the collection specified by the identifier. See identifier for details on how it determines what is returned.
       operationId: products-of-a-collection-all
       responses:
         '200':
@@ -452,7 +452,7 @@ paths:
       tags:
         - bundle's collections
       summary: |
-        returns one or more latest version collections that are contained or referenced by the bundle specified by identifier. See identifier for details on how it determines what is returned.
+        returns the latest version of the collections that belong to the bundle specified by the identifier. See identifier for details on how it determines what is returned.
       operationId: collections-of-a-bundle
       responses:
         '200':
@@ -477,7 +477,7 @@ paths:
       tags:
         - bundle's collections
       summary: |
-        returns one or more latest version collections that are contained or referenced by the bundle specified by identifier. See identifier for details on how it determines what is returned.
+        returns the latest version of the collections that belong to the bundle specified by the identifier. See identifier for details on how it determines what is returned.
       operationId: collections-of-a-bundle-latest
       responses:
         '200':
@@ -502,7 +502,7 @@ paths:
       tags:
         - bundle's collections
       summary: |
-        returns one or more collections that are contained or referenced by the bundle specified by identifier. See identifier for details on how it determines what is returned.
+        returns all available versions of the collections that belong to the bundle specified by identifier. See identifier for details on how it determines what is returned.
       operationId: collections-of-a-bundle-all
       responses:
         '200':
@@ -527,7 +527,7 @@ paths:
       tags:
         - bundle's products
       summary: |
-        returns one or more latest version products that are contained or referenced by the bundle specified by identifier. See identifier for details on how it determines what is returned.
+        returns the latest version of the observational products that belong to the bundle specified by the identifier. See identifier for details on how it determines what is returned.
       operationId: products-of-a-bundle
       responses:
         '200':
@@ -1089,9 +1089,7 @@ components:
               ops:mime_type:
                 type: string
         ops:Tracking_Meta:
-          type: array
-          items:
-            type: object
-            properties:
-              ops:archive_status:
-                type: string
+          type: object
+          properties:
+            ops:archive_status:
+              type: string
