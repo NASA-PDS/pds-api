@@ -361,7 +361,7 @@ Returns:
 
 .. code-block:: json
 
- {
+   {
     "summary": {
         "q": "",
         "hits": 17,
@@ -385,7 +385,7 @@ Returns:
         },
         "..."
     ]
-}
+   }
 
 
 text/csv
