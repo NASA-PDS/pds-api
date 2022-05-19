@@ -43,7 +43,7 @@ Specification standard
 
 The API complies with open api 3.0.
 
-Restful principles
+Restful Principles
 ------------------
 
 Resources
@@ -67,7 +67,7 @@ Future iterations of the API will transform it to be an `idempotent
 REST API <https://restfulapi.net/idempotent-rest-apis/>`_, utilizing
 GET, PUT, DELETE, HEAD, OPTIONS and TRACE HTTP methods.
 
-Resource representation
+Resource Representation
 .........................
 
 When a HTTP request verb (e.g. GET, POST, etc.) is applied to a resource
@@ -93,7 +93,7 @@ A response with this format is fine:
     }
 
 
-Other conventions
+Other Conventions
 -----------------
 
 Beyond the OpenAPI standard, there are multiple options regarding

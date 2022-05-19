@@ -2,7 +2,12 @@ PDS Search API Queries
 =========================================
 
 .. Warning::
-  Since our servers are not populated with data yet, the following URLs might return empty results or 404 (not found) errors.
+   Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_ for assistance.
+
+.. toctree::
+   :maxdepth: 2
+
+   /search-api-user-guide/endpoints
 
 
 Endpoints
@@ -17,18 +22,19 @@ The **base URL** of the PDS Search API, for all the PDS nodes, is:
 
     https://pds.nasa.gov/api/search/|search_user_guide_api_version|/
 
-For specific discipline node search, specific services are published, they only give access to products of one node, for example:
+For specific discipline node search, there are node-specific endpoints available giving access to products of one node, for example:
 
 .. code-block::
    :substitutions:
 
     https://pds.nasa.gov/api/search-geo/|search_user_guide_api_version|/
 
-The node codes are:
+Where ``geo`` is the **Node ID**
 
+The **Node IDs** are:
 
 =============  ========================================
-Node Code      Node Name
+Node ID      Node Name
 =============  ========================================
 sbnumd         Small Bodies, Comets
 sbnpsi         Small Bodies, Asteroids/Dust
@@ -42,13 +48,13 @@ en             Engineering
 
 The main use cases, to search, crawl products or resolve a product identifier are given in the following sections.
 
-Search products
+Search Products
 ----------------
 
-Request example
+Request Example
 ~~~~~~~~~~~~~~~~~~~~
 
-Search for the 10 first collections which processing level is "Raw":
+Search for the 10 latest collections which processing level is "Raw":
 
 .. code-block:: bash
    :substitutions:
@@ -56,11 +62,8 @@ Search for the 10 first collections which processing level is "Raw":
    curl --location --request GET 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections?limit=10&q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
 
-
-
 Request Template
 ~~~~~~~~~~~~~~~~~~
-
 
 The requests template is a follow:
 
@@ -75,7 +78,7 @@ Where `product_class` is one of:
 * **collections**: search among products which class is product_collection
 * **bundles**: search among products which class is product_bundle
 
-Query detailed syntax
+Query Detailed Syntax
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Query Parameters
@@ -168,7 +171,9 @@ For example:
     pds:Science_Facets.pds:discipline_name
     pds:Investigation_Area.pds:type
 
-**NOT IMPLEMENTED:** In the event that the {parent\_class}.{attribute} combination does
+**NOT IMPLEMENTED*
+
+In the event that the {parent\_class}.{attribute} combination does
 sufficiently guarantee uniqueness or sufficiency of search when a class
 is inherited by multiple classes, additional ancestor classes should be
 prepended to the query parameter until sufficient uniqueness is
@@ -179,7 +184,9 @@ attained:
 If the query parameter grows beyond 3 ancestor classes, a :ref:`custom
 query parameter <Custom Query Parameters>` should be considered.
 
-**NOT IMPLEMENTED:** In the event that multiple attributes are to be grouped together for
+**NOT IMPLEMENTED**
+
+In the event that multiple attributes are to be grouped together for
 search, the parent class should be used as the query parameter:
 
 {ancestor\_class}.{parent\_class}
@@ -207,7 +214,7 @@ Some reasons for custom query parameters:
 -   Support common search or PDS4 terminology (e.g. target\_name, lidvid)
 
 
-Resolve a product identifier
+Resolve A Product Identifier
 -----------------------------
 
 Default Resolution
@@ -228,10 +235,10 @@ For example
    curl --location --request GET 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' --header 'Accept: application/json'
 
 
-Latest or All Versions
-~~~~~~~~~~~~~~~~~~~~~~~
+Search for Latest vs. All Versions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Latest version
+Latest Version
 ................
 
 By default, when the identifier is a lid (without a version, for example urn:nasa:pds:insight_rad) only the latest description of the product is returned.
@@ -265,8 +272,8 @@ If you want to retrieve **all** the versions of a product, the request is:
 The `all` and `latest` suffixes apply also to all the crawling end-points which description follows.
 
 
-Crawl the products
--------------------
+Crawl a Data Set Hierarchy
+--------------------------
 
 For a given product with identifier `lidvid1`, you can browse its parent products or children.
 

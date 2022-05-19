@@ -42,32 +42,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="endpoints.html">PDS Search API Queries</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PDS Search API Response Formats</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#content-negociation">Content Negociation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#application-json">application/json</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#application-xml">application/xml</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#application-vnd-nasa-pds-pds4-json">application/vnd.nasa.pds.pds4+json</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#application-vnd-nasa-pds-pds4-xml">application/vnd.nasa.pds.pds4+xml</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#application-kvp-xml">application/kvp+xml</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#text-csv">text/csv</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#open-data">Open Data</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#missing-values">Missing values</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials/Cookbooks</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-SNAPSHOT-redoc.html">PDS Search API Full Reference</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../implementations.html">API Implementations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools and Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowlegements.html"><strong>Acknowledgements</strong></a></li>
 </ul>
@@ -89,6 +68,7 @@
           <li><a href="../search-api-user-guide.html">PDS Search API User Guide</a> &raquo;</li>
       <li>PDS Search API Response Formats</li>
       <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nasa-pds/pds-api/blob/main/docs/source/search-api-user-guide/response_formats.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -98,8 +78,18 @@
              
   <section id="pds-search-api-response-formats">
 <h1>PDS Search API Response Formats<a class="headerlink" href="#pds-search-api-response-formats" title="Permalink to this headline"></a></h1>
-<section id="content-negociation">
-<h2>Content Negociation<a class="headerlink" href="#content-negociation" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PDS Search API Response Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#content-negotiation">Content Negotiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#missing-values">Missing values</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="content-negotiation">
+<h2>Content Negotiation<a class="headerlink" href="#content-negotiation" title="Permalink to this headline"></a></h2>
 <p>A simple style of <a class="reference external" href="https://restfulapi.net/content-negotiation/">content negotiation</a> is used to
 match the format requested by the client and the capability of the
 server.</p>
@@ -442,32 +432,32 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 </div>
 <p>Returns:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">   </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">       </span><span class="nt">&quot;q&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="nt">&quot;hits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="nt">&quot;took&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="nt">&quot;sort&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
-<span class="w">       </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">           </span><span class="s2">&quot;lidvid&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">           </span><span class="s2">&quot;title&quot;</span><span class="w"></span>
-<span class="w">       </span><span class="p">]</span><span class="w"></span>
-<span class="w">   </span><span class="p">},</span><span class="w"></span>
-<span class="w">   </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">       </span><span class="p">{</span><span class="w"></span>
-<span class="w">           </span><span class="nt">&quot;lidvid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:nasa:pds:insight_rad:data_derived::7.0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">           </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InSight RAD Derived Data Collection&quot;</span><span class="w"></span>
-<span class="w">       </span><span class="p">},</span><span class="w"></span>
-<span class="w">       </span><span class="p">{</span><span class="w"></span>
-<span class="w">           </span><span class="nt">&quot;lidvid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:nasa:pds:insight_rad:data_raw::8.0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">           </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InSight RAD Raw Data Collection&quot;</span><span class="w"></span>
-<span class="w">       </span><span class="p">},</span><span class="w"></span>
-<span class="w">       </span><span class="s2">&quot;...&quot;</span><span class="w"></span>
-<span class="w">   </span><span class="p">]</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="nt">&quot;q&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nt">&quot;hits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nt">&quot;took&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nt">&quot;sort&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">     </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;lidvid&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;title&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="p">]</span><span class="w"></span>
+<span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;lidvid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:nasa:pds:insight_rad:data_derived::7.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InSight RAD Derived Data Collection&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="p">},</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;lidvid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:nasa:pds:insight_rad:data_raw::8.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InSight RAD Raw Data Collection&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="p">},</span><span class="w"></span>
+<span class="w">     </span><span class="s2">&quot;...&quot;</span><span class="w"></span>
+<span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>}</p>
 </section>
 <section id="text-csv">
 <h3>text/csv<a class="headerlink" href="#text-csv" title="Permalink to this headline"></a></h3>

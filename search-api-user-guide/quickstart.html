@@ -42,23 +42,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Quickstart</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#call-the-pds-search-api-with-curl">Call the PDS Search API with curl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quickstart-guide-to-call-the-pds-search-api-with-python">Quickstart Guide to Call the PDS Search API with Python</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="endpoints.html">PDS Search API Queries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="response_formats.html">PDS Search API Response Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials/Cookbooks</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-SNAPSHOT-redoc.html">PDS Search API Full Reference</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../implementations.html">API Implementations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools and Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowlegements.html"><strong>Acknowledgements</strong></a></li>
 </ul>
@@ -80,6 +68,7 @@
           <li><a href="../search-api-user-guide.html">PDS Search API User Guide</a> &raquo;</li>
       <li>Quickstart</li>
       <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nasa-pds/pds-api/blob/main/docs/source/search-api-user-guide/quickstart.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -90,28 +79,60 @@
   <section id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline"></a></h1>
 <p>The following section provides a quickstart guide to try out the PDS Search API.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the <a class="reference external" href="mailto:pds-operator&#37;&#52;&#48;jpl&#46;nasa&#46;gov">PDS Help Desk</a> for assistance.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#search-with-curl">Search With curl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#search-with-python">Search with Python</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>curl command line tool (curl is available in many operating systems by default. If not, you can get curl from <a class="reference external" href="https://curl.se/">https://curl.se/</a> or using a package management tool specific to your operating system).</p></li>
 </ul>
 </section>
-<section id="call-the-pds-search-api-with-curl">
-<h2>Call the PDS Search API with curl<a class="headerlink" href="#call-the-pds-search-api-with-curl" title="Permalink to this headline"></a></h2>
+<section id="search-with-curl">
+<h2>Search With curl<a class="headerlink" href="#search-with-curl" title="Permalink to this headline"></a></h2>
 <ol class="arabic simple">
-<li><p>Open a terminal.</p></li>
-<li><p>Get 5 products description from the API:</p></li>
+<li><p>Open a Terminal window (or your favorite command-line application).</p></li>
+<li><p>Get 5 products’ metadata from the API in JSON format:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> curl -X GET --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="s1">&#39;https://pds.nasa.gov/api/search/0.4/products?limit=5&#39;</span>
 </pre></div>
 </div>
+<ol class="arabic simple" start="3">
+<li><p>Get 5 products’ metadata from the API in XML format:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> curl -X GET --header <span class="s1">&#39;Accept: application/xml&#39;</span> <span class="s1">&#39;https://pds.nasa.gov/api/search/0.4/products?limit=5&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>To view this in a more readable way, you can pipe the output to a file, or pretty print (on Mac/Unix):</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Output JSON to a File</span>
+curl ... &gt; my_first_query.json
+
+<span class="c1"># Pretty print JSON</span>
+curl ... <span class="p">|</span> json_pp &gt; my_first_query.json
+
+<span class="c1"># Output XML to a File</span>
+curl ... &gt; my_first_query.xml
+</pre></div>
+</div>
 <p>More details on how to use the API can be found in the <a class="reference internal" href="endpoints.html"><span class="doc">endpoints</span></a> .</p>
 </section>
-<section id="quickstart-guide-to-call-the-pds-search-api-with-python">
-<h2>Quickstart Guide to Call the PDS Search API with Python<a class="headerlink" href="#quickstart-guide-to-call-the-pds-search-api-with-python" title="Permalink to this headline"></a></h2>
-<p>Alternatively, it is possible to use other tools such as Postman and programming languages such as Python to call the
-PDS Search API.</p>
-<p>To use the <strong>PDS API Python Client</strong>, you can read this other <a class="reference external" href="https://nasa-pds.github.io/pds-api-client/quickstart">quickstart</a></p>
+<section id="search-with-python">
+<h2>Search with Python<a class="headerlink" href="#search-with-python" title="Permalink to this headline"></a></h2>
+<p>Alternatively, it is possible to use other tools such as Postman and programming languages such as Python to call the PDS Search API.</p>
+<p>To use the <strong>PDS API Python Client</strong>, you can read this other <a class="reference external" href="https://nasa-pds.github.io/pds-api-client/quickstart">Quickstart</a></p>
 </section>
 </section>
 

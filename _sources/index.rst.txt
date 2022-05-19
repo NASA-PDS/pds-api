@@ -15,12 +15,12 @@ These pages document how to access these APIs.
 This web site is also available as a `PDS document <./_static/pdsapis.pdf>`_
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    overview
    search-api-user-guide
    specifications
-   implementations
+   tools
    support
    acknowlegements
 

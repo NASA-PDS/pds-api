@@ -42,38 +42,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PDS Search API Queries</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#endpoints">Endpoints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#search-products">Search products</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#request-example">Request example</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#request-template">Request Template</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#query-detailed-syntax">Query detailed syntax</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#resolve-a-product-identifier">Resolve a product identifier</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#default-resolution">Default Resolution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#latest-or-all-versions">Latest or All Versions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#crawl-the-products">Crawl the products</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#if-the-product-lidvid1-is-a-bundle">If the Product ‘lidvid1’ Is a Bundle</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#if-the-product-lidvid1-is-a-collection">If the Product ‘lidvid1’ Is a Collection</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#if-the-product-lidvid1-is-an-observational-product">If the Product ‘lidvid1’ Is an Observational Product</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="response_formats.html">PDS Search API Response Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials/Cookbooks</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-SNAPSHOT-redoc.html">PDS Search API Full Reference</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../implementations.html">API Implementations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools and Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acknowlegements.html"><strong>Acknowledgements</strong></a></li>
 </ul>
@@ -95,6 +68,7 @@
           <li><a href="../search-api-user-guide.html">PDS Search API User Guide</a> &raquo;</li>
       <li>PDS Search API Queries</li>
       <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nasa-pds/pds-api/blob/main/docs/source/search-api-user-guide/endpoints.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -106,7 +80,18 @@
 <h1>PDS Search API Queries<a class="headerlink" href="#pds-search-api-queries" title="Permalink to this headline"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Since our servers are not populated with data yet, the following URLs might return empty results or 404 (not found) errors.</p>
+<p>Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the <a class="reference external" href="mailto:pds-operator&#37;&#52;&#48;jpl&#46;nasa&#46;gov">PDS Help Desk</a> for assistance.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PDS Search API Queries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#endpoints">Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#search-products">Search Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resolve-a-product-identifier">Resolve A Product Identifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#crawl-a-data-set-hierarchy">Crawl a Data Set Hierarchy</a></li>
+</ul>
+</li>
+</ul>
 </div>
 <section id="endpoints">
 <h2>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline"></a></h2>
@@ -115,55 +100,19 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">0.4</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>For specific discipline node search, specific services are published, they only give access to products of one node, for example:</p>
+<p>For specific discipline node search, there are node-specific endpoints available giving access to products of one node, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">-</span><span class="n">geo</span><span class="o">/</span><span class="mf">0.4</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>The node codes are:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 75%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Node Code</p></th>
-<th class="head"><p>Node Name</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>sbnumd</p></td>
-<td><p>Small Bodies, Comets</p></td>
-</tr>
-<tr class="row-odd"><td><p>sbnpsi</p></td>
-<td><p>Small Bodies, Asteroids/Dust</p></td>
-</tr>
-<tr class="row-even"><td><p>geo</p></td>
-<td><p>Geosciences</p></td>
-</tr>
-<tr class="row-odd"><td><p>atm</p></td>
-<td><p>Atmospheres</p></td>
-</tr>
-<tr class="row-even"><td><p>naif</p></td>
-<td><p>Navigation and Ancillary Information</p></td>
-</tr>
-<tr class="row-odd"><td><p>rms</p></td>
-<td><p>Ring-Moon Systems</p></td>
-</tr>
-<tr class="row-even"><td><p>img</p></td>
-<td><p>Imaging</p></td>
-</tr>
-<tr class="row-odd"><td><p>en</p></td>
-<td><p>Engineering</p></td>
-</tr>
-</tbody>
-</table>
+<p>Where <code class="docutils literal notranslate"><span class="pre">geo</span></code> is the <strong>Node ID</strong></p>
+<p>The <strong>Node IDs</strong> are:</p>
 <p>The main use cases, to search, crawl products or resolve a product identifier are given in the following sections.</p>
 </section>
 <section id="search-products">
-<h2>Search products<a class="headerlink" href="#search-products" title="Permalink to this headline"></a></h2>
+<h2>Search Products<a class="headerlink" href="#search-products" title="Permalink to this headline"></a></h2>
 <section id="request-example">
-<h3>Request example<a class="headerlink" href="#request-example" title="Permalink to this headline"></a></h3>
-<p>Search for the 10 first collections which processing level is “Raw”:</p>
+<h3>Request Example<a class="headerlink" href="#request-example" title="Permalink to this headline"></a></h3>
+<p>Search for the 10 latest collections which processing level is “Raw”:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/0.4/collections?limit=10&amp;q=(pds:Primary_Result_Summary.pds:processing_level eq &quot;Raw&quot;)&#39;</span>
 </pre></div>
 </div>
@@ -182,7 +131,7 @@
 </ul>
 </section>
 <section id="query-detailed-syntax">
-<h3>Query detailed syntax<a class="headerlink" href="#query-detailed-syntax" title="Permalink to this headline"></a></h3>
+<h3>Query Detailed Syntax<a class="headerlink" href="#query-detailed-syntax" title="Permalink to this headline"></a></h3>
 <section id="query-parameters">
 <h4>Query Parameters<a class="headerlink" href="#query-parameters" title="Permalink to this headline"></a></h4>
 <p>The query parameters are:</p>
@@ -336,7 +285,8 @@ class in <em>all lowercase</em>:</p>
 <span class="n">pds</span><span class="p">:</span><span class="n">Investigation_Area</span><span class="o">.</span><span class="n">pds</span><span class="p">:</span><span class="nb">type</span>
 </pre></div>
 </div>
-<p><strong>NOT IMPLEMENTED:</strong> In the event that the {parent_class}.{attribute} combination does
+<p><a href="#id4"><span class="problematic" id="id5">**</span></a>NOT IMPLEMENTED*</p>
+<p>In the event that the {parent_class}.{attribute} combination does
 sufficiently guarantee uniqueness or sufficiency of search when a class
 is inherited by multiple classes, additional ancestor classes should be
 prepended to the query parameter until sufficient uniqueness is
@@ -344,7 +294,8 @@ attained:</p>
 <p>{ns:ancestor_class}.{ns:parent_class}.{ns:attribute}</p>
 <p>If the query parameter grows beyond 3 ancestor classes, a <a class="reference internal" href="#custom-query-parameters"><span class="std std-ref">custom
 query parameter</span></a> should be considered.</p>
-<p><strong>NOT IMPLEMENTED:</strong> In the event that multiple attributes are to be grouped together for
+<p><strong>NOT IMPLEMENTED</strong></p>
+<p>In the event that multiple attributes are to be grouped together for
 search, the parent class should be used as the query parameter:</p>
 <p>{ancestor_class}.{parent_class}</p>
 </section>
@@ -369,7 +320,7 @@ those updates to Engineering Node.</p>
 </section>
 </section>
 <section id="resolve-a-product-identifier">
-<h2>Resolve a product identifier<a class="headerlink" href="#resolve-a-product-identifier" title="Permalink to this headline"></a></h2>
+<h2>Resolve A Product Identifier<a class="headerlink" href="#resolve-a-product-identifier" title="Permalink to this headline"></a></h2>
 <section id="default-resolution">
 <h3>Default Resolution<a class="headerlink" href="#default-resolution" title="Permalink to this headline"></a></h3>
 <p>If you know the lid (for example <a class="reference external" href="urn:nasa:pds:insight_rad">urn:nasa:pds:insight_rad</a>) or lidvid (for example <a class="reference external" href="urn:nasa:pds:insight_rad::2.1">urn:nasa:pds:insight_rad::2.1</a>) identifier of a product, you can retrieve its description, whereever it is managed in the PDS system, with the following request:</p>
@@ -381,10 +332,10 @@ those updates to Engineering Node.</p>
 </pre></div>
 </div>
 </section>
-<section id="latest-or-all-versions">
-<h3>Latest or All Versions<a class="headerlink" href="#latest-or-all-versions" title="Permalink to this headline"></a></h3>
+<section id="search-for-latest-vs-all-versions">
+<h3>Search for Latest vs. All Versions<a class="headerlink" href="#search-for-latest-vs-all-versions" title="Permalink to this headline"></a></h3>
 <section id="latest-version">
-<h4>Latest version<a class="headerlink" href="#latest-version" title="Permalink to this headline"></a></h4>
+<h4>Latest Version<a class="headerlink" href="#latest-version" title="Permalink to this headline"></a></h4>
 <p>By default, when the identifier is a lid (without a version, for example <a class="reference external" href="urn:nasa:pds:insight_rad">urn:nasa:pds:insight_rad</a>) only the latest description of the product is returned.</p>
 <p>The request:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/0.4/products/<span class="o">{</span>lid<span class="o">}</span>
@@ -405,8 +356,8 @@ those updates to Engineering Node.</p>
 </section>
 </section>
 </section>
-<section id="crawl-the-products">
-<h2>Crawl the products<a class="headerlink" href="#crawl-the-products" title="Permalink to this headline"></a></h2>
+<section id="crawl-a-data-set-hierarchy">
+<h2>Crawl a Data Set Hierarchy<a class="headerlink" href="#crawl-a-data-set-hierarchy" title="Permalink to this headline"></a></h2>
 <p>For a given product with identifier <cite>lidvid1</cite>, you can browse its parent products or children.</p>
 <section id="if-the-product-lidvid1-is-a-bundle">
 <h3>If the Product ‘lidvid1’ Is a Bundle<a class="headerlink" href="#if-the-product-lidvid1-is-a-bundle" title="Permalink to this headline"></a></h3>

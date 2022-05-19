@@ -49,11 +49,11 @@
 <li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/endpoints.html">PDS Search API Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/response_formats.html">PDS Search API Response Formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/tutorials.html">Tutorials/Cookbooks</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-SNAPSHOT-redoc.html">PDS Search API Full Reference</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-redoc.html">PDS Search API Full Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implementations.html">API Implementations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools and Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowlegements.html"><strong>Acknowledgements</strong></a></li>
 </ul>
@@ -74,6 +74,7 @@
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
       <li>PDS Search API User Guide</li>
       <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nasa-pds/pds-api/blob/main/docs/source/search-api-user-guide.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -87,7 +88,11 @@
 <p class="admonition-title">Note</p>
 <p>The current guide is based on the PDS Search API version 0.4</p>
 </div>
-<p>The PDS Search API provides end-points:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the <a class="reference external" href="mailto:pds-operator&#37;&#52;&#48;jpl&#46;nasa&#46;gov">PDS Help Desk</a> for assistance.</p>
+</div>
+<p>The PDS Search API provides endpoints:</p>
 <ul class="simple">
 <li><p>to <strong>search</strong> for bundles, collections and any PDS products with advanced search queries.</p></li>
 <li><p>to <strong>browse</strong> the archive hierarchically downward (e.g. collection’s products) or upward (e.g. bundles containing products),</p></li>
@@ -96,11 +101,32 @@
 <p>These pages provide a user guide for the PDS Search API.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/quickstart.html">Quickstart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/endpoints.html">PDS Search API Queries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/response_formats.html">PDS Search API Response Formats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/tutorials.html">Tutorials/Cookbooks</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-SNAPSHOT-redoc.html">PDS Search API Full Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/quickstart.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/quickstart.html#search-with-curl">Search With curl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/quickstart.html#search-with-python">Search with Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/endpoints.html">PDS Search API Queries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/endpoints.html#endpoints">Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/endpoints.html#search-products">Search Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/endpoints.html#resolve-a-product-identifier">Resolve A Product Identifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/endpoints.html#crawl-a-data-set-hierarchy">Crawl a Data Set Hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/response_formats.html">PDS Search API Response Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/response_formats.html#content-negotiation">Content Negotiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/response_formats.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/response_formats.html#missing-values">Missing values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide/tutorials.html">Tutorials/Cookbooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/tutorials.html#sample-jupyterlab-notebooks-python">Sample JupyterLab Notebooks (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/tutorials.html#web-search-interface-tutorial-html-javascript">Web Search Interface Tutorial (HTML/Javascript)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/tutorials.html#search-examples">Search Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-redoc.html">PDS Search API Full Reference</a></li>
 </ul>
 </div>
 </section>

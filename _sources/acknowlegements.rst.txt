@@ -1,7 +1,7 @@
 **Acknowledgements**
 ====================
 
-The PDS web API is designed by a working group involving all the nodes of the Planetary Data System.
+The PDS Search API is designed by a working group involving all the nodes of the Planetary Data System.
 
 **PDS API Working Group**
 -------------------------
