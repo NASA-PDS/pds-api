@@ -34,7 +34,7 @@ Where ``geo`` is the **Node ID**
 The **Node IDs** are:
 
 =============  ========================================
-Node ID      Node Name
+Node ID        Node Name
 =============  ========================================
 sbnumd         Small Bodies, Comets
 sbnpsi         Small Bodies, Asteroids/Dust
