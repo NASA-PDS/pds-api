@@ -1,0 +1,98 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java#apache-maven-with-a-settings-path
+---
+
+name: Build Sphinx Docs
+
+on:
+   push:
+     branches:
+       - 'main'
+     paths:
+       - 'docs/**'
+
+jobs:
+  build: # job 1
+    name: 'Build Website Docs'
+    runs-on: ubuntu-latest
+    environment: github-pages
+    if: github.actor != 'pdsen-ci'
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+
+      - name: Install dependencies
+        run: |
+          pip install -e '.[dev]'
+
+      - name: Build the Docs
+        id: make
+        run: |
+          sphinx-build -b html docs/source docs/build
+
+      - name: Commit Doc Updates
+        run: |
+          git config --local user.email "pdsen-ci@jpl.nasa.gov"
+          git config --local user.name "PDSEN CI Bot"
+          git add -A .
+          git commit --allow-empty -m "Auto-generated docs by PDSEN CI Bot"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+          branch: gh-pages
+          force: true
+
+  pdfgen: # job 1
+    name: 'Build PDF'
+    runs-on: ubuntu-latest
+    environment: main
+    if: github.actor != 'pdsen-ci'
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+
+      - name: Install dependencies
+        run: |
+          # Install Sphinx
+          pip install -r docs/requirements.txt
+
+          # Install dependencies for PDF generation
+          sudo apt install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra latexmk
+
+      - name: Make Sphinx
+        id: make
+        run: |
+          cd docs
+
+          make latexpdf
+          cp build/latex/*.pdf .
+
+      - name: Push LDDs to Github
+        run: |
+          git config --local user.email "pdsen-ci@jpl.nasa.gov"
+          git config --local user.name "PDSEN CI Bot"
+          git add -A ./*.pdf
+          git commit --allow-empty -m "Auto-gen PDF by PDSEN CI Bot"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+          branch: main
+          force: true
