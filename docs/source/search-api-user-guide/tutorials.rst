@@ -24,4 +24,4 @@ Here are some examples of Search API Recipes:
    cookbook
 
 
-**Looking for more recipes? Or have some useful recipes of your own? Checkout the `PDS API Discussion Board <https://github.com/NASA-PDS/pds-api/discussions>`_ or contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_**
+**Looking for more recipes? Or have some useful recipes of your own?** Checkout the `PDS API Discussion Board <https://github.com/NASA-PDS/pds-api/discussions>`_ or contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_

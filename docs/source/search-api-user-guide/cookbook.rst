@@ -167,4 +167,4 @@ You will get a JSON response of the PDS products (any class of product, for exam
 You can get the result in different format using content negociation with the Accept header parameter.
 
 
-**Looking for more recipes? Or have some useful recipes of your own? Checkout the `PDS API Discussion Board <https://github.com/NASA-PDS/pds-api/discussions>`_ or contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_**
+**Looking for more recipes? Or have some useful recipes of your own?** Checkout the `PDS API Discussion Board <https://github.com/NASA-PDS/pds-api/discussions>`_ or contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_
