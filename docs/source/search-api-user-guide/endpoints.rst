@@ -1,5 +1,5 @@
 PDS Search API Queries
-=========================================
+======================
 
 .. Warning::
    Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_ for assistance.
@@ -95,10 +95,8 @@ The query parameters are:
 
 `q` and `fields` use PDS4 `Fields Dot Notation`_
 
-.. _query string syntax:
-
 Query String Syntax
-.....................
+...................
 
 An example of query syntax (`q` query parameter) is:
 
@@ -121,7 +119,7 @@ The query syntax follows the rules:
 
 * **{field}** follows the `Fields Dot Notation`_ . The available fields can be found in responses `summary` object, `properties` attribute.
 * **{comparison operator}** are eq, ne, gt, lt, ge, le
-* **{literal value}** is either a string between " (double quotes) or a numerical value (float or integer). Wildcards (*, ?) are supported in strings.
+* **{literal value}** is either a string between ``"`` (double quotes) or a numerical value (float or integer). Wildcards (\*, ?) are supported in strings.
 
 ======================= =========================== ============
  **Operator**            **Description**            **Example**
@@ -166,7 +164,7 @@ For example:
     pds:Science_Facets.pds:discipline_name
     pds:Investigation_Area.pds:type
 
-**NOT IMPLEMENTED*
+**NOT IMPLEMENTED**
 
 In the event that the {parent\_class}.{attribute} combination does
 sufficiently guarantee uniqueness or sufficiency of search when a class
@@ -231,7 +229,7 @@ For example
 
 
 Search for Latest vs. All Versions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Latest Version
 ................

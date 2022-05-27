@@ -98,13 +98,13 @@ See the documentation on `Citing PDS Data <https://pds.nasa.gov/datastandards/ci
 
 
 How to Find the DOI associated with an Observational Product
-----------------------------------------
+------------------------------------------------------------
 
-We assume you know the identifier of the product you are working with. In our example it is: `urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0
+We assume you know the identifier of the product you are working with. In our example it is: ``urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0``
 
 
-1. Search for a Product's Collection DOI
-****************************************
+Search for a Products Collection DOI
+************************************
 
 Run the following request to get the DOI associated with the product's collection:
 
@@ -138,8 +138,8 @@ You will get the following result:
 
 Note that you might not find any DOI at the collection level, in this case you can try to get the DOI from the bundle.
 
-2. Search for a Product's Bundle DOI
-************************************
+Search for a Product's Bundle DOI
+*********************************
 
 To get the DOI associated with the bundle the observational product `urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0` belongs to:
 
@@ -167,4 +167,4 @@ You will get a JSON response of the PDS products (any class of product, for exam
 You can get the result in different format using content negociation with the Accept header parameter.
 
 
-**Looking for more recipes? Or have some useful recipes of your own? Checkout the `PDS API Discussion Board <https://github.com/NASA-PDS/pds-api/discussions> or contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_
+**Looking for more recipes? Or have some useful recipes of your own? Checkout the `PDS API Discussion Board <https://github.com/NASA-PDS/pds-api/discussions>`_ or contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_**
