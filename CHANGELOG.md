@@ -1,28 +1,12 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-05-27)
-
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
-
-**Requirements:**
-
-- As a user, I want to have a PDS Search API user guide [\#169](https://github.com/NASA-PDS/pds-api/issues/169)
-
-**Improvements:**
-
-- Create a cookbook page on the content negotiation for the PDS Search API [\#183](https://github.com/NASA-PDS/pds-api/issues/183)
-- Create user guide for the search api [\#172](https://github.com/NASA-PDS/pds-api/issues/172)
-
-**Other closed issues:**
-
-- Update for \*/{identifier}/bundles and \*/{identifier}/collections endpoints documentation [\#146](https://github.com/NASA-PDS/pds-api/issues/146)
-
-## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-05-19)
+## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-05-27)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
 
 **Requirements:**
 
+- As a user, I want to have a PDS Search API user guide [\#169](https://github.com/NASA-PDS/pds-api/issues/169)
 - As a user, I want to receive error messages when an invalid request is submitted to the API [\#153](https://github.com/NASA-PDS/pds-api/issues/153)
 - As a user, I want the API response media types to be compliant with RFC 6838 [\#152](https://github.com/NASA-PDS/pds-api/issues/152)
 - As a user, I want to see API stable release specifications [\#139](https://github.com/NASA-PDS/pds-api/issues/139)
@@ -38,6 +22,8 @@
 
 **Improvements:**
 
+- Create a cookbook page on the content negotiation for the PDS Search API [\#183](https://github.com/NASA-PDS/pds-api/issues/183)
+- Create user guide for the search api [\#172](https://github.com/NASA-PDS/pds-api/issues/172)
 - Refactor `meta` section of pds4+json and pds4+xml to use ops namespace [\#154](https://github.com/NASA-PDS/pds-api/issues/154)
 - Remove the x-total-count header from the API specification [\#145](https://github.com/NASA-PDS/pds-api/issues/145)
 - flesh out the registry repository [\#142](https://github.com/NASA-PDS/pds-api/issues/142)
@@ -66,6 +52,7 @@
 - Disable automated github pages deployment with v1.0 [\#156](https://github.com/NASA-PDS/pds-api/issues/156)
 - Update fields parameter definition to note that it does not apply to pds4+json and pds4+xml response formats [\#151](https://github.com/NASA-PDS/pds-api/issues/151)
 - Update the swagger web tool from the specification [\#150](https://github.com/NASA-PDS/pds-api/issues/150)
+- Update for \*/{identifier}/bundles and \*/{identifier}/collections endpoints documentation [\#146](https://github.com/NASA-PDS/pds-api/issues/146)
 - Update API documentation to have consistent descriptions for the query parameter [\#143](https://github.com/NASA-PDS/pds-api/issues/143)
 - create a super registry+api repository [\#123](https://github.com/NASA-PDS/pds-api/issues/123)
 - analysis of current workflow, ideas for improvment [\#122](https://github.com/NASA-PDS/pds-api/issues/122)
