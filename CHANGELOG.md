@@ -1,19 +1,23 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-05-19)
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-05-27)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
 
+**Requirements:**
+
+- As a user, I want to have a PDS Search API user guide [\#169](https://github.com/NASA-PDS/pds-api/issues/169)
+
 **Improvements:**
 
-- Improve linkages from Registry App Docs to API Docs [\#158](https://github.com/NASA-PDS/pds-api/issues/158)
+- Create a cookbook page on the content negotiation for the PDS Search API [\#183](https://github.com/NASA-PDS/pds-api/issues/183)
+- Create user guide for the search api [\#172](https://github.com/NASA-PDS/pds-api/issues/172)
 
 **Other closed issues:**
 
-- Check for typos in OpenAPI spec [\#161](https://github.com/NASA-PDS/pds-api/issues/161)
-- document the server - specification - client [\#157](https://github.com/NASA-PDS/pds-api/issues/157)
+- Update for \*/{identifier}/bundles and \*/{identifier}/collections endpoints documentation [\#146](https://github.com/NASA-PDS/pds-api/issues/146)
 
-## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-04-19)
+## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-05-19)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
 
@@ -44,6 +48,7 @@
 - As an API client user, I want to consistently and robustly start local servers for development and testing [\#112](https://github.com/NASA-PDS/pds-api/issues/112)
 - Extend application/pds4+json support to all endpoints [\#110](https://github.com/NASA-PDS/pds-api/issues/110)
 - Update API endpoints to use `identifier` instead of `lidvid` [\#108](https://github.com/NASA-PDS/pds-api/issues/108)
+- Improve linkages from Registry App Docs to API Docs [\#158](https://github.com/NASA-PDS/pds-api/issues/158)
 
 **Defects:**
 
@@ -56,6 +61,8 @@
 **Other closed issues:**
 
 - Update Specifications documentation to only include latest with link to page with past versions [\#167](https://github.com/NASA-PDS/pds-api/issues/167)
+- Check for typos in OpenAPI spec [\#161](https://github.com/NASA-PDS/pds-api/issues/161)
+- document the server - specification - client [\#157](https://github.com/NASA-PDS/pds-api/issues/157)
 - Disable automated github pages deployment with v1.0 [\#156](https://github.com/NASA-PDS/pds-api/issues/156)
 - Update fields parameter definition to note that it does not apply to pds4+json and pds4+xml response formats [\#151](https://github.com/NASA-PDS/pds-api/issues/151)
 - Update the swagger web tool from the specification [\#150](https://github.com/NASA-PDS/pds-api/issues/150)
