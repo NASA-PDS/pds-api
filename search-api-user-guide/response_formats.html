@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PDS Search API Response Formats &mdash; PDS APIs B12.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -16,6 +16,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -42,9 +44,30 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoints.html">PDS Search API Queries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PDS Search API Response Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#content-negotiation">Content Negotiation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#application-json">application/json</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-xml">application/xml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-vnd-nasa-pds-pds4-json">application/vnd.nasa.pds.pds4+json</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-vnd-nasa-pds-pds4-xml">application/vnd.nasa.pds.pds4+xml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-kvp-xml">application/kvp+xml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#text-csv">text/csv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#open-data">Open Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#missing-values">Missing values</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials/Cookbooks</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-redoc.html">PDS Search API Full Reference</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools and Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
@@ -61,7 +84,7 @@
       </nav>
 
       <div class="wy-nav-content">
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
@@ -76,19 +99,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pds-search-api-response-formats">
+  <div class="section" id="pds-search-api-response-formats">
 <h1>PDS Search API Response Formats<a class="headerlink" href="#pds-search-api-response-formats" title="Permalink to this headline"></a></h1>
-<div class="toctree-wrapper compound">
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">PDS Search API Response Formats</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#content-negotiation">Content Negotiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#missing-values">Missing values</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<section id="content-negotiation">
+<div class="section" id="content-negotiation">
 <h2>Content Negotiation<a class="headerlink" href="#content-negotiation" title="Permalink to this headline"></a></h2>
 <p>A simple style of <a class="reference external" href="https://restfulapi.net/content-negotiation/">content negotiation</a> is used to
 match the format requested by the client and the capability of the
@@ -158,13 +171,13 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 </tbody>
 </table>
 <p><cite>application/vnd.nasa.pds.pds4+json</cite> and <cite>application/vnd.nasa.pds.pds4+xml</cite> have been chosen to comply with <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6838">RFC6838</a></p>
-</section>
-<section id="examples">
+</div>
+<div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
-<section id="application-json">
+<div class="section" id="application-json">
 <h3>application/json<a class="headerlink" href="#application-json" title="Permalink to this headline"></a></h3>
 <p>The request:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/0.4/products/urn:nasa:pds:insight_rad::2.1&#39;</span> --header <span class="s1">&#39;Accept: application/json&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/1.0/products/urn:nasa:pds:insight_rad::2.1&#39;</span> --header <span class="s1">&#39;Accept: application/json&#39;</span>
 </pre></div>
 </div>
 <p>Returns</p>
@@ -219,11 +232,11 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-<section id="application-xml">
+</div>
+<div class="section" id="application-xml">
 <h3>application/xml<a class="headerlink" href="#application-xml" title="Permalink to this headline"></a></h3>
 <p>The request:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/0.4/products/urn:nasa:pds:insight_rad::2.1&#39;</span> --header <span class="s1">&#39;Accept: application/xml&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/1.0/products/urn:nasa:pds:insight_rad::2.1&#39;</span> --header <span class="s1">&#39;Accept: application/xml&#39;</span>
 </pre></div>
 </div>
 <p>Returns:</p>
@@ -284,11 +297,11 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 <span class="nt">&lt;/PdsProduct&gt;</span>
 </pre></div>
 </div>
-</section>
-<section id="application-vnd-nasa-pds-pds4-json">
+</div>
+<div class="section" id="application-vnd-nasa-pds-pds4-json">
 <h3>application/vnd.nasa.pds.pds4+json<a class="headerlink" href="#application-vnd-nasa-pds-pds4-json" title="Permalink to this headline"></a></h3>
 <p>The request:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/0.4/products/urn:nasa:pds:insight_rad::2.1&#39;</span> --header <span class="s1">&#39;Accept: application/vnd.nasa.pds.pds4+json&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/1.0/products/urn:nasa:pds:insight_rad::2.1&#39;</span> --header <span class="s1">&#39;Accept: application/vnd.nasa.pds.pds4+json&#39;</span>
 </pre></div>
 </div>
 <p>Returns:</p>
@@ -356,11 +369,11 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 </pre></div>
 </div>
 <p><cite>pds4</cite> property contains a translation in JSON of the PDS4 XML Label.</p>
-</section>
-<section id="application-vnd-nasa-pds-pds4-xml">
+</div>
+<div class="section" id="application-vnd-nasa-pds-pds4-xml">
 <h3>application/vnd.nasa.pds.pds4+xml<a class="headerlink" href="#application-vnd-nasa-pds-pds4-xml" title="Permalink to this headline"></a></h3>
 <p>The request:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/0.4/products/urn:nasa:pds:insight_rad::2.1&#39;</span> --header <span class="s1">&#39;Accept: application/vnd.nasa.pds.pds4+xml&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/1.0/products/urn:nasa:pds:insight_rad::2.1&#39;</span> --header <span class="s1">&#39;Accept: application/vnd.nasa.pds.pds4+xml&#39;</span>
 </pre></div>
 </div>
 <p>Returns:</p>
@@ -422,12 +435,12 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 </pre></div>
 </div>
 <p>The tag <cite>pds_api:pds4</cite> contains the XML PDS4 label.</p>
-</section>
-<section id="application-kvp-xml">
+</div>
+<div class="section" id="application-kvp-xml">
 <h3>application/kvp+xml<a class="headerlink" href="#application-kvp-xml" title="Permalink to this headline"></a></h3>
 <p>This format is useful when one only need a few fields from the metadata.</p>
 <p>The request:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/0.4/products?limit=10&amp;fields=lidvid&amp;fields=title&#39;</span> --header <span class="s1">&#39;Accept: application/kvp+json&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/1.0/products?limit=10&amp;fields=lidvid&amp;fields=title&#39;</span> --header <span class="s1">&#39;Accept: application/kvp+json&#39;</span>
 </pre></div>
 </div>
 <p>Returns:</p>
@@ -458,12 +471,12 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-<section id="text-csv">
+</div>
+<div class="section" id="text-csv">
 <h3>text/csv<a class="headerlink" href="#text-csv" title="Permalink to this headline"></a></h3>
 <p>This format is useful when one only need a few fields from the metadata.</p>
 <p>The request:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/0.4/products?limit=10&amp;fields=lidvid&amp;fields=title&#39;</span> --header <span class="s1">&#39;Accept: text/csv&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/1.0/products?limit=10&amp;fields=lidvid&amp;fields=title&#39;</span> --header <span class="s1">&#39;Accept: text/csv&#39;</span>
 </pre></div>
 </div>
 <p>Returns:</p>
@@ -474,17 +487,17 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 ...
 </pre></div>
 </div>
-</section>
-<section id="open-data">
+</div>
+<div class="section" id="open-data">
 <h3>Open Data<a class="headerlink" href="#open-data" title="Permalink to this headline"></a></h3>
 <p>NOT IMPLEMENTED</p>
 <p>See
 [&lt;u&gt;https://project-open-data.cio.gov/&lt;/u&gt;](<a class="reference external" href="https://project-open-data.cio.gov/">https://project-open-data.cio.gov/</a>)
 and example of application at
 [&lt;u&gt;https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#open-data&lt;/u&gt;](<a class="reference external" href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#open-data">https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#open-data</a>)</p>
-</section>
-</section>
-<section id="missing-values">
+</div>
+</div>
+<div class="section" id="missing-values">
 <h2>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this headline"></a></h2>
 <p>Properties with empty or null values should be dropped from the JSON
 response unless the user asked specifically for the field (through
@@ -498,8 +511,8 @@ without quotes.</p>
 [<a class="reference external" href="http://docs.opengeospatial.org/DRAFTS/19-086.html">http://docs.opengeospatial.org/DRAFTS/19-086.html</a>#req_edr_parameters-response&lt;/u&gt;](<a class="reference external" href="http://docs.opengeospatial.org/DRAFTS/19-086.html#req_edr_parameters-response">http://docs.opengeospatial.org/DRAFTS/19-086.html#req_edr_parameters-response</a>)</p>
 <p>This should not be mistaken for an actual PDS4 value since missing
 values in PDS4 labels. are detailed with a nil:reason attribute.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

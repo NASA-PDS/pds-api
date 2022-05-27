@@ -20,6 +20,7 @@ This web site is also available as a `PDS document <./_static/pdsapis.pdf>`_
    overview
    search-api-user-guide
    specifications
+   general-conventions
    tools
    support
    acknowlegements

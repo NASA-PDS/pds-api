@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PDS Search API Queries &mdash; PDS APIs B12.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -16,6 +16,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -42,9 +44,36 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PDS Search API Queries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#endpoints">Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-products">Search Products</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#request-example">Request Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#request-template">Request Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#query-detailed-syntax">Query Detailed Syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#resolve-a-product-identifier">Resolve A Product Identifier</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#default-resolution">Default Resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-for-latest-vs-all-versions">Search for Latest vs. All Versions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#crawl-a-data-set-hierarchy">Crawl a Data Set Hierarchy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#if-the-product-lidvid1-is-a-bundle">If the Product ‘lidvid1’ Is a Bundle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#if-the-product-lidvid1-is-a-collection">If the Product ‘lidvid1’ Is a Collection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#if-the-product-lidvid1-is-an-observational-product">If the Product ‘lidvid1’ Is an Observational Product</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="response_formats.html">PDS Search API Response Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials/Cookbooks</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-redoc.html">PDS Search API Full Reference</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools and Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
@@ -61,7 +90,7 @@
       </nav>
 
       <div class="wy-nav-content">
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
@@ -76,32 +105,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pds-search-api-queries">
+  <div class="section" id="pds-search-api-queries">
 <h1>PDS Search API Queries<a class="headerlink" href="#pds-search-api-queries" title="Permalink to this headline"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the <a class="reference external" href="mailto:pds-operator&#37;&#52;&#48;jpl&#46;nasa&#46;gov">PDS Help Desk</a> for assistance.</p>
 </div>
-<div class="toctree-wrapper compound">
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">PDS Search API Queries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#endpoints">Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#search-products">Search Products</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resolve-a-product-identifier">Resolve A Product Identifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#crawl-a-data-set-hierarchy">Crawl a Data Set Hierarchy</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<section id="endpoints">
+<div class="section" id="endpoints">
 <h2>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline"></a></h2>
 <p>The base URIs for performing GET requests for searching PDS data are as follows.</p>
 <p>The <strong>base URL</strong> of the PDS Search API, for all the PDS nodes, is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">0.4</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>For specific discipline node search, there are node-specific endpoints available giving access to products of one node, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">-</span><span class="n">geo</span><span class="o">/</span><span class="mf">0.4</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">-</span><span class="n">geo</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>Where <code class="docutils literal notranslate"><span class="pre">geo</span></code> is the <strong>Node ID</strong></p>
@@ -144,20 +162,20 @@
 </tbody>
 </table>
 <p>The main use cases, to search, crawl products or resolve a product identifier are given in the following sections.</p>
-</section>
-<section id="search-products">
+</div>
+<div class="section" id="search-products">
 <h2>Search Products<a class="headerlink" href="#search-products" title="Permalink to this headline"></a></h2>
-<section id="request-example">
+<div class="section" id="request-example">
 <h3>Request Example<a class="headerlink" href="#request-example" title="Permalink to this headline"></a></h3>
 <p>Search for the 10 latest collections which processing level is “Raw”:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/0.4/collections?limit=10&amp;q=(pds:Primary_Result_Summary.pds:processing_level eq &quot;Raw&quot;)&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/1.0/collections?limit=10&amp;q=(pds:Primary_Result_Summary.pds:processing_level eq &quot;Raw&quot;)&#39;</span>
 </pre></div>
 </div>
-</section>
-<section id="request-template">
+</div>
+<div class="section" id="request-template">
 <h3>Request Template<a class="headerlink" href="#request-template" title="Permalink to this headline"></a></h3>
 <p>The requests template is a follow:</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET https://pds.nasa.gov/api/search/0.4/{product_class}[?[{query-parameter}={query-parameter-value}]*]
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET https://pds.nasa.gov/api/search/1.0/{product_class}[?[{query-parameter}={query-parameter-value}]*]
 </pre></div>
 </div>
 <p>Where <cite>product_class</cite> is one of:</p>
@@ -166,10 +184,10 @@
 <li><p><strong>collections</strong>: search among products which class is product_collection</p></li>
 <li><p><strong>bundles</strong>: search among products which class is product_bundle</p></li>
 </ul>
-</section>
-<section id="query-detailed-syntax">
+</div>
+<div class="section" id="query-detailed-syntax">
 <h3>Query Detailed Syntax<a class="headerlink" href="#query-detailed-syntax" title="Permalink to this headline"></a></h3>
-<section id="query-parameters">
+<div class="section" id="query-parameters">
 <h4>Query Parameters<a class="headerlink" href="#query-parameters" title="Permalink to this headline"></a></h4>
 <p>The query parameters are:</p>
 <table class="docutils align-default">
@@ -216,9 +234,9 @@
 </tbody>
 </table>
 <p><cite>q</cite> and <cite>fields</cite> use PDS4 <a class="reference internal" href="#fields-dot-notation">Fields Dot Notation</a></p>
-</section>
-<section id="query-string-syntax">
-<span id="id1"></span><h4>Query String Syntax<a class="headerlink" href="#query-string-syntax" title="Permalink to this headline"></a></h4>
+</div>
+<div class="section" id="query-string-syntax">
+<h4>Query String Syntax<a class="headerlink" href="#query-string-syntax" title="Permalink to this headline"></a></h4>
 <p>An example of query syntax (<cite>q</cite> query parameter) is:</p>
 <p>For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">pds</span><span class="p">:</span><span class="n">Primary_Result_Summary</span><span class="o">.</span><span class="n">pds</span><span class="p">:</span><span class="n">processing_level</span> <span class="n">eq</span> <span class="s2">&quot;Raw&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">ops</span><span class="p">:</span><span class="n">Data_File_Info</span><span class="o">.</span><span class="n">ops</span><span class="p">:</span><span class="n">file_size</span> <span class="n">ge</span> <span class="mi">8942</span><span class="p">))</span>
@@ -235,7 +253,7 @@
 <ul class="simple">
 <li><p><strong>{field}</strong> follows the <a class="reference internal" href="#fields-dot-notation">Fields Dot Notation</a> . The available fields can be found in responses <cite>summary</cite> object, <cite>properties</cite> attribute.</p></li>
 <li><p><strong>{comparison operator}</strong> are eq, ne, gt, lt, ge, le</p></li>
-<li><p><strong>{literal value}</strong> is either a string between ” (double quotes) or a numerical value (float or integer). Wildcards (<a href="#id2"><span class="problematic" id="id3">*</span></a>, ?) are supported in strings.</p></li>
+<li><p><strong>{literal value}</strong> is either a string between <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> (double quotes) or a numerical value (float or integer). Wildcards (*, ?) are supported in strings.</p></li>
 </ul>
 <table class="docutils align-default">
 <colgroup>
@@ -304,10 +322,10 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="fields-dot-notation">
+</div>
+<div class="section" id="fields-dot-notation">
 <h4>Fields Dot Notation<a class="headerlink" href="#fields-dot-notation" title="Permalink to this headline"></a></h4>
-<section id="general-case">
+<div class="section" id="general-case">
 <h5>General Case<a class="headerlink" href="#general-case" title="Permalink to this headline"></a></h5>
 <p>The syntax of the field names use a combination of the PDS4 Information Model and <a class="reference external" href="http://reeborg.ca/docs/oop_py_en/oop.html">dot
 notation</a> representations of
@@ -322,7 +340,7 @@ class in <em>all lowercase</em>:</p>
 <span class="n">pds</span><span class="p">:</span><span class="n">Investigation_Area</span><span class="o">.</span><span class="n">pds</span><span class="p">:</span><span class="nb">type</span>
 </pre></div>
 </div>
-<p><a href="#id4"><span class="problematic" id="id5">**</span></a>NOT IMPLEMENTED*</p>
+<p><strong>NOT IMPLEMENTED</strong></p>
 <p>In the event that the {parent_class}.{attribute} combination does
 sufficiently guarantee uniqueness or sufficiency of search when a class
 is inherited by multiple classes, additional ancestor classes should be
@@ -335,8 +353,8 @@ query parameter</span></a> should be considered.</p>
 <p>In the event that multiple attributes are to be grouped together for
 search, the parent class should be used as the query parameter:</p>
 <p>{ancestor_class}.{parent_class}</p>
-</section>
-<section id="custom-query-parameters">
+</div>
+<div class="section" id="custom-query-parameters">
 <h5>Custom Query Parameters<a class="headerlink" href="#custom-query-parameters" title="Permalink to this headline"></a></h5>
 <p><strong>NOT IMPLEMENTED</strong></p>
 <p>There are several cases where custom query parameters are preferred over
@@ -352,89 +370,89 @@ those updates to Engineering Node.</p>
 <li><p>Custom search fields on non-PDS4 metadata (e.g. image tags, operations note, etc.)</p></li>
 <li><p>Support common search or PDS4 terminology (e.g. target_name, lidvid)</p></li>
 </ul>
-</section>
-</section>
-</section>
-</section>
-<section id="resolve-a-product-identifier">
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="resolve-a-product-identifier">
 <h2>Resolve A Product Identifier<a class="headerlink" href="#resolve-a-product-identifier" title="Permalink to this headline"></a></h2>
-<section id="default-resolution">
+<div class="section" id="default-resolution">
 <h3>Default Resolution<a class="headerlink" href="#default-resolution" title="Permalink to this headline"></a></h3>
 <p>If you know the lid (for example <a class="reference external" href="urn:nasa:pds:insight_rad">urn:nasa:pds:insight_rad</a>) or lidvid (for example <a class="reference external" href="urn:nasa:pds:insight_rad::2.1">urn:nasa:pds:insight_rad::2.1</a>) identifier of a product, you can retrieve its description, whereever it is managed in the PDS system, with the following request:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/0.4/products/<span class="o">{</span>identifier<span class="o">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/1.0/products/<span class="o">{</span>identifier<span class="o">}</span>
 </pre></div>
 </div>
 <p>For example</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/0.4/products/urn:nasa:pds:insight_rad::2.1&#39;</span> --header <span class="s1">&#39;Accept: application/json&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/1.0/products/urn:nasa:pds:insight_rad::2.1&#39;</span> --header <span class="s1">&#39;Accept: application/json&#39;</span>
 </pre></div>
 </div>
-</section>
-<section id="search-for-latest-vs-all-versions">
+</div>
+<div class="section" id="search-for-latest-vs-all-versions">
 <h3>Search for Latest vs. All Versions<a class="headerlink" href="#search-for-latest-vs-all-versions" title="Permalink to this headline"></a></h3>
-<section id="latest-version">
+<div class="section" id="latest-version">
 <h4>Latest Version<a class="headerlink" href="#latest-version" title="Permalink to this headline"></a></h4>
 <p>By default, when the identifier is a lid (without a version, for example <a class="reference external" href="urn:nasa:pds:insight_rad">urn:nasa:pds:insight_rad</a>) only the latest description of the product is returned.</p>
 <p>The request:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/0.4/products/<span class="o">{</span>lid<span class="o">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/1.0/products/<span class="o">{</span>lid<span class="o">}</span>
 </pre></div>
 </div>
 <p>is equivalent to:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/0.4/products/<span class="o">{</span>lid<span class="o">}</span>/latest
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/1.0/products/<span class="o">{</span>lid<span class="o">}</span>/latest
 </pre></div>
 </div>
-</section>
-<section id="all-versions">
+</div>
+<div class="section" id="all-versions">
 <h4>All Versions<a class="headerlink" href="#all-versions" title="Permalink to this headline"></a></h4>
 <p>If you want to retrieve <strong>all</strong> the versions of a product, the request is:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/0.4/products/<span class="o">{</span>lid<span class="o">}</span>/all
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/1.0/products/<span class="o">{</span>lid<span class="o">}</span>/all
 </pre></div>
 </div>
 <p>The <cite>all</cite> and <cite>latest</cite> suffixes apply also to all the crawling end-points which description follows.</p>
-</section>
-</section>
-</section>
-<section id="crawl-a-data-set-hierarchy">
+</div>
+</div>
+</div>
+<div class="section" id="crawl-a-data-set-hierarchy">
 <h2>Crawl a Data Set Hierarchy<a class="headerlink" href="#crawl-a-data-set-hierarchy" title="Permalink to this headline"></a></h2>
 <p>For a given product with identifier <cite>lidvid1</cite>, you can browse its parent products or children.</p>
-<section id="if-the-product-lidvid1-is-a-bundle">
+<div class="section" id="if-the-product-lidvid1-is-a-bundle">
 <h3>If the Product ‘lidvid1’ Is a Bundle<a class="headerlink" href="#if-the-product-lidvid1-is-a-bundle" title="Permalink to this headline"></a></h3>
 <p>Get its <strong>collections</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">0.4</span><span class="o">/</span><span class="n">bundles</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">collections</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span><span class="n">bundles</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">collections</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>For example, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/0.4/bundles/urn:nasa:pds:insight_rad::2.1/collections&#39;</span> --header <span class="s1">&#39;Accept: application/json&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/1.0/bundles/urn:nasa:pds:insight_rad::2.1/collections&#39;</span> --header <span class="s1">&#39;Accept: application/json&#39;</span>
 </pre></div>
 </div>
 <p>Get its <strong>observational products</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">0.4</span><span class="o">/</span><span class="n">bundles</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">products</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span><span class="n">bundles</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">products</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
 </pre></div>
 </div>
-</section>
-<section id="if-the-product-lidvid1-is-a-collection">
+</div>
+<div class="section" id="if-the-product-lidvid1-is-a-collection">
 <h3>If the Product ‘lidvid1’ Is a Collection<a class="headerlink" href="#if-the-product-lidvid1-is-a-collection" title="Permalink to this headline"></a></h3>
 <p>Get its <strong>bundle</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">0.4</span><span class="o">/</span><span class="n">collections</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">bundles</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span><span class="n">collections</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">bundles</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>Get its <strong>observational products</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">0.4</span><span class="o">/</span><span class="n">collections</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">products</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span><span class="n">collections</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">products</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
 </pre></div>
 </div>
-</section>
-<section id="if-the-product-lidvid1-is-an-observational-product">
+</div>
+<div class="section" id="if-the-product-lidvid1-is-an-observational-product">
 <h3>If the Product ‘lidvid1’ Is an Observational Product<a class="headerlink" href="#if-the-product-lidvid1-is-an-observational-product" title="Permalink to this headline"></a></h3>
 <p>Get its <strong>bundle</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">0.4</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">bundles</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">bundles</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>Get its <strong>collection</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">0.4</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">collections</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">collections</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
 </pre></div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

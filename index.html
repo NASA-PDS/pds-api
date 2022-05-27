@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PDS APIs &mdash; PDS APIs B12.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -16,6 +16,8 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -45,9 +47,10 @@
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="search-api-user-guide.html">PDS Search API User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general-conventions.html">General API Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Tools and Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acknowlegements.html"><strong>Acknowledgements</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowlegements.html">Acknowledgements</a></li>
 </ul>
 
         </div>
@@ -60,7 +63,7 @@
       </nav>
 
       <div class="wy-nav-content">
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
@@ -74,7 +77,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pds-apis">
+  <div class="section" id="pds-apis">
 <h1>PDS APIs<a class="headerlink" href="#pds-apis" title="Permalink to this headline"></a></h1>
 <p>The Planetary Data System (PDS) is a federated system of nodes that archive planetary science data.</p>
 <p>The PDS Application Programming Interface (API) provides a consistent way for planetary science community to discover and
@@ -117,6 +120,27 @@ planetary science archives.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general-conventions.html">General API Conventions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="general-conventions.html#reference-documents">Reference Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general-conventions.html#general-applicable-open-api-conventions">General Applicable Open API Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="general-conventions.html#specification-standard">Specification Standard</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="general-conventions.html#restful-principles">Restful Principles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="general-conventions.html#resources">Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general-conventions.html#verbs">Verbs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general-conventions.html#resource-representation">Resource Representation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="general-conventions.html#other-conventions">Other Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="general-conventions.html#url-resource-naming-case">URL Resource Naming: Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general-conventions.html#url-resource-naming-plural-vs-singular">URL Resource Naming: Plural vs Singular</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general-conventions.html#url-resource-naming-api-versioning">URL Resource Naming: API Versioning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="general-conventions.html#pagination-sort">Pagination/Sort</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Tools and Services</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#search">Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#doi">DOI</a></li>
@@ -129,13 +153,13 @@ planetary science archives.</p>
 <li class="toctree-l2"><a class="reference internal" href="support/contribute.html#report-a-bug">Report a Bug</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="acknowlegements.html"><strong>Acknowledgements</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="acknowlegements.html#pds-api-working-group"><strong>PDS API Working Group</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowlegements.html">Acknowledgements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="acknowlegements.html#pds-api-working-group">PDS API Working Group</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</section>
+</div>
 
 
            </div>

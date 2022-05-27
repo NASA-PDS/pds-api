@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Search API Cookbook &mdash; PDS APIs B12.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -16,9 +16,13 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Specifications" href="../specifications.html" />
+    <link rel="prev" title="Tutorials/Cookbooks" href="tutorials.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,9 +44,24 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../search-api-user-guide.html">PDS Search API User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoints.html">PDS Search API Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response_formats.html">PDS Search API Response Formats</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="tutorials.html">Tutorials/Cookbooks</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tutorials.html#sample-jupyterlab-notebooks-python">Sample JupyterLab Notebooks (Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials.html#web-search-interface-tutorial-html-javascript">Web Search Interface Tutorial (HTML/Javascript)</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="tutorials.html#search-examples">Search Examples</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Search API Cookbook</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-redoc.html">PDS Search API Full Reference</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools and Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
@@ -59,10 +78,12 @@
       </nav>
 
       <div class="wy-nav-content">
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../search-api-user-guide.html">PDS Search API User Guide</a> &raquo;</li>
+          <li><a href="tutorials.html">Tutorials/Cookbooks</a> &raquo;</li>
       <li>Search API Cookbook</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nasa-pds/pds-api/blob/main/docs/source/search-api-user-guide/cookbook.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -73,91 +94,69 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="search-api-cookbook">
+  <div class="section" id="search-api-cookbook">
 <h1>Search API Cookbook<a class="headerlink" href="#search-api-cookbook" title="Permalink to this headline"></a></h1>
 <p>Recipes for various search scenarios using the PDS Search API.</p>
-<div class="toctree-wrapper compound">
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Search API Cookbook</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#search-for-product-versions">Search For Product Versions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#search-the-latest-version-of-a-product">Search the Latest Version of a Product</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#search-for-all-versions-of-a-product">Search for All Versions of a Product</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#search-by-specific-metadata">Search By Specific Metadata</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#search-by-processing-level">Search by Processing Level</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#search-by-target">Search by Target</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#search-for-dois">Search for DOIs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#how-to-find-the-doi-associated-with-an-observational-product">How to Find the DOI associated with an Observational Product</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#how-to-find-the-pds-product-associated-with-a-doi">How to Find the PDS Product Associated with a DOI</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<section id="search-for-product-versions">
+<div class="section" id="search-for-product-versions">
 <h2>Search For Product Versions<a class="headerlink" href="#search-for-product-versions" title="Permalink to this headline"></a></h2>
 <p>Recipes for searching for the latest version of a product, or all versions of a product, including superseded versions.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the <a class="reference external" href="mailto:pds-operator&#37;&#52;&#48;jpl&#46;nasa&#46;gov">PDS Help Desk</a> for assistance.</p>
 </div>
-<section id="search-the-latest-version-of-a-product">
+<div class="section" id="search-the-latest-version-of-a-product">
 <h3>Search the Latest Version of a Product<a class="headerlink" href="#search-the-latest-version-of-a-product" title="Permalink to this headline"></a></h3>
 <p>To retrieve the <strong>latest</strong> versions of product <code class="docutils literal notranslate"><span class="pre">urn:nasa:pds:mars2020.spice</span></code>, the request is:</p>
 <p>The request:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/0.4/products/urn:nasa:pds:mars2020.spice
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/1.0/products/urn:nasa:pds:mars2020.spice
 </pre></div>
 </div>
 <p>which is equivalent to:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/0.4/products/urn:nasa:pds:mars2020.spice/latest
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/1.0/products/urn:nasa:pds:mars2020.spice/latest
 </pre></div>
 </div>
-</section>
-<section id="search-for-all-versions-of-a-product">
+</div>
+<div class="section" id="search-for-all-versions-of-a-product">
 <h3>Search for All Versions of a Product<a class="headerlink" href="#search-for-all-versions-of-a-product" title="Permalink to this headline"></a></h3>
 <p>To retrieve <strong>all</strong> the versions of product <code class="docutils literal notranslate"><span class="pre">urn:nasa:pds:mars2020.spice</span></code>, the request is:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/0.4/products/urn:nasa:pds:mars2020.spice/all
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/1.0/products/urn:nasa:pds:mars2020.spice/all
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section id="search-by-specific-metadata">
+<div class="section" id="search-by-specific-metadata">
 <h2>Search By Specific Metadata<a class="headerlink" href="#search-by-specific-metadata" title="Permalink to this headline"></a></h2>
 <p>The following recipes describe some example queries of the Search API using the <cite>q=</cite> query parameter showing some more complex use cases for querying PDS data.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the <a class="reference external" href="mailto:pds-operator&#37;&#52;&#48;jpl&#46;nasa&#46;gov">PDS Help Desk</a> for assistance.</p>
 </div>
-<section id="search-by-processing-level">
+<div class="section" id="search-by-processing-level">
 <h3>Search by Processing Level<a class="headerlink" href="#search-by-processing-level" title="Permalink to this headline"></a></h3>
 <p>Search for the 10 latest collections which processing level is “Raw”:</p>
 <p><strong>Query:</strong> <code class="docutils literal notranslate"><span class="pre">(pds:Primary_Result_Summary.pds:processing_level</span> <span class="pre">eq</span> <span class="pre">&quot;Raw&quot;)</span></code></p>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id7" title="Permalink to this code"></a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/0.4/collections?limit=10&amp;q=(pds:Primary_Result_Summary.pds:processing_level eq &quot;Raw&quot;)&#39;</span>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/1.0/collections?limit=10&amp;q=(pds:Primary_Result_Summary.pds:processing_level eq &quot;Raw&quot;)&#39;</span>
 </pre></div>
 </div>
 </div>
-</section>
-<section id="search-by-target">
+</div>
+<div class="section" id="search-by-target">
 <h3>Search by Target<a class="headerlink" href="#search-by-target" title="Permalink to this headline"></a></h3>
 <p>Search for all Observational Products targeting Bennu:</p>
 <p><strong>Query:</strong> <code class="docutils literal notranslate"><span class="pre">(ref_lid_target</span> <span class="pre">eq</span> <span class="pre">&quot;urn:nasa:pds:context:target:asteroid.101955_bennu&quot;)</span></code></p>
-<div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id8" title="Permalink to this code"></a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/0.4/collections?q=(ref_lid_target eq &quot;urn:nasa:pds:context:target:asteroid.101955_bennu&quot;)&#39;</span>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;https://pds.nasa.gov/api/search/1.0/collections?q=(ref_lid_target eq &quot;urn:nasa:pds:context:target:asteroid.101955_bennu&quot;)&#39;</span>
 </pre></div>
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section id="search-for-dois">
+<div class="section" id="search-for-dois">
 <h2>Search for DOIs<a class="headerlink" href="#search-for-dois" title="Permalink to this headline"></a></h2>
 <p><a class="reference external" href="https://www.doi.org/">Digital Object Identifiers</a> are useful to cite the data you are using in your research. DOIs for PDS data are minted for PDS4 Bundles, PDS4 Collections, PDS4 Documents, and PDS3 Data Sets. The level at which the DOI is minted differs from data set to data set.</p>
 <p>The following recipes describe how to find a DOI for a particular product or data set in the Search API metadata.</p>
@@ -167,13 +166,13 @@
 <p class="admonition-title">Warning</p>
 <p>Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the <a class="reference external" href="mailto:pds-operator&#37;&#52;&#48;jpl&#46;nasa&#46;gov">PDS Help Desk</a> for assistance.</p>
 </div>
-<section id="how-to-find-the-doi-associated-with-an-observational-product">
+<div class="section" id="how-to-find-the-doi-associated-with-an-observational-product">
 <h3>How to Find the DOI associated with an Observational Product<a class="headerlink" href="#how-to-find-the-doi-associated-with-an-observational-product" title="Permalink to this headline"></a></h3>
-<p>We assume you know the identifier of the product you are working with. In our example it is: <a href="#id3"><span class="problematic" id="id4">`</span></a><a class="reference external" href="urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0">urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0</a></p>
-<section id="search-for-a-product-s-collection-doi">
-<h4>1. Search for a Product’s Collection DOI<a class="headerlink" href="#search-for-a-product-s-collection-doi" title="Permalink to this headline"></a></h4>
+<p>We assume you know the identifier of the product you are working with. In our example it is: <code class="docutils literal notranslate"><span class="pre">urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0</span></code></p>
+<div class="section" id="search-for-a-products-collection-doi">
+<h4>Search for a Products Collection DOI<a class="headerlink" href="#search-for-a-products-collection-doi" title="Permalink to this headline"></a></h4>
 <p>Run the following request to get the DOI associated with the product’s collection:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/0.4/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/collections?fields=ops:Identifiers/ops:doi&#39;</span> --header <span class="s1">&#39;Accept: application/kvp+json&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/1.0/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/collections?fields=ops:Identifiers/ops:doi&#39;</span> --header <span class="s1">&#39;Accept: application/kvp+json&#39;</span>
 </pre></div>
 </div>
 <p id="doi-request-result">You will get the following result:</p>
@@ -196,33 +195,36 @@
 </pre></div>
 </div>
 <p>Note that you might not find any DOI at the collection level, in this case you can try to get the DOI from the bundle.</p>
-</section>
-<section id="search-for-a-product-s-bundle-doi">
-<h4>2. Search for a Product’s Bundle DOI<a class="headerlink" href="#search-for-a-product-s-bundle-doi" title="Permalink to this headline"></a></h4>
+</div>
+<div class="section" id="search-for-a-product-s-bundle-doi">
+<h4>Search for a Product’s Bundle DOI<a class="headerlink" href="#search-for-a-product-s-bundle-doi" title="Permalink to this headline"></a></h4>
 <p>To get the DOI associated with the bundle the observational product <cite>urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0</cite> belongs to:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/0.4/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/bundles?fields=pds:Citation_Information/pds:doi&amp;fields=ops:Identifiers/ops:doi&#39;</span> --header <span class="s1">&#39;Accept: application/kvp+json&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/1.0/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/bundles?fields=pds:Citation_Information/pds:doi&amp;fields=ops:Identifiers/ops:doi&#39;</span> --header <span class="s1">&#39;Accept: application/kvp+json&#39;</span>
 </pre></div>
 </div>
 <p>You will get the same response as for a <span class="xref std std-ref">collection request</span></p>
-</section>
-</section>
-<section id="how-to-find-the-pds-product-associated-with-a-doi">
+</div>
+</div>
+<div class="section" id="how-to-find-the-pds-product-associated-with-a-doi">
 <h3>How to Find the PDS Product Associated with a DOI<a class="headerlink" href="#how-to-find-the-pds-product-associated-with-a-doi" title="Permalink to this headline"></a></h3>
 <p>To get the PDS product metadata associated with a the DOI <cite>10.17189/1517568</cite>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/0.4/products?q=(ops:Identifiers/ops:doi eq &quot;10.17189/1517568&quot;)&#39;</span> --header <span class="s1">&#39;Accept: application/json&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://pds.nasa.gov/api/search/1.0/products?q=(ops:Identifiers/ops:doi eq &quot;10.17189/1517568&quot;)&#39;</span> --header <span class="s1">&#39;Accept: application/json&#39;</span>
 </pre></div>
 </div>
 <p>You will get a JSON response of the PDS products (any class of product, for example collections or bundles) which have referenced the given DOI.</p>
 <p>You can get the result in different format using content negociation with the Accept header parameter.</p>
-<p><a href="#id5"><span class="problematic" id="id6">**</span></a>Looking for more recipes? Or have some useful recipes of your own? Checkout the <a class="reference external" href="mailto:pds-operator&#37;&#52;&#48;jpl&#46;nasa&#46;gov">PDS API Discussion Board &lt;https://github<span>&#46;</span>com/NASA-PDS/pds-api/discussions&gt; or contact the `PDS Help Desk</a></p>
-</section>
-</section>
-</section>
+<p><strong>Looking for more recipes? Or have some useful recipes of your own? Checkout the `PDS API Discussion Board &lt;https://github.com/NASA-PDS/pds-api/discussions&gt;`_ or contact the `PDS Help Desk &lt;mailto:pds-operator&#64;jpl.nasa.gov&gt;`_</strong></p>
+</div>
+</div>
+</div>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorials.html" class="btn btn-neutral float-left" title="Tutorials/Cookbooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../specifications.html" class="btn btn-neutral float-right" title="Specifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
