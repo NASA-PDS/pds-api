@@ -1,11 +1,6 @@
 PDS Search API Response Formats
 ================================
 
-.. toctree::
-   :maxdepth: 2
-
-   /search-api-user-guide/response_formats
-
 Content Negotiation
 --------------------
 

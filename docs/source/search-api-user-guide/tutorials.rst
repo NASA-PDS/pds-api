@@ -16,4 +16,12 @@ TO BE IMPLEMENTED
 Search Examples
 ---------------
 
-See the :doc:`Search API Cookbook<cookbook>` for more details.
+Here are some examples of Search API Recipes:
+
+.. toctree::
+   :maxdepth: 2
+
+   cookbook
+
+
+**Looking for more recipes? Or have some useful recipes of your own?** Checkout the `PDS API Discussion Board <https://github.com/NASA-PDS/pds-api/discussions>`_ or contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_

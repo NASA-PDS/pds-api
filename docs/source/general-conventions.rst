@@ -1,8 +1,8 @@
-General Conventions For the PDS APIs
-=====================================
-
-**Reference Documents**
+General API Conventions
 =======================
+
+Reference Documents
+---------------------
 
 Several websites and documents were used as references for designing
 this API and the accompanying guidelines, including:
@@ -35,25 +35,26 @@ this API and the accompanying guidelines, including:
 
 14. `OGC Environmental Data Retrieval <https://github.com/opengeospatial/ogcapi-environmental-data-retrieval>`_
 
-**General Applicable Open API Conventions**
-===========================================
+General Applicable Open API Conventions
+---------------------------------------
 
-Specification standard
-----------------------
+Specification Standard
+**********************
 
-The API complies with open api 3.0.
+The API complies with Open API 3.0.
+
 
 Restful Principles
 ------------------
 
 Resources
-.............
+*********
 
 Resources are coded as URI (e.g. http://domain/api/pets). Resources
 should be nouns (verbs are bad)
 
 Verbs
-.......
+*****
 
 Users interact with resources through `HTTP request
 verbs <https://assertible.com/blog/7-http-methods-every-web-developer-should-know-and-how-to-test-them>`_.
@@ -68,7 +69,7 @@ REST API <https://restfulapi.net/idempotent-rest-apis/>`_, utilizing
 GET, PUT, DELETE, HEAD, OPTIONS and TRACE HTTP methods.
 
 Resource Representation
-.........................
+***********************
 
 When a HTTP request verb (e.g. GET, POST, etc.) is applied to a resource
 (e.g. http://domain/api/pets) he/she gets a resource representation.
@@ -107,10 +108,8 @@ the design for the PDS API specification:
 -   `ESDIS Common Metadata Repository API <https://earthdata.nasa.gov/collaborate/open-data-services-and-software/api/cmr-api>`_
 -   `OGC environment data retrieval <http://docs.opengeospatial.org/DRAFTS/19-086.html>`_
 
-
-
 URL Resource Naming: Case
-...........................
+*************************
 
 `Kebab-case <https://en.wiktionary.org/wiki/kebab_case>`_ (lower
 case and hyphens ‘-’ used to fill the spaces in) is used for url
@@ -122,8 +121,8 @@ For example:
 
 (for the rationale see this `stackoverflow discussion <https://stackoverflow.com/questions/10302179/hyphen-underscore-or-camelcase-as-word-delimiter-in-uris>`_
 
-URL Resource Naming: Plural vs singular
-.........................................
+URL Resource Naming: Plural vs Singular
+***************************************
 
 Resources are named plural or singular depending on the use case.
 
@@ -137,7 +136,7 @@ Singular are used when the resource is accessed as one. For example
 See this `post <https://medium.com/@atomaka/single-and-plural-rails-routes-for-the-same-resource-330d985b6595>`_ for more details.
 
 URL Resource Naming: API Versioning
-.....................................
+***********************************
 
 The API will have versions and the deployed versions are likely to be
 heterogeneous in the PDS system.
@@ -160,13 +159,18 @@ However:
 -   The version is mandatory in the resource representations (result of a request)
 
 
-### Pagination/Sort
+Pagination/Sort
+---------------
 
 The query parameters for pagination are:
 
-| start | Index of first item returned in the response    |
-| ----- | ----------------------------------------------- |
-| limit | Maximum number of item expected in the response |
++-----------+---------------------------------------------------------------+
+| Parameter | Description                                                   |
++===========+===============================================================+
+| start     | Index of first item returned in the response                  |
++-----------+---------------------------------------------------------------+
+| limit     | Maximum number of item expected in the response               |
++-----------+---------------------------------------------------------------+
 
 See
 `https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/ <https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/>`_
