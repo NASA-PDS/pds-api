@@ -73,18 +73,6 @@ redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@2.0.0-alpha.17/bundles/redoc.sta
 redoc = [
     {
         'name': 'PDS Search API',
-        'page': 'specifications/search-v0.4.1-redoc',
-        'spec': '../../specs/PDS_APIs-search-0.4.1-swagger.yaml',
-        'embed': True,
-    },
-    {
-        'name': 'PDS Search API',
-        'page': 'specifications/search-v1.1.0-SNAPSHOT-redoc',
-        'spec': '../../specs/PDS_APIs-search-1.1.0-SNAPSHOT-swagger.yaml',
-        'embed': True,
-    },
-    {
-        'name': 'PDS Search API',
         'page': 'specifications/search-v1.0.0-redoc',
         'spec': '../../specs/PDS_APIs-search-1.0.0-swagger.yaml',
         'embed': True,
@@ -98,7 +86,7 @@ redoc = [
 ]
 
 rst_prolog = """
-.. |search_user_guide_api_version| replace:: 0.4
+.. |search_user_guide_api_version| replace:: 1.0
 """
 
 latex_logo = '_static/images/PDS_Planets.png'
@@ -127,7 +115,7 @@ html_theme_options = {
     'logo_only': False,
     'display_version': True,
     'prev_next_buttons_location': 'bottom',
-    'style_external_links': False,
+    'style_external_links': True,
     # Toc options
     'collapse_navigation': True,
     'sticky_navigation': True,

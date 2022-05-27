@@ -3,12 +3,6 @@ Search API Cookbook
 
 Recipes for various search scenarios using the PDS Search API.
 
-.. toctree::
-   :maxdepth: 3
-
-   /search-api-user-guide/cookbook
-
-
 Search For Product Versions
 ===========================
 

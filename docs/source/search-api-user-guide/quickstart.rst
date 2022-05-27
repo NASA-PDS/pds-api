@@ -9,7 +9,7 @@ The following section provides a quickstart guide to try out the PDS Search API.
 .. toctree::
    :maxdepth: 2
 
-   /search-api-user-guide/quickstart
+   /search-api-user-guide/quickstart/*
 
 Prerequisites
 -------------
