@@ -1,5 +1,5 @@
-PDS Search API Response Formats
-================================
+Response Formats
+================
 
 Content Negotiation
 --------------------
