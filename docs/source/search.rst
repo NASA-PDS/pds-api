@@ -1,5 +1,5 @@
-PDS Search API User Guide
-=========================
+Search API User Guide
+=====================
 
 .. note::
 
@@ -18,10 +18,10 @@ The PDS Search API provides endpoints:
 These pages provide a user guide for the PDS Search API.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
-   search-api-user-guide/quickstart
-   search-api-user-guide/endpoints
-   search-api-user-guide/response_formats
-   search-api-user-guide/tutorials
-   PDS Search API Full Reference <https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-redoc.html>
+   search/quickstart
+   search/endpoints
+   search/response_formats
+   search/tutorials
+   API Full Reference <https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-redoc.html>
