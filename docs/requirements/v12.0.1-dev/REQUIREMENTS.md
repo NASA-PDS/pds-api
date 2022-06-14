@@ -260,3 +260,11 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
+## As a user, I want to get directions whenever I arrive on an API URL ([#191](https://github.com/NASA-PDS/pds-api/issues/191)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to be able to access the Search API Swagger interface from pds.nasa.gov ([#193](https://github.com/NASA-PDS/pds-api/issues/193)) 
+
+
+This requirement is not impacted by the current version
