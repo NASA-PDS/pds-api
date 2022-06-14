@@ -1,5 +1,5 @@
-Query Syntax
-============
+PDS Search API Queries
+======================
 
 .. Warning::
    Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_ for assistance.
