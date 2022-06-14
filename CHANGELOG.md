@@ -1,5 +1,13 @@
 # Changelog
 
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-06-14)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
+
+**Improvements:**
+
+- Upgrade documentation to present version 1.0 of the search API [\#188](https://github.com/NASA-PDS/pds-api/issues/188)
+
 ## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-05-27)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
