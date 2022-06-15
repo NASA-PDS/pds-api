@@ -18,7 +18,7 @@ This web site is also available as a `PDS document <./_static/pdsapis.pdf>`_
    :maxdepth: 3
 
    overview
-   search
+   guides/search
    specifications
    general-conventions
    tools
