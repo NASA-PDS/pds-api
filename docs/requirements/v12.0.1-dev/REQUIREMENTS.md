@@ -268,3 +268,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
+## As a user, I want to get TBD response when results are not found. ([#198](https://github.com/NASA-PDS/pds-api/issues/198)) 
+
+
+This requirement is not impacted by the current version
