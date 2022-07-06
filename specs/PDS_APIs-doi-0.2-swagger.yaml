@@ -7,10 +7,8 @@ info:
 
 # Added by API Auto Mocking Plugin
 servers:
-  - description: Local host
-    url : http://localhost:8080/PDS_APIs/pds_doi_api/0.2
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/PDS_APIs/pds_doi_api/0.2
+  - description: Production server
+    url : http://pds.nasa.gov/api/doi/0.2
 
 tags:
   - name: dois
