@@ -1,23 +1,10 @@
 
 [dev]
-black
 docutils==0.16
-flake8
-flake8-bugbear
-flake8-docstrings
-pep8-naming
-mypy
 pydocstyle
-coverage
-pytest
-pytest-cov
-pytest-watch
-pytest-xdist
-pre-commit
 sphinx
 sphinx-rtd-theme
 sphinxcontrib-openapi
 sphinxcontrib-redoc
-Sphinx-Substitution-Extensions-2022.2.16
-tox
-types-setuptools
+Sphinx-Substitution-Extensions
+sphinx-copybutton

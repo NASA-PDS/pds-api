@@ -15,7 +15,9 @@ src/api.egg-info/zip-safe
 src/pds/__init__.py
 src/pds/api/VERSION.txt
 src/pds/api/__init__.py
+src/pds/api/__pycache__/__init__.cpython-39.pyc
 src/pds/api/tests/test_true.py
+src/pds/api/tests/__pycache__/test_true.cpython-39-pytest-7.0.1.pyc
 src/pds_api.egg-info/PKG-INFO
 src/pds_api.egg-info/SOURCES.txt
 src/pds_api.egg-info/dependency_links.txt
