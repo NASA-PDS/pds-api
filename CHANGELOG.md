@@ -1,18 +1,6 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-07-06)
-
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
-
-**Improvements:**
-
-- Update README to reflect best practices of other PDS repositories [\#189](https://github.com/NASA-PDS/pds-api/issues/189) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
-
-**Other closed issues:**
-
-- Present the updated API specification to the API WG [\#197](https://github.com/NASA-PDS/pds-api/issues/197)
-
-## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-06-14)
+## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-07-06)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
 
@@ -34,6 +22,7 @@
 
 **Improvements:**
 
+- Update README to reflect best practices of other PDS repositories [\#189](https://github.com/NASA-PDS/pds-api/issues/189) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - Upgrade documentation to present version 1.0 of the search API [\#188](https://github.com/NASA-PDS/pds-api/issues/188)
 - Create a cookbook page on the content negotiation for the PDS Search API [\#183](https://github.com/NASA-PDS/pds-api/issues/183)
 - Create user guide for the search api [\#172](https://github.com/NASA-PDS/pds-api/issues/172)
@@ -59,6 +48,7 @@
 
 **Other closed issues:**
 
+- Present the updated API specification to the API WG [\#197](https://github.com/NASA-PDS/pds-api/issues/197)
 - Update Specifications documentation to only include latest with link to page with past versions [\#167](https://github.com/NASA-PDS/pds-api/issues/167)
 - Check for typos in OpenAPI spec [\#161](https://github.com/NASA-PDS/pds-api/issues/161)
 - document the server - specification - client [\#157](https://github.com/NASA-PDS/pds-api/issues/157)
