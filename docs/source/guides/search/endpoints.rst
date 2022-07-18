@@ -8,7 +8,7 @@ Query Syntax
 Endpoints
 ---------
 
-The base URIs for performing GET requests for searching PDS data are as follows.
+The base URLs for performing GET requests for searching PDS data are as follows.
 
 The **base URL** of the PDS Search API, for all the PDS nodes, is:
 
@@ -54,7 +54,11 @@ Search for the 10 latest collections which processing level is "Raw":
 .. code-block:: bash
    :substitutions:
 
-   curl --location --request GET 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections?limit=10&q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections' \
+       --data-urlencode 'limit=10' \
+       --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
+
+
 
 
 Request Template
@@ -225,7 +229,8 @@ For example
 .. code-block:: bash
    :substitutions:
 
-   curl --location --request GET 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' --header 'Accept: application/json'
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' \
+       --header 'Accept: application/json'
 
 
 Search for Latest vs. All Versions
@@ -287,7 +292,8 @@ For example, run:
 .. code-block:: bash
    :substitutions:
 
-   curl --location --request GET 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/bundles/urn:nasa:pds:insight_rad::2.1/collections' --header 'Accept: application/json'
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/bundles/urn:nasa:pds:insight_rad::2.1/collections' \
+       --header 'Accept: application/json'
 
 
 Get its **observational products**:
