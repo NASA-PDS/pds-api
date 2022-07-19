@@ -31,13 +31,14 @@ The **Node IDs** are:
 =============  ========================================
 Node ID        Node Name
 =============  ========================================
-sbnumd         Small Bodies, Comets
-sbnpsi         Small Bodies, Asteroids/Dust
-geo            Geosciences
 atm            Atmospheres
-naif           Navigation and Ancillary Information
-rms            Ring-Moon Systems
+geo            Geosciences
 img            Imaging
+naif           Navigation and Ancillary Information
+ppi            Planetary Plasma Interactions
+rms            Ring-Moon Systems
+sbnpsi         Small Bodies, Asteroids/Dust
+sbnumd         Small Bodies, Comets
 en             Engineering
 =============  ========================================
 
