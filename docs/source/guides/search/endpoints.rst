@@ -10,9 +10,9 @@ Query Syntax
 Endpoints
 ---------
 
-The base URLs for performing GET requests for searching PDS data are as follows.
+The URLs for performing GET requests for searching PDS data are as follows.
 
-The **base URL** of the PDS Search API, for all the PDS nodes, is:
+The **base URL** of the PDS Search API, for search across all the PDS nodes, is:
 
 .. code-block::
    :substitutions:
@@ -33,14 +33,15 @@ The **Node IDs** are:
 =============  ========================================
 Node ID        Node Name
 =============  ========================================
+atm            Atmospheres
+en             Engineering
+geo            Geosciences
+img            Imaging
+naif           Navigation and Ancillary Information
+ppi            Planetary Plasma Interactions
+rms            Ring-Moon Systems
 sbnumd         Small Bodies, Comets
 sbnpsi         Small Bodies, Asteroids/Dust
-geo            Geosciences
-atm            Atmospheres
-naif           Navigation and Ancillary Information
-rms            Ring-Moon Systems
-img            Imaging
-en             Engineering
 =============  ========================================
 
 The main use cases, to search, crawl products or resolve a product identifier are given in the following sections.
@@ -79,6 +80,8 @@ Where `product_class` is one of:
 * **collections**: search among products which class is product_collection
 * **bundles**: search among products which class is product_bundle
 
+The concept of product class is derived from the `PDS4 standard <https://pds.nasa.gov/datastandards/documents/im/current/index_1I00.html>`_.
+
 Query Detailed Syntax
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -91,7 +94,7 @@ The query parameters are:
  **Query Parameter**  **Description**                                                                                                                                                                                                             **Example**
 ====================  =========================================================================================================================================================================================================================== ====================
  q                    (Optional, string) Query string you wish to parse and use for search. See `query string syntax`_                                                                                                                            q=target_name eq "Mars"
- keyword              (Optional, string) String used for text search on title and description of the PDS4 labels                                                                                                                                  insight
+ keyword              (Optional, string) String used for text search on title and description of the PDS4 labels                                                                                                                                  keyword=insight
  fields               (Optional, array of strings) Array of fields you wish to return.                                                                                                                                                            fields=lid,Time_Coordinates.start_date_time
  start                (Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19. Useful for pagination of the results.                                             start=100
  limit                (Optional, integer, default=100) The number of records/results to return.                                                                                                                                                   limit=100
@@ -170,47 +173,52 @@ For example:
     pds:Science_Facets.pds:discipline_name
     pds:Investigation_Area.pds:type
 
-**NOT IMPLEMENTED**
+The classes and attributes are defined in the `PDS4 Data Dictionnaries <https://pds.nasa.gov/datastandards/dictionaries/index-1.18.0.0.shtml>`_.
 
-In the event that the {parent\_class}.{attribute} combination does
-sufficiently guarantee uniqueness or sufficiency of search when a class
-is inherited by multiple classes, additional ancestor classes should be
-prepended to the query parameter until sufficient uniqueness is
-attained:
 
-{ns:ancestor\_class}.{ns:parent\_class}.{ns:attribute}
+.. role:: not-implemented
 
-If the query parameter grows beyond 3 ancestor classes, a :ref:`custom
-query parameter <Custom Query Parameters>` should be considered.
 
-**NOT IMPLEMENTED**
+:not-implemented:`NOT IMPLEMENTED`
 
-In the event that multiple attributes are to be grouped together for
-search, the parent class should be used as the query parameter:
+:not-implemented:`In the event that the {parent\_class}.{attribute} combination does`
+:not-implemented:`sufficiently guarantee uniqueness or sufficiency of search when a class`
+:not-implemented:`is inherited by multiple classes, additional ancestor classes should be`
+:not-implemented:`prepended to the query parameter until sufficient uniqueness is`
+:not-implemented:`attained:`
 
-{ancestor\_class}.{parent\_class}
+:not-implemented:`{ns:ancestor\_class}.{ns:parent\_class}.{ns:attribute}`
+
+:not-implemented:`If the query parameter grows beyond 3 ancestor classes, a :ref:custom`
+:not-implemented:`query parameter <Custom Query Parameters> should be considered.`
+
+
+:not-implemented:`In the event that multiple attributes are to be grouped together for`
+:not-implemented:`search, the parent class should be used as the query parameter:`
+
+:not-implemented:`{ancestor\_class}.{parent\_class}`
 
 Custom Query Parameters
 ,,,,,,,,,,,,,,,,,,,,,,,,
 
-**NOT IMPLEMENTED**
+:not-implemented:`NOT IMPLEMENTED`
 
-There are several cases where custom query parameters are preferred over
-the Dot Notation, but should only be avoided wherever possible in order
-to minimize confusion amongst developers attempting to use the API.
-These are also subject to approval by Search Integration Working Group
-representative for each node. That member is responsible for providing
-those updates to Engineering Node.
+:not-implemented:`There are several cases where custom query parameters are preferred over`
+:not-implemented:`the Dot Notation, but should only be avoided wherever possible in order`
+:not-implemented:`to minimize confusion amongst developers attempting to use the API.`
+:not-implemented:`These are also subject to approval by Search Integration Working Group`
+:not-implemented:`representative for each node. That member is responsible for providing`
+:not-implemented:`those updates to Engineering Node.`
 
-Some reasons for custom query parameters:
+:not-implemented:`Some reasons for custom query parameters:`
 
--   Combination of multiple attribute values into one
+:not-implemented:`-   Combination of multiple attribute values into one`
 
--   Special cases where XQuery needs to be used for finding specific values (e.g. instrument/spacecraft described in Observing\_System\_Component class)
+:not-implemented:`-   Special cases where XQuery needs to be used for finding specific values (e.g. instrument/spacecraft described in Observing\_System\_Component class)`
 
--   Custom search fields on non-PDS4 metadata (e.g. image tags, operations note, etc.)
+:not-implemented:`-   Custom search fields on non-PDS4 metadata (e.g. image tags, operations note, etc.)`
 
--   Support common search or PDS4 terminology (e.g. target\_name, lidvid)
+:not-implemented:`-   Support common search or PDS4 terminology (e.g. target\_name, lidvid)`
 
 
 Resolve A Product Identifier
