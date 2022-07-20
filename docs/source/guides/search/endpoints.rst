@@ -150,7 +150,7 @@ The query syntax follows the rules:
 
 
 Fields Dot Notation
-......................
+...................
 
 General Case
 ,,,,,,,,,,,,,
@@ -174,6 +174,9 @@ For example:
     pds:Investigation_Area.pds:type
 
 The classes and attributes are defined in the `PDS4 Data Dictionnaries <https://pds.nasa.gov/datastandards/dictionaries/index-1.18.0.0.shtml>`_.
+
+The PDS4 data dictionaries are augmented with a specific  :ref:`ops Namespace` which contains attributes managed by the `PDS Registry <https://nasa-pds.github.io/registry/>`_ in addition to the PDS4 labels attributes.
+
 
 
 .. role:: not-implemented

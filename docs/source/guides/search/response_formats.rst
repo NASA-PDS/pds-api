@@ -122,6 +122,7 @@ Returns
         }
     }
 
+Properties follow the :ref:`Fields Dot Notation`.
 
 application/xml
 ~~~~~~~~~~~~~~~~~~
@@ -194,6 +195,7 @@ Returns:
        </properties>
    </PdsProduct>
 
+Tag names under `properties` follow the :ref:`Fields Dot Notation`.
 
 application/vnd.nasa.pds.pds4+json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -275,6 +277,8 @@ Returns:
 
 `pds4` property contains a translation in JSON of the PDS4 XML Label.
 
+In addition a `meta` object contains fields related to the managed of the record in the `PDS Registry <https://nasa-pds.github.io/registry/>`_, see :ref:`ops Namespace` for details.
+
 
 application/vnd.nasa.pds.pds4+xml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -351,6 +355,7 @@ Returns:
 
 The tag `pds_api:pds4` contains the XML PDS4 label.
 
+In addition a `meta` object contains fields related to the managed of the record in the `PDS Registry <https://nasa-pds.github.io/registry/>`_, see :ref:`ops Namespace` for details.
 
 application/kvp+xml
 ~~~~~~~~~~~~~~~~~~~~~
@@ -395,6 +400,8 @@ Returns:
     ]
    }
 
+Properties follow the :ref:`Fields Dot Notation` when they are coming from the PDS4 standard or the :ref:`ops Namespace`.
+
 
 text/csv
 ~~~~~~~~~
@@ -423,13 +430,60 @@ Returns:
 Open Data
 ~~~~~~~~~~~
 
-NOT IMPLEMENTED
+.. role:: not-implemented
 
-See
-[<u>https://project-open-data.cio.gov/</u>](https://project-open-data.cio.gov/)
-and example of application at
-[<u>https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html\#open-data</u>](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#open-data)
 
+:not-implemented:`NOT IMPLEMENTED`
+
+:not-implemented:`See <https://project-open-data.cio.gov/>_ and example of application at`
+:not-implemented:`<https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#open-data>_`
+
+ops Namespace
+-------------
+
+The response content, in addition to the information found in the PDS4 label contains some attributes related to the management of the datasets in the registry.
+
+A dedicated namespace `ops` is used to manage these attributes in the API, for example: `ops:Label_File_Info.ops:file_name` in :ref:`Fields Dot Notation` used in JSON or in XML tag `<ops:Label_File_Info><ops:file_name>`.
+
+The list of `ops` attributes is given in the following table:
+
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Class           | Attributes          | Description  | Example                                                                                                                           |
++=================+=====================+==============+===================================================================================================================================+
+| Data_File_Info  | creation_date_time  |              | 2021-09-10T15:58:03Z                                                                                                              |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 | file_name           |              | collection_document_hp3rad.csv                                                                                                    |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 | file_ref            |              | `link <https://pds-geosciences.wustl.edu/insight/urn-nasa-pds-insight_documents/document_hp3rad/collection_document_hp3rad.csv>`_ |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 | file_size           | (in bites)   | 137                                                                                                                               |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 | md5_checksum        |              | cd24cbc46c45ed023f039b3e2beb6606                                                                                                  |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 | mime_type           |              | text/plain                                                                                                                        |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 |                     |              |                                                                                                                                   |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Label_File_Info | creation_date_time  |              | 2021-09-10T15:58:03Z                                                                                                              |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 | file_name           |              | collection_document_hp3rad.xml                                                                                                    |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 | file_ref            |              | `link <https://pds-geosciences.wustl.edu/insight/urn-nasa-pds-insight_documents/document_hp3rad/collection_document_hp3rad.xml>`_ |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 | file_size           | (in bites)   | 8655                                                                                                                              |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 | md5_checksum        |              | aa584be2cd34d1899f19d39c23cccba1                                                                                                  |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 |                     |              |                                                                                                                                   |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Harvest_Info    | harvest_date_time   |              | 2021-11-16T06:03:30.952311900Z                                                                                                    |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 | node_name           |              | PDS_GEO                                                                                                                           |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+|                 |                     |              |                                                                                                                                   |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Tracking_Meta   | archive_status      |              | archived                                                                                                                          |
++-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
 Missing values
 ----------------
@@ -443,12 +497,11 @@ without quotes.
 
 If a property is optional or has an empty or null value, consider dropping the property from the JSON, unless there's a strong semantic reason for its existence (taken from this `discussion <https://softwareengineering.stackexchange.com/questions/285010/null-vs-missing-key-in-rest-api-response>`_)
 
-Following interactions with OGC/EDR specification group: `https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/issues/171\#issuecomment-767805902 <https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/issues/171#issuecomment-767805902>`_
+Following interactions with OGC/EDR specification group: see `ticket <https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/issues/171\#issuecomment-767805902>`_
 
 We choose **null** without quotes for missing values of fields explicitly requested by the user.
 
-We conform to EDR specification for this aspect, see
-[http://docs.opengeospatial.org/DRAFTS/19-086.html\#req\_edr\_parameters-response</u>](http://docs.opengeospatial.org/DRAFTS/19-086.html#req_edr_parameters-response)
+We conform to EDR specification for this aspect, see `EDR parameter response <http://docs.opengeospatial.org/DRAFTS/19-086.html#req_edr_parameters-response>`_
 
 This should not be mistaken for an actual PDS4 value since missing
 values in PDS4 labels. are detailed with a nil:reason attribute.
