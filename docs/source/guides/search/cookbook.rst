@@ -114,7 +114,7 @@ Run the following request to get the DOI associated with the product's collectio
 .. code-block:: bash
     :substitutions:
 
-    curl --get 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/collections' \
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/collections' \
         --data-urlencode 'fields=ops:Identifiers/ops:doi' \
         --header 'Accept: application/kvp+json'
 
@@ -151,13 +151,13 @@ To get the DOI associated with the bundle the observational product `urn:nasa:pd
 .. code-block:: bash
     :substitutions:
 
-    curl --get 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/bundles' \
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/bundles' \
         --data-urlencode 'fields=pds:Citation_Information/pds:doi' \
         --data-urlencode 'fields=ops:Identifiers/ops:doi' \
         --header 'Accept: application/kvp+json'
 
 
-You will get the same response as for a :ref:`collection request <Search for a Product's Collection DOI>`
+You will get the same response as for a :ref:`collection request <Search for a Products Collection DOI>`
 
 
 How to Find the PDS Product Associated with a DOI
@@ -168,7 +168,7 @@ To get the PDS product metadata associated with a the DOI `10.17189/1517568`:
 .. code-block:: bash
     :substitutions:
 
-    curl --location --get 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
         --data-urlencode 'q=(ops:Identifiers/ops:doi eq "10.17189/1517568")' \
         --header 'Accept: application/json'
 

@@ -23,14 +23,16 @@ Search With curl
 .. code-block:: bash
    :substitutions:
 
-    curl -X GET --header 'Accept: application/json' 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5'
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5' \
+        --header 'Accept: application/json'
 
 3. Get 5 products' metadata from the API in XML format:
 
 .. code-block:: bash
    :substitutions:
 
-    curl -X GET --header 'Accept: application/xml' 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5'
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5' \
+        --header 'Accept: application/xml'
 
 
 4. To view this in a more readable way, you can pipe the output to a file, or pretty print (on Mac/Unix):

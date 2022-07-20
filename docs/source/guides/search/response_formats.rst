@@ -62,7 +62,8 @@ The request:
 .. code-block:: bash
    :substitutions:
 
-    curl --location --request GET 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' --header 'Accept: application/json'
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' \
+        --header 'Accept: application/json'
 
 Returns
 
@@ -127,7 +128,8 @@ The request:
 .. code-block:: bash
    :substitutions:
 
-   curl --location --request GET 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' --header 'Accept: application/xml'
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' \
+      --header 'Accept: application/xml'
 
 Returns:
 
@@ -198,7 +200,8 @@ The request:
 .. code-block:: bash
    :substitutions:
 
-   curl --location --request GET 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' --header 'Accept: application/vnd.nasa.pds.pds4+json'
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' \
+      --header 'Accept: application/vnd.nasa.pds.pds4+json'
 
 
 Returns:
@@ -278,7 +281,8 @@ The request:
 .. code-block:: bash
    :substitutions:
 
-   curl --location --request GET 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' --header 'Accept: application/vnd.nasa.pds.pds4+xml'
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' \
+      --header 'Accept: application/vnd.nasa.pds.pds4+xml'
 
 
 Returns:
@@ -355,7 +359,8 @@ The request:
 .. code-block:: bash
    :substitutions:
 
-   curl --location --request GET 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=10&fields=lidvid&fields=title' --header 'Accept: application/kvp+json'
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=10&fields=lidvid&fields=title' \
+      --header 'Accept: application/kvp+json'
 
 Returns:
 
@@ -398,7 +403,8 @@ The request:
 .. code-block:: bash
    :substitutions:
 
-   curl --location --request GET 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=10&fields=lidvid&fields=title' --header 'Accept: text/csv'
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=10&fields=lidvid&fields=title' \
+      --header 'Accept: text/csv'
 
 Returns:
 
