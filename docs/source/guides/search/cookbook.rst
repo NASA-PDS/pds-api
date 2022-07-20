@@ -1,7 +1,11 @@
+
 Search API Cookbook
 +++++++++++++++++++
 
 Recipes for various search scenarios using the PDS Search API.
+
+.. Note::
+   curl command line tool is used to request the API in this documentation. curl is available in many operating systems by default. If not, you can get curl from https://curl.se/ or using a package management tool specific to your operating system (brew, apt, ...).
 
 Search For Product Versions
 ===========================
