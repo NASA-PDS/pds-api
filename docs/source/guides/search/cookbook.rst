@@ -156,10 +156,8 @@ To get the DOI associated with the bundle the observational product `urn:nasa:pd
     :substitutions:
 
     curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/bundles' \
-        --data-urlencode 'fields=pds:Citation_Information/pds:doi' \
-        --data-urlencode 'fields=ops:Identifiers/ops:doi' \
+        --data-urlencode 'fields=pds:Citation_Information/pds:doi,ops:Identifiers/ops:doi' \
         --header 'Accept: application/kvp+json'
-
 
 You will get the same response as for a :ref:`collection request <Search for a Products Collection DOI>`
 
