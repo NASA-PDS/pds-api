@@ -1,6 +1,22 @@
 # Changelog
 
-## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-07-06)
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-07-26)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
+
+**Requirements:**
+
+- As a user, I want to get directions whenever I arrive on an API URL [\#191](https://github.com/NASA-PDS/pds-api/issues/191)
+
+**Defects:**
+
+- fix broken link in API docs [\#206](https://github.com/NASA-PDS/pds-api/issues/206) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
+
+**Other closed issues:**
+
+- PDS API documentation needs to be scrubbed [\#203](https://github.com/NASA-PDS/pds-api/issues/203)
+
+## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-07-19)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
 
