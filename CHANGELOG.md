@@ -1,27 +1,12 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-07-26)
-
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
-
-**Requirements:**
-
-- As a user, I want to get directions whenever I arrive on an API URL [\#191](https://github.com/NASA-PDS/pds-api/issues/191)
-
-**Defects:**
-
-- fix broken link in API docs [\#206](https://github.com/NASA-PDS/pds-api/issues/206) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
-
-**Other closed issues:**
-
-- PDS API documentation needs to be scrubbed [\#203](https://github.com/NASA-PDS/pds-api/issues/203)
-
-## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-07-19)
+## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-07-26)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
 
 **Requirements:**
 
+- As a user, I want to get directions whenever I arrive on an API URL [\#191](https://github.com/NASA-PDS/pds-api/issues/191)
 - As a user, I want to have a PDS Search API user guide [\#169](https://github.com/NASA-PDS/pds-api/issues/169)
 - As a user, I want to receive error messages when an invalid request is submitted to the API [\#153](https://github.com/NASA-PDS/pds-api/issues/153)
 - As a user, I want the API response media types to be compliant with RFC 6838 [\#152](https://github.com/NASA-PDS/pds-api/issues/152)
@@ -56,6 +41,7 @@
 
 **Defects:**
 
+- fix broken link in API docs [\#206](https://github.com/NASA-PDS/pds-api/issues/206) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
 - version number invalid according to PEP validation in CI [\#164](https://github.com/NASA-PDS/pds-api/issues/164) [[s.critical](https://github.com/NASA-PDS/pds-api/labels/s.critical)]
 - `products/{identifier}` missing properties object in application/json response [\#155](https://github.com/NASA-PDS/pds-api/issues/155) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - pds api not able to search using URL parameters [\#130](https://github.com/NASA-PDS/pds-api/issues/130) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
@@ -64,6 +50,7 @@
 
 **Other closed issues:**
 
+- PDS API documentation needs to be scrubbed [\#203](https://github.com/NASA-PDS/pds-api/issues/203)
 - Present the updated API specification to the API WG [\#197](https://github.com/NASA-PDS/pds-api/issues/197)
 - Update Specifications documentation to only include latest with link to page with past versions [\#167](https://github.com/NASA-PDS/pds-api/issues/167)
 - Check for typos in OpenAPI spec [\#161](https://github.com/NASA-PDS/pds-api/issues/161)
