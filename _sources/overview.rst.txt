@@ -13,6 +13,24 @@ where:
 - ``{version}``: the version of the service.
 - ``{service_path+params}``: the ReST path for the service, including any query parameters - this is essentially the remaining portion of the URI after the version.
 
+API entries currently available are:
+
++----------+-----------+-------------------------+----------------+-----------------+
+| service  |  version  |  scope                  | specification  | user's guide    |
++==========+===========+=========================+================+=================+
+| search   |  1.0      | search PDS data archive | `search_spec`_ | `search_guide`_ |
++----------+-----------+-------------------------+----------------+-----------------+
+| doi      |  0.2      | manage PDS DOIs         | `doi_spec`_    |                 |
++----------+-----------+-------------------------+----------------+-----------------+
+
+.. _search_spec: specifications/search-v1.0.0-redoc.html
+
+.. _doi_spec: specifications/doi-v0.2-redoc.html
+
+.. _search_guide: guides/search
+
+
+
 So for example:
 
 .. code-block::
@@ -22,4 +40,7 @@ So for example:
 
 intends to obtain 10 product entries from the 0.4.2 version of the GEO node’s search (registry).
 
-The API specifications design is driven by the :doc:`PDS API general conventions <general_conventions>`
+
+
+
+The API specifications design is driven by the :doc:`PDS API general conventions <general-conventions>`

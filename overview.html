@@ -15,13 +15,14 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="PDS Search API User Guide" href="search-api-user-guide.html" />
+    <link rel="next" title="Search API User Guide" href="guides/search.html" />
     <link rel="prev" title="PDS APIs" href="index.html" /> 
 </head>
 
@@ -46,11 +47,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide.html">PDS Search API User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/search.html">Search API User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general-conventions.html">General API Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Tools and Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acknowlegements.html"><strong>Acknowledgements</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowlegements.html">Acknowledgements</a></li>
 </ul>
 
         </div>
@@ -78,7 +80,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h1>
 <p>The PDS API base urls are provided under the following pattern:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="p">{</span><span class="n">service</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">version</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">service_path</span><span class="o">+</span><span class="n">params</span><span class="p">}</span>
 </pre></div>
@@ -89,12 +91,44 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">{version}</span></code>: the version of the service.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">{service_path+params}</span></code>: the ReST path for the service, including any query parameters - this is essentially the remaining portion of the URI after the version.</p></li>
 </ul>
+<p>API entries currently available are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 32%" />
+<col style="width: 20%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>service</p></th>
+<th class="head"><p>version</p></th>
+<th class="head"><p>scope</p></th>
+<th class="head"><p>specification</p></th>
+<th class="head"><p>user’s guide</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>search</p></td>
+<td><p>1.0</p></td>
+<td><p>search PDS data archive</p></td>
+<td><p><a class="reference external" href="specifications/search-v1.0.0-redoc.html">search_spec</a></p></td>
+<td><p><a class="reference external" href="guides/search">search_guide</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>doi</p></td>
+<td><p>0.2</p></td>
+<td><p>manage PDS DOIs</p></td>
+<td><p><a class="reference external" href="specifications/doi-v0.2-redoc.html">doi_spec</a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>So for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search-geo/1.0/products?limit=10
 </pre></div>
 </div>
 <p>intends to obtain 10 product entries from the 0.4.2 version of the GEO node’s search (registry).</p>
-<p>The API specifications design is driven by the <a class="reference internal" href="general_conventions.html"><span class="doc">PDS API general conventions</span></a></p>
+<p>The API specifications design is driven by the <a class="reference internal" href="general-conventions.html"><span class="doc">PDS API general conventions</span></a></p>
 </div>
 
 
@@ -102,7 +136,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="PDS APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="search-api-user-guide.html" class="btn btn-neutral float-right" title="PDS Search API User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="guides/search.html" class="btn btn-neutral float-right" title="Search API User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

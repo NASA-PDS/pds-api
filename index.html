@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -45,7 +46,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide.html">PDS Search API User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/search.html">Search API User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general-conventions.html">General API Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Tools and Services</a></li>
@@ -78,7 +79,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="pds-apis">
-<h1>PDS APIs<a class="headerlink" href="#pds-apis" title="Permalink to this headline"></a></h1>
+<h1>PDS APIs<a class="headerlink" href="#pds-apis" title="Permalink to this heading"></a></h1>
 <p>The Planetary Data System (PDS) is a federated system of nodes that archive planetary science data.</p>
 <p>The PDS Application Programming Interface (API) provides a consistent way for planetary science community to discover and
 share archival data across PDS. This API is one of the cornerstone applications for providing an integrated worldwide
@@ -90,33 +91,33 @@ planetary science archives.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search-api-user-guide.html">PDS Search API User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/quickstart.html">Quickstart</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/quickstart.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/quickstart.html#search-with-curl">Search With curl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/quickstart.html#search-with-python">Search with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/search.html">Search API User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/search/quickstart.html">Quickstart</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/quickstart.html#search-with-curl">Search With curl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/quickstart.html#search-with-python">Search with Python</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/endpoints.html">PDS Search API Queries</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/endpoints.html#endpoints">Endpoints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/endpoints.html#search-products">Search Products</a></li>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/endpoints.html#resolve-a-product-identifier">Resolve A Product Identifier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/endpoints.html#crawl-a-data-set-hierarchy">Crawl a Data Set Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/search/endpoints.html">Query Syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/endpoints.html#endpoints">Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/endpoints.html#search-products">Search Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/endpoints.html#resolve-a-product-identifier">Resolve A Product Identifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/endpoints.html#crawl-a-data-set-hierarchy">Crawl a Data Set Hierarchy</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/response_formats.html">PDS Search API Response Formats</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/response_formats.html#content-negotiation">Content Negotiation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/response_formats.html#examples">Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/response_formats.html#missing-values">Missing values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/search/response_formats.html">Response Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/response_formats.html#content-negotiation">Content Negotiation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/response_formats.html#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/response_formats.html#ops-namespace">ops Namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/response_formats.html#missing-values">Missing values</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="search-api-user-guide/tutorials.html">Tutorials/Cookbooks</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/tutorials.html#sample-jupyterlab-notebooks-python">Sample JupyterLab Notebooks (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/tutorials.html#web-search-interface-tutorial-html-javascript">Web Search Interface Tutorial (HTML/Javascript)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="search-api-user-guide/tutorials.html#search-examples">Search Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/search/tutorials.html">Tutorials/Cookbooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/tutorials.html#sample-jupyterlab-notebooks-python">Sample JupyterLab Notebooks (Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/tutorials.html#web-search-interface-tutorial-html-javascript">Web Search Interface Tutorial (HTML/Javascript)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/search/tutorials.html#search-examples">Search Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-redoc.html">PDS Search API Full Reference</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.0.0-redoc.html">API Full Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="specifications.html">Specifications</a></li>
