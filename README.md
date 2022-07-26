@@ -16,7 +16,8 @@ Please visit our website at https://nasa-pds.github.io/pds-api/ for user documen
 * For PDF generation, basiclatex and accompanying libraries are needed
 
     ```
-    brew install basiclatex
+    brew install basictex
+    sudo /Library/TeX/texbin/tlmgr update --self
     sudo /Library/TeX/texbin/tlmgr install latexmk
     sudo /Library/TeX/texbin/tlmgr install tex-gyre
     sudo /Library/TeX/texbin/tlmgr install fncychap

@@ -27,7 +27,7 @@ API entries currently available are:
 
 .. _doi_spec: specifications/doi-v0.2-redoc.html
 
-.. _search_guide: guides/search.html
+.. _search_guide: guides/search
 
 
 
