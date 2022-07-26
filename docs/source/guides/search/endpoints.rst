@@ -230,7 +230,7 @@ Resolve A Product Identifier
 Default Resolution
 ~~~~~~~~~~~~~~~~~~~~
 
-If you know the lid (for example urn:nasa:pds:insight_rad) or lidvid (for example urn:nasa:pds:insight_rad::2.1) identifier of a product, you can retrieve its description, whereever it is managed in the PDS system, with the following request:
+If you know the lid (for example `urn:nasa:pds:insight_rad`) or lidvid (for example `urn:nasa:pds:insight_rad::2.1`) identifier of a product, you can retrieve its description, whereever it is managed in the PDS system, with the following request:
 
 .. code-block:: bash
    :substitutions:
