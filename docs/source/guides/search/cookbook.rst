@@ -1,7 +1,11 @@
+
 Search API Cookbook
 +++++++++++++++++++
 
 Recipes for various search scenarios using the PDS Search API.
+
+.. Note::
+   curl command line tool is used to request the API in this documentation. curl is available in many operating systems by default. If not, you can get curl from https://curl.se/ or using a package management tool specific to your operating system (brew, apt, ...).
 
 Search For Product Versions
 ===========================
@@ -64,7 +68,9 @@ Search for the 10 latest collections which processing level is "Raw":
    :caption: curl command
    :substitutions:
 
-   curl --location --request GET 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections?limit=10&q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections' \
+       --data-urlencode 'limit=10' \
+       --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
 
 Search by Target
@@ -78,7 +84,8 @@ Search for all Observational Products targeting Bennu:
    :caption: curl command
    :substitutions:
 
-   curl --location --request GET 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections?q=(ref_lid_target eq "urn:nasa:pds:context:target:asteroid.101955_bennu")'
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections' \
+     --data-urlencode 'q=(ref_lid_target eq "urn:nasa:pds:context:target:asteroid.101955_bennu")'
 
 ----
 
@@ -111,7 +118,9 @@ Run the following request to get the DOI associated with the product's collectio
 .. code-block:: bash
     :substitutions:
 
-    curl --location --request GET 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/collections?fields=ops:Identifiers/ops:doi' --header 'Accept: application/kvp+json'
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/collections' \
+        --data-urlencode 'fields=ops:Identifiers/ops:doi' \
+        --header 'Accept: application/kvp+json'
 
 .. _DOI request result:
 
@@ -146,10 +155,11 @@ To get the DOI associated with the bundle the observational product `urn:nasa:pd
 .. code-block:: bash
     :substitutions:
 
-    curl --location --request GET 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/bundles?fields=pds:Citation_Information/pds:doi&fields=ops:Identifiers/ops:doi' --header 'Accept: application/kvp+json'
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/bundles' \
+        --data-urlencode 'fields=pds:Citation_Information/pds:doi,ops:Identifiers/ops:doi' \
+        --header 'Accept: application/kvp+json'
 
-
-You will get the same response as for a :ref:`collection request <Search for a Product's Collection DOI>`
+You will get the same response as for a :ref:`collection request <Search for a Products Collection DOI>`
 
 
 How to Find the PDS Product Associated with a DOI
@@ -160,7 +170,9 @@ To get the PDS product metadata associated with a the DOI `10.17189/1517568`:
 .. code-block:: bash
     :substitutions:
 
-    curl --location --request GET 'http://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?q=(ops:Identifiers/ops:doi eq "10.17189/1517568")' --header 'Accept: application/json'
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+        --data-urlencode 'q=(ops:Identifiers/ops:doi eq "10.17189/1517568")' \
+        --header 'Accept: application/json'
 
 You will get a JSON response of the PDS products (any class of product, for example collections or bundles) which have referenced the given DOI.
 
