@@ -4,15 +4,13 @@ Query Syntax
 .. Warning::
    Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_ for assistance.
 
-.. Note::
-   curl command line tool is used to request the API in this documentation. curl is available in many operating systems by default. If not, you can get curl from https://curl.se/ or using a package management tool specific to your operating system (brew, apt, ...).
 
 Endpoints
 ---------
 
-The URLs for performing GET requests for searching PDS data are as follows.
+The base URIs for performing GET requests for searching PDS data are as follows.
 
-The **base URL** of the PDS Search API, for search across all the PDS nodes, is:
+The **base URL** of the PDS Search API, for all the PDS nodes, is:
 
 .. code-block::
    :substitutions:
@@ -34,14 +32,14 @@ The **Node IDs** are:
 Node ID        Node Name
 =============  ========================================
 atm            Atmospheres
-en             Engineering
 geo            Geosciences
 img            Imaging
 naif           Navigation and Ancillary Information
 ppi            Planetary Plasma Interactions
 rms            Ring-Moon Systems
-sbnumd         Small Bodies, Comets
 sbnpsi         Small Bodies, Asteroids/Dust
+sbnumd         Small Bodies, Comets
+en             Engineering
 =============  ========================================
 
 The main use cases, to search, crawl products or resolve a product identifier are given in the following sections.
@@ -57,11 +55,7 @@ Search for the 10 latest collections which processing level is "Raw":
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections' \
-       --data-urlencode 'limit=10' \
-       --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
-
-
+   curl --location --request GET 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections?limit=10&q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
 
 Request Template
@@ -80,8 +74,6 @@ Where `product_class` is one of:
 * **collections**: search among products which class is product_collection
 * **bundles**: search among products which class is product_bundle
 
-The concept of product class is derived from the `PDS4 standard <https://pds.nasa.gov/datastandards/documents/im/current/index_1I00.html>`_.
-
 Query Detailed Syntax
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -94,7 +86,7 @@ The query parameters are:
  **Query Parameter**  **Description**                                                                                                                                                                                                             **Example**
 ====================  =========================================================================================================================================================================================================================== ====================
  q                    (Optional, string) Query string you wish to parse and use for search. See `query string syntax`_                                                                                                                            q=target_name eq "Mars"
- keyword              (Optional, string) String used for text search on title and description of the PDS4 labels                                                                                                                                  keyword=insight
+ keyword              (Optional, string) String used for text search on title and description of the PDS4 labels                                                                                                                                  insight
  fields               (Optional, array of strings) Array of fields you wish to return.                                                                                                                                                            fields=lid,Time_Coordinates.start_date_time
  start                (Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19. Useful for pagination of the results.                                             start=100
  limit                (Optional, integer, default=100) The number of records/results to return.                                                                                                                                                   limit=100
@@ -150,7 +142,7 @@ The query syntax follows the rules:
 
 
 Fields Dot Notation
-...................
+......................
 
 General Case
 ,,,,,,,,,,,,,
@@ -173,55 +165,47 @@ For example:
     pds:Science_Facets.pds:discipline_name
     pds:Investigation_Area.pds:type
 
-The classes and attributes are defined in the `PDS4 Data Dictionnaries <https://pds.nasa.gov/datastandards/dictionaries/index-1.18.0.0.shtml>`_.
+**NOT IMPLEMENTED**
 
-The PDS4 data dictionaries are augmented with a specific  :ref:`ops Namespace` which contains attributes managed by the `PDS Registry <https://nasa-pds.github.io/registry/>`_ in addition to the PDS4 labels attributes.
+In the event that the {parent\_class}.{attribute} combination does
+sufficiently guarantee uniqueness or sufficiency of search when a class
+is inherited by multiple classes, additional ancestor classes should be
+prepended to the query parameter until sufficient uniqueness is
+attained:
 
+{ns:ancestor\_class}.{ns:parent\_class}.{ns:attribute}
 
+If the query parameter grows beyond 3 ancestor classes, a :ref:`custom
+query parameter <Custom Query Parameters>` should be considered.
 
-.. role:: not-implemented
+**NOT IMPLEMENTED**
 
+In the event that multiple attributes are to be grouped together for
+search, the parent class should be used as the query parameter:
 
-:not-implemented:`NOT IMPLEMENTED`
-
-:not-implemented:`In the event that the {parent\_class}.{attribute} combination does`
-:not-implemented:`sufficiently guarantee uniqueness or sufficiency of search when a class`
-:not-implemented:`is inherited by multiple classes, additional ancestor classes should be`
-:not-implemented:`prepended to the query parameter until sufficient uniqueness is`
-:not-implemented:`attained:`
-
-:not-implemented:`{ns:ancestor\_class}.{ns:parent\_class}.{ns:attribute}`
-
-:not-implemented:`If the query parameter grows beyond 3 ancestor classes, a :ref:custom`
-:not-implemented:`query parameter <Custom Query Parameters> should be considered.`
-
-
-:not-implemented:`In the event that multiple attributes are to be grouped together for`
-:not-implemented:`search, the parent class should be used as the query parameter:`
-
-:not-implemented:`{ancestor\_class}.{parent\_class}`
+{ancestor\_class}.{parent\_class}
 
 Custom Query Parameters
 ,,,,,,,,,,,,,,,,,,,,,,,,
 
-:not-implemented:`NOT IMPLEMENTED`
+**NOT IMPLEMENTED**
 
-:not-implemented:`There are several cases where custom query parameters are preferred over`
-:not-implemented:`the Dot Notation, but should only be avoided wherever possible in order`
-:not-implemented:`to minimize confusion amongst developers attempting to use the API.`
-:not-implemented:`These are also subject to approval by Search Integration Working Group`
-:not-implemented:`representative for each node. That member is responsible for providing`
-:not-implemented:`those updates to Engineering Node.`
+There are several cases where custom query parameters are preferred over
+the Dot Notation, but should only be avoided wherever possible in order
+to minimize confusion amongst developers attempting to use the API.
+These are also subject to approval by Search Integration Working Group
+representative for each node. That member is responsible for providing
+those updates to Engineering Node.
 
-:not-implemented:`Some reasons for custom query parameters:`
+Some reasons for custom query parameters:
 
-:not-implemented:`-   Combination of multiple attribute values into one`
+-   Combination of multiple attribute values into one
 
-:not-implemented:`-   Special cases where XQuery needs to be used for finding specific values (e.g. instrument/spacecraft described in Observing\_System\_Component class)`
+-   Special cases where XQuery needs to be used for finding specific values (e.g. instrument/spacecraft described in Observing\_System\_Component class)
 
-:not-implemented:`-   Custom search fields on non-PDS4 metadata (e.g. image tags, operations note, etc.)`
+-   Custom search fields on non-PDS4 metadata (e.g. image tags, operations note, etc.)
 
-:not-implemented:`-   Support common search or PDS4 terminology (e.g. target\_name, lidvid)`
+-   Support common search or PDS4 terminology (e.g. target\_name, lidvid)
 
 
 Resolve A Product Identifier
@@ -242,8 +226,7 @@ For example
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' \
-       --header 'Accept: application/json'
+   curl --location --request GET 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' --header 'Accept: application/json'
 
 
 Search for Latest vs. All Versions
@@ -305,8 +288,7 @@ For example, run:
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/bundles/urn:nasa:pds:insight_rad::2.1/collections' \
-       --header 'Accept: application/json'
+   curl --location --request GET 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/bundles/urn:nasa:pds:insight_rad::2.1/collections' --header 'Accept: application/json'
 
 
 Get its **observational products**:

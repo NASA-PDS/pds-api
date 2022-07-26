@@ -89,8 +89,8 @@ A response with this format is fine:
 .. code-block:: json
 
     {
-       "summmary": {"..."},
-       "data": ["..."]
+       summmary: {"..."},
+       data: ["..."]
     }
 
 

@@ -6,8 +6,11 @@ The following section provides a quickstart guide to try out the PDS Search API.
 .. Warning::
    Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_ for assistance.
 
-.. Note::
-   curl command line tool is used to request the API in this documentation. curl is available in many operating systems by default. If not, you can get curl from https://curl.se/ or using a package management tool specific to your operating system (brew, apt, ...).
+Prerequisites
+-------------
+
+- curl command line tool (curl is available in many operating systems by default. If not, you can get curl from https://curl.se/ or using a package management tool specific to your operating system).
+
 
 Search With curl
 ----------------
@@ -20,16 +23,14 @@ Search With curl
 .. code-block:: bash
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5' \
-        --header 'Accept: application/json'
+    curl -X GET --header 'Accept: application/json' 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5'
 
 3. Get 5 products' metadata from the API in XML format:
 
 .. code-block:: bash
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5' \
-        --header 'Accept: application/xml'
+    curl -X GET --header 'Accept: application/xml' 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5'
 
 
 4. To view this in a more readable way, you can pipe the output to a file, or pretty print (on Mac/Unix):
