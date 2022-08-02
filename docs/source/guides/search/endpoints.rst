@@ -95,10 +95,10 @@ The query parameters are:
 ====================  =========================================================================================================================================================================================================================== ====================
  q                    (Optional, string) Query string you wish to parse and use for search. See `query string syntax`_                                                                                                                            q=target_name eq "Mars"
  keyword              (Optional, string) String used for text search on title and description of the PDS4 labels                                                                                                                                  keyword=insight
- fields               (Optional, array of strings) Array of fields you wish to return.                                                                                                                                                            fields=lid,Time_Coordinates.start_date_time
+ fields               (Optional, array of strings) Array of fields you wish to return.                                                                                                                                                            fields=lid,pds:Time_Coordinates.pds:start_date_time
  start                (Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19. Useful for pagination of the results.                                             start=100
  limit                (Optional, integer, default=100) The number of records/results to return.                                                                                                                                                   limit=100
- sort                 (Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). `fieldName asc` or `fieldName desc`. There can be several sort parameters (order is important).   sort=lidvid asc, Time_Coordinates.start_date_time desc
+ sort                 (Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). `fieldName asc` or `fieldName desc`. There can be several sort parameters (order is important).   sort=lidvid asc, pds:Time_Coordinates.pds:start_date_time desc
  summary-only         (Optional, boolean, default=False) When true, only the summary of the results is returned, not the individual results                                                                                                       true
 ====================  =========================================================================================================================================================================================================================== ====================
 
@@ -136,10 +136,10 @@ The query syntax follows the rules:
  *Comparison Operators*
  eq                      Equal                       target\_name **eq** "Mars"
  ne                      Not equal                   target\_name **ne** "Saturn"
- gt                      Greater than                Time\_Coordinates.start\_date\_time **gt** 2001-05-10T00:00:00Z
- ge                      Greater than or equal       Time\_Coordinates.start\_date\_time **ge** 2001-05-10T00:00:00Z
- lt                      Less than                   Time\_Coordinates.start\_date\_time **lt** 2020-06-01T00:00:00Z
- le                      Less than or equal          Time\_Coordinates.start\_date\_time **le** 2020-06-01T00:00:00Z
+ gt                      Greater than                pds:Time\_Coordinates.pds:start\_date\_time **gt** 2001-05-10T00:00:00Z
+ ge                      Greater than or equal       pds:Time\_Coordinates.pds:start\_date\_time **ge** 2001-05-10T00:00:00Z
+ lt                      Less than                   pds:Time\_Coordinates.pds:start\_date\_time **lt** 2020-06-01T00:00:00Z
+ le                      Less than or equal          pds:Time\_Coordinates.pds:start\_date\_time **le** 2020-06-01T00:00:00Z
  *Logical Operators*
  and                     Logical and                 target\_name **eq** "Mars" **and** instrument\_name **eq** "hirise"
  or                      Logical or                  target\_name **eq** "Mars" **or** target\_name **eq** "Phobos"
