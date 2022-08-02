@@ -1,10 +1,8 @@
 Contribute
 ==========
 
-We are always looking for community input into our software. Feel free to contribute to the PDS repos:
+For information on how to contribute to NASA-PDS codebases please take a look at our `Contributing Guidelines <https://github.com/NASA-PDS/.github/blob/main/CONTRIBUTING.md>`_.
 
-• Contribute to this documentation: https://github.com/NASA-PDS/pds-api
-• Contribute to a specific software project: https://github.com/NASA-PDS
 
 Report a Bug or New Feature Request
 ===================================
