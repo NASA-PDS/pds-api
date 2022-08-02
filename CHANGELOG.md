@@ -1,14 +1,6 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-08-02)
-
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
-
-**Other closed issues:**
-
-- PDS API documentation needs to be scrubbed [\#203](https://github.com/NASA-PDS/pds-api/issues/203)
-
-## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-07-26)
+## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-08-02)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
 
@@ -58,6 +50,7 @@
 
 **Other closed issues:**
 
+- PDS API documentation needs to be scrubbed [\#203](https://github.com/NASA-PDS/pds-api/issues/203)
 - Present the updated API specification to the API WG [\#197](https://github.com/NASA-PDS/pds-api/issues/197)
 - Update Specifications documentation to only include latest with link to page with past versions [\#167](https://github.com/NASA-PDS/pds-api/issues/167)
 - Check for typos in OpenAPI spec [\#161](https://github.com/NASA-PDS/pds-api/issues/161)
