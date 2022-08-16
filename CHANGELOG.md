@@ -1,5 +1,13 @@
 # Changelog
 
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-08-16)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
+
+**Defects:**
+
+- is "bites" a typo for "bytes" or "bits"? [\#216](https://github.com/NASA-PDS/pds-api/issues/216) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
+
 ## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-08-02)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
