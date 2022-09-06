@@ -1,14 +1,22 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-08-16)
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-09-06)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
 
-**Defects:**
+**Requirements:**
 
-- is "bites" a typo for "bytes" or "bits"? [\#216](https://github.com/NASA-PDS/pds-api/issues/216) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
+- As a user, I want to search for past versions of a product where the LID changed during the product history [\#148](https://github.com/NASA-PDS/pds-api/issues/148)
 
-## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-08-02)
+**Improvements:**
+
+- Complete refactoring per API WG discussion on end-point redesign [\#202](https://github.com/NASA-PDS/pds-api/issues/202)
+
+**Other closed issues:**
+
+- Identify and ingest bundle containing collections and products with multiple versions into dev registry [\#97](https://github.com/NASA-PDS/pds-api/issues/97)
+
+## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-08-16)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
 
@@ -20,7 +28,7 @@
 - As a user, I want the API response media types to be compliant with RFC 6838 [\#152](https://github.com/NASA-PDS/pds-api/issues/152)
 - As a user, I want to see API stable release specifications [\#139](https://github.com/NASA-PDS/pds-api/issues/139)
 - As an API user, I want to get a key-value-pair JSON response [\#134](https://github.com/NASA-PDS/pds-api/issues/134)
-- As a user, I want to get the metadata in a pds4+xml response [\#125](https://github.com/NASA-PDS/pds-api/issues/125)
+- As a user, I want to receive a XML response that contains the PDS4 label metadata in XML format \(application/vnd.nasa.pds.pds4+xml\)  [\#125](https://github.com/NASA-PDS/pds-api/issues/125)
 - As an API user, I want a CSV response format option [\#120](https://github.com/NASA-PDS/pds-api/issues/120)
 - As a user, I want to clearly see which formats are accepted by the API when a 406 error is raised [\#127](https://github.com/NASA-PDS/pds-api/issues/127)
 - As a API manager, I want to restrict access to registered products that should not be publicly accessible [\#106](https://github.com/NASA-PDS/pds-api/issues/106)
@@ -49,6 +57,7 @@
 
 **Defects:**
 
+- is "bites" a typo for "bytes" or "bits"? [\#216](https://github.com/NASA-PDS/pds-api/issues/216) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
 - fix broken link in API docs [\#206](https://github.com/NASA-PDS/pds-api/issues/206) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
 - version number invalid according to PEP validation in CI [\#164](https://github.com/NASA-PDS/pds-api/issues/164) [[s.critical](https://github.com/NASA-PDS/pds-api/labels/s.critical)]
 - `products/{identifier}` missing properties object in application/json response [\#155](https://github.com/NASA-PDS/pds-api/issues/155) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
@@ -81,7 +90,7 @@
 
 - As an API user, I want to explicitly request the latest version of a product [\#107](https://github.com/NASA-PDS/pds-api/issues/107)
 - As an API user, I want to know how long a request took to complete [\#105](https://github.com/NASA-PDS/pds-api/issues/105)
-- As a user, I want to receive a JSON response that contains the PDS4 label metadata in JSON format \(application/pds4+json\) [\#101](https://github.com/NASA-PDS/pds-api/issues/101)
+- As a user, I want to receive a JSON response that contains the PDS4 label metadata in JSON format \(application/vnd.nasa.pds.pds4+json\) [\#101](https://github.com/NASA-PDS/pds-api/issues/101)
 - As an API user, I want to be able to use the API for free text search [\#99](https://github.com/NASA-PDS/pds-api/issues/99)
 - As an API user, I want to get the latest version of a product, by default [\#96](https://github.com/NASA-PDS/pds-api/issues/96)
 - As a user, I want to query for all versions of a product [\#95](https://github.com/NASA-PDS/pds-api/issues/95)
