@@ -140,7 +140,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a user, I want to receive a JSON response that contains the PDS4 label metadata in JSON format (application/pds4+json) ([#101](https://github.com/NASA-PDS/pds-api/issues/101)) 
+## As a user, I want to receive a JSON response that contains the PDS4 label metadata in JSON format (application/vnd.nasa.pds.pds4+json) ([#101](https://github.com/NASA-PDS/pds-api/issues/101)) 
 
 
 This requirement is not impacted by the current version
@@ -180,7 +180,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a user, I want to get the metadata in a pds4+xml response ([#125](https://github.com/NASA-PDS/pds-api/issues/125)) 
+## As a user, I want to receive a XML response that contains the PDS4 label metadata in XML format (application/vnd.nasa.pds.pds4+xml)  ([#125](https://github.com/NASA-PDS/pds-api/issues/125)) 
 
 
 This requirement is not impacted by the current version
@@ -196,7 +196,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a user, I want to know how to parse a PDS4 attribute from the pds4+json response format ([#132](https://github.com/NASA-PDS/pds-api/issues/132)) 
+## As a user, I want to know how to parse a PDS4 attribute from the vnd.nasa.pds.pds4+json response format ([#132](https://github.com/NASA-PDS/pds-api/issues/132)) 
 
 
 This requirement is not impacted by the current version
