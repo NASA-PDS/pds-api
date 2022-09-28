@@ -357,7 +357,8 @@ The tag `pds_api:pds4` contains the XML PDS4 label.
 
 In addition a `meta` object contains fields related to the managed of the record in the `PDS Registry <https://nasa-pds.github.io/registry/>`_, see :ref:`ops Namespace` for details.
 
-application/kvp+xml
+application/kvp+json
+
 ~~~~~~~~~~~~~~~~~~~~~
 
 This format is useful when one only need a few fields from the metadata.
