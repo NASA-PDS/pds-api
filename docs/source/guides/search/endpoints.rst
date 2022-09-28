@@ -128,13 +128,15 @@ The query syntax follows the rules:
 
 * **{field}** follows the `Fields Dot Notation`_ . The available fields can be found in responses `summary` object, `properties` attribute.
 * **{comparison operator}** are eq, ne, gt, lt, ge, le
-* **{literal value}** is either a string between ``"`` (double quotes) or a numerical value (float or integer). Wildcards (\*, ?) are supported in strings.
+* **{literal value}** is either a string between ``"`` (double quotes) or a numerical value (float or integer).
+* Wildcard searching is available with the **like** operator. The wildcarding syntax of the **{literal value}** follows the [OpenSearch Simple Query String](https://opensearch.org/docs/latest/opensearch/query-dsl/full-text/#simple-query-string) convention.
 
 ======================= =========================== ============
  **Operator**            **Description**            **Example**
 ======================= =========================== ============
  *Comparison Operators*
  eq                      Equal                       target\_name **eq** "Mars"
+ like                    Similar to                  target\_name **like** "mars"
  ne                      Not equal                   target\_name **ne** "Saturn"
  gt                      Greater than                pds:Time\_Coordinates.pds:start\_date\_time **gt** 2001-05-10T00:00:00Z
  ge                      Greater than or equal       pds:Time\_Coordinates.pds:start\_date\_time **ge** 2001-05-10T00:00:00Z
