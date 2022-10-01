@@ -57,7 +57,7 @@ Search for the 10 latest collections which processing level is "Raw":
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections' \
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections' \
        --data-urlencode 'limit=10' \
        --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
@@ -72,7 +72,8 @@ The requests template is a follow:
 .. code-block:: http
    :substitutions:
 
-   GET https://pds.nasa.gov/api/search/|search_user_guide_api_version|/{product_class}[?[{query-parameter}={query-parameter-value}]*]
+   GET /api/search/|search_user_guide_api_version|/classes/{product_class}[?[{query-parameter}={query-parameter-value}]*] HTTP/1.1
+   Host: pds.nasa.gov
 
 Where `product_class` is one of:
 
@@ -81,6 +82,7 @@ Where `product_class` is one of:
 * **bundles**: search among products which class is product_bundle
 
 The concept of product class is derived from the `PDS4 standard <https://pds.nasa.gov/datastandards/documents/im/current/index_1I00.html>`_.
+
 
 Query Detailed Syntax
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -97,9 +99,8 @@ The query parameters are:
  keyword              (Optional, string) String used for text search on title and description of the PDS4 labels                                                                                                                                  keyword=insight
  fields               (Optional, array of strings) Array of fields you wish to return.                                                                                                                                                            fields=lid,pds:Time_Coordinates.pds:start_date_time
  start                (Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19. Useful for pagination of the results.                                             start=100
- limit                (Optional, integer, default=100) The number of records/results to return.                                                                                                                                                   limit=100
+ limit                (Optional, integer, default=100) The number of records/results to return. By specifying a value of 0 only the summary of the results is returned, not the individual results.                                               limit=100
  sort                 (Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). `fieldName asc` or `fieldName desc`. There can be several sort parameters (order is important).   sort=lidvid asc, pds:Time_Coordinates.pds:start_date_time desc
- summary-only         (Optional, boolean, default=False) When true, only the summary of the results is returned, not the individual results                                                                                                       true
 ====================  =========================================================================================================================================================================================================================== ====================
 
 `q` and `fields` use PDS4 `Fields Dot Notation`_
@@ -288,18 +289,18 @@ The `all` and `latest` suffixes apply also to all the crawling end-points which 
 Crawl a Data Set Hierarchy
 --------------------------
 
-For a given product with identifier `lidvid1`, you can browse its parent products or children.
+For a given product with identifier `lidvid1`, you can browse its parent products (member-of) or children (members).
 
 
-If the Product ‘lidvid1’ Is a Bundle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+If the Product 'lidvid1' Is a Bundle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Get its **collections**:
+Get its **children** (collections):
 
 .. code-block::
    :substitutions:
 
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/bundles/lidvid1/collections[/[all|latest]]
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/bundles/lidvid1/members[/[all|latest]]
 
 
 For example, run:
@@ -307,53 +308,79 @@ For example, run:
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/bundles/urn:nasa:pds:insight_rad::2.1/collections' \
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/bundles/urn:nasa:pds:insight_rad::2.1/members' \
        --header 'Accept: application/json'
 
 
-Get its **observational products**:
+Get its **grand-children** (products):
 
 .. code-block::
    :substitutions:
 
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/bundles/lidvid1/products[/[all|latest]]
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/bundles/lidvid1/members/members[/[all|latest]]
+
+
+For example, run:
+
+.. code-block:: bash
+   :substitutions:
+
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/bundles/urn:nasa:pds:insight_rad::2.1/members/members' \
+       --header 'Accept: application/json'
 
 
 If the Product ‘lidvid1’ Is a Collection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Get its **bundle**:
-
-.. code-block::
-   :substitutions:
-
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections/lidvid1/bundles[/[all|latest]]
-
-Get its **observational products**:
+Get its **children** (products):
 
 .. code-block::
    :substitutions:
 
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections/lidvid1/products[/[all|latest]]
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections/lidvid1/members[/[all|latest]]
+
+
+Get its **parent** (bundle) :
+
+.. code-block::
+   :substitutions:
+
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections/lidvid1/member-of[/[all|latest]]
+
+
+For example, run:
+
+.. code-block:: bash
+   :substitutions:
+
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections/urn:nasa:pds:insight_rad:data_raw::14.0/member-of' \
+       --header 'Accept: application/json'
 
 
 If the Product ‘lidvid1’ Is an Observational Product
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Get its **bundle**:
-
-.. code-block::
-   :substitutions:
-
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/bundles[/[all|latest]]
-
-Get its **collection**:
+Get its **parent** (collection):
 
 .. code-block::
    :substitutions:
 
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/collections[/[all|latest]]
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/member-of[/[all|latest]]
+
+Get its **grandparent** (bundle):
+
+.. code-block::
+   :substitutions:
+
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/member-of/member-of[/[all|latest]]
 
 
+For example, run:
+
+.. code-block:: bash
+   :substitutions:
+
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_raw:hp3_rad_raw_00004_20181130_085325/member-of/member-of' \
+       --header 'Accept: application/json'
 
 

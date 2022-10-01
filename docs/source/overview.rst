@@ -18,16 +18,16 @@ API entries currently available are:
 +----------+-----------+-------------------------+----------------+-----------------+
 | service  |  version  |  scope                  | specification  | user's guide    |
 +==========+===========+=========================+================+=================+
-| search   |  1.0      | search PDS data archive | `search_spec`_ | `search_guide`_ |
+| search   |  1.1      | search PDS data archive | `search_spec`_ | `search_guide`_ |
 +----------+-----------+-------------------------+----------------+-----------------+
 | doi      |  0.2      | manage PDS DOIs         | `doi_spec`_    |                 |
 +----------+-----------+-------------------------+----------------+-----------------+
 
-.. _search_spec: specifications/search-v1.0.0-redoc.html
+.. _search_spec: specifications/search-v1.1.0-redoc.html
 
 .. _doi_spec: specifications/doi-v0.2-redoc.html
 
-.. _search_guide: guides/search
+.. _search_guide: guides/search.html
 
 
 
@@ -38,7 +38,7 @@ So for example:
 
    https://pds.nasa.gov/api/search-geo/|search_user_guide_api_version|/products?limit=10
 
-intends to obtain 10 product entries from the 0.4.2 version of the GEO node’s search (registry).
+intends to obtain 10 product entries from the 1.1 version of the GEO node’s search (registry).
 
 
 

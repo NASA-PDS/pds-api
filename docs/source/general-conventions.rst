@@ -144,7 +144,7 @@ heterogeneous in the PDS system.
 Two options have been considered to manage versions (see
 `https://restfulapi.net/versioning/ <https://restfulapi.net/versioning/>`_ :
 
--   Version in the URL, e.g. pds.nasa.gov/api/search/1.0/
+-   Version in the URL, e.g. pds.nasa.gov/api/search/|search_user_guide_api_version|/
 
 -   Content negotiation headers (e.g. Accept: application/vnd.example+json;version=1.0)
 

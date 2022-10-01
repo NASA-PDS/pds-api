@@ -71,7 +71,7 @@ Example: return all collections whose start time is prior to June 1,
 2020:
 
 ```
-GET https://pds.nasa.gov/api/v0.1/collections?
+GET https://pds.nasa.gov/api/search/1.1/collections?
        q=Time_Coordinates.start_date_time LT 2020-06-01T00:00:00Z
 ```
 
@@ -121,13 +121,13 @@ base URIs for performing GET requests for searching PDS data.
 Search All PDS Data Collections:
 
 ```
-GET https://pds.nasa.gov/api/search/0.1/collections?{searchTerms}
+GET https://pds.nasa.gov/api/search/1.1/collections?{searchTerms}
 ```
 
 Search Geosciences Node Collections:
 
 ```
-GET https://pds.nasa.gov/api/search-geo/0.1/collections?{searchTerms}
+GET https://pds.nasa.gov/api/search-geo/1.1/collections?{searchTerms}
 ```
 
 See Query Parameters for more specific examples for various searches
@@ -146,13 +146,13 @@ Examples:
 Search All PDS Data Products:
 
 ```
-GET https://pds.nasa.gov/api/search/0.1/products?{searchTerms}
+GET https://pds.nasa.gov/api/search/1.1/products?{searchTerms}
 ```
 
 Search Geosciences Node:
 
 ```
-GET https://pds.nasa.gov/api/search-geo/0.1/products?{searchTerms}
+GET https://pds.nasa.gov/api/search-geo/1.1/products?{searchTerms}
 ```
 
 
@@ -162,9 +162,9 @@ with different parameters.
 #### Additional Query String Examples
 
 ```
-/v0.1/collections?q="2018-01-01" LE Time_Coordinates.start_date_time LE "2020-01-01"&start=100&limit=1000
+/api/search/1.1/collections?q="2018-01-01" LE Time_Coordinates.start_date_time LE "2020-01-01"&start=100&limit=1000
 
-/v0.1/products?q=Observing_System_Component.description EQ "ISSNA" AND (Optical_Filter.filter_name EQ "BL1" OR Optical_Filter.filter_name EQ "GRN")&fields=cassini.spacecraft_clock_start_count
+/api/search/1.1/products?q=Observing_System_Component.description EQ "ISSNA" AND (Optical_Filter.filter_name EQ "BL1" OR Optical_Filter.filter_name EQ "GRN")&fields=cassini.spacecraft_clock_start_count
 ```
 
 POST Request API
