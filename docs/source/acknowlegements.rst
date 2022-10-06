@@ -23,7 +23,6 @@ PDS API Working Group
 * Vivian Tang (EN)
 * Al Niessner (EN)
 * Ramesh Maddegoda (EN)
-* Yevgen Karpenko (EN)
 * Thomas Loubrieu (EN)
 * Jordan Padams (EN)
 * Boris Semenov (NAIF)

@@ -68,7 +68,7 @@ Search for the 10 latest collections which processing level is "Raw":
    :caption: curl command
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections' \
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections' \
        --data-urlencode 'limit=10' \
        --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
@@ -84,7 +84,7 @@ Search for all Observational Products targeting Bennu:
    :caption: curl command
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/collections' \
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections' \
      --data-urlencode 'q=(ref_lid_target eq "urn:nasa:pds:context:target:asteroid.101955_bennu")'
 
 ----
@@ -107,40 +107,41 @@ See the documentation on `Citing PDS Data <https://pds.nasa.gov/datastandards/ci
 How to Find the DOI associated with an Observational Product
 ------------------------------------------------------------
 
-We assume you know the identifier of the product you are working with. In our example it is: ``urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0``
+We assume you know the identifier of the product you are working with but a couple are provided in the examples below. 
 
 
 Search for a Products Collection DOI
 ************************************
 
-Run the following request to get the DOI associated with the product's collection:
+Run the following request to get the DOI associated with the collection the observational product `urn:nasa:pds:compil-comet:nuc_properties:description::1.0` belongs to:
 
 .. code-block:: bash
-    :substitutions:
+   :caption: curl command
+   :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/collections' \
-        --data-urlencode 'fields=ops:Identifiers/ops:doi' \
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:compil-comet:nuc_properties:description::1.0/member-of' \
+        --data-urlencode 'fields=pds:External_Reference.pds:doi' \
         --header 'Accept: application/kvp+json'
 
-.. _DOI request result:
+.. _DOI collection request result:
 
 You will get the following result:
 
 .. code-block:: json
 
     {
-        "summary": {
+        "summary" : {
             "q": "",
             "hits": 1,
-            "took": 172,
+            "took": 125,
             "start": 0,
             "limit": 100,
             "sort": [],
-            "properties": []
+            "properties": ["pds:External_Reference.pds:doi"]
         },
         "data": [
             {
-               "ops:Identifiers/ops:doi": "10.17189/1517568"
+               "pds:External_Reference.pds:doi":"10.26007/CSR5-JW43"
             }
         ]
     }
@@ -150,16 +151,51 @@ Note that you might not find any DOI at the collection level, in this case you c
 Search for a Product's Bundle DOI
 *********************************
 
-To get the DOI associated with the bundle the observational product `urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0` belongs to:
+To get the DOI associated with the bundle the observational product `urn:nasa:pds:insight.spice:document:spiceds::1.0` belongs to:
 
 .. code-block:: bash
-    :substitutions:
+   :caption: curl command
+   :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_derived:hp3_rad_der_00014_20181211_073042::1.0/bundles' \
-        --data-urlencode 'fields=pds:Citation_Information/pds:doi,ops:Identifiers/ops:doi' \
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight.spice:document:spiceds::1.0/member-of/member-of' \
+        --data-urlencode 'fields=pds:Citation_Information/pds:doi,pds:External_Reference.pds:doi' \
         --header 'Accept: application/kvp+json'
 
-You will get the same response as for a :ref:`collection request <Search for a Products Collection DOI>`
+.. _DOI bundle request result:
+
+You will get the following result:
+
+.. code-block:: json
+
+    {
+        "summary" : {
+            "q": "",
+            "hits": 2,
+            "took": 135,
+            "start": 0,
+            "limit": 100,
+            "sort": [],
+            "properties": [
+                "pds:Citation_Information.pds:doi",
+                "pds:External_Reference.pds:doi"
+            ]
+        },
+        "data": [ 
+            { },
+            {
+                "pds:External_Reference.pds:doi": "[
+                    10.1007/s11214-018-0563-9, 
+                    10.1007/s11214-018-0570-x, 
+                    10.1007/s11214-018-0531-4, 
+                    10.1007/s11214-018-0530-5, 
+                    10.1007/s11214-018-0574-6, 
+                    10.1007/s11214-018-0536-z, 
+                    10.1007/s11214-018-0520-7
+                ]",
+                "pds:Citation_Information.pds:doi": "10.17189/1517566"
+            }
+        ]
+    }
 
 
 How to Find the PDS Product Associated with a DOI
@@ -171,7 +207,7 @@ To get the PDS product metadata associated with a the DOI `10.17189/1517568`:
     :substitutions:
 
     curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
-        --data-urlencode 'q=(ops:Identifiers/ops:doi eq "10.17189/1517568")' \
+        --data-urlencode 'q=(pds:External_Reference.pds:doi eq "10.26007/CSR5-JW43")' \
         --header 'Accept: application/json'
 
 You will get a JSON response of the PDS products (any class of product, for example collections or bundles) which have referenced the given DOI.

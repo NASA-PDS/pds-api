@@ -74,6 +74,12 @@ redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@2.0.0-alpha.17/bundles/redoc.sta
 redoc = [
     {
         'name': 'PDS Search API',
+        'page': 'specifications/search-v1.1.0-redoc',
+        'spec': '../../specs/PDS_APIs-search-1.1.0-swagger.yaml',
+        'embed': True,
+    },
+    {
+        'name': 'PDS Search API',
         'page': 'specifications/search-v1.0.0-redoc',
         'spec': '../../specs/PDS_APIs-search-1.0.0-swagger.yaml',
         'embed': True,
@@ -87,7 +93,7 @@ redoc = [
 ]
 
 rst_prolog = """
-.. |search_user_guide_api_version| replace:: 1.0
+.. |search_user_guide_api_version| replace:: 1.1
 """
 
 latex_logo = '_static/images/PDS_Planets.png'
