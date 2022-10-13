@@ -2,7 +2,7 @@ Tools and Services
 ==================
 
 Search
---------
+------
 
 - Server: https://github.com/NASA-PDS/registry-api
 - Client: https://github.com/NASA-PDS/pds-api-client
