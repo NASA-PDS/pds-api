@@ -1,22 +1,31 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2022-09-06)
+## [release/1.1.0](https://github.com/NASA-PDS/pds-api/tree/release/1.1.0) (2022-10-06)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...«unknown»)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v12.0.1-dev...release/1.1.0)
 
 **Requirements:**
 
-- As a user, I want to search for past versions of a product where the LID changed during the product history [\#148](https://github.com/NASA-PDS/pds-api/issues/148)
+- As a user, I want an end-point of each of the PDS4 IM classes of products [\#94](https://github.com/NASA-PDS/pds-api/issues/94)
 
 **Improvements:**
 
-- Complete refactoring per API WG discussion on end-point redesign [\#202](https://github.com/NASA-PDS/pds-api/issues/202)
+- Update user guide to use new API endpoints [\#217](https://github.com/NASA-PDS/pds-api/issues/217)
+- Replace summary-only=true by limit=0 [\#173](https://github.com/NASA-PDS/pds-api/issues/173)
+
+**Defects:**
+
+- vnd.nasa.pds.pds4+xml format does not return information [\#215](https://github.com/NASA-PDS/pds-api/issues/215) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
+- vnd.nasa.pds.pds4+json format does return information [\#214](https://github.com/NASA-PDS/pds-api/issues/214) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
+- Accept header of text/csv returns blank lines [\#213](https://github.com/NASA-PDS/pds-api/issues/213) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
+- wildcards do not work as expected for all fields [\#210](https://github.com/NASA-PDS/pds-api/issues/210) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
+- `hits` appears to be showing the current page count, not the overall number of its [\#199](https://github.com/NASA-PDS/pds-api/issues/199) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
 
 **Other closed issues:**
 
-- Identify and ingest bundle containing collections and products with multiple versions into dev registry [\#97](https://github.com/NASA-PDS/pds-api/issues/97)
+- Develop NASA/PDS Skin for Search API Swagger interface [\#194](https://github.com/NASA-PDS/pds-api/issues/194)
 
-## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-08-16)
+## [v12.0.1-dev](https://github.com/NASA-PDS/pds-api/tree/v12.0.1-dev) (2022-09-06)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v12.0.1-dev)
 
@@ -39,6 +48,7 @@
 
 **Improvements:**
 
+- Complete refactoring per API WG discussion on end-point redesign [\#202](https://github.com/NASA-PDS/pds-api/issues/202)
 - Update README to reflect best practices of other PDS repositories [\#189](https://github.com/NASA-PDS/pds-api/issues/189) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - Upgrade documentation to present version 1.0 of the search API [\#188](https://github.com/NASA-PDS/pds-api/issues/188)
 - Create a cookbook page on the content negotiation for the PDS Search API [\#183](https://github.com/NASA-PDS/pds-api/issues/183)
@@ -81,6 +91,7 @@
 - analysis of current workflow, ideas for improvment [\#122](https://github.com/NASA-PDS/pds-api/issues/122)
 - \[pds-api\] B12.1 Improve API query handling [\#116](https://github.com/NASA-PDS/pds-api/issues/116)
 - Expand API to include latest/all for all endpoints [\#115](https://github.com/NASA-PDS/pds-api/issues/115)
+- Identify and ingest bundle containing collections and products with multiple versions into dev registry [\#97](https://github.com/NASA-PDS/pds-api/issues/97)
 
 ## [0.4.0](https://github.com/NASA-PDS/pds-api/tree/0.4.0) (2021-10-01)
 
