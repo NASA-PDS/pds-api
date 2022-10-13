@@ -140,7 +140,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a user, I want to receive a JSON response that contains the PDS4 label metadata in JSON format (application/pds4+json) ([#101](https://github.com/NASA-PDS/pds-api/issues/101)) 
+## As a user, I want to receive a JSON response that contains the PDS4 label metadata in JSON format (application/vnd.nasa.pds.pds4+json) ([#101](https://github.com/NASA-PDS/pds-api/issues/101)) 
 
 
 This requirement is not impacted by the current version
@@ -180,7 +180,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a user, I want to get the metadata in a pds4+xml response ([#125](https://github.com/NASA-PDS/pds-api/issues/125)) 
+## As a user, I want to receive a XML response that contains the PDS4 label metadata in XML format (application/vnd.nasa.pds.pds4+xml)  ([#125](https://github.com/NASA-PDS/pds-api/issues/125)) 
 
 
 This requirement is not impacted by the current version
@@ -196,7 +196,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a user, I want to know how to parse a PDS4 attribute from the pds4+json response format ([#132](https://github.com/NASA-PDS/pds-api/issues/132)) 
+## As a user, I want to know how to parse a PDS4 attribute from the vnd.nasa.pds.pds4+json response format ([#132](https://github.com/NASA-PDS/pds-api/issues/132)) 
 
 
 This requirement is not impacted by the current version
@@ -241,6 +241,38 @@ This requirement is not impacted by the current version
 
 This requirement is not impacted by the current version
 ## As a user, I want to know which tools I can use for a specific planetary context (investigation, instrument, target, etc.) ([#166](https://github.com/NASA-PDS/pds-api/issues/166)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to have a PDS Search API user guide ([#169](https://github.com/NASA-PDS/pds-api/issues/169)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to be able to access restricted data sets through the API ([#170](https://github.com/NASA-PDS/pds-api/issues/170)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to know how to query observational data only ([#175](https://github.com/NASA-PDS/pds-api/issues/175)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to know all the products referenced by a particular product ([#176](https://github.com/NASA-PDS/pds-api/issues/176)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to get directions whenever I arrive on an API URL ([#191](https://github.com/NASA-PDS/pds-api/issues/191)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to be able to access the Search API Swagger interface from pds.nasa.gov ([#193](https://github.com/NASA-PDS/pds-api/issues/193)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to get TBD response when results are not found. ([#198](https://github.com/NASA-PDS/pds-api/issues/198)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to query only the latest versions of products unless explicitly requested ([#221](https://github.com/NASA-PDS/pds-api/issues/221)) 
 
 
 This requirement is not impacted by the current version
