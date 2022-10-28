@@ -19,7 +19,7 @@ jobs:
     if: github.actor != 'pdsen-ci'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
 
@@ -60,7 +60,7 @@ jobs:
     if: github.actor != 'pdsen-ci'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
 
