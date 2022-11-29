@@ -1,8 +1,8 @@
 # Changelog
 
-## [1.1.0](https://github.com/NASA-PDS/pds-api/tree/1.1.0) (2022-11-18)
+## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2022-11-18)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...1.1.0)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...v1.2.0-dev)
 
 **Defects:**
 
