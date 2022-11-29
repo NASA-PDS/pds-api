@@ -10,7 +10,8 @@ https://github.com/NASA-PDS/pds-api-notebook/
 
 Web Search Interface Tutorial (HTML/Javascript)
 -----------------------------------------------
-TO BE IMPLEMENTED
+
+TO BE COMPLETED
 
 
 Search Examples

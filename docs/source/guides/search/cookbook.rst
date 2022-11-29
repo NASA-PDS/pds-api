@@ -87,6 +87,20 @@ Search for all Observational Products targeting Bennu:
    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections' \
      --data-urlencode 'q=(ref_lid_target eq "urn:nasa:pds:context:target:asteroid.101955_bennu")'
 
+
+Search by reference
+-------------------
+
+Search all products which are referring to a given LID:
+
+.. code-block:: bash
+   :caption: curl command
+   :substitutions:
+
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|//products' \
+        --data-urlencode 'limit=200' \
+        --data-urlencode 'q=((pds:Internal_Reference.pds:lid_reference eq "urn:nasa:pds:context:investigation:mission.orex") or (pds:Internal_Reference.pds:lid_reference like "urn:nasa:pds:context:investigation:mission.orex::*"))' | json_pp
+
 ----
 
 Search for DOIs
