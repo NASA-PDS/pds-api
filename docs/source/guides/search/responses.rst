@@ -1,18 +1,21 @@
-Response Formats
+Responses
 ================
 
 .. Note::
    curl command line tool is used to request the API in this documentation. curl is available in many operating systems by default. If not, you can get curl from https://curl.se/ or using a package management tool specific to your operating system (brew, apt, ...).
 
-Content Negotiation
---------------------
+Content Negotiation, Formats
+-----------------------------
+
+Principles
+++++++++++
 
 A simple style of `content negotiation <https://restfulapi.net/content-negotiation/>`_ is used to
 match the format requested by the client and the capability of the
 server.
 
 The client can specify the desired response format by including
-the HTTP header `Accept`. If no `Accept` header is present in the request,
+the HTTP header ``Accept``. If no ``Accept`` header is present in the request,
 or if the requested content type is not available, the server will
 provide the response in JSON format by default.
 
@@ -52,10 +55,10 @@ types:
 +------------------------+--------+---------------------------------------------------+
 
 
-`application/vnd.nasa.pds.pds4+json` and `application/vnd.nasa.pds.pds4+xml` have been chosen to comply with `RFC6838 <https://datatracker.ietf.org/doc/html/rfc6838>`_
+``application/vnd.nasa.pds.pds4+json`` and ``application/vnd.nasa.pds.pds4+xml`` have been chosen to comply with `RFC6838 <https://datatracker.ietf.org/doc/html/rfc6838>`_
 
 Examples
-----------
++++++++++
 
 application/json
 ~~~~~~~~~~~~~~~~~
@@ -444,9 +447,9 @@ ops Namespace
 
 The response content, in addition to the information found in the PDS4 label contains some attributes related to the management of the datasets in the registry.
 
-A dedicated namespace `ops` is used to manage these attributes in the API, for example: `ops:Label_File_Info.ops:file_name` in :ref:`Fields Dot Notation` used in JSON or in XML tag `<ops:Label_File_Info><ops:file_name>`.
+A dedicated namespace ``ops`` is used to manage these attributes in the API, for example: `ops:Label_File_Info.ops:file_name` in :ref:`Fields Dot Notation` used in JSON or in XML tag `<ops:Label_File_Info><ops:file_name>`.
 
-The list of `ops` attributes is given in the following table:
+The list of ``ops`` attributes is given in the following table:
 
 +-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Class           | Attributes          | Description  | Example                                                                                                                           |
@@ -486,7 +489,19 @@ The list of `ops` attributes is given in the following table:
 | Tracking_Meta   | archive_status      |              | archived                                                                                                                          |
 +-----------------+---------------------+--------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
-Missing values
+
+No Results Found
+-----------------
+
+2 cases are considered:
+
+- When there are not results to a **search query, applying parameters to the URL** (e.g. ``?q='lid eq fred'``, ``keyword``...), you will get an **empty array** (for example `[]` in JSON) as a result.
+
+- When the **URL itself cannot be resolved**, as in ``/products/fred`` you  will get a **404 error** (not found).
+
+
+
+Missing Values
 ----------------
 
 Properties with empty or null values should be dropped from the JSON
