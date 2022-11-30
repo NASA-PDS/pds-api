@@ -1,26 +1,22 @@
 # Changelog
 
-## [1.1.0](https://github.com/NASA-PDS/pds-api/tree/1.1.0) (2022-11-30)
+## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2022-11-30)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.2.0-dev...1.1.0)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...v1.2.0-dev)
 
 **Requirements:**
 
 - As a PDS manager/operator, I want to monitor the availability of the APIs in production [\#225](https://github.com/NASA-PDS/pds-api/issues/225)
 - As a user, I want to get TBD response when results are not found. [\#198](https://github.com/NASA-PDS/pds-api/issues/198)
 
-**Other closed issues:**
-
-- Add documentation for web UI developers [\#226](https://github.com/NASA-PDS/pds-api/issues/226)
-
-## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2022-11-29)
-
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...v1.2.0-dev)
-
 **Defects:**
 
 - Keyword search not working correctly [\#223](https://github.com/NASA-PDS/pds-api/issues/223) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - API performance degradation from B12.1 release [\#200](https://github.com/NASA-PDS/pds-api/issues/200) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
+
+**Other closed issues:**
+
+- Add documentation for web UI developers [\#226](https://github.com/NASA-PDS/pds-api/issues/226)
 
 ## [v1.1.0](https://github.com/NASA-PDS/pds-api/tree/v1.1.0) (2022-10-13)
 
