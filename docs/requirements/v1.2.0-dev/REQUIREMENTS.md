@@ -280,3 +280,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
+## As a Data User, I want to see the archive and tracking status of registered products ([#229](https://github.com/NASA-PDS/pds-api/issues/229)) 
+
+
+This requirement is not impacted by the current version
