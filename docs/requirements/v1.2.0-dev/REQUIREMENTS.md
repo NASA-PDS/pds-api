@@ -284,3 +284,11 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
+## As a user, I want to return application/json when an HTML response is requested until a refined HTML response is developed ([#238](https://github.com/NASA-PDS/pds-api/issues/238)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to get application/json response format by default if I request an API url in my browser ([#239](https://github.com/NASA-PDS/pds-api/issues/239)) 
+
+
+This requirement is not impacted by the current version
