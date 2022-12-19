@@ -13,7 +13,7 @@ Search For Product Versions
 Recipes for searching for the latest version of a product, or all versions of a product, including superseded versions.
 
 .. Warning::
-   Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_ for assistance.
+   Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please submit a request to the `PDS Help Desk <https://pds.nasa.gov/?feedback=true>`_ for assistance.
 
 
 Search the Latest Version of a Product
