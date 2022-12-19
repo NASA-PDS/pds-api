@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/NASA-PDS/pds-api/tree/1.1.0) (2022-12-19)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.2.0-dev...1.1.0)
+
+**Defects:**
+
+- Swagger API page does not show the expected deployed API version [\#196](https://github.com/NASA-PDS/pds-api/issues/196) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
+
+**Other closed issues:**
+
+- integrate logo on official release registry-api and publish it [\#234](https://github.com/NASA-PDS/pds-api/issues/234)
+
 ## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2022-11-30)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...v1.2.0-dev)
