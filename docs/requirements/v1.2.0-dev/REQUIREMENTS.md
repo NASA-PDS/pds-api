@@ -184,10 +184,6 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## Improve products/all endpoint to include all versions of all products ([#126](https://github.com/NASA-PDS/pds-api/issues/126)) 
-
-
-This requirement is not impacted by the current version
 ## As an user, I want to make requests using the EPN-TAP protocol ([#128](https://github.com/NASA-PDS/pds-api/issues/128)) 
 
 
@@ -200,7 +196,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As an API user, I want to get a key-value-pair JSON response ([#134](https://github.com/NASA-PDS/pds-api/issues/134)) 
+## As a user, I want to get a key-value-pair JSON response ([#134](https://github.com/NASA-PDS/pds-api/issues/134)) 
 
 
 This requirement is not impacted by the current version
@@ -240,7 +236,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a user, I want to know which tools I can use for a specific planetary context (investigation, instrument, target, etc.) ([#166](https://github.com/NASA-PDS/pds-api/issues/166)) 
+## As a user, I want to know which tools I can use for a specific planetary context ([#166](https://github.com/NASA-PDS/pds-api/issues/166)) 
 
 
 This requirement is not impacted by the current version
@@ -268,7 +264,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a user, I want to get TBD response when results are not found. ([#198](https://github.com/NASA-PDS/pds-api/issues/198)) 
+## As a user, I want query responses for empty results to be clearly documented ([#198](https://github.com/NASA-PDS/pds-api/issues/198)) 
 
 
 This requirement is not impacted by the current version
@@ -276,11 +272,11 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a PDS manager/operator, I want to monitor the availability of the APIs in production ([#225](https://github.com/NASA-PDS/pds-api/issues/225)) 
+## As a user, I want to monitor the availability of the APIs in production ([#225](https://github.com/NASA-PDS/pds-api/issues/225)) 
 
 
 This requirement is not impacted by the current version
-## As a Data User, I want to see the archive and tracking status of registered products ([#229](https://github.com/NASA-PDS/pds-api/issues/229)) 
+## As a user, I want to see the archive and tracking status of registered products ([#229](https://github.com/NASA-PDS/pds-api/issues/229)) 
 
 
 This requirement is not impacted by the current version
@@ -289,6 +285,10 @@ This requirement is not impacted by the current version
 
 This requirement is not impacted by the current version
 ## As a user, I want to get application/json response format by default if I request an API url in my browser ([#239](https://github.com/NASA-PDS/pds-api/issues/239)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to know the members of a bundle product ([#243](https://github.com/NASA-PDS/pds-api/issues/243)) 
 
 
 This requirement is not impacted by the current version
