@@ -1,17 +1,24 @@
 # Changelog
 
+## [1.1.0](https://github.com/NASA-PDS/pds-api/tree/1.1.0) (2022-12-23)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.2.0-dev...1.1.0)
+
+**Defects:**
+
+- API Client cannot connect to current deployed API [\#240](https://github.com/NASA-PDS/pds-api/issues/240) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
+
 ## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2022-12-19)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...v1.2.0-dev)
 
 **Requirements:**
 
-- As a PDS manager/operator, I want to monitor the availability of the APIs in production [\#225](https://github.com/NASA-PDS/pds-api/issues/225)
-- As a user, I want to get TBD response when results are not found. [\#198](https://github.com/NASA-PDS/pds-api/issues/198)
+- As a user, I want to monitor the availability of the APIs in production [\#225](https://github.com/NASA-PDS/pds-api/issues/225)
+- As a user, I want query responses for empty results to be clearly documented [\#198](https://github.com/NASA-PDS/pds-api/issues/198)
 
 **Defects:**
 
-- Keyword search not working correctly [\#223](https://github.com/NASA-PDS/pds-api/issues/223) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - API performance degradation from B12.1 release [\#200](https://github.com/NASA-PDS/pds-api/issues/200) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - Swagger API page does not show the expected deployed API version [\#196](https://github.com/NASA-PDS/pds-api/issues/196) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
 
@@ -35,7 +42,7 @@
 - As a user, I want to receive error messages when an invalid request is submitted to the API [\#153](https://github.com/NASA-PDS/pds-api/issues/153)
 - As a user, I want the API response media types to be compliant with RFC 6838 [\#152](https://github.com/NASA-PDS/pds-api/issues/152)
 - As a user, I want to see API stable release specifications [\#139](https://github.com/NASA-PDS/pds-api/issues/139)
-- As an API user, I want to get a key-value-pair JSON response [\#134](https://github.com/NASA-PDS/pds-api/issues/134)
+- As a user, I want to get a key-value-pair JSON response [\#134](https://github.com/NASA-PDS/pds-api/issues/134)
 - As a user, I want to receive a XML response that contains the PDS4 label metadata in XML format \(application/vnd.nasa.pds.pds4+xml\)  [\#125](https://github.com/NASA-PDS/pds-api/issues/125)
 - As an API user, I want a CSV response format option [\#120](https://github.com/NASA-PDS/pds-api/issues/120)
 - As a user, I want to clearly see which formats are accepted by the API when a 406 error is raised [\#127](https://github.com/NASA-PDS/pds-api/issues/127)
@@ -50,6 +57,7 @@
 
 - Update user guide to use new API endpoints [\#217](https://github.com/NASA-PDS/pds-api/issues/217)
 - Complete refactoring per API WG discussion on end-point redesign [\#202](https://github.com/NASA-PDS/pds-api/issues/202)
+- Develop NASA/PDS Skin for Search API Swagger interface [\#194](https://github.com/NASA-PDS/pds-api/issues/194)
 - Update README to reflect best practices of other PDS repositories [\#189](https://github.com/NASA-PDS/pds-api/issues/189) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - Upgrade documentation to present version 1.0 of the search API [\#188](https://github.com/NASA-PDS/pds-api/issues/188)
 - Create a cookbook page on the content negotiation for the PDS Search API [\#183](https://github.com/NASA-PDS/pds-api/issues/183)
@@ -86,7 +94,6 @@
 
 - PDS API documentation needs to be scrubbed [\#203](https://github.com/NASA-PDS/pds-api/issues/203)
 - Present the updated API specification to the API WG [\#197](https://github.com/NASA-PDS/pds-api/issues/197)
-- Develop NASA/PDS Skin for Search API Swagger interface [\#194](https://github.com/NASA-PDS/pds-api/issues/194)
 - Update Specifications documentation to only include latest with link to page with past versions [\#167](https://github.com/NASA-PDS/pds-api/issues/167)
 - Check for typos in OpenAPI spec [\#161](https://github.com/NASA-PDS/pds-api/issues/161)
 - document the server - specification - client [\#157](https://github.com/NASA-PDS/pds-api/issues/157)
