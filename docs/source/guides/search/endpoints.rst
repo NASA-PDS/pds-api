@@ -39,6 +39,7 @@ geo            Geosciences
 img            Imaging
 naif           Navigation and Ancillary Information
 ppi            Planetary Plasma Interactions
+psa            ESA Planetary Science Archive
 rms            Ring-Moon Systems
 sbnumd         Small Bodies, Comets
 sbnpsi         Small Bodies, Asteroids/Dust
