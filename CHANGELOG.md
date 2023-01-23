@@ -1,14 +1,18 @@
 # Changelog
 
-## [1.1.0](https://github.com/NASA-PDS/pds-api/tree/1.1.0) (2022-12-23)
+## [1.1.0](https://github.com/NASA-PDS/pds-api/tree/1.1.0) (2023-01-23)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.2.0-dev...1.1.0)
 
+**Requirements:**
+
+- As a user, I want to query only the latest versions of products unless explicitly requested [\#221](https://github.com/NASA-PDS/pds-api/issues/221)
+
 **Defects:**
 
-- API Client cannot connect to current deployed API [\#240](https://github.com/NASA-PDS/pds-api/issues/240) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
+- Past versions are being returned by API, by default [\#220](https://github.com/NASA-PDS/pds-api/issues/220) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 
-## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2022-12-19)
+## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2022-12-23)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...v1.2.0-dev)
 
@@ -19,6 +23,7 @@
 
 **Defects:**
 
+- API Client cannot connect to current deployed API [\#240](https://github.com/NASA-PDS/pds-api/issues/240) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - API performance degradation from B12.1 release [\#200](https://github.com/NASA-PDS/pds-api/issues/200) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - Swagger API page does not show the expected deployed API version [\#196](https://github.com/NASA-PDS/pds-api/issues/196) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
 
