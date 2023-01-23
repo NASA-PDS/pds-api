@@ -93,7 +93,8 @@ redoc = [
 ]
 
 rst_prolog = """
-.. |search_user_guide_api_version| replace:: 1.1
+.. |search_user_guide_api_version| replace:: 1 
+.. |search_user_guide_api_spec_version| replace:: 1.1
 """
 
 latex_logo = '_static/images/PDS_Planets.png'

@@ -36,7 +36,7 @@ Please visit our website at https://nasa-pds.github.io/pds-api/ for user documen
 The OpenAPI yaml unresolved specifications are stored in the `specs` directory.
 
 The naming of the specification are:
-    PDS_APIs-<application>-<version>-swagger.yaml
+    PDS_APIs-{application}-{version}-swagger.yaml
 
 For example:
     PDS_APIs-registry-1.0.0-swagger.yaml
