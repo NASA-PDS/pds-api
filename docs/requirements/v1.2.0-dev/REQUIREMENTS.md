@@ -288,7 +288,11 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a user, I want to know the members of a bundle product ([#243](https://github.com/NASA-PDS/pds-api/issues/243)) 
+## As a user, I want to know the unit or nilReason for an attribute. ([#246](https://github.com/NASA-PDS/pds-api/issues/246)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to search by any metadata attribute ([#248](https://github.com/NASA-PDS/pds-api/issues/248)) 
 
 
 This requirement is not impacted by the current version
