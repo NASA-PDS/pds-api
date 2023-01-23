@@ -10,7 +10,12 @@ https://github.com/NASA-PDS/pds-api-notebook/
 
 Web Search Interface Tutorial (HTML/Javascript)
 -----------------------------------------------
-TO BE IMPLEMENTED
+
+When developing a web client to the API, if you are not from JPL, contact us (pds_operator@jpl.nasa.gov) so that we can set the CORS attributes for you.
+
+If you are on JPL's network, develop your application locally on port 80 on your laptop connected to the VPN and test your application with URL http://localhost.jpl.nasa.gov/....
+
+TO BE COMPLETED
 
 
 Search Examples
