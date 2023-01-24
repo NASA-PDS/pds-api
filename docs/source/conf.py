@@ -20,8 +20,8 @@
 project = 'PDS APIs'
 copyright = '2022 California Institute of Technology'
 author = 'NASA Planetary Data System'
-release = 'B12.1'
-version = 'B12.1'
+release = 'B13.0'
+version = 'B13.0'
 
 
 # -- General configuration ---------------------------------------------------

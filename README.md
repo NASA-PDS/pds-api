@@ -59,7 +59,7 @@ To add a new specification or a new version of a specification:
     ```
     pip install -e '.[dev]'
    
-    sphinx-build -b html docs/source docs/build
+    sphinx-build -b html docs/source docs/build/html
     ```
 
 ## Code of Conduct
