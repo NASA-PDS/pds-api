@@ -296,3 +296,7 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
+## As a user, I want to get a bad request error if I use a URL parameter which is not supported ([#252](https://github.com/NASA-PDS/pds-api/issues/252)) 
+
+
+This requirement is not impacted by the current version
