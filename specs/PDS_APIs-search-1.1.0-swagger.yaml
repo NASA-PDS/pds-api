@@ -4,7 +4,7 @@ info:
     Registry API enabling advanced search on PDS data and metadata. The API provides end-points to search for bundles, collections and any PDS products with advanced search queries. It also enables to browse the archive hierarchically downward (e.g. collection/s products) or upward (e.g. bundles containing a product).
     The detailed syntax for querying the end-point is given in the reference documentation.
   version: 1.1.0
-  title: Registry API
+  title: Search API
   termsOfService: 'http://pds.nasa.gov'
   contact:
     email: pds-operator@jpl.nasa.gov
@@ -13,7 +13,7 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 
 servers:
-  - url: https://pds.nasa.gov/api/registry/1.0
+  - url: https://pds.nasa.gov/api/search/1/
     description: production server
 
 paths:
