@@ -1,6 +1,14 @@
 # Changelog
 
-## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2023-01-24)
+## [1.1.0](https://github.com/NASA-PDS/pds-api/tree/1.1.0) (2023-01-31)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.2.0-dev...1.1.0)
+
+**Defects:**
+
+- link to registry-api documentation from registry page is incorrect [\#251](https://github.com/NASA-PDS/pds-api/issues/251)
+
+## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2023-01-25)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...v1.2.0-dev)
 
