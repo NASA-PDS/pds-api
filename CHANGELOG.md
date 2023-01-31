@@ -1,14 +1,6 @@
 # Changelog
 
-## [1.1.0](https://github.com/NASA-PDS/pds-api/tree/1.1.0) (2023-01-31)
-
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.2.0-dev...1.1.0)
-
-**Defects:**
-
-- link to registry-api documentation from registry page is incorrect [\#251](https://github.com/NASA-PDS/pds-api/issues/251)
-
-## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2023-01-25)
+## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2023-01-31)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...v1.2.0-dev)
 
@@ -20,6 +12,7 @@
 
 **Defects:**
 
+- link to registry-api documentation from registry page is incorrect [\#251](https://github.com/NASA-PDS/pds-api/issues/251)
 - API Client cannot connect to current deployed API [\#240](https://github.com/NASA-PDS/pds-api/issues/240) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - Past versions are being returned by API, by default [\#220](https://github.com/NASA-PDS/pds-api/issues/220) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - API performance degradation from B12.1 release [\#200](https://github.com/NASA-PDS/pds-api/issues/200) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
