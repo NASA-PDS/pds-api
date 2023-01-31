@@ -157,7 +157,7 @@
 <p><strong>Query:</strong> <code class="docutils literal notranslate"><span class="pre">(ref_lid_target</span> <span class="pre">eq</span> <span class="pre">&quot;urn:nasa:pds:context:target:asteroid.101955_bennu&quot;)</span></code></p>
 <div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id5" title="Permalink to this code"></a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1/classes/collections&#39;</span> <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1/classes/observationals&#39;</span> <span class="se">\</span>
   --data-urlencode <span class="s1">&#39;q=(ref_lid_target eq &quot;urn:nasa:pds:context:target:asteroid.101955_bennu&quot;)&#39;</span>
 </pre></div>
 </div>
@@ -175,8 +175,11 @@
 </div>
 </div>
 </div>
+<div class="section" id="search-only-observational-products">
+<h3>Search only observational products<a class="headerlink" href="#search-only-observational-products" title="Permalink to this heading"></a></h3>
+<p>Search observational products which target is</p>
 </div>
-<hr class="docutils" />
+</div>
 <div class="section" id="search-for-dois">
 <h2>Search for DOIs<a class="headerlink" href="#search-for-dois" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://www.doi.org/">Digital Object Identifiers</a> are useful to cite the data you are using in your research. DOIs for PDS data are minted for PDS4 Bundles, PDS4 Collections, PDS4 Documents, and PDS3 Data Sets. The level at which the DOI is minted differs from data set to data set.</p>
