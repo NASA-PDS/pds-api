@@ -73,7 +73,7 @@ Search for the 10 latest collections which processing level is "Raw":
        --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
 
-Search by Target
+Search Observational Products by Target
 ----------------
 
 Search for all Observational Products targeting Bennu:
@@ -101,10 +101,7 @@ Search all products which are referring to a given LID:
         --data-urlencode 'limit=200' \
         --data-urlencode 'q=((pds:Internal_Reference.pds:lid_reference eq "urn:nasa:pds:context:investigation:mission.orex") or (pds:Internal_Reference.pds:lid_reference like "urn:nasa:pds:context:investigation:mission.orex::*"))' | json_pp
 
-Search only observational products
-----------------------------------
 
-Search observational products which target is
 
 Search for DOIs
 ===============
