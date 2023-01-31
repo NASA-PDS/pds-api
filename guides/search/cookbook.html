@@ -151,8 +151,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="search-by-target">
-<h3>Search by Target<a class="headerlink" href="#search-by-target" title="Permalink to this heading"></a></h3>
+<div class="section" id="search-observational-products-by-target">
+<h3>Search Observational Products by Target<a class="headerlink" href="#search-observational-products-by-target" title="Permalink to this heading"></a></h3>
 <p>Search for all Observational Products targeting Bennu:</p>
 <p><strong>Query:</strong> <code class="docutils literal notranslate"><span class="pre">(ref_lid_target</span> <span class="pre">eq</span> <span class="pre">&quot;urn:nasa:pds:context:target:asteroid.101955_bennu&quot;)</span></code></p>
 <div class="literal-block-wrapper docutils container" id="id5">
@@ -164,20 +164,16 @@
 </div>
 </div>
 <div class="section" id="search-by-reference">
-<h3>Search by reference<a class="headerlink" href="#search-by-reference" title="Permalink to this heading"></a></h3>
+<h3>Search by Reference<a class="headerlink" href="#search-by-reference" title="Permalink to this heading"></a></h3>
 <p>Search all products which are referring to a given LID:</p>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id6" title="Permalink to this code"></a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1//products&#39;</span> <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1/products&#39;</span> <span class="se">\</span>
      --data-urlencode <span class="s1">&#39;limit=200&#39;</span> <span class="se">\</span>
      --data-urlencode <span class="s1">&#39;q=((pds:Internal_Reference.pds:lid_reference eq &quot;urn:nasa:pds:context:investigation:mission.orex&quot;) or (pds:Internal_Reference.pds:lid_reference like &quot;urn:nasa:pds:context:investigation:mission.orex::*&quot;))&#39;</span> <span class="p">|</span> json_pp
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="search-only-observational-products">
-<h3>Search only observational products<a class="headerlink" href="#search-only-observational-products" title="Permalink to this heading"></a></h3>
-<p>Search observational products which target is</p>
 </div>
 </div>
 <div class="section" id="search-for-dois">
