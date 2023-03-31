@@ -133,6 +133,9 @@ The query syntax follows the rules:
 * **{literal value}** is either a string between ``"`` (double quotes) or a numerical value (float or integer).
 * Wildcard searching is available with the **like** operator. The wildcarding syntax of the **{literal value}** follows the [OpenSearch Simple Query String](https://opensearch.org/docs/latest/opensearch/query-dsl/full-text/#simple-query-string) convention.
 
+.. warning::
+  the ``like`` operator does not work because of a known `bug <https://github.com/NASA-PDS/registry-api/issues/170>`_
+
 ======================= =========================== ============
  **Operator**            **Description**            **Example**
 ======================= =========================== ============
@@ -151,6 +154,8 @@ The query syntax follows the rules:
  *Grouping Operators*
  ( )                     Precedence grouping         ((target\_name **eq** "Mars" **or** target\_name **eq** "Phobos"**)** **and** ( instrument\_name **eq** "hirise" ))
 ======================= =========================== ============
+
+
 
 
 Fields Dot Notation
