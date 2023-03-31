@@ -268,6 +268,10 @@
 <li><p><strong>{literal value}</strong> is either a string between <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> (double quotes) or a numerical value (float or integer).</p></li>
 <li><p>Wildcard searching is available with the <strong>like</strong> operator. The wildcarding syntax of the <strong>{literal value}</strong> follows the [OpenSearch Simple Query String](<a class="reference external" href="https://opensearch.org/docs/latest/opensearch/query-dsl/full-text/#simple-query-string">https://opensearch.org/docs/latest/opensearch/query-dsl/full-text/#simple-query-string</a>) convention.</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>the <code class="docutils literal notranslate"><span class="pre">like</span></code> operator does not work because of a known <a class="reference external" href="https://github.com/NASA-PDS/registry-api/issues/170">bug</a></p>
+</div>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 14%" />
