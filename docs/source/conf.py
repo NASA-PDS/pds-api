@@ -20,8 +20,8 @@
 project = 'PDS APIs'
 copyright = '2022 California Institute of Technology'
 author = 'NASA Planetary Data System'
-release = 'B13.0'
-version = 'B13.0'
+release = 'B13.1'
+version = 'B13.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -74,6 +74,12 @@ redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@2.0.0-alpha.17/bundles/redoc.sta
 redoc = [
     {
         'name': 'PDS Search API',
+        'page': 'specifications/search-v1.1.1-redoc',
+        'spec': '../../specs/PDS_APIs-search-1.1.1-swagger.yaml',
+        'embed': True,
+    },
+    {
+        'name': 'PDS Search API',
         'page': 'specifications/search-v1.1.0-redoc',
         'spec': '../../specs/PDS_APIs-search-1.1.0-swagger.yaml',
         'embed': True,
@@ -98,6 +104,8 @@ rst_prolog = """
 """
 
 latex_logo = '_static/images/PDS_Planets.png'
+
+latex_show_urls = True
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

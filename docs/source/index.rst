@@ -12,7 +12,7 @@ PDS is willing to develop ReST-ful web APIs for different applications (so far, 
 
 These pages document how to access these APIs.
 
-This web site is also available as a `PDS document <./_static/pdsapis.pdf>`_
+This web site is also available as a `PDF document <./_static/pdsapis.pdf>`_
 
 .. toctree::
    :maxdepth: 3

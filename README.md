@@ -33,6 +33,8 @@ Please visit our website at https://nasa-pds.github.io/pds-api/ for user documen
 
 ## Generate the user's documentation
 
+Set the overall version (e.g. build number) in `docs/source/conf.py`
+
 The OpenAPI yaml unresolved specifications are stored in the `specs` directory.
 
 The naming of the specification are:
