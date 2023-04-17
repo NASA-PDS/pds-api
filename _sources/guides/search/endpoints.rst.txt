@@ -297,8 +297,6 @@ Crawl a Data Set Hierarchy
 
 For a given product with identifier `lidvid1`, you can browse its parent products (member-of) or children (members).
 
-The API provides an unified way of crawling the PDS4 products with URL relative paths `members` (to crawl downward) and `member-of` (to crawl upward).
-
 Get the Collections of a Bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
