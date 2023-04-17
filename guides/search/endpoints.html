@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Query Syntax &mdash; PDS APIs B13.0 documentation</title>
+  <title>Query Syntax &mdash; PDS APIs B13.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -35,7 +35,7 @@
             <img src="../../_static/PDS_Planets.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                B13.0
+                B13.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -63,9 +63,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#crawl-a-data-set-hierarchy">Crawl a Data Set Hierarchy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#if-the-product-lidvid1-is-a-bundle">If the Product ‘lidvid1’ Is a Bundle</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#if-the-product-lidvid1-is-a-collection">If the Product ‘lidvid1’ Is a Collection</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#if-the-product-lidvid1-is-an-observational-product">If the Product ‘lidvid1’ Is an Observational Product</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-the-collections-of-a-bundle">Get the Collections of a Bundle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-the-observational-products-of-a-bundle">Get the Observational Products of a Bundle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-the-collection-or-bundles-of-an-observational-product">Get the Collection or Bundles of an Observational Product</a></li>
 </ul>
 </li>
 </ul>
@@ -435,49 +435,38 @@ class in <em>all lowercase</em>:</p>
 <div class="section" id="crawl-a-data-set-hierarchy">
 <h2>Crawl a Data Set Hierarchy<a class="headerlink" href="#crawl-a-data-set-hierarchy" title="Permalink to this heading"></a></h2>
 <p>For a given product with identifier <cite>lidvid1</cite>, you can browse its parent products (member-of) or children (members).</p>
-<div class="section" id="if-the-product-lidvid1-is-a-bundle">
-<h3>If the Product ‘lidvid1’ Is a Bundle<a class="headerlink" href="#if-the-product-lidvid1-is-a-bundle" title="Permalink to this heading"></a></h3>
+<p>The API provides an unified way of crawling the PDS4 products with URL relative paths <cite>members</cite> (to crawl downward) and <cite>member-of</cite> (to crawl upward).</p>
+<div class="section" id="get-the-collections-of-a-bundle">
+<h3>Get the Collections of a Bundle<a class="headerlink" href="#get-the-collections-of-a-bundle" title="Permalink to this heading"></a></h3>
 <p>Get its <strong>children</strong> (collections):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">classes</span><span class="o">/</span><span class="n">bundles</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">members</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">members</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>For example, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1/classes/bundles/urn:nasa:pds:insight_rad::2.1/members&#39;</span> <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:insight_rad::2.1/members&#39;</span> <span class="se">\</span>
     --header <span class="s1">&#39;Accept: application/json&#39;</span>
 </pre></div>
 </div>
-<p>Get its <strong>grand-children</strong> (products):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">classes</span><span class="o">/</span><span class="n">bundles</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">members</span><span class="o">/</span><span class="n">members</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
+<p>The same request can be used to get the observational products or documents of a collection from the collection’s lidvid.</p>
+</div>
+<div class="section" id="get-the-observational-products-of-a-bundle">
+<h3>Get the Observational Products of a Bundle<a class="headerlink" href="#get-the-observational-products-of-a-bundle" title="Permalink to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">members</span><span class="o">/</span><span class="n">members</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>For example, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1/classes/bundles/urn:nasa:pds:insight_rad::2.1/members/members&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Accept: application/json&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="if-the-product-lidvid1-is-a-collection">
-<h3>If the Product ‘lidvid1’ Is a Collection<a class="headerlink" href="#if-the-product-lidvid1-is-a-collection" title="Permalink to this heading"></a></h3>
-<p>Get its <strong>children</strong> (products):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">classes</span><span class="o">/</span><span class="n">collections</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">members</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
-</pre></div>
-</div>
-<p>Get its <strong>parent</strong> (bundle) :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">classes</span><span class="o">/</span><span class="n">collections</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">member</span><span class="o">-</span><span class="n">of</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
-</pre></div>
-</div>
-<p>For example, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1/classes/collections/urn:nasa:pds:insight_rad:data_raw::14.0/member-of&#39;</span> <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:insight_rad::2.1/members/members&#39;</span> <span class="se">\</span>
     --header <span class="s1">&#39;Accept: application/json&#39;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="if-the-product-lidvid1-is-an-observational-product">
-<h3>If the Product ‘lidvid1’ Is an Observational Product<a class="headerlink" href="#if-the-product-lidvid1-is-an-observational-product" title="Permalink to this heading"></a></h3>
+<div class="section" id="get-the-collection-or-bundles-of-an-observational-product">
+<h3>Get the Collection or Bundles of an Observational Product<a class="headerlink" href="#get-the-collection-or-bundles-of-an-observational-product" title="Permalink to this heading"></a></h3>
 <p>Get its <strong>parent</strong> (collection):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">member</span><span class="o">-</span><span class="n">of</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
 </pre></div>
 </div>
+<p>The same request can be used to get the bundles of a collection from the collection’s lidvid.</p>
 <p>Get its <strong>grandparent</strong> (bundle):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">lidvid1</span><span class="o">/</span><span class="n">member</span><span class="o">-</span><span class="n">of</span><span class="o">/</span><span class="n">member</span><span class="o">-</span><span class="n">of</span><span class="p">[</span><span class="o">/</span><span class="p">[</span><span class="nb">all</span><span class="o">|</span><span class="n">latest</span><span class="p">]]</span>
 </pre></div>

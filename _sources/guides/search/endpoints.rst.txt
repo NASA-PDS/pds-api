@@ -297,8 +297,9 @@ Crawl a Data Set Hierarchy
 
 For a given product with identifier `lidvid1`, you can browse its parent products (member-of) or children (members).
 
+The API provides an unified way of crawling the PDS4 products with URL relative paths `members` (to crawl downward) and `member-of` (to crawl upward).
 
-If the Product 'lidvid1' Is a Bundle
+Get the Collections of a Bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Get its **children** (collections):
@@ -306,7 +307,26 @@ Get its **children** (collections):
 .. code-block::
    :substitutions:
 
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/bundles/lidvid1/members[/[all|latest]]
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/members[/[all|latest]]
+
+For example, run:
+
+.. code-block:: bash
+   :substitutions:
+
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1/members' \
+       --header 'Accept: application/json'
+
+The same request can be used to get the observational products or documents of a collection from the collection's lidvid.
+
+
+Get the Observational Products of a Bundle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+   :substitutions:
+
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/members/members[/[all|latest]]
 
 
 For example, run:
@@ -314,57 +334,12 @@ For example, run:
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/bundles/urn:nasa:pds:insight_rad::2.1/members' \
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1/members/members' \
        --header 'Accept: application/json'
 
 
-Get its **grand-children** (products):
-
-.. code-block::
-   :substitutions:
-
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/bundles/lidvid1/members/members[/[all|latest]]
-
-
-For example, run:
-
-.. code-block:: bash
-   :substitutions:
-
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/bundles/urn:nasa:pds:insight_rad::2.1/members/members' \
-       --header 'Accept: application/json'
-
-
-If the Product ‘lidvid1’ Is a Collection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Get its **children** (products):
-
-.. code-block::
-   :substitutions:
-
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections/lidvid1/members[/[all|latest]]
-
-
-Get its **parent** (bundle) :
-
-.. code-block::
-   :substitutions:
-
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections/lidvid1/member-of[/[all|latest]]
-
-
-For example, run:
-
-.. code-block:: bash
-   :substitutions:
-
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections/urn:nasa:pds:insight_rad:data_raw::14.0/member-of' \
-       --header 'Accept: application/json'
-
-
-If the Product ‘lidvid1’ Is an Observational Product
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Get the Collection or Bundles of an Observational Product
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Get its **parent** (collection):
 
@@ -372,6 +347,8 @@ Get its **parent** (collection):
    :substitutions:
 
    https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/member-of[/[all|latest]]
+
+The same request can be used to get the bundles of a collection from the collection's lidvid.
 
 Get its **grandparent** (bundle):
 
