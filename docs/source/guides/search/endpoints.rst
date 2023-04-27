@@ -76,13 +76,23 @@ The requests template is a follow:
    GET /api/search/|search_user_guide_api_version|/classes/{product_class}[?[{query-parameter}={query-parameter-value}]*] HTTP/1.1
    Host: pds.nasa.gov
 
-Where `product_class` is one of:
+Where `product_class` is one of the following classes:
 
-* **products**: search among all classes of products (observational products, collections, bundles...)
-* **collections**: search among products which class is product_collection
-* **bundles**: search among products which class is product_bundle
+  - bundles
+  - collections
+  - observationals
+  - documents
+  - any
 
 The concept of product class is derived from the `PDS4 standard <https://pds.nasa.gov/datastandards/documents/im/current/index_1I00.html>`_.
+
+The list of classes proposed by the API can also be found from URL:
+
+.. code-block::
+   :substitutions:
+
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes
+
 
 
 Query Detailed Syntax
