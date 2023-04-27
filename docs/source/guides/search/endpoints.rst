@@ -153,10 +153,10 @@ The query syntax follows the rules:
  eq                      Equal                       target\_name **eq** "Mars"
  like                    Similar to                  target\_name **like** "mars"
  ne                      Not equal                   target\_name **ne** "Saturn"
- gt                      Greater than                pds:Time\_Coordinates.pds:start\_date\_time **gt** 2001-05-10T00:00:00Z
- ge                      Greater than or equal       pds:Time\_Coordinates.pds:start\_date\_time **ge** 2001-05-10T00:00:00Z
- lt                      Less than                   pds:Time\_Coordinates.pds:start\_date\_time **lt** 2020-06-01T00:00:00Z
- le                      Less than or equal          pds:Time\_Coordinates.pds:start\_date\_time **le** 2020-06-01T00:00:00Z
+ gt                      Greater than                pds:Time\_Coordinates.pds:start\_date\_time **gt** "2001-05-10T00:00:00Z"
+ ge                      Greater than or equal       pds:Time\_Coordinates.pds:start\_date\_time **ge** "2001-05-10T00:00:00Z"
+ lt                      Less than                   pds:Time\_Coordinates.pds:start\_date\_time **lt** "2020-06-01T00:00:00Z"
+ le                      Less than or equal          pds:Time\_Coordinates.pds:start\_date\_time **le** "2020-06-01T00:00:00Z"
  *Logical Operators*
  and                     Logical and                 target\_name **eq** "Mars" **and** instrument\_name **eq** "hirise"
  or                      Logical or                  target\_name **eq** "Mars" **or** target\_name **eq** "Phobos"
