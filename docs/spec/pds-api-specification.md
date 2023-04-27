@@ -84,10 +84,10 @@ The PDS Search API supports the following minimal set of operations.
 | *Comparison Operators* |                       |                                                                                                                           |
 | eq                     | Equal                 | target\_name ***eq*** "Mars"                                                                                                |
 | ne                     | Not equal             | target\_name ***ne*** "Saturn"                                                                                              |
-| gt                     | Greater than          | Time\_Coordinates.start\_date\_time ***gt*** 2001-05-10T00:00:00Z                                                         |
-| ge                     | Greater than or equal | Time\_Coordinates.start\_date\_time ***ge*** 2001-05-10T00:00:00Z                                                         |
-| lt                     | Less than             | Time\_Coordinates.start\_date\_time ***lt*** 2020-06-01T00:00:00Z                                                         |
-| le                     | Less than or equal    | Time\_Coordinates.start\_date\_time ***le*** 2020-06-01T00:00:00Z                                                         |
+| gt                     | Greater than          | Time\_Coordinates.start\_date\_time ***gt*** "2001-05-10T00:00:00Z"                                                         |
+| ge                     | Greater than or equal | Time\_Coordinates.start\_date\_time ***ge*** "2001-05-10T00:00:00Z"                                                         |
+| lt                     | Less than             | Time\_Coordinates.start\_date\_time ***lt*** "2020-06-01T00:00:00Z"                                                         |
+| le                     | Less than or equal    | Time\_Coordinates.start\_date\_time ***le*** "2020-06-01T00:00:00Z"                                                         |
 | *Logical Operators*    |                       |                                                                                                                           |
 | and                    | Logical and           | target\_name ***eq*** "Mars" ***and*** instrument\_name ***eq*** "hirise"                                                     |
 | or                     | Logical or            | target\_name ***eq*** "Mars" ***or*** target\_name ***eq*** "Phobos"                                                          |
