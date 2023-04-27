@@ -111,8 +111,13 @@ The query parameters are:
  fields               (Optional, array of strings) Array of fields you wish to return.                                                                                                                                                             fields=pds:Time_Coordinates.pds:start_date_time
  start                (Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19. Useful for pagination of the results.                                              start=100
  limit                (Optional, integer, default=100) The number of records/results to return. By specifying a value of 0 only the summary of the results is returned, not the individual results.                                                limit=100
- sort                 (Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). `fieldName asc` or `fieldName desc`. There can be several sort parameters (order is important).    sort=lidvid asc, pds:Time_Coordinates.pds:start_date_time desc
 ====================  =========================================================================================================================================================================================================================== ====================
+
+..
+   sort is not implemented in the registry-api (although it is defined in the api specification), to avoid confusion, the sort line is removed from the table above and added as comment below for future re-integration
+..
+   sort                 (Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). `fieldName asc` or `fieldName desc`. There can be several sort parameters (order is important).    sort=lidvid asc, pds:Time_Coordinates.pds:start_date_time desc
+
 
 `q` and `fields` use PDS4 `Fields Dot Notation`_
 
