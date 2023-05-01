@@ -147,7 +147,7 @@ The query syntax follows the rules:
 * **{comparison operator}** are eq, ne, gt, lt, ge, le
 * **{literal value}** is either a string between ``"`` (double quotes) or a numerical value (float or integer).
 * Wildcard searching is available with the **like** operator. The wildcarding syntax of the **{literal value}** follows the [OpenSearch Simple Query String](https://opensearch.org/docs/latest/opensearch/query-dsl/full-text/#simple-query-string) convention.
-* **{group}** has mandatory brackets which make any complex query loaded with brackets, as seen in the example above, don't forget them !
+* **{group}** has mandatory parentheses (round brackets) which make any complex query loaded with parentheses, as seen in the example above, don't forget them !
 
 .. warning::
   the ``like`` operator does not work because of a known `bug <https://github.com/NASA-PDS/registry-api/issues/170>`_
