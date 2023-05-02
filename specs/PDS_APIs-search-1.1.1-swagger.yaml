@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: |
     Registry API enabling advanced search on PDS data and metadata. The API provides end-points to search for bundles, collections and any PDS products with advanced search queries. It also enables to browse the archive hierarchically downward (e.g. collection/s products) or upward (e.g. bundles containing a product).
-  version: 1.1.1
+  version: 1.2.0
   title: PDS Registry Search API
   termsOfService: 'http://pds.nasa.gov'
   contact:
@@ -1170,7 +1170,7 @@ components:
       description: |
         syntax: q="vid eq 13.0"
 
-        behavior: query uses eq,ne,gt,ge,lt,le,(,),not,and,or operators. Properties are named as in 'properties' attributes, literals are strings between quotes, like "animal", or numbers. Detailed query specification is available at https://bit.ly/3h3D54T
+        behavior: query uses eq,ne,gt,ge,lt,le,(,),not,and,or operators. Properties are named as in 'properties' attributes, literals are strings between double quotes, like "animal", or numbers. Detailed query specification is available at https://bit.ly/3h3D54T
 
         note: ignored when keyword is present
       required: false

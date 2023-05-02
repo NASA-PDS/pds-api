@@ -76,13 +76,23 @@ The requests template is a follow:
    GET /api/search/|search_user_guide_api_version|/classes/{product_class}[?[{query-parameter}={query-parameter-value}]*] HTTP/1.1
    Host: pds.nasa.gov
 
-Where `product_class` is one of:
+Where `product_class` is one of the following classes:
 
-* **products**: search among all classes of products (observational products, collections, bundles...)
-* **collections**: search among products which class is product_collection
-* **bundles**: search among products which class is product_bundle
+  - bundles
+  - collections
+  - observationals
+  - documents
+  - any
 
 The concept of product class is derived from the `PDS4 standard <https://pds.nasa.gov/datastandards/documents/im/current/index_1I00.html>`_.
+
+The list of classes proposed by the API can also be found from URL:
+
+.. code-block::
+   :substitutions:
+
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes
+
 
 
 Query Detailed Syntax
@@ -101,8 +111,13 @@ The query parameters are:
  fields               (Optional, array of strings) Array of fields you wish to return.                                                                                                                                                             fields=pds:Time_Coordinates.pds:start_date_time
  start                (Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19. Useful for pagination of the results.                                              start=100
  limit                (Optional, integer, default=100) The number of records/results to return. By specifying a value of 0 only the summary of the results is returned, not the individual results.                                                limit=100
- sort                 (Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). `fieldName asc` or `fieldName desc`. There can be several sort parameters (order is important).    sort=lidvid asc, pds:Time_Coordinates.pds:start_date_time desc
 ====================  =========================================================================================================================================================================================================================== ====================
+
+..
+   sort is not implemented in the registry-api (although it is defined in the api specification), to avoid confusion, the sort line is removed from the table above and added as comment below for future re-integration
+..
+   sort                 (Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). `fieldName asc` or `fieldName desc`. There can be several sort parameters (order is important).    sort=lidvid asc, pds:Time_Coordinates.pds:start_date_time desc
+
 
 `q` and `fields` use PDS4 `Fields Dot Notation`_
 
@@ -132,6 +147,7 @@ The query syntax follows the rules:
 * **{comparison operator}** are eq, ne, gt, lt, ge, le
 * **{literal value}** is either a string between ``"`` (double quotes) or a numerical value (float or integer).
 * Wildcard searching is available with the **like** operator. The wildcarding syntax of the **{literal value}** follows the [OpenSearch Simple Query String](https://opensearch.org/docs/latest/opensearch/query-dsl/full-text/#simple-query-string) convention.
+* **{group}** has mandatory parentheses (round brackets) which make any complex query loaded with parentheses, as seen in the example above, don't forget them !
 
 .. warning::
   the ``like`` operator does not work because of a known `bug <https://github.com/NASA-PDS/registry-api/issues/170>`_
@@ -143,10 +159,10 @@ The query syntax follows the rules:
  eq                      Equal                       target\_name **eq** "Mars"
  like                    Similar to                  target\_name **like** "mars"
  ne                      Not equal                   target\_name **ne** "Saturn"
- gt                      Greater than                pds:Time\_Coordinates.pds:start\_date\_time **gt** 2001-05-10T00:00:00Z
- ge                      Greater than or equal       pds:Time\_Coordinates.pds:start\_date\_time **ge** 2001-05-10T00:00:00Z
- lt                      Less than                   pds:Time\_Coordinates.pds:start\_date\_time **lt** 2020-06-01T00:00:00Z
- le                      Less than or equal          pds:Time\_Coordinates.pds:start\_date\_time **le** 2020-06-01T00:00:00Z
+ gt                      Greater than                pds:Time\_Coordinates.pds:start\_date\_time **gt** "2001-05-10T00:00:00Z"
+ ge                      Greater than or equal       pds:Time\_Coordinates.pds:start\_date\_time **ge** "2001-05-10T00:00:00Z"
+ lt                      Less than                   pds:Time\_Coordinates.pds:start\_date\_time **lt** "2020-06-01T00:00:00Z"
+ le                      Less than or equal          pds:Time\_Coordinates.pds:start\_date\_time **le** "2020-06-01T00:00:00Z"
  *Logical Operators*
  and                     Logical and                 target\_name **eq** "Mars" **and** instrument\_name **eq** "hirise"
  or                      Logical or                  target\_name **eq** "Mars" **or** target\_name **eq** "Phobos"
