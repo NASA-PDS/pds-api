@@ -40,6 +40,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinxcontrib.redoc',
     'sphinx.ext.autosectionlabel',
+    'sphinx-prompt',
     'sphinx_substitution_extensions',
     'sphinx_copybutton'
 ]
