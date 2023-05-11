@@ -1,5 +1,9 @@
 # Changelog
 
+## [v13.1.0](https://github.com/NASA-PDS/pds-api/tree/v13.1.0) (2023-05-11)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/release/13.1.0...v13.1.0)
+
 ## [release/13.1.0](https://github.com/NASA-PDS/pds-api/tree/release/13.1.0) (2023-05-11)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...release/13.1.0)
