@@ -53,5 +53,7 @@ _static/
 build/
 docs/.DS_Store
 docs/build/
+*.egg-info
 
-
+venv/
+.venv/
