@@ -80,10 +80,6 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As an API user, I want to know the unique values for a specific API field. ([#70](https://github.com/NASA-PDS/pds-api/issues/70)) 
-
-
-This requirement is not impacted by the current version
 ## As a user, I want to do a complex query to the API without being limited by the length of the url request ([#71](https://github.com/NASA-PDS/pds-api/issues/71)) 
 
 
@@ -145,10 +141,6 @@ This requirement is not impacted by the current version
 
 This requirement is not impacted by the current version
 ## As a client developer, I want to have suggested searches for keyword search ([#102](https://github.com/NASA-PDS/pds-api/issues/102)) 
-
-
-This requirement is not impacted by the current version
-## As a client developer, I want to facet on 1 or more fields in the registry ([#103](https://github.com/NASA-PDS/pds-api/issues/103)) 
 
 
 This requirement is not impacted by the current version
@@ -288,15 +280,11 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As a user, I want to know the unit or nilReason for an attribute. ([#246](https://github.com/NASA-PDS/pds-api/issues/246)) 
-
-
-This requirement is not impacted by the current version
-## As a user, I want to search by any metadata attribute ([#248](https://github.com/NASA-PDS/pds-api/issues/248)) 
-
-
-This requirement is not impacted by the current version
 ## As a user, I want to get a bad request error if I use a URL parameter which is not supported ([#252](https://github.com/NASA-PDS/pds-api/issues/252)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to get API responses in semantic formats  ([#254](https://github.com/NASA-PDS/pds-api/issues/254)) 
 
 
 This requirement is not impacted by the current version
