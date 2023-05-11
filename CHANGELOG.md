@@ -1,25 +1,41 @@
 # Changelog
 
-## [v1.2.0-dev](https://github.com/NASA-PDS/pds-api/tree/v1.2.0-dev) (2023-01-31)
+## [13.1.0](https://github.com/NASA-PDS/pds-api/tree/13.1.0) (2023-05-11)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...v1.2.0-dev)
-
-**Requirements:**
-
-- As a user, I want to monitor the availability of the APIs in production [\#225](https://github.com/NASA-PDS/pds-api/issues/225)
-- As a user, I want to query only the latest versions of products unless explicitly requested [\#221](https://github.com/NASA-PDS/pds-api/issues/221)
-- As a user, I want query responses for empty results to be clearly documented [\#198](https://github.com/NASA-PDS/pds-api/issues/198)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/release/13.1...13.1.0)
 
 **Defects:**
 
-- link to registry-api documentation from registry page is incorrect [\#251](https://github.com/NASA-PDS/pds-api/issues/251)
+- PDS API is not respecting the sort field [\#262](https://github.com/NASA-PDS/pds-api/issues/262)
+- PDS API documents are unclear wrt quoting in queries [\#260](https://github.com/NASA-PDS/pds-api/issues/260)
+- API search returns 500 for anything besides simple queries [\#259](https://github.com/NASA-PDS/pds-api/issues/259)
+- Search API documentation seems outdated? [\#257](https://github.com/NASA-PDS/pds-api/issues/257) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
+
+## [release/13.1](https://github.com/NASA-PDS/pds-api/tree/release/13.1) (2023-05-02)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...release/13.1)
+
+**Requirements:**
+
+- As a user, I want to get application/json response format by default if I request an API url in my browser [\#239](https://github.com/NASA-PDS/pds-api/issues/239)
+- As a user, I want to monitor the availability of the APIs in production [\#225](https://github.com/NASA-PDS/pds-api/issues/225)
+- As a user, I want to query only the latest versions of products unless explicitly requested [\#221](https://github.com/NASA-PDS/pds-api/issues/221)
+- As a user, I want query responses for empty results to be clearly documented [\#198](https://github.com/NASA-PDS/pds-api/issues/198)
+- As a user, I want to be able to access the Search API Swagger interface from pds.nasa.gov [\#193](https://github.com/NASA-PDS/pds-api/issues/193)
+- As a user, I want to know how to query observational data only [\#175](https://github.com/NASA-PDS/pds-api/issues/175)
+
+**Defects:**
+
+- link to registry-api documentation from registry page is incorrect [\#251](https://github.com/NASA-PDS/pds-api/issues/251) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
 - API Client cannot connect to current deployed API [\#240](https://github.com/NASA-PDS/pds-api/issues/240) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - Past versions are being returned by API, by default [\#220](https://github.com/NASA-PDS/pds-api/issues/220) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
+- `hits` appears to be showing the current page count, not the overall number of its [\#199](https://github.com/NASA-PDS/pds-api/issues/199) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
 - API performance degradation from B12.1 release [\#200](https://github.com/NASA-PDS/pds-api/issues/200) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - Swagger API page does not show the expected deployed API version [\#196](https://github.com/NASA-PDS/pds-api/issues/196) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
 
 **Other closed issues:**
 
+- make the swagger api work behind a reverse proxy [\#253](https://github.com/NASA-PDS/pds-api/issues/253)
 - integrate logo on official release registry-api and publish it [\#234](https://github.com/NASA-PDS/pds-api/issues/234)
 - Add documentation for web UI developers [\#226](https://github.com/NASA-PDS/pds-api/issues/226)
 
@@ -79,7 +95,6 @@
 - Accept header of text/csv returns blank lines [\#213](https://github.com/NASA-PDS/pds-api/issues/213) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
 - wildcards do not work as expected for all fields [\#210](https://github.com/NASA-PDS/pds-api/issues/210) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
 - fix broken link in API docs [\#206](https://github.com/NASA-PDS/pds-api/issues/206) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
-- `hits` appears to be showing the current page count, not the overall number of its [\#199](https://github.com/NASA-PDS/pds-api/issues/199) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
 - version number invalid according to PEP validation in CI [\#164](https://github.com/NASA-PDS/pds-api/issues/164) [[s.critical](https://github.com/NASA-PDS/pds-api/labels/s.critical)]
 - `products/{identifier}` missing properties object in application/json response [\#155](https://github.com/NASA-PDS/pds-api/issues/155) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - pds api not able to search using URL parameters [\#130](https://github.com/NASA-PDS/pds-api/issues/130) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
