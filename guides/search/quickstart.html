@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quickstart &mdash; PDS APIs B13.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -12,11 +13,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -31,15 +32,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> PDS APIs
-            <img src="../../_static/PDS_Planets.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            PDS APIs
+              <img src="../../_static/PDS_Planets.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 B13.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -79,9 +84,9 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../search.html">Search API User Guide</a> &raquo;</li>
-      <li>Quickstart</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../search.html">Search API User Guide</a></li>
+      <li class="breadcrumb-item active">Quickstart</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nasa-pds/pds-api/blob/main/docs/source/guides/search/quickstart.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -91,7 +96,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="quickstart">
+  <section id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading"></a></h1>
 <p>The following section provides a quickstart guide to try out the PDS Search API.</p>
 <div class="admonition warning">
@@ -102,44 +107,44 @@
 <p class="admonition-title">Note</p>
 <p>curl command line tool is used to request the API in this documentation. curl is available in many operating systems by default. If not, you can get curl from <a class="reference external" href="https://curl.se/">https://curl.se/</a> or using a package management tool specific to your operating system (brew, apt, …).</p>
 </div>
-<div class="section" id="search-with-curl">
+<section id="search-with-curl">
 <h2>Search With curl<a class="headerlink" href="#search-with-curl" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Open a Terminal window (or your favorite command-line application).</p></li>
 <li><p>Get 5 products’ metadata from the API in JSON format:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1/products?limit=5&#39;</span> <span class="se">\</span>
-     --header <span class="s1">&#39;Accept: application/json&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products?limit=5&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/json&#39;</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li><p>Get 5 products’ metadata from the API in XML format:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> curl --get <span class="s1">&#39;https://pds.nasa.gov/api/search/1/products?limit=5&#39;</span> <span class="se">\</span>
-     --header <span class="s1">&#39;Accept: application/xml&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products?limit=5&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/xml&#39;</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li><p>To view this in a more readable way, you can pipe the output to a file, or pretty print (on Mac/Unix):</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Output JSON to a File</span>
-curl ... &gt; my_first_query.json
+curl<span class="w"> </span>...<span class="w"> </span>&gt;<span class="w"> </span>my_first_query.json
 
 <span class="c1"># Pretty print JSON</span>
-curl ... <span class="p">|</span> json_pp &gt; my_first_query.json
+curl<span class="w"> </span>...<span class="w"> </span><span class="p">|</span><span class="w"> </span>json_pp<span class="w"> </span>&gt;<span class="w"> </span>my_first_query.json
 
 <span class="c1"># Output XML to a File</span>
-curl ... &gt; my_first_query.xml
+curl<span class="w"> </span>...<span class="w"> </span>&gt;<span class="w"> </span>my_first_query.xml
 </pre></div>
 </div>
 <p>More details on how to use the API can be found in the <a class="reference internal" href="endpoints.html"><span class="doc">endpoints</span></a> .</p>
-</div>
-<div class="section" id="search-with-python">
+</section>
+<section id="search-with-python">
 <h2>Search with Python<a class="headerlink" href="#search-with-python" title="Permalink to this heading"></a></h2>
 <p>Alternatively, it is possible to use other tools such as Postman and programming languages such as Python to call the PDS Search API.</p>
 <p>To use the <strong>PDS API Python Client</strong>, you can read this other <a class="reference external" href="https://nasa-pds.github.io/pds-api-client/quickstart">Quickstart</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
