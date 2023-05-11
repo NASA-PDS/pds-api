@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: |
     Registry API enabling advanced search on PDS data and metadata. The API provides end-points to search for bundles, collections and any PDS products with advanced search queries. It also enables to browse the archive hierarchically downward (e.g. collection/s products) or upward (e.g. bundles containing a product).
-  version: 1.2.0
+  version: 1.1.1
   title: PDS Registry Search API
   termsOfService: 'http://pds.nasa.gov'
   contact:
