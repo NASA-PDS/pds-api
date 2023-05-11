@@ -1,19 +1,8 @@
 # Changelog
 
-## [13.1.0](https://github.com/NASA-PDS/pds-api/tree/13.1.0) (2023-05-11)
+## [release/13.1.0](https://github.com/NASA-PDS/pds-api/tree/release/13.1.0) (2023-05-11)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/release/13.1...13.1.0)
-
-**Defects:**
-
-- PDS API is not respecting the sort field [\#262](https://github.com/NASA-PDS/pds-api/issues/262)
-- PDS API documents are unclear wrt quoting in queries [\#260](https://github.com/NASA-PDS/pds-api/issues/260)
-- API search returns 500 for anything besides simple queries [\#259](https://github.com/NASA-PDS/pds-api/issues/259)
-- Search API documentation seems outdated? [\#257](https://github.com/NASA-PDS/pds-api/issues/257) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
-
-## [release/13.1](https://github.com/NASA-PDS/pds-api/tree/release/13.1) (2023-05-02)
-
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...release/13.1)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...release/13.1.0)
 
 **Requirements:**
 
@@ -26,6 +15,10 @@
 
 **Defects:**
 
+- PDS API is not respecting the sort field [\#262](https://github.com/NASA-PDS/pds-api/issues/262)
+- PDS API documents are unclear wrt quoting in queries [\#260](https://github.com/NASA-PDS/pds-api/issues/260)
+- API search returns 500 for anything besides simple queries [\#259](https://github.com/NASA-PDS/pds-api/issues/259)
+- Search API documentation seems outdated? [\#257](https://github.com/NASA-PDS/pds-api/issues/257) [[s.medium](https://github.com/NASA-PDS/pds-api/labels/s.medium)]
 - link to registry-api documentation from registry page is incorrect [\#251](https://github.com/NASA-PDS/pds-api/issues/251) [[s.low](https://github.com/NASA-PDS/pds-api/labels/s.low)]
 - API Client cannot connect to current deployed API [\#240](https://github.com/NASA-PDS/pds-api/issues/240) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
 - Past versions are being returned by API, by default [\#220](https://github.com/NASA-PDS/pds-api/issues/220) [[s.high](https://github.com/NASA-PDS/pds-api/labels/s.high)]
@@ -41,11 +34,7 @@
 
 ## [v1.1.0](https://github.com/NASA-PDS/pds-api/tree/v1.1.0) (2022-10-13)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/release/1.1.0...v1.1.0)
-
-## [release/1.1.0](https://github.com/NASA-PDS/pds-api/tree/release/1.1.0) (2022-10-06)
-
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...release/1.1.0)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/0.4.0...v1.1.0)
 
 **Requirements:**
 
