@@ -68,7 +68,7 @@ Search for the 10 latest collections which processing level is "Raw":
    :caption: curl command
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections' \
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
        --data-urlencode 'limit=10' \
        --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
@@ -84,7 +84,7 @@ Search for all Observational Products targeting Bennu:
    :caption: curl command
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/observationals' \
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
      --data-urlencode 'q=(ref_lid_target eq "urn:nasa:pds:context:target:asteroid.101955_bennu")'
 
 

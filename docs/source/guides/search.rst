@@ -25,3 +25,4 @@ These pages provide a user guide for the PDS Search API.
    search/responses
    search/tutorials
    API Full Reference <https://nasa-pds.github.io/pds-api/specifications/search-v1.1.0-redoc.html>
+   Links <search/links>

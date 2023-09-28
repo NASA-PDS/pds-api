@@ -106,7 +106,7 @@ rst_prolog = """
 
 latex_logo = '_static/images/PDS_Planets.png'
 
-latex_show_urls = True
+latex_show_urls = 'footnote'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
