@@ -23,7 +23,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Specifications" href="../../specifications.html" />
+    <link rel="next" title="PDS Search API Links" href="links.html" />
     <link rel="prev" title="Tutorials/Cookbooks" href="tutorials.html" /> 
 </head>
 
@@ -66,6 +66,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference external" href="https://nasa-pds.github.io/pds-api/specifications/search-v1.1.0-redoc.html">API Full Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="links.html">Links</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../specifications.html">Specifications</a></li>
@@ -149,7 +150,7 @@
 <p><strong>Query:</strong> <code class="docutils literal notranslate"><span class="pre">(pds:Primary_Result_Summary.pds:processing_level</span> <span class="pre">eq</span> <span class="pre">&quot;Raw&quot;)</span></code></p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/classes/collections&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;limit=10&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;q=(pds:Primary_Result_Summary.pds:processing_level eq &quot;Raw&quot;)&#39;</span>
 </pre></div>
@@ -162,7 +163,7 @@
 <p><strong>Query:</strong> <code class="docutils literal notranslate"><span class="pre">(ref_lid_target</span> <span class="pre">eq</span> <span class="pre">&quot;urn:nasa:pds:context:target:asteroid.101955_bennu&quot;)</span></code></p>
 <div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id5" title="Permalink to this code"></a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/classes/observationals&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;q=(ref_lid_target eq &quot;urn:nasa:pds:context:target:asteroid.101955_bennu&quot;)&#39;</span>
 </pre></div>
 </div>
@@ -291,7 +292,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="tutorials.html" class="btn btn-neutral float-left" title="Tutorials/Cookbooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../specifications.html" class="btn btn-neutral float-right" title="Specifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="links.html" class="btn btn-neutral float-right" title="PDS Search API Links" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
