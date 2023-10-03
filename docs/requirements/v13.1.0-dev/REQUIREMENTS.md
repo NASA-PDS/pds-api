@@ -288,3 +288,15 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
+## As a user, I want PDS response mime types to be officially registered with W3C ([#266](https://github.com/NASA-PDS/pds-api/issues/266)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to perform a query and get the download URL list in one call ([#270](https://github.com/NASA-PDS/pds-api/issues/270)) 
+
+
+This requirement is not impacted by the current version
+## As a user, I want to perform a query and download all the products in one API call ([#271](https://github.com/NASA-PDS/pds-api/issues/271)) 
+
+
+This requirement is not impacted by the current version
