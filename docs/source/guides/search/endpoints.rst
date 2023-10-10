@@ -53,12 +53,12 @@ Search Products
 Request Example
 ~~~~~~~~~~~~~~~~~~~~
 
-Search for the 10 latest collections which processing level is "Raw":
+Search for products which processing level is "Raw", get 10 results:
 
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections' \
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
        --data-urlencode 'limit=10' \
        --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
