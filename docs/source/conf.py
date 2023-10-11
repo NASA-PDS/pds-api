@@ -20,8 +20,8 @@
 project = 'PDS APIs'
 copyright = '2022 California Institute of Technology'
 author = 'NASA Planetary Data System'
-release = 'B13.1'
-version = 'B13.1'
+release = 'B14.0'
+version = 'B14.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -73,6 +73,12 @@ html_logo = '_static/images/PDS_Planets.png'
 redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@2.0.0-alpha.17/bundles/redoc.standalone.js'
 
 redoc = [
+    {
+        'name': 'PDS Search API',
+        'page': 'specifications/search-v1.3.0-redoc',
+        'spec': '../../specs/PDS_APIs-search-1.3.0-swagger.yaml',
+        'embed': True,
+    },
     {
         'name': 'PDS Search API',
         'page': 'specifications/search-v1.1.1-redoc',
