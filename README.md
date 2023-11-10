@@ -1,5 +1,7 @@
 # NASA PDS Federated API
 
+[![DOI](https://zenodo.org/badge/258831504.svg)](https://zenodo.org/doi/10.5281/zenodo.6314172)
+
 PDS strives to develop REST-ful web APIs for all online web applications, including data search and DOI management.
 
 This repository is the entry point for the NASA PDS Federated API specifications (e.g. following [OpenAPI](https://www.openapis.org/) standard) and their documentation.
