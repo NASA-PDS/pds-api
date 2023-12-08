@@ -1,5 +1,14 @@
 # Changelog
 
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2023-12-08)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v13.1.0...«unknown»)
+
+**Other closed issues:**
+
+- Add intro presentation to online API documentation [\#267](https://github.com/NASA-PDS/pds-api/issues/267)
+- Add /properties in the quickstart documentation of the the PDS API [\#265](https://github.com/NASA-PDS/pds-api/issues/265)
+
 ## [v13.1.0](https://github.com/NASA-PDS/pds-api/tree/v13.1.0) (2023-05-11)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v1.1.0...v13.1.0)
