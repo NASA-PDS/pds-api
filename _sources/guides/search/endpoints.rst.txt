@@ -50,15 +50,23 @@ The main use cases, to search, crawl products or resolve a product identifier ar
 Search Products
 ----------------
 
-Request Example
+Request Examples
 ~~~~~~~~~~~~~~~~~~~~
 
-Search for the 10 latest collections which processing level is "Raw":
+Get the list of properties which describe the products, which criteria you can search against:
 
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes/collections' \
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/properties'
+
+
+Search for products which processing level is "Raw", using the property "pds:Primary_Result_Summary.pds:processing_level" found before, get 10 results:
+
+.. code-block:: bash
+   :substitutions:
+
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
        --data-urlencode 'limit=10' \
        --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 

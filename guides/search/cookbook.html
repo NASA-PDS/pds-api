@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search API Cookbook &mdash; PDS APIs B13.1 documentation</title>
+  <title>Search API Cookbook &mdash; PDS APIs B14.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -40,7 +40,7 @@
               <img src="../../_static/PDS_Planets.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                B13.1
+                B14.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -195,13 +195,13 @@
 <section id="how-to-find-the-doi-associated-with-an-observational-product">
 <h3>How to Find the DOI associated with an Observational Product<a class="headerlink" href="#how-to-find-the-doi-associated-with-an-observational-product" title="Permalink to this heading"></a></h3>
 <p>We assume you know the identifier of the product you are working with but a couple are provided in the examples below.</p>
-<section id="search-for-a-products-collection-doi">
-<h4>Search for a Products Collection DOI<a class="headerlink" href="#search-for-a-products-collection-doi" title="Permalink to this heading"></a></h4>
+<section id="search-for-a-product-s-collection-doi">
+<h4>Search for a Product’s Collection DOI<a class="headerlink" href="#search-for-a-product-s-collection-doi" title="Permalink to this heading"></a></h4>
 <p>Run the following request to get the DOI associated with the collection the observational product <cite>urn:nasa:pds:compil-comet:nuc_properties:description::1.0</cite> belongs to:</p>
 <div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id7" title="Permalink to this code"></a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:compil-comet:nuc_properties:description::1.0/member-of&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">     </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;fields=pds:External_Reference.pds:doi&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:vg1-saturn-pos-hgcoords-96sec:data-spice:spice-hg::1.0/member-of&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;fields=pds:Citation_Information.pds:doi&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/kvp+json&#39;</span>
 </pre></div>
 </div>
@@ -215,11 +215,11 @@
 <span class="w">        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;sort&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pds:External_Reference.pds:doi&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pds:Citation_Information.pds:doi&quot;</span><span class="p">]</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">           </span><span class="nt">&quot;pds:External_Reference.pds:doi&quot;</span><span class="p">:</span><span class="s2">&quot;10.26007/CSR5-JW43&quot;</span>
+<span class="w">           </span><span class="nt">&quot;pds:Citation_Information.pds:doi&quot;</span><span class="p">:</span><span class="s2">&quot;10.17189/1522962&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -233,7 +233,7 @@
 <div class="literal-block-wrapper docutils container" id="id8">
 <div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id8" title="Permalink to this code"></a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:insight.spice:document:spiceds::1.0/member-of/member-of&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">     </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;fields=pds:Citation_Information/pds:doi,pds:External_Reference.pds:doi&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;fields=pds:Citation_Information/pds:doi&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/kvp+json&#39;</span>
 </pre></div>
 </div>
@@ -248,22 +248,12 @@
 <span class="w">        </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;sort&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
 <span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;pds:Citation_Information.pds:doi&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;pds:External_Reference.pds:doi&quot;</span>
+<span class="w">            </span><span class="s2">&quot;pds:Citation_Information.pds:doi&quot;</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;pds:External_Reference.pds:doi&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[</span>
-<span class="s2">                10.1007/s11214-018-0563-9,</span>
-<span class="s2">                10.1007/s11214-018-0570-x,</span>
-<span class="s2">                10.1007/s11214-018-0531-4,</span>
-<span class="s2">                10.1007/s11214-018-0530-5,</span>
-<span class="s2">                10.1007/s11214-018-0574-6,</span>
-<span class="s2">                10.1007/s11214-018-0536-z,</span>
-<span class="s2">                10.1007/s11214-018-0520-7</span>
-<span class="s2">            ]&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;pds:Citation_Information.pds:doi&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.17189/1517566&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
@@ -276,7 +266,7 @@
 <h3>How to Find the PDS Product Associated with a DOI<a class="headerlink" href="#how-to-find-the-pds-product-associated-with-a-doi" title="Permalink to this heading"></a></h3>
 <p>To get the PDS product metadata associated with a the DOI <cite>10.17189/1517568</cite>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;q=(pds:External_Reference.pds:doi eq &quot;10.26007/CSR5-JW43&quot;)&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;q=(pds:Citation_Information.pds:doi eq &quot;10.17189/1522962&quot;)&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/json&#39;</span>
 </pre></div>
 </div>
