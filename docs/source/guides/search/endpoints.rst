@@ -117,15 +117,10 @@ The query parameters are:
  q                    (Optional, string) Query string you wish to parse and use for search. See `query string syntax`_                                                                                                                             q=target_name eq "Mars"
  keywords             (Optional, string) String used for text search on title and description of the PDS4 labels                                                                                                                                   keyword=insight
  fields               (Optional, array of strings) Array of fields you wish to return.                                                                                                                                                             fields=pds:Time_Coordinates.pds:start_date_time
- start                (Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19. Useful for pagination of the results.                                              start=100
+ sort                 (Optional, array of strings) Array of fields you wish to sort by, mandatory when search-after is used                                                                                                                        sort=ops:Harvest_Info.ops:harvest_date_time
+ search-after         (Optional, string or number) For pagination, the page will start from the value of the field selected in `sort`.                                                                                                             search-after=2024-01-23T22:53:30.402453Z
  limit                (Optional, integer, default=100) The number of records/results to return. By specifying a value of 0 only the summary of the results is returned, not the individual results.                                                limit=100
 ====================  =========================================================================================================================================================================================================================== ====================
-
-..
-   sort is not implemented in the registry-api (although it is defined in the api specification), to avoid confusion, the sort line is removed from the table above and added as comment below for future re-integration
-..
-   sort                 (Optional, string, default=LIDVID) Field to sort on and whether it should be sorted ascending (ASC) or descending (DESC). `fieldName asc` or `fieldName desc`. There can be several sort parameters (order is important).    sort=lidvid asc, pds:Time_Coordinates.pds:start_date_time desc
-
 
 `q` and `fields` use PDS4 `Fields Dot Notation`_
 
@@ -387,5 +382,83 @@ For example, run:
 
    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_raw:hp3_rad_raw_00004_20181130_085325/member-of/member-of' \
        --header 'Accept: application/json'
+
+
+Use pagination to get all products matching a request
+-------------------------------------------------------
+
+When you're searching for a large number of products, you'll need to use pagination to ensure you receive all the results. Here's how you can do it.
+
+.. Note::
+   The pagination parameters (sort, limit, search-after) described in this section are applicable to all the end-points.
+
+To start, let's say you want to get all the members of a collection named "OSIRIS-REX Spectrometer calibrated observations", which identifier is *urn:nasa:pds:orex.ovirs:data_calibrated::11.0*. You can use the following request in a web browser:
+
+.. code-block::
+   :substitutions:
+
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members
+
+This request will only give you the first 100 products out of the total available in the collection (in this example, 334,940 products).
+
+To get all the results, you need to use the pagination.
+
+**1. Make the Initial Request:**
+
+Sort the results by the harvest time, which is the time when products were loaded into the registry. You can do this using the *curl* command:
+
+.. code-block:: bash
+   :substitutions:
+
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
+      --header 'Accept: application/json'
+      --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time'
+
+You are getting the first 100 products, members of the collection, sorted by harvest time (time when they were loaded in the registry).
+
+**2. Get the Next Page**
+
+To retrieve the next set of results, you need to get the latest harvest date and time from the previous response. This information is included in the description of the last product returned.
+
+.. code-block:: json
+   ...
+   "ops:Harvest_Info.ops:harvest_date_time": [
+      "2023-05-26T05:53:24.611495Z"
+   ],
+   ...
+
+Use this latest harvest date and time as the reference for the next request:
+
+.. code-block:: bash
+   :substitutions:
+
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
+      --header 'Accept: application/json'
+      --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time'
+      --data-urlencode 'search-after=2023-05-26T05:53:24.611495Z'
+
+**3. Iterate Until Completion:**
+
+Keep making requests and updating the *search-after* parameter with the latest harvest date and time until the number of products returned is less than the limit (100 in this case).
+
+
+**4. Changing Pagination Parameters:**
+
+You can adjust the default limit of 100 products per page using the limit parameter. For example:
+
+.. code-block:: bash
+   :substitutions:
+
+   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
+      --header 'Accept: application/json'
+      --data-urlencode 'limit=500'
+      --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time'
+      --data-urlencode 'search-after=2023-05-26T05:53:24.611495Z'
+
+
+
+
+
+
 
 

@@ -75,6 +75,12 @@ redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@2.0.0-alpha.17/bundles/redoc.sta
 redoc = [
     {
         'name': 'PDS Search API',
+        'page': 'specifications/search-v1.4.0-redoc',
+        'spec': '../../specs/PDS_APIs-search-1.4.0-swagger.yaml',
+        'embed': True,
+    },
+    {
+        'name': 'PDS Search API',
         'page': 'specifications/search-v1.3.0-redoc',
         'spec': '../../specs/PDS_APIs-search-1.3.0-swagger.yaml',
         'embed': True,
