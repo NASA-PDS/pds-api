@@ -1350,21 +1350,22 @@ components:
       content:
         "*":
           schema:
-            type: array
-            items:
-              type: object
-              properties:
-                property:
-                  type: string
-                type:
-                  type: string
-                  enum:
-                    - "string"
-                    - "integer"
-                    - "float"
-                    - "boolean"
-                    - "timestamp"
-                    - "unsupported"
+            type: object
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/propertiesList'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/propertiesList'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/propertiesList'
+        text/html:
+          schema:
+            $ref: '#/components/schemas/propertiesList'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/propertiesList'
     Singular:
       description: Successful request
       content:
@@ -1402,6 +1403,22 @@ components:
           schema:
             $ref: '#/components/schemas/pdsProduct'
   schemas:
+    propertiesList:
+      type: array
+      items:
+        type: object
+        properties:
+          property:
+            type: string
+          type:
+            type: string
+            enum:
+              - "string"
+              - "integer"
+              - "float"
+              - "boolean"
+              - "timestamp"
+              - "unsupported"
     summary:
       type: object
       properties:
