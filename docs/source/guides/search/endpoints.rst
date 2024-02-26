@@ -421,11 +421,11 @@ You are getting the first 100 products, members of the collection, sorted by har
 To retrieve the next set of results, you need to get the latest harvest date and time from the previous response. This information is included in the description of the last product returned.
 
 .. code-block:: json
-   ...
+
    "ops:Harvest_Info.ops:harvest_date_time": [
       "2023-05-26T05:53:24.611495Z"
    ],
-   ...
+
 
 Use this latest harvest date and time as the reference for the next request:
 
