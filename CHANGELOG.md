@@ -1,19 +1,12 @@
 # Changelog
 
-## [14.0.0](https://github.com/NASA-PDS/pds-api/tree/14.0.0) (2024-02-26)
+## [v14.0.0](https://github.com/NASA-PDS/pds-api/tree/v14.0.0) (2024-02-26)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/release/14.0.0...14.0.0)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v13.1.0...v14.0.0)
 
 **Other closed issues:**
 
 - Publish documentation of PDS-API 14.0 when registry-api is deployed [\#277](https://github.com/NASA-PDS/pds-api/issues/277)
-
-## [release/14.0.0](https://github.com/NASA-PDS/pds-api/tree/release/14.0.0) (2023-12-08)
-
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v13.1.0...release/14.0.0)
-
-**Other closed issues:**
-
 - Add intro presentation to online API documentation [\#267](https://github.com/NASA-PDS/pds-api/issues/267)
 - Add /properties in the quickstart documentation of the the PDS API [\#265](https://github.com/NASA-PDS/pds-api/issues/265)
 
