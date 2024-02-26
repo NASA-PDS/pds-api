@@ -73,6 +73,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#get-the-collection-or-bundles-of-an-observational-product">Get the Collection or Bundles of an Observational Product</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#use-pagination-to-get-all-products-matching-a-request">Use pagination to get all products matching a request</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="responses.html">Responses</a></li>
@@ -240,11 +241,15 @@
 <td><p>(Optional, array of strings) Array of fields you wish to return.</p></td>
 <td><p>fields=pds:Time_Coordinates.pds:start_date_time</p></td>
 </tr>
-<tr class="row-odd"><td><p>start</p></td>
-<td><p>(Optional, integer, default=0) The search result to start with in the returned records. For instance, start=10 will return records 10-19. Useful for pagination of the results.</p></td>
-<td><p>start=100</p></td>
+<tr class="row-odd"><td><p>sort</p></td>
+<td><p>(Optional, array of strings) Array of fields you wish to sort by, mandatory when search-after is used</p></td>
+<td><p>sort=ops:Harvest_Info.ops:harvest_date_time</p></td>
 </tr>
-<tr class="row-even"><td><p>limit</p></td>
+<tr class="row-even"><td><p>search-after</p></td>
+<td><p>(Optional, string or number) For pagination, the page will start from the value of the field selected in <cite>sort</cite>.</p></td>
+<td><p>search-after=2024-01-23T22:53:30.402453Z</p></td>
+</tr>
+<tr class="row-odd"><td><p>limit</p></td>
 <td><p>(Optional, integer, default=100) The number of records/results to return. By specifying a value of 0 only the summary of the results is returned, not the individual results.</p></td>
 <td><p>limit=100</p></td>
 </tr>
@@ -477,6 +482,53 @@ class in <em>all lowercase</em>:</p>
 </pre></div>
 </div>
 </section>
+</section>
+<section id="use-pagination-to-get-all-products-matching-a-request">
+<h2>Use pagination to get all products matching a request<a class="headerlink" href="#use-pagination-to-get-all-products-matching-a-request" title="Permalink to this heading"></a></h2>
+<p>When you’re searching for a large number of products, you’ll need to use pagination to ensure you receive all the results. Here’s how you can do it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The pagination parameters (sort, limit, search-after) described in this section are applicable to all the end-points.</p>
+</div>
+<p>To start, let’s say you want to get all the members of a collection named “OSIRIS-REX Spectrometer calibrated observations”, which identifier is <em>urn:nasa:pds:orex.ovirs:data_calibrated::11.0</em>. You can use the following request in a web browser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pds</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">urn</span><span class="p">:</span><span class="n">nasa</span><span class="p">:</span><span class="n">pds</span><span class="p">:</span><span class="n">orex</span><span class="o">.</span><span class="n">ovirs</span><span class="p">:</span><span class="n">data_calibrated</span><span class="p">::</span><span class="mf">11.0</span><span class="o">/</span><span class="n">members</span>
+</pre></div>
+</div>
+<p>This request will only give you the first 100 products out of the total available in the collection (in this example, 334,940 products).</p>
+<p>To get all the results, you need to use the pagination.</p>
+<p><strong>1. Make the Initial Request:</strong></p>
+<p>Sort the results by the harvest time, which is the time when products were loaded into the registry. You can do this using the <em>curl</em> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members&#39;</span>
+<span class="w">   </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/json&#39;</span>
+<span class="w">   </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;sort=ops:Harvest_Info.ops:harvest_date_time&#39;</span>
+</pre></div>
+</div>
+<p>You are getting the first 100 products, members of the collection, sorted by harvest time (time when they were loaded in the registry).</p>
+<p><strong>2. Get the Next Page</strong></p>
+<p>To retrieve the next set of results, you need to get the latest harvest date and time from the previous response. This information is included in the description of the last product returned.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;ops:Harvest_Info.ops:harvest_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">   </span><span class="s2">&quot;2023-05-26T05:53:24.611495Z&quot;</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>Use this latest harvest date and time as the reference for the next request:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members&#39;</span>
+<span class="w">   </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/json&#39;</span>
+<span class="w">   </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;sort=ops:Harvest_Info.ops:harvest_date_time&#39;</span>
+<span class="w">   </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;search-after=2023-05-26T05:53:24.611495Z&#39;</span>
+</pre></div>
+</div>
+<p><strong>3. Iterate Until Completion:</strong></p>
+<p>Keep making requests and updating the <em>search-after</em> parameter with the latest harvest date and time until the number of products returned is less than the limit (100 in this case).</p>
+<p><strong>4. Changing Pagination Parameters:</strong></p>
+<p>You can adjust the default limit of 100 products per page using the limit parameter. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members&#39;</span>
+<span class="w">   </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/json&#39;</span>
+<span class="w">   </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;limit=500&#39;</span>
+<span class="w">   </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;sort=ops:Harvest_Info.ops:harvest_date_time&#39;</span>
+<span class="w">   </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;search-after=2023-05-26T05:53:24.611495Z&#39;</span>
+</pre></div>
+</div>
 </section>
 </section>
 
