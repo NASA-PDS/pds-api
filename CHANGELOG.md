@@ -1,5 +1,13 @@
 # Changelog
 
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2024-04-30)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v14.0.0...«unknown»)
+
+**Other closed issues:**
+
+- Add downtime notification to top of API documentation [\#284](https://github.com/NASA-PDS/pds-api/issues/284)
+
 ## [v14.0.0](https://github.com/NASA-PDS/pds-api/tree/v14.0.0) (2024-02-26)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v13.1.0...v14.0.0)
