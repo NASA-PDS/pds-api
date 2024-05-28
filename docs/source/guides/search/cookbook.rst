@@ -218,5 +218,30 @@ You will get a JSON response of the PDS products (any class of product, for exam
 
 You can get the result in different format using content negociation with the Accept header parameter.
 
+Search by Time Range
+--------------------
+
+For example, as a user I need to find the Voyager 1 PWS Spectrum Analyzer CDF files covering March of 1979 so I can make a plot.
+
+Here is one of the XML files, rendered: https://search-pdsppi.igpp.ucla.edu/ditdos/viewFile?id=pds://PPI/voyager1.pws.sa/data/1979/vg1pws_lr_19790105_v5.20.xml .
+
+To build this query, we can search by the instrument and time range:
+
+.. code-block:: bash
+   ((pds:Time_Coordinates.pds:start_date_time ge "1979-03-01T00:00:00.000Z") and
+      (pds:Time_Coordinates.pds:start_date_time lt "1979-04-01T00:00:00.000Z") and
+      (ref_lid_instrument eq "urn:nasa:pds:context:instrument:vg1.pws"))
+
+Do query that using curl, it would look like this:
+
+.. code-block:: bash
+    :substitutions:
+
+    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+         --data-urlencode 'q=((pds:Time_Coordinates.pds:start_date_time ge "1979-03-01T00:00:00.000Z") and ' \
+         --data-urlencode '(pds:Time_Coordinates.pds:start_date_time lt "1979-04-01T00:00:00.000Z") and ' \
+         --data-urlencode '(ref_lid_instrument eq "urn:nasa:pds:context:instrument:vg1.pws"))' \
+         --header 'Accept: application/json'
+
 
 **Looking for more recipes? Or have some useful recipes of your own?** Checkout the `PDS API Discussion Board <https://github.com/NASA-PDS/pds-api/discussions>`_ or contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_
