@@ -1,6 +1,6 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2024-04-30)
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2024-05-28)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v14.0.0...«unknown»)
 
@@ -24,11 +24,8 @@
 
 **Requirements:**
 
-- As a user, I want to get application/json response format by default if I request an API url in my browser [\#239](https://github.com/NASA-PDS/pds-api/issues/239)
 - As a user, I want to monitor the availability of the APIs in production [\#225](https://github.com/NASA-PDS/pds-api/issues/225)
-- As a user, I want to query only the latest versions of products unless explicitly requested [\#221](https://github.com/NASA-PDS/pds-api/issues/221)
 - As a user, I want query responses for empty results to be clearly documented [\#198](https://github.com/NASA-PDS/pds-api/issues/198)
-- As a user, I want to be able to access the Search API Swagger interface from pds.nasa.gov [\#193](https://github.com/NASA-PDS/pds-api/issues/193)
 - As a user, I want to know how to query observational data only [\#175](https://github.com/NASA-PDS/pds-api/issues/175)
 
 **Defects:**
@@ -58,18 +55,7 @@
 
 - As a user, I want to get directions whenever I arrive on an API URL [\#191](https://github.com/NASA-PDS/pds-api/issues/191)
 - As a user, I want to have a PDS Search API user guide [\#169](https://github.com/NASA-PDS/pds-api/issues/169)
-- As a user, I want to receive error messages when an invalid request is submitted to the API [\#153](https://github.com/NASA-PDS/pds-api/issues/153)
-- As a user, I want the API response media types to be compliant with RFC 6838 [\#152](https://github.com/NASA-PDS/pds-api/issues/152)
 - As a user, I want to see API stable release specifications [\#139](https://github.com/NASA-PDS/pds-api/issues/139)
-- As a user, I want to get a key-value-pair JSON response [\#134](https://github.com/NASA-PDS/pds-api/issues/134)
-- As a user, I want to receive a XML response that contains the PDS4 label metadata in XML format \(application/vnd.nasa.pds.pds4+xml\)  [\#125](https://github.com/NASA-PDS/pds-api/issues/125)
-- As an API user, I want a CSV response format option [\#120](https://github.com/NASA-PDS/pds-api/issues/120)
-- As a user, I want to clearly see which formats are accepted by the API when a 406 error is raised [\#127](https://github.com/NASA-PDS/pds-api/issues/127)
-- As a API manager, I want to restrict access to registered products that should not be publicly accessible [\#106](https://github.com/NASA-PDS/pds-api/issues/106)
-- As a user, I want an end-point of each of the PDS4 IM classes of products [\#94](https://github.com/NASA-PDS/pds-api/issues/94)
-- As an API user, I want to specify whether I get the latest or all versions of a product [\#74](https://github.com/NASA-PDS/pds-api/issues/74)
-- As an API user, I want to get an XML response [\#66](https://github.com/NASA-PDS/pds-api/issues/66)
-- As an API user, I want to get only the fields I explicitly requested [\#65](https://github.com/NASA-PDS/pds-api/issues/65)
 - As a developer, I want a continuous deployment of the API available for testing [\#51](https://github.com/NASA-PDS/pds-api/issues/51)
 
 **Improvements:**
@@ -132,24 +118,8 @@
 
 **Requirements:**
 
-- As an API user, I want to explicitly request the latest version of a product [\#107](https://github.com/NASA-PDS/pds-api/issues/107)
-- As an API user, I want to know how long a request took to complete [\#105](https://github.com/NASA-PDS/pds-api/issues/105)
-- As a user, I want to receive a JSON response that contains the PDS4 label metadata in JSON format \(application/vnd.nasa.pds.pds4+json\) [\#101](https://github.com/NASA-PDS/pds-api/issues/101)
-- As an API user, I want to be able to use the API for free text search [\#99](https://github.com/NASA-PDS/pds-api/issues/99)
-- As an API user, I want to get the latest version of a product, by default [\#96](https://github.com/NASA-PDS/pds-api/issues/96)
-- As a user, I want to query for all versions of a product [\#95](https://github.com/NASA-PDS/pds-api/issues/95)
-- As an API user, I want to search using URL parameters [\#83](https://github.com/NASA-PDS/pds-api/issues/83)
-- As a developer, I never want the label blob to be returned [\#80](https://github.com/NASA-PDS/pds-api/issues/80)
-- As an API user, I want to search by a temporal range as an ISO-8601 time interval. [\#72](https://github.com/NASA-PDS/pds-api/issues/72)
 - As an API user, I want to know in the response how many hits are returned for an API query. [\#68](https://github.com/NASA-PDS/pds-api/issues/68)
 - As an API user, I want to access supplemental metadata from Product\_Metadata\_Supplemental. [\#67](https://github.com/NASA-PDS/pds-api/issues/67)
-- As a user, when I request specific fields I want to get records which have at least one of these fields [\#64](https://github.com/NASA-PDS/pds-api/issues/64)
-- As an API user, I want to know the Bundle for a given Collection. [\#62](https://github.com/NASA-PDS/pds-api/issues/62)
-- As an API user, I want to know the Collection\(s\) for a given Product. [\#61](https://github.com/NASA-PDS/pds-api/issues/61)
-- As an API user, I want to know the Bundle for a given Product. [\#60](https://github.com/NASA-PDS/pds-api/issues/60)
-- As an API user, I want to know the Product\(s\) that belong to a given Bundle. [\#59](https://github.com/NASA-PDS/pds-api/issues/59)
-- As an API user, I want to know the children and ancestors of bundle, collections, and products [\#56](https://github.com/NASA-PDS/pds-api/issues/56)
-- As an API user, I want to perform a search using wildcards [\#54](https://github.com/NASA-PDS/pds-api/issues/54)
 
 **Improvements:**
 
