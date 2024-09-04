@@ -228,6 +228,7 @@ Here is one of the XML files, rendered: https://search-pdsppi.igpp.ucla.edu/ditd
 To build this query, we can search by the instrument and time range:
 
 .. code-block:: bash
+
    ((pds:Time_Coordinates.pds:start_date_time ge "1979-03-01T00:00:00.000Z") and
       (pds:Time_Coordinates.pds:start_date_time lt "1979-04-01T00:00:00.000Z") and
       (ref_lid_instrument eq "urn:nasa:pds:context:instrument:vg1.pws"))

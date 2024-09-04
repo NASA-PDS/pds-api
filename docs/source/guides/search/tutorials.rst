@@ -15,7 +15,7 @@ When developing a web client to the API, if you are not from JPL, contact us (pd
 
 If you are on JPL's network, develop your application locally on port 80 on your laptop connected to the VPN and test your application with URL http://localhost.jpl.nasa.gov/....
 
-An example implementation of an HTML/Javascript client of the API can be found in the github repository `gis-web-client<https://github.com/NASA-PDS/gis-web-client>`_
+An example implementation of an HTML/Javascript client of the API can be found in the github repository https://github.com/NASA-PDS/gis-web-client .
 
 
 Search Examples

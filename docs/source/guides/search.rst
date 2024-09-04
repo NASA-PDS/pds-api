@@ -1,9 +1,6 @@
 Search API User Guide
 =====================
 
-.. attention::
-   The PDS Search API (https://pds.nasa.gov/api/search/) will be down will be down for maintenance for 2-3 weeks beginning May 6, 2024 at 8am Pacific Time. Limited functionality will be released as it becomes available. Apologies for the inconvenience. Please contact the PDS Help Desk if you have any questions.
-
 .. note::
 
    The current guide is based on the PDS Search API version |search_user_guide_api_spec_version|
