@@ -3,6 +3,7 @@ Specifications
 
 Each published version of NASA PDS APIs is documented here:
 
+- `Search API v1.5.0 <specifications/search-v1.5.0-redoc.html>`_
 - `Search API v1.4.0 <specifications/search-v1.4.0-redoc.html>`_
 - `Search API v1.3.0 <specifications/search-v1.3.0-redoc.html>`_
 - `Search API v1.1.1 <specifications/search-v1.1.1-redoc.html>`_

@@ -20,7 +20,7 @@ Search With curl
 .. code-block:: bash
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5' \
         --header 'Accept: application/json'
 
 3. Get 5 products' metadata from the API in XML format:
@@ -28,7 +28,7 @@ Search With curl
 .. code-block:: bash
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products?limit=5' \
         --header 'Accept: application/xml'
 
 

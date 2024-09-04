@@ -68,7 +68,7 @@ Search for the 10 latest collections which processing level is "Raw":
    :caption: curl command
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
        --data-urlencode 'limit=10' \
        --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
@@ -84,7 +84,7 @@ Search for all Observational Products targeting Bennu:
    :caption: curl command
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
      --data-urlencode 'q=(ref_lid_target eq "urn:nasa:pds:context:target:asteroid.101955_bennu")'
 
 
@@ -97,7 +97,7 @@ Search all products which are referring to a given LID:
    :caption: curl command
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
         --data-urlencode 'limit=200' \
         --data-urlencode 'q=((pds:Internal_Reference.pds:lid_reference eq "urn:nasa:pds:context:investigation:mission.orex") or (pds:Internal_Reference.pds:lid_reference like "urn:nasa:pds:context:investigation:mission.orex::*"))' | json_pp
 
@@ -133,7 +133,7 @@ Run the following request to get the DOI associated with the collection the obse
    :caption: curl command
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:vg1-saturn-pos-hgcoords-96sec:data-spice:spice-hg::1.0/member-of' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:vg1-saturn-pos-hgcoords-96sec:data-spice:spice-hg::1.0/member-of' \
         --data-urlencode 'fields=pds:Citation_Information.pds:doi' \
         --header 'Accept: application/kvp+json'
 
@@ -171,7 +171,7 @@ To get the DOI associated with the bundle the observational product `urn:nasa:pd
    :caption: curl command
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight.spice:document:spiceds::1.0/member-of/member-of' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight.spice:document:spiceds::1.0/member-of/member-of' \
         --data-urlencode 'fields=pds:Citation_Information/pds:doi' \
         --header 'Accept: application/kvp+json'
 
@@ -210,13 +210,39 @@ To get the PDS product metadata associated with a the DOI `10.17189/1517568`:
 .. code-block:: bash
     :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
         --data-urlencode 'q=(pds:Citation_Information.pds:doi eq "10.17189/1522962")' \
         --header 'Accept: application/json'
 
 You will get a JSON response of the PDS products (any class of product, for example collections or bundles) which have referenced the given DOI.
 
 You can get the result in different format using content negociation with the Accept header parameter.
+
+Search by Time Range
+--------------------
+
+For example, as a user I need to find the Voyager 1 PWS Spectrum Analyzer CDF files covering March of 1979 so I can make a plot.
+
+Here is one of the XML files, rendered: https://search-pdsppi.igpp.ucla.edu/ditdos/viewFile?id=pds://PPI/voyager1.pws.sa/data/1979/vg1pws_lr_19790105_v5.20.xml .
+
+To build this query, we can search by the instrument and time range:
+
+.. code-block:: bash
+
+   ((pds:Time_Coordinates.pds:start_date_time ge "1979-03-01T00:00:00.000Z") and
+      (pds:Time_Coordinates.pds:start_date_time lt "1979-04-01T00:00:00.000Z") and
+      (ref_lid_instrument eq "urn:nasa:pds:context:instrument:vg1.pws"))
+
+Do query that using curl, it would look like this:
+
+.. code-block:: bash
+    :substitutions:
+
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+         --data-urlencode 'q=((pds:Time_Coordinates.pds:start_date_time ge "1979-03-01T00:00:00.000Z") and ' \
+         --data-urlencode '(pds:Time_Coordinates.pds:start_date_time lt "1979-04-01T00:00:00.000Z") and ' \
+         --data-urlencode '(ref_lid_instrument eq "urn:nasa:pds:context:instrument:vg1.pws"))' \
+         --header 'Accept: application/json'
 
 
 **Looking for more recipes? Or have some useful recipes of your own?** Checkout the `PDS API Discussion Board <https://github.com/NASA-PDS/pds-api/discussions>`_ or contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_
