@@ -1,0 +1,1072 @@
+openapi: 3.0.0
+info:
+  description: |
+    Registry API enabling advanced search on PDS data and metadata. The API provides end-points to search for bundles, collections and any PDS products with advanced search queries. It also enables to browse the archive hierarchically downward (e.g. collection/s products) or upward (e.g. bundles containing a product).
+  version: 1.5.0
+  title: PDS Registry Search API
+  termsOfService: 'http://pds.nasa.gov'
+  contact:
+    email: pds-operator@jpl.nasa.gov
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+tags:
+  - name: 1. all products
+    description: search any classe of product and resolve product's identifiers
+  - name: 2. product references
+    description: explore the product hierarchy
+  - name: 3. by product classes
+    description: search by class of product, bundles, collections, ...
+  - name: 4. healthcheck
+    description: end-point for evaluating system health
+  - name: 5. all docs
+    description: access to opensearch API, for experts only
+
+
+externalDocs:
+    description: User's Guide
+    url: https://nasa-pds.github.io/pds-api/guides/search.html
+
+servers:
+  - url: https://pds.nasa.gov/api/registry/1
+    description: production server
+
+paths:
+  /healthcheck:
+    get:
+      tags:
+        - 4. healthcheck
+      summary: |
+        returns payload of system health information. Detection of any fatal issues results in a non-200 response. The primary intention of this endpoint is to provide an accurate assessment of the service to determine if ECS/Fargate should instantiate a new instance of the task.
+      operationId: healthcheck
+      responses:
+        '200':
+          description: The system checked out as healthy, returning a JSON payload of results
+          content:
+            "*":
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '418':
+          description: The system did not check out as healthy, returning a JSON payload of results, including error messages indicating the source(s) of the failure(s)
+          content:
+            "*":
+              schema:
+                type: object
+                additionalProperties: true
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+  /classes:
+    get:
+      tags:
+        - 3. by product classes
+      summary: |
+        returns a list of the available PDS product class at this API. This is not all of the PDS product class available in the database, but simply the names that can be used in the /classes/{class} endpoints.
+      operationId: classes
+      responses:
+        '200':
+          description: Successful response is always a JSON list of the available class names
+          content:
+            "*":
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+  /classes/{class}:
+    get:
+      tags:
+        -  3. by product classes
+      summary: |
+        returns all PDS products of the given PDS product class that meet all given constraints.
+      operationId: class-list
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+      parameters:
+        - $ref: "#/components/parameters/Fields"
+        - $ref: "#/components/parameters/Class"
+        - $ref: "#/components/parameters/Keyword"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Query"
+        - $ref: "#/components/parameters/Sort"
+        - $ref: "#/components/parameters/SearchAfter"
+
+  /docs:
+    post:
+      tags:
+        - 5. all docs
+      summary: |
+        WORK IN PROGRESS: search on all registry documents by posting an OpenSearch DSL query
+      operationId: docs
+      requestBody:
+        description: OpenSearch DSL query
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Successful request
+          content:
+            "*":
+              schema:
+                type: object
+    parameters:
+      - $ref: "#/components/parameters/Indices"
+  /products:   
+    get:
+      tags:
+        - 1. all products
+      summary: |
+        search the latest-versioned instances of all PDS data products, including bundles, collections, documentation, context and observational products.
+      operationId: product-list
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Keyword"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Query"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/SearchAfter"
+
+  /products/{identifier}:
+    get:
+      tags:
+        - 1. all products
+      summary: |
+        returns one PDS Product with the identifier selected from all PDS Products, including bundles, collections, data, documentation, context and observational products. See identifier for details on how it determines what is returned.
+      operationId: select-by-lidvid
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+
+  /products/{identifier}/latest:
+    get:
+      tags:
+        - 1. all products
+      summary: |
+        returns one PDS Product with the identifier selected from all PDS Products. See identifier for details on how it determines what is returned.
+      operationId: select-by-lidvid-latest
+      responses:
+        '200':
+          $ref: "#/components/responses/Singular"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+
+  /products/{identifier}/all:
+    get:
+      tags:
+        - 1. all products
+      summary: |
+        returns all product versions with the identifier (lid) selected from all PDS Products. See identifier for details on how it determines what is returned.
+
+        note: if given a lidvid, it will be translated to a lid
+      operationId: select-by-lidvid-all
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/SearchAfter"
+
+
+  /properties:
+    get:
+      tags:
+        - 1. all products
+      summary: |
+        return a list of all possible searchable metadata fields for products published in the registry
+      operationId: product-properties-list
+      responses:
+        '200':
+          $ref: "#/components/responses/PropertiesList"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters: []
+
+
+  /products/{identifier}/members:
+    get:
+      tags:
+        - 2. product references
+      summary: |
+        returns all of the members of the given lid/lidvid
+      operationId: product-members
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Query"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/SearchAfter"
+  /products/{identifier}/members/{versions}:
+    get:
+      tags:
+        - 2. product references
+      summary: |
+        returns all of the members of the given lid/lidvid
+      operationId: product-members-vers
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Query"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/SearchAfter"
+      - $ref: "#/components/parameters/Versions"
+  /products/{identifier}/members/members:
+    get:
+      tags:
+        - 2. product references
+      summary: |
+        returns all of the members of the members of the given lid/lidvid
+      operationId: product-members-members
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Query"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/SearchAfter"
+  /products/{identifier}/members/members/{versions}:
+    get:
+      tags:
+        - 2. product references
+      summary: |
+        returns all of the members of the members of the given lid/lidvid
+      operationId: product-members-members-vers
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Query"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/SearchAfter"
+      - $ref: "#/components/parameters/Versions"
+  /products/{identifier}/member-of:
+    get:
+      tags:
+        - 2. product references
+      summary: |
+        returns one or more PDS Products that have the given PDS lid/lidvid as a member.
+      operationId: product-member-of
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Query"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/SearchAfter"
+  /products/{identifier}/member-of/{versions}:
+    get:
+      tags:
+        - 2. product references
+      summary: |
+        returns one or more PDS Products that have the given PDS lid/lidvid as a member.
+      operationId: product-member-of-vers
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Query"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/SearchAfter"
+      - $ref: "#/components/parameters/Versions"
+  /products/{identifier}/member-of/member-of:
+    get:
+      tags:
+        - 2. product references
+      summary: |
+        returns one or more PDS Products that have the given PDS lid/lidvid as a member of its members.
+      operationId: product-member-of-of
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Query"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/SearchAfter"
+  /products/{identifier}/member-of/member-of/{versions}:
+    get:
+      tags:
+        - 2. product references
+      summary: |
+        returns one or more PDS Products that have the given PDS lid/lidvid as a member of its members.
+      operationId: product-member-of-of-vers
+      responses:
+        '200':
+          $ref: "#/components/responses/Plural"
+        '400':
+          $ref: "#/components/responses/Error"
+        '404':
+          $ref: "#/components/responses/Error"
+        '500':
+          $ref: "#/components/responses/Error"
+        '501':
+          $ref: "#/components/responses/Error"
+    parameters:
+      - $ref: "#/components/parameters/Fields"
+      - $ref: "#/components/parameters/Identifier"
+      - $ref: "#/components/parameters/Limit"
+      - $ref: "#/components/parameters/Query"
+      - $ref: "#/components/parameters/Sort"
+      - $ref: "#/components/parameters/SearchAfter"
+      - $ref: "#/components/parameters/Versions"
+
+
+components:
+  parameters:
+    Fields:
+      name: fields
+      in: query
+      description: |
+        syntax: fields=field1,field2,...
+
+        behavior: this parameter and the headder Accept: type determine what content is packaged for the result. While the types application/csv, application/kvp+json, and text/csv return only the fields requesteted, all of the other types have a minimal set of fields that must be returned. Duplicating a minimally required field in this parameter has not effect. The types vnd.nasa.pds.pds4+json and vnd.nasa.pds.pds4+xml have a complete set of fields that must be returned; meaning this parameter does not impact their content. When fields is not used, then the minimal set of fields, or all when minimal is an empty set, is returned.
+
+        notes: the blob fields are blocked unless specifically requrested and only for the */csv and application/kvp+csv types.
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    Class:
+      name: class
+      in: path
+      description: |
+        syntax: one of the allowable enum values
+
+        This is a shortcut for doing a query with ...
+      required: true
+      schema:
+        type: string
+        enum: [any,bundles,collections,documents,observationals]
+    Indices:
+      name: indices
+      in: query
+      description: |
+        syntax: indices=index1,index2...
+        notes: OpenSearch indices
+      required: true
+      schema:
+        type: array
+        items:
+          type: string
+    Identifier:
+      name: identifier
+      in: path
+      description: |
+        syntax: lidvid or lid
+
+        behavior (lid): returns one or more items whose lid matches this lid exactly. If the endpoint ends with the identifier or /latest then a signle result is returned and it is the highest version. If the endpoint ends with /all then all versions of the lid are returned.
+
+        behavior (lidvid): returns one and only one item whose lidvid matches this lidvid exactly.
+
+        note: the current lid/lidvid resolution will match all the lids that start with lid. In other words, it acts like a glob of foobar*. It behavesn this way from first character to the last
+
+        note: simple sorting of the lidvid is being done to select the latest from the end of the list. However, the versions 1.0, 2.0, and 13.0 will sort to 1.0, 13.0, and 2.0 so the end of the list may not be the latest.
+      required: true
+      schema:
+        type: string
+    Keyword:
+      name: keywords
+      in: query
+      description: |
+        syntax: keyword=keyword1,keyword2,...
+
+        behavior: free text search on title and description (if set q is ignored
+
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    Limit:
+      name: limit
+      in: query
+      description: |
+        syntax: limit=10
+
+        behavior: maximum number of matching results returned, for pagination
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        default: 100
+    Query:
+      name: q
+      in: query
+      description: |
+        syntax: q="vid eq 13.0"
+
+        behavior: query uses eq,ne,gt,ge,lt,le,(,),not,and,or operators. Properties are named as in 'properties' attributes, literals are strings between quotes, like "animal", or numbers. Detailed query specification is available at https://bit.ly/3h3D54T
+
+        note: ignored when keyword is present
+      required: false
+      schema:
+        type: string
+    Sort:
+      name: sort
+      in: query
+      description: |
+        syntax: sort=field0,field1,...
+
+        behavior: currently only sorts ascending
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    SearchAfter:
+      name: search-after
+      in: query
+      description: |
+        syntax: search-after=sortField0Value,sortField1Value,...
+
+        behavior: for each field specified in the "sort" qparam, specify the field value for the last result returned in the previous page
+          It is strongly recommended to use ops:Harvest_Info/ops:harvest_date_time as your final sort field, to ensure successful pagination.
+          Remember to url-encode special characters, ex. /products?limit=10&sort=ops%3AHarvest_Info%2Fops%3Aharvest_date_time
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    Versions:
+      name: versions
+      in: path
+      description: |
+        syntax: one of the allowable enum values
+
+        This is a shortcut for doing a query with ...
+      required: true
+      schema:
+        type: string
+        enum: [all,latest]
+  responses:
+    Error:
+      description: Unsuccessful request
+      content:
+        "*":
+          schema:
+            type: object
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/csv:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/kvp+json:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/vnd.nasa.pds.pds4+json:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/vnd.nasa.pds.pds4+xml:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        text/html:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/errorMessage'
+    Plural:
+      description: Successful request
+      content:
+        "*":
+          schema:
+            type: object
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        application/csv:
+          schema:
+            $ref: '#/components/schemas/wyriwygProducts'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        application/kvp+json:
+          schema:
+            $ref: '#/components/schemas/wyriwygProducts'
+        application/vnd.nasa.pds.pds4+json:
+          schema:
+            $ref: '#/components/schemas/pds4Products'
+        application/vnd.nasa.pds.pds4+xml:
+          schema:
+            $ref: '#/components/schemas/pds4Products'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/wyriwygProducts'
+        text/html:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProducts'
+    PropertiesList:
+      description: An array of all searchable properties of products in the registry.
+      content:
+        "*":
+          schema:
+            $ref: '#/components/schemas/propertiesList'
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/propertiesList'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/propertiesList'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/propertiesList'
+        text/html:
+          schema:
+            $ref: '#/components/schemas/propertiesList'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/propertiesList'
+    Singular:
+      description: Successful request
+      content:
+        "*":
+          schema:
+            type: object
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+        application/csv:
+          schema:
+            $ref: '#/components/schemas/wyriwygProduct'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+        application/kvp+json:
+          schema:
+            $ref: '#/components/schemas/wyriwygProduct'
+        application/vnd.nasa.pds.pds4+json:
+          schema:
+            $ref: '#/components/schemas/pds4Product'
+        application/vnd.nasa.pds.pds4+xml:
+          schema:
+            $ref: '#/components/schemas/pds4Product'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+        text/csv:
+           schema:
+            $ref: '#/components/schemas/wyriwygProduct'
+        text/html:
+           schema:
+            $ref: '#/components/schemas/pdsProduct'
+        text/xml:
+          schema:
+            $ref: '#/components/schemas/pdsProduct'
+  schemas:
+    propertiesList:
+      type: array
+      items:
+        type: object
+        properties:
+          property:
+            type: string
+          type:
+            type: string
+            enum:
+              - "string"
+              - "integer"
+              - "float"
+              - "boolean"
+              - "timestamp"
+              - "unsupported"
+    summary:
+      type: object
+      properties:
+        q:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        hits:
+          description: total number of matching results. -1 indicates an excessive amount of resource required to compute it
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        took:
+          description: Number of milliseconds it "took" to do request
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        search_after:
+          type: array
+          items:
+            type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        limit:
+          type: integer
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        sort:
+          type: array
+          items:
+            type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        properties:
+          type: array
+          items:
+            type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    pdsProduct:
+      type: object
+      description: default PDS product description format for the API.
+      required:
+       - id
+       - metadata
+      properties:
+        id:
+          type: string
+          description: identifier lidvid of the collection
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        type:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        title:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        description:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        start_date_time:
+          type: string
+          description: start date time of the observations in ISO8601
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        stop_date_time:
+          type: string
+          description: stop date time of the observations in ISO8601
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        investigations:
+          type: array
+          description: list of missions or observing campaigns which produced the data
+          items:
+            $ref: '#/components/schemas/reference'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        observing_system_components:
+          type: array
+          description: list of instruments or platforms generating the data
+          items:
+            $ref: '#/components/schemas/reference'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        targets:
+          type: array
+          description: list of targets or feature of interest the observation.
+          items:
+            $ref: '#/components/schemas/reference'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        metadata:
+          $ref: '#/components/schemas/metadata'
+        properties:
+          type: object
+          description: propertie's values extracted from pds4 model, as a dictionnary, syntax for property name is {namespace}:{property}[{namespace}:{property}]*
+          additionalProperties:
+            $ref: '#/components/schemas/propertyArrayValues'
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    pdsProducts:
+      type: object
+      required:
+        - summary
+        - data
+      properties:
+        summary:
+          $ref: '#/components/schemas/summary'
+        data:
+          items:
+            $ref: '#/components/schemas/pdsProduct'
+    wyriwygProduct:
+      type: object
+      description: minimalistic description of a pds product with only the key value pairs requested by the user (what you request is what you get)
+      required:
+        - key_value_pairs
+      properties:
+        key_value_pairs:
+          type: array
+          items:
+            title: wyriwyg_product_key_value_pair
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+    wyriwygProducts:
+      type: object
+      required:
+        - summary
+        - data
+      properties:
+        summary:
+          $ref: '#/components/schemas/summary'
+        data:
+          items:
+            $ref: '#/components/schemas/wyriwygProduct'
+    propertyArrayValues:
+      type: array
+      items:
+        type: string
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    reference:
+      type: object
+      description: object describing a reference to a different product. TODO The properties should be defined by a standard (xlink, json-ld) to be chosen
+      required:
+          - id
+      properties:
+        title:
+          type: string
+          description: name to display for the external reference
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        id:
+          type: string
+          description: external reference, here lidvid urn
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        href:
+          type: string
+          description: external reference url of the current reference resolvable by the current API server, http://pds.nasa.gov/api/products/urn:nasa...
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        type:
+          type: string
+          description: type of the external reference, can be displayed as an icon for example
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        description:
+          type: string
+          description: longer description for the external reference, can be displayed in a tooltip
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    metadata:
+      type: object
+      required:
+        - label_url
+      properties:
+        archive_status:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        creation_date_time:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        label_url:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        update_date_time:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        version:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+    errorMessage:
+      type: object
+      required:
+        - request
+        - message
+      properties:
+        request:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+        message:
+          type: string
+          xml:
+            prefix: 'pds_api'
+            namespace: 'http://pds.nasa.gov/api'
+      xml:
+        prefix: 'pds_api'
+        namespace: 'http://pds.nasa.gov/api'
+      example:
+        {
+          request: 'https://pds.nasa.gov/api/1.0/collections?q=mission qt 12',
+          message: 'query operator gt not supported on field mission'
+        }
+    pds4Product:
+      type: object
+      description: PDS product description as structured by the PDS4 information model (https://pds.nasa.gov/datastandards/documents/im/)
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          description: LIDVID
+        metadata:
+          $ref: '#/components/schemas/pds4Metadata'
+        pds4:
+          type: object
+          description: PDS4 JSON
+    pds4Products:
+      type: object
+      required:
+        - summary
+        - data
+      properties:
+        summary:
+          $ref: '#/components/schemas/summary'
+        data:
+          items:
+            $ref: '#/components/schemas/pds4Product'
+    pds4Metadata:
+      type: object
+      properties:
+        node_name:
+          type: string
+        ops:Label_File_Info:
+          type: object
+          properties:
+            ops:file_name:
+              type: string
+            ops:file_ref:
+              type: string
+            ops:creation_date:
+              type: string
+            ops:file_size:
+              type: string
+            ops:md5_checksum:
+              type: string
+        ops:Data_Files:
+          type: array
+          items:
+            title: pds4_metadata_ops_data_file
+            type: object
+            properties:
+              ops:file_name:
+                type: string
+              ops:file_ref:
+                type: string
+              ops:creation_date:
+                type: string
+              ops:file_size:
+                type: string
+              ops:md5_checksum:
+                type: string
+              ops:mime_type:
+                type: string
+        ops:Tracking_Meta:
+          type: object
+          properties:
+            ops:archive_status:
+              type: string

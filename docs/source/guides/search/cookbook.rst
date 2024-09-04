@@ -68,7 +68,7 @@ Search for the 10 latest collections which processing level is "Raw":
    :caption: curl command
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
        --data-urlencode 'limit=10' \
        --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
@@ -84,7 +84,7 @@ Search for all Observational Products targeting Bennu:
    :caption: curl command
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
      --data-urlencode 'q=(ref_lid_target eq "urn:nasa:pds:context:target:asteroid.101955_bennu")'
 
 
@@ -97,7 +97,7 @@ Search all products which are referring to a given LID:
    :caption: curl command
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
         --data-urlencode 'limit=200' \
         --data-urlencode 'q=((pds:Internal_Reference.pds:lid_reference eq "urn:nasa:pds:context:investigation:mission.orex") or (pds:Internal_Reference.pds:lid_reference like "urn:nasa:pds:context:investigation:mission.orex::*"))' | json_pp
 
@@ -133,7 +133,7 @@ Run the following request to get the DOI associated with the collection the obse
    :caption: curl command
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:vg1-saturn-pos-hgcoords-96sec:data-spice:spice-hg::1.0/member-of' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:vg1-saturn-pos-hgcoords-96sec:data-spice:spice-hg::1.0/member-of' \
         --data-urlencode 'fields=pds:Citation_Information.pds:doi' \
         --header 'Accept: application/kvp+json'
 
@@ -171,7 +171,7 @@ To get the DOI associated with the bundle the observational product `urn:nasa:pd
    :caption: curl command
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight.spice:document:spiceds::1.0/member-of/member-of' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight.spice:document:spiceds::1.0/member-of/member-of' \
         --data-urlencode 'fields=pds:Citation_Information/pds:doi' \
         --header 'Accept: application/kvp+json'
 
@@ -210,7 +210,7 @@ To get the PDS product metadata associated with a the DOI `10.17189/1517568`:
 .. code-block:: bash
     :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
         --data-urlencode 'q=(pds:Citation_Information.pds:doi eq "10.17189/1522962")' \
         --header 'Accept: application/json'
 
@@ -237,7 +237,7 @@ Do query that using curl, it would look like this:
 .. code-block:: bash
     :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
          --data-urlencode 'q=((pds:Time_Coordinates.pds:start_date_time ge "1979-03-01T00:00:00.000Z") and ' \
          --data-urlencode '(pds:Time_Coordinates.pds:start_date_time lt "1979-04-01T00:00:00.000Z") and ' \
          --data-urlencode '(ref_lid_instrument eq "urn:nasa:pds:context:instrument:vg1.pws"))' \
