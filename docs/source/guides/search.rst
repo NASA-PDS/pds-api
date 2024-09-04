@@ -16,6 +16,7 @@ The PDS Search API provides endpoints:
 * to **resolve** an identifier (lid or lidvid) and retrieve the product label and data where ever it is in the Planetary Data System.
 
 For an introduction to the Search API and what it's capable of, checkout these slides and a presentation given at the 2022 PSIDA conference:
+
 * Slides: https://www.cosmos.esa.int/documents/6109777/9316710/X03+-+Padams+-+NASA_Planetary_Data_System_Search_API.pdf
 * Presentation Recording: https://www.cosmos.esa.int/web/psida-2022/-/x03
 
