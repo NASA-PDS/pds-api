@@ -9,7 +9,7 @@ The PDS API base urls are provided under the following pattern:
 
 where:
 
-- ``{service}``: the service such as ‘search’ (i.e. registry), ‘doi’, etc.. This component can have an optional node identifier (e.g. ‘search-geo’). Absence of a node implies EN.
+- ``{service}``: the service such as ‘search’ (in registry), ‘doi’, etc..
 - ``{version}``: the version of the service.
 - ``{service_path+params}``: the ReST path for the service, including any query parameters - this is essentially the remaining portion of the URI after the version.
 
@@ -18,7 +18,7 @@ API entries currently available are:
 +----------+-----------+-------------------------+----------------+-----------------+
 | service  |  version  |  scope                  | specification  | user's guide    |
 +==========+===========+=========================+================+=================+
-| search   |  1.1      | search PDS data archive | `search_spec`_ | `search_guide`_ |
+| search   |  1.5      | search PDS data archive | `search_spec`_ | `search_guide`_ |
 +----------+-----------+-------------------------+----------------+-----------------+
 | doi      |  0.2      | manage PDS DOIs         | `doi_spec`_    |                 |
 +----------+-----------+-------------------------+----------------+-----------------+

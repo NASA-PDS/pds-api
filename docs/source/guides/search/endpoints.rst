@@ -19,32 +19,6 @@ The **base URL** of the PDS Search API, for search across all the PDS nodes, is:
 
     https://pds.nasa.gov/api/search/|search_user_guide_api_version|/
 
-For specific discipline node search, there are node-specific endpoints available giving access to products of one node, for example:
-
-.. code-block::
-   :substitutions:
-
-    https://pds.nasa.gov/api/search-geo/|search_user_guide_api_version|/
-
-Where ``geo`` is the **Node ID**
-
-The **Node IDs** are:
-
-=============  ========================================
-Node ID        Node Name
-=============  ========================================
-atm            Atmospheres
-en             Engineering
-geo            Geosciences
-img            Imaging
-naif           Navigation and Ancillary Information
-ppi            Planetary Plasma Interactions
-psa            ESA Planetary Science Archive
-rms            Ring-Moon Systems
-sbnumd         Small Bodies, Comets
-sbnpsi         Small Bodies, Asteroids/Dust
-=============  ========================================
-
 The main use cases, to search, crawl products or resolve a product identifier are given in the following sections.
 
 Search Products
@@ -58,7 +32,7 @@ Get the list of properties which describe the products, which criteria you can s
 .. code-block:: bash
    :substitutions:
 
-    curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/properties'
+    curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/properties'
 
 
 Search for products which processing level is "Raw", using the property "pds:Primary_Result_Summary.pds:processing_level" found before, get 10 results:
@@ -66,7 +40,7 @@ Search for products which processing level is "Raw", using the property "pds:Pri
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
        --data-urlencode 'limit=10' \
        --data-urlencode 'q=(pds:Primary_Result_Summary.pds:processing_level eq "Raw")'
 
@@ -84,23 +58,16 @@ The requests template is a follow:
    GET /api/search/|search_user_guide_api_version|/classes/{product_class}[?[{query-parameter}={query-parameter-value}]*] HTTP/1.1
    Host: pds.nasa.gov
 
-Where `product_class` is one of the following classes:
-
-  - bundles
-  - collections
-  - observationals
-  - documents
-  - any
-
-The concept of product class is derived from the `PDS4 standard <https://pds.nasa.gov/datastandards/documents/im/current/index_1I00.html>`_.
-
-The list of classes proposed by the API can also be found from URL:
+The list of `product_class` proposed by the API can also be found from URL:
 
 .. code-block::
    :substitutions:
 
    https://pds.nasa.gov/api/search/|search_user_guide_api_version|/classes
 
+
+
+The concept of product class is derived from the `PDS4 standard <https://pds.nasa.gov/datastandards/documents/im/current/index_1I00.html>`_.
 
 
 Query Detailed Syntax
@@ -289,27 +256,6 @@ The request:
 
    https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/{lid}
 
-is equivalent to:
-
-.. code-block:: bash
-   :substitutions:
-
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/{lid}/latest
-
-
-All Versions
-..............
-
-If you want to retrieve **all** the versions of a product, the request is:
-
-.. code-block:: bash
-   :substitutions:
-
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/{lid}/all
-
-
-The `all` and `latest` suffixes apply also to all the crawling end-points which description follows.
-
 
 Crawl a Data Set Hierarchy
 --------------------------
@@ -324,7 +270,7 @@ Get its **children** (collections):
 .. code-block::
    :substitutions:
 
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/members[/[all|latest]]
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/members
 
 For example, run:
 
@@ -343,7 +289,7 @@ Get the Observational Products of a Bundle
 .. code-block::
    :substitutions:
 
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/members/members[/[all|latest]]
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/members/members
 
 
 For example, run:
@@ -351,7 +297,7 @@ For example, run:
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1/members/members' \
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1/members/members' \
        --header 'Accept: application/json'
 
 
@@ -363,7 +309,7 @@ Get its **parent** (collection):
 .. code-block::
    :substitutions:
 
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/member-of[/[all|latest]]
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/member-of
 
 The same request can be used to get the bundles of a collection from the collection's lidvid.
 
@@ -372,7 +318,7 @@ Get its **grandparent** (bundle):
 .. code-block::
    :substitutions:
 
-   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/member-of/member-of[/[all|latest]]
+   https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/lidvid1/member-of/member-of
 
 
 For example, run:
@@ -380,7 +326,7 @@ For example, run:
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_raw:hp3_rad_raw_00004_20181130_085325/member-of/member-of' \
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_raw:hp3_rad_raw_00004_20181130_085325/member-of/member-of' \
        --header 'Accept: application/json'
 
 
@@ -410,7 +356,7 @@ Sort the results by the harvest time, which is the time when products were loade
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
       --header 'Accept: application/json'
       --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time'
 
@@ -432,7 +378,7 @@ Use this latest harvest date and time as the reference for the next request:
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
       --header 'Accept: application/json'
       --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time'
       --data-urlencode 'search-after=2023-05-26T05:53:24.611495Z'
@@ -449,7 +395,7 @@ You can adjust the default limit of 100 products per page using the limit parame
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
       --header 'Accept: application/json'
       --data-urlencode 'limit=500'
       --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time'
