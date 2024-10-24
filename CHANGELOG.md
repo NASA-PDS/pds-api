@@ -1,6 +1,6 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2024-05-28)
+## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2024-10-24)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v14.0.0...«unknown»)
 
