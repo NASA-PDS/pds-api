@@ -404,6 +404,10 @@ You can adjust the default limit of 100 products per page using the limit parame
 
 
 
+.. Note::
+   The number of products per page, specified by the limit parameter should be below a few 1000s. If the queries are too demanding for the server, you might experience `504 errors <https://github.com/NASA-PDS/registry-api/discussions/521>`_ . The optimal number of product per page for quicker data retrieval depends on the type of response requested, as shown in statistics on `pagination performances <https://github.com/NASA-PDS/registry-api/issues/552#issuecomment-2389199054>`_.
+
+
 
 
 
