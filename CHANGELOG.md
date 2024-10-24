@@ -6,6 +6,7 @@
 
 **Other closed issues:**
 
+- Update documentation for API version 1.5.0 released in production [\#289](https://github.com/NASA-PDS/pds-api/issues/289)
 - Add downtime notification to top of API documentation [\#284](https://github.com/NASA-PDS/pds-api/issues/284)
 
 ## [v14.0.0](https://github.com/NASA-PDS/pds-api/tree/v14.0.0) (2024-02-26)
