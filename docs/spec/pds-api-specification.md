@@ -183,7 +183,7 @@ POST Request API
 Response Formats
 ----------------
 
-Working Document: [PDS API - Response Formats](https://docs.google.com/document/d/1bzBI_LqRecE2jLuxQmshkX1L_XdXkr2O4jk2JclAuKw/edit#)
+~~Working~~ Document: [PDS API - Response Formats](pds-api-response-formats.pdf)
 
 
 Query Parameters
