@@ -87,9 +87,11 @@ The query parameters are:
  sort                 (Optional, array of strings) Array of fields you wish to sort by, mandatory when search-after is used                                                                                                                        sort=ops:Harvest_Info.ops:harvest_date_time
  search-after         (Optional, string or number) For pagination, the page will start from the value of the field selected in `sort`.                                                                                                             search-after=2024-01-23T22:53:30.402453Z
  limit                (Optional, integer, default=100) The number of records/results to return. By specifying a value of 0 only the summary of the results is returned, not the individual results.                                                limit=100
+ facet-fields         (Optional, array of strings) fields which are faceted: in summary, the count of the unique value used for the fields is given.                                                                                               product_class,ops:Harvest_Info.ops:node_name
+ facet-limit          (Optional, integer) maximum number of unique values counted for all faceted fields. Default is 10.                                                                                                                           20
 ====================  =========================================================================================================================================================================================================================== ====================
 
-`q` and `fields` use PDS4 `Fields Dot Notation`_
+`q`, `fields` and `facet-fields` use PDS4 `Fields Dot Notation`_
 
 Query String Syntax
 ...................
