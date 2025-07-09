@@ -1,25 +1,25 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search API Cookbook &mdash; PDS APIs B15.0 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>Search API Cookbook &mdash; PDS APIs B15.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/theme_overrides.css?v=a961033d" />
+
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=cf3848bd"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -39,9 +39,6 @@
             PDS APIs
               <img src="../../_static/PDS_Planets.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                B15.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -103,21 +100,21 @@
            <div itemprop="articleBody">
              
   <section id="search-api-cookbook">
-<h1>Search API Cookbook<a class="headerlink" href="#search-api-cookbook" title="Permalink to this heading"></a></h1>
+<h1>Search API Cookbook<a class="headerlink" href="#search-api-cookbook" title="Link to this heading"></a></h1>
 <p>Recipes for various search scenarios using the PDS Search API.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>curl command line tool is used to request the API in this documentation. curl is available in many operating systems by default. If not, you can get curl from <a class="reference external" href="https://curl.se/">https://curl.se/</a> or using a package management tool specific to your operating system (brew, apt, …).</p>
 </div>
 <section id="search-for-product-versions">
-<h2>Search For Product Versions<a class="headerlink" href="#search-for-product-versions" title="Permalink to this heading"></a></h2>
+<h2>Search For Product Versions<a class="headerlink" href="#search-for-product-versions" title="Link to this heading"></a></h2>
 <p>Recipes for searching for the latest version of a product, or all versions of a product, including superseded versions.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please submit a request to the <a class="reference external" href="https://pds.nasa.gov/?feedback=true">PDS Help Desk</a> for assistance.</p>
 </div>
 <section id="search-the-latest-version-of-a-product">
-<h3>Search the Latest Version of a Product<a class="headerlink" href="#search-the-latest-version-of-a-product" title="Permalink to this heading"></a></h3>
+<h3>Search the Latest Version of a Product<a class="headerlink" href="#search-the-latest-version-of-a-product" title="Link to this heading"></a></h3>
 <p>To retrieve the <strong>latest</strong> versions of product <code class="docutils literal notranslate"><span class="pre">urn:nasa:pds:mars2020.spice</span></code>, the request is:</p>
 <p>The request:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:mars2020.spice
@@ -129,7 +126,7 @@
 </div>
 </section>
 <section id="search-for-all-versions-of-a-product">
-<h3>Search for All Versions of a Product<a class="headerlink" href="#search-for-all-versions-of-a-product" title="Permalink to this heading"></a></h3>
+<h3>Search for All Versions of a Product<a class="headerlink" href="#search-for-all-versions-of-a-product" title="Link to this heading"></a></h3>
 <p>To retrieve <strong>all</strong> the versions of product <code class="docutils literal notranslate"><span class="pre">urn:nasa:pds:mars2020.spice</span></code>, the request is:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:mars2020.spice/all
 </pre></div>
@@ -138,18 +135,18 @@
 </section>
 <hr class="docutils" />
 <section id="search-by-specific-metadata">
-<h2>Search By Specific Metadata<a class="headerlink" href="#search-by-specific-metadata" title="Permalink to this heading"></a></h2>
+<h2>Search By Specific Metadata<a class="headerlink" href="#search-by-specific-metadata" title="Link to this heading"></a></h2>
 <p>The following recipes describe some example queries of the Search API using the <cite>q=</cite> query parameter showing some more complex use cases for querying PDS data.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the <a class="reference external" href="mailto:pds-operator&#37;&#52;&#48;jpl&#46;nasa&#46;gov">PDS Help Desk</a> for assistance.</p>
 </div>
 <section id="search-by-processing-level">
-<h3>Search by Processing Level<a class="headerlink" href="#search-by-processing-level" title="Permalink to this heading"></a></h3>
+<h3>Search by Processing Level<a class="headerlink" href="#search-by-processing-level" title="Link to this heading"></a></h3>
 <p>Search for the 10 latest collections which processing level is “Raw”:</p>
 <p><strong>Query:</strong> <code class="docutils literal notranslate"><span class="pre">(pds:Primary_Result_Summary.pds:processing_level</span> <span class="pre">eq</span> <span class="pre">&quot;Raw&quot;)</span></code></p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;limit=10&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;q=(pds:Primary_Result_Summary.pds:processing_level eq &quot;Raw&quot;)&#39;</span>
@@ -158,11 +155,11 @@
 </div>
 </section>
 <section id="search-observational-products-by-target">
-<h3>Search Observational Products by Target<a class="headerlink" href="#search-observational-products-by-target" title="Permalink to this heading"></a></h3>
+<h3>Search Observational Products by Target<a class="headerlink" href="#search-observational-products-by-target" title="Link to this heading"></a></h3>
 <p>Search for all Observational Products targeting Bennu:</p>
 <p><strong>Query:</strong> <code class="docutils literal notranslate"><span class="pre">(ref_lid_target</span> <span class="pre">eq</span> <span class="pre">&quot;urn:nasa:pds:context:target:asteroid.101955_bennu&quot;)</span></code></p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id5" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;q=(ref_lid_target eq &quot;urn:nasa:pds:context:target:asteroid.101955_bennu&quot;)&#39;</span>
 </pre></div>
@@ -170,10 +167,10 @@
 </div>
 </section>
 <section id="search-by-reference">
-<h3>Search by Reference<a class="headerlink" href="#search-by-reference" title="Permalink to this heading"></a></h3>
+<h3>Search by Reference<a class="headerlink" href="#search-by-reference" title="Link to this heading"></a></h3>
 <p>Search all products which are referring to a given LID:</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id6" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id6" title="Link to this code"></a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;limit=200&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;q=((pds:Internal_Reference.pds:lid_reference eq &quot;urn:nasa:pds:context:investigation:mission.orex&quot;) or (pds:Internal_Reference.pds:lid_reference like &quot;urn:nasa:pds:context:investigation:mission.orex::*&quot;))&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>json_pp
@@ -183,7 +180,7 @@
 </section>
 </section>
 <section id="search-for-dois">
-<h2>Search for DOIs<a class="headerlink" href="#search-for-dois" title="Permalink to this heading"></a></h2>
+<h2>Search for DOIs<a class="headerlink" href="#search-for-dois" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://www.doi.org/">Digital Object Identifiers</a> are useful to cite the data you are using in your research. DOIs for PDS data are minted for PDS4 Bundles, PDS4 Collections, PDS4 Documents, and PDS3 Data Sets. The level at which the DOI is minted differs from data set to data set.</p>
 <p>The following recipes describe how to find a DOI for a particular product or data set in the Search API metadata.</p>
 <p>See the [DOI Search](<a class="reference external" href="https://pds.nasa.gov/tools/doi/">https://pds.nasa.gov/tools/doi/</a>) for an online interface for searching this information.</p>
@@ -193,13 +190,13 @@
 <p>Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the <a class="reference external" href="mailto:pds-operator&#37;&#52;&#48;jpl&#46;nasa&#46;gov">PDS Help Desk</a> for assistance.</p>
 </div>
 <section id="how-to-find-the-doi-associated-with-an-observational-product">
-<h3>How to Find the DOI associated with an Observational Product<a class="headerlink" href="#how-to-find-the-doi-associated-with-an-observational-product" title="Permalink to this heading"></a></h3>
+<h3>How to Find the DOI associated with an Observational Product<a class="headerlink" href="#how-to-find-the-doi-associated-with-an-observational-product" title="Link to this heading"></a></h3>
 <p>We assume you know the identifier of the product you are working with but a couple are provided in the examples below.</p>
 <section id="search-for-a-product-s-collection-doi">
-<h4>Search for a Product’s Collection DOI<a class="headerlink" href="#search-for-a-product-s-collection-doi" title="Permalink to this heading"></a></h4>
+<h4>Search for a Product’s Collection DOI<a class="headerlink" href="#search-for-a-product-s-collection-doi" title="Link to this heading"></a></h4>
 <p>Run the following request to get the DOI associated with the collection the observational product <cite>urn:nasa:pds:compil-comet:nuc_properties:description::1.0</cite> belongs to:</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id7" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id7" title="Link to this code"></a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:vg1-saturn-pos-hgcoords-96sec:data-spice:spice-hg::1.0/member-of&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;fields=pds:Citation_Information.pds:doi&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/kvp+json&#39;</span>
@@ -228,10 +225,10 @@
 <p>Note that you might not find any DOI at the collection level, in this case you can try to get the DOI from the bundle.</p>
 </section>
 <section id="search-for-a-product-s-bundle-doi">
-<h4>Search for a Product’s Bundle DOI<a class="headerlink" href="#search-for-a-product-s-bundle-doi" title="Permalink to this heading"></a></h4>
+<h4>Search for a Product’s Bundle DOI<a class="headerlink" href="#search-for-a-product-s-bundle-doi" title="Link to this heading"></a></h4>
 <p>To get the DOI associated with the bundle the observational product <cite>urn:nasa:pds:insight.spice:document:spiceds::1.0</cite> belongs to:</p>
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id8" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-text">curl command</span><a class="headerlink" href="#id8" title="Link to this code"></a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:insight.spice:document:spiceds::1.0/member-of/member-of&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;fields=pds:Citation_Information/pds:doi&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/kvp+json&#39;</span>
@@ -263,7 +260,7 @@
 </section>
 </section>
 <section id="how-to-find-the-pds-product-associated-with-a-doi">
-<h3>How to Find the PDS Product Associated with a DOI<a class="headerlink" href="#how-to-find-the-pds-product-associated-with-a-doi" title="Permalink to this heading"></a></h3>
+<h3>How to Find the PDS Product Associated with a DOI<a class="headerlink" href="#how-to-find-the-pds-product-associated-with-a-doi" title="Link to this heading"></a></h3>
 <p>To get the PDS product metadata associated with a the DOI <cite>10.17189/1517568</cite>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--data-urlencode<span class="w"> </span><span class="s1">&#39;q=(pds:Citation_Information.pds:doi eq &quot;10.17189/1522962&quot;)&#39;</span><span class="w"> </span><span class="se">\</span>
@@ -274,7 +271,7 @@
 <p>You can get the result in different format using content negociation with the Accept header parameter.</p>
 </section>
 <section id="search-by-time-range">
-<h3>Search by Time Range<a class="headerlink" href="#search-by-time-range" title="Permalink to this heading"></a></h3>
+<h3>Search by Time Range<a class="headerlink" href="#search-by-time-range" title="Link to this heading"></a></h3>
 <p>For example, as a user I need to find the Voyager 1 PWS Spectrum Analyzer CDF files covering March of 1979 so I can make a plot.</p>
 <p>Here is one of the XML files, rendered: <a class="reference external" href="https://search-pdsppi.igpp.ucla.edu/ditdos/viewFile?id=pds://PPI/voyager1.pws.sa/data/1979/vg1pws_lr_19790105_v5.20.xml">https://search-pdsppi.igpp.ucla.edu/ditdos/viewFile?id=pds://PPI/voyager1.pws.sa/data/1979/vg1pws_lr_19790105_v5.20.xml</a> .</p>
 <p>To build this query, we can search by the instrument and time range:</p>

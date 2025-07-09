@@ -1,25 +1,25 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>General API Conventions &mdash; PDS APIs B15.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>General API Conventions &mdash; PDS APIs B15.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=a961033d" />
+
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=cf3848bd"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -39,9 +39,6 @@
             PDS APIs
               <img src="_static/PDS_Planets.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                B15.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -105,9 +102,9 @@
            <div itemprop="articleBody">
              
   <section id="general-api-conventions">
-<h1>General API Conventions<a class="headerlink" href="#general-api-conventions" title="Permalink to this heading"></a></h1>
+<h1>General API Conventions<a class="headerlink" href="#general-api-conventions" title="Link to this heading"></a></h1>
 <section id="reference-documents">
-<h2>Reference Documents<a class="headerlink" href="#reference-documents" title="Permalink to this heading"></a></h2>
+<h2>Reference Documents<a class="headerlink" href="#reference-documents" title="Link to this heading"></a></h2>
 <p>Several websites and documents were used as references for designing
 this API and the accompanying guidelines, including:</p>
 <ol class="arabic simple">
@@ -128,21 +125,21 @@ this API and the accompanying guidelines, including:</p>
 </ol>
 </section>
 <section id="general-applicable-open-api-conventions">
-<h2>General Applicable Open API Conventions<a class="headerlink" href="#general-applicable-open-api-conventions" title="Permalink to this heading"></a></h2>
+<h2>General Applicable Open API Conventions<a class="headerlink" href="#general-applicable-open-api-conventions" title="Link to this heading"></a></h2>
 <section id="specification-standard">
-<h3>Specification Standard<a class="headerlink" href="#specification-standard" title="Permalink to this heading"></a></h3>
+<h3>Specification Standard<a class="headerlink" href="#specification-standard" title="Link to this heading"></a></h3>
 <p>The API complies with Open API 3.0.</p>
 </section>
 </section>
 <section id="restful-principles">
-<h2>Restful Principles<a class="headerlink" href="#restful-principles" title="Permalink to this heading"></a></h2>
+<h2>Restful Principles<a class="headerlink" href="#restful-principles" title="Link to this heading"></a></h2>
 <section id="resources">
-<h3>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h3>
+<h3>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h3>
 <p>Resources are coded as URI (e.g. <cite>http://domain/api/pets</cite>). Resources
 should be nouns (verbs are bad)</p>
 </section>
 <section id="verbs">
-<h3>Verbs<a class="headerlink" href="#verbs" title="Permalink to this heading"></a></h3>
+<h3>Verbs<a class="headerlink" href="#verbs" title="Link to this heading"></a></h3>
 <p>Users interact with resources through <a class="reference external" href="https://assertible.com/blog/7-http-methods-every-web-developer-should-know-and-how-to-test-them">HTTP request
 verbs</a>.
 The PDS API uses GET and POST:</p>
@@ -155,7 +152,7 @@ REST API</a>, utilizing
 GET, PUT, DELETE, HEAD, OPTIONS and TRACE HTTP methods.</p>
 </section>
 <section id="resource-representation">
-<h3>Resource Representation<a class="headerlink" href="#resource-representation" title="Permalink to this heading"></a></h3>
+<h3>Resource Representation<a class="headerlink" href="#resource-representation" title="Link to this heading"></a></h3>
 <p>When a HTTP request verb (e.g. GET, POST, etc.) is applied to a resource
 (e.g. <cite>http://domain/api/pets</cite>) he/she gets a resource representation.</p>
 <p>Many flavors of representations are possible to be
@@ -176,7 +173,7 @@ A response with this format is fine:</p>
 </section>
 </section>
 <section id="other-conventions">
-<h2>Other Conventions<a class="headerlink" href="#other-conventions" title="Permalink to this heading"></a></h2>
+<h2>Other Conventions<a class="headerlink" href="#other-conventions" title="Link to this heading"></a></h2>
 <p>Beyond the OpenAPI standard, there are multiple options regarding
 general design of an API. We primarily use the following source which is
 very complete and not too dogmatic:
@@ -188,7 +185,7 @@ the design for the PDS API specification:</p>
 <li><p><a class="reference external" href="http://docs.opengeospatial.org/DRAFTS/19-086.html">OGC environment data retrieval</a></p></li>
 </ul>
 <section id="url-resource-naming-case">
-<h3>URL Resource Naming: Case<a class="headerlink" href="#url-resource-naming-case" title="Permalink to this heading"></a></h3>
+<h3>URL Resource Naming: Case<a class="headerlink" href="#url-resource-naming-case" title="Link to this heading"></a></h3>
 <p><a class="reference external" href="https://en.wiktionary.org/wiki/kebab_case">Kebab-case</a> (lower
 case and hyphens ‘-’ used to fill the spaces in) is used for url
 resource naming.</p>
@@ -199,7 +196,7 @@ resource naming.</p>
 <p>(for the rationale see this <a class="reference external" href="https://stackoverflow.com/questions/10302179/hyphen-underscore-or-camelcase-as-word-delimiter-in-uris">stackoverflow discussion</a></p>
 </section>
 <section id="url-resource-naming-plural-vs-singular">
-<h3>URL Resource Naming: Plural vs Singular<a class="headerlink" href="#url-resource-naming-plural-vs-singular" title="Permalink to this heading"></a></h3>
+<h3>URL Resource Naming: Plural vs Singular<a class="headerlink" href="#url-resource-naming-plural-vs-singular" title="Link to this heading"></a></h3>
 <p>Resources are named plural or singular depending on the use case.</p>
 <p>Plural are used when the resources is a collection the user will subset
 from, for example `/pets/scooby-doo` or `/planets/mars` or
@@ -209,7 +206,7 @@ from, for example `/pets/scooby-doo` or `/planets/mars` or
 <p>See this <a class="reference external" href="https://medium.com/&#64;atomaka/single-and-plural-rails-routes-for-the-same-resource-330d985b6595">post</a> for more details.</p>
 </section>
 <section id="url-resource-naming-api-versioning">
-<h3>URL Resource Naming: API Versioning<a class="headerlink" href="#url-resource-naming-api-versioning" title="Permalink to this heading"></a></h3>
+<h3>URL Resource Naming: API Versioning<a class="headerlink" href="#url-resource-naming-api-versioning" title="Link to this heading"></a></h3>
 <p>The API will have versions and the deployed versions are likely to be
 heterogeneous in the PDS system.</p>
 <p>Two options have been considered to manage versions (see
@@ -229,7 +226,7 @@ a single version of the API definition.</p>
 </section>
 </section>
 <section id="pagination-sort">
-<h2>Pagination/Sort<a class="headerlink" href="#pagination-sort" title="Permalink to this heading"></a></h2>
+<h2>Pagination/Sort<a class="headerlink" href="#pagination-sort" title="Link to this heading"></a></h2>
 <p>The query parameters for pagination are:</p>
 <table class="docutils align-default">
 <thead>

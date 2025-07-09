@@ -1,25 +1,25 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Responses &mdash; PDS APIs B15.0 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>Responses &mdash; PDS APIs B15.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/theme_overrides.css?v=a961033d" />
+
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=cf3848bd"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -39,9 +39,6 @@
             PDS APIs
               <img src="../../_static/PDS_Planets.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                B15.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -104,15 +101,15 @@
            <div itemprop="articleBody">
              
   <section id="responses">
-<h1>Responses<a class="headerlink" href="#responses" title="Permalink to this heading"></a></h1>
+<h1>Responses<a class="headerlink" href="#responses" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>curl command line tool is used to request the API in this documentation. curl is available in many operating systems by default. If not, you can get curl from <a class="reference external" href="https://curl.se/">https://curl.se/</a> or using a package management tool specific to your operating system (brew, apt, …).</p>
 </div>
 <section id="content-negotiation-formats">
-<h2>Content Negotiation, Formats<a class="headerlink" href="#content-negotiation-formats" title="Permalink to this heading"></a></h2>
+<h2>Content Negotiation, Formats<a class="headerlink" href="#content-negotiation-formats" title="Link to this heading"></a></h2>
 <section id="principles">
-<h3>Principles<a class="headerlink" href="#principles" title="Permalink to this heading"></a></h3>
+<h3>Principles<a class="headerlink" href="#principles" title="Link to this heading"></a></h3>
 <p>A simple style of <a class="reference external" href="https://restfulapi.net/content-negotiation/">content negotiation</a> is used to
 match the format requested by the client and the capability of the
 server.</p>
@@ -178,9 +175,9 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 <p><code class="docutils literal notranslate"><span class="pre">application/vnd.nasa.pds.pds4+json</span></code> and <code class="docutils literal notranslate"><span class="pre">application/vnd.nasa.pds.pds4+xml</span></code> have been chosen to comply with <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6838">RFC6838</a></p>
 </section>
 <section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h3>
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
 <section id="application-json">
-<h4>application/json<a class="headerlink" href="#application-json" title="Permalink to this heading"></a></h4>
+<h4>application/json<a class="headerlink" href="#application-json" title="Link to this heading"></a></h4>
 <p>The request:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:insight_rad::2.1&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/json&#39;</span>
@@ -241,7 +238,7 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 <p>Properties follow the <a class="reference internal" href="endpoints.html#fields-dot-notation"><span class="std std-ref">Fields Dot Notation</span></a>.</p>
 </section>
 <section id="application-xml">
-<h4>application/xml<a class="headerlink" href="#application-xml" title="Permalink to this heading"></a></h4>
+<h4>application/xml<a class="headerlink" href="#application-xml" title="Link to this heading"></a></h4>
 <p>The request:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:insight_rad::2.1&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/xml&#39;</span>
@@ -308,7 +305,7 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 <p>Tag names under <cite>properties</cite> follow the <a class="reference internal" href="endpoints.html#fields-dot-notation"><span class="std std-ref">Fields Dot Notation</span></a>.</p>
 </section>
 <section id="application-vnd-nasa-pds-pds4-json">
-<h4>application/vnd.nasa.pds.pds4+json<a class="headerlink" href="#application-vnd-nasa-pds-pds4-json" title="Permalink to this heading"></a></h4>
+<h4>application/vnd.nasa.pds.pds4+json<a class="headerlink" href="#application-vnd-nasa-pds-pds4-json" title="Link to this heading"></a></h4>
 <p>The request:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:insight_rad::2.1&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/vnd.nasa.pds.pds4+json&#39;</span>
@@ -382,7 +379,7 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 <p>In addition a <cite>meta</cite> object contains fields related to the managed of the record in the <a class="reference external" href="https://nasa-pds.github.io/registry/">PDS Registry</a>, see <a class="reference internal" href="#ops-namespace"><span class="std std-ref">ops Namespace</span></a> for details.</p>
 </section>
 <section id="application-vnd-nasa-pds-pds4-xml">
-<h4>application/vnd.nasa.pds.pds4+xml<a class="headerlink" href="#application-vnd-nasa-pds-pds4-xml" title="Permalink to this heading"></a></h4>
+<h4>application/vnd.nasa.pds.pds4+xml<a class="headerlink" href="#application-vnd-nasa-pds-pds4-xml" title="Link to this heading"></a></h4>
 <p>The request:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products/urn:nasa:pds:insight_rad::2.1&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--header<span class="w"> </span><span class="s1">&#39;Accept: application/vnd.nasa.pds.pds4+xml&#39;</span>
@@ -487,7 +484,7 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 <p>Properties follow the <a class="reference internal" href="endpoints.html#fields-dot-notation"><span class="std std-ref">Fields Dot Notation</span></a> when they are coming from the PDS4 standard or the <a class="reference internal" href="#ops-namespace"><span class="std std-ref">ops Namespace</span></a>.</p>
 </section>
 <section id="text-csv">
-<h4>text/csv<a class="headerlink" href="#text-csv" title="Permalink to this heading"></a></h4>
+<h4>text/csv<a class="headerlink" href="#text-csv" title="Link to this heading"></a></h4>
 <p>This format is useful when one only need a few fields from the metadata.</p>
 <p>The request:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>--get<span class="w"> </span><span class="s1">&#39;https://pds.nasa.gov/api/search/1/products?limit=10&amp;fields=lidvid&amp;fields=title&#39;</span><span class="w"> </span><span class="se">\</span>
@@ -504,7 +501,7 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 </div>
 </section>
 <section id="open-data">
-<h4>Open Data<a class="headerlink" href="#open-data" title="Permalink to this heading"></a></h4>
+<h4>Open Data<a class="headerlink" href="#open-data" title="Link to this heading"></a></h4>
 <p><span class="not-implemented">NOT IMPLEMENTED</span></p>
 <p><span class="not-implemented">See &lt;https://project-open-data.cio.gov/&gt;_ and example of application at</span>
 <span class="not-implemented">&lt;https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#open-data&gt;_</span></p>
@@ -512,7 +509,7 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 </section>
 </section>
 <section id="ops-namespace">
-<h2>ops Namespace<a class="headerlink" href="#ops-namespace" title="Permalink to this heading"></a></h2>
+<h2>ops Namespace<a class="headerlink" href="#ops-namespace" title="Link to this heading"></a></h2>
 <p>The response content, in addition to the information found in the PDS4 label contains some attributes related to the management of the datasets in the registry.</p>
 <p>A dedicated namespace <code class="docutils literal notranslate"><span class="pre">ops</span></code> is used to manage these attributes in the API, for example: <cite>ops:Label_File_Info.ops:file_name</cite> in <a class="reference internal" href="endpoints.html#fields-dot-notation"><span class="std std-ref">Fields Dot Notation</span></a> used in JSON or in XML tag <cite>&lt;ops:Label_File_Info&gt;&lt;ops:file_name&gt;</cite>.</p>
 <p>The list of <code class="docutils literal notranslate"><span class="pre">ops</span></code> attributes is given in the following table:</p>
@@ -614,7 +611,7 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 </table>
 </section>
 <section id="no-results-found">
-<h2>No Results Found<a class="headerlink" href="#no-results-found" title="Permalink to this heading"></a></h2>
+<h2>No Results Found<a class="headerlink" href="#no-results-found" title="Link to this heading"></a></h2>
 <p>2 cases are considered:</p>
 <ul class="simple">
 <li><p>When there are not results to a <strong>search query, applying parameters to the URL</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">?q='lid</span> <span class="pre">eq</span> <span class="pre">fred'</span></code>, <code class="docutils literal notranslate"><span class="pre">keyword</span></code>…), you will get an <strong>empty array</strong> (for example <cite>[]</cite> in JSON) as a result.</p></li>
@@ -622,7 +619,7 @@ the browers (e.g. Google Chrome) URL bar.</p></td>
 </ul>
 </section>
 <section id="missing-values">
-<h2>Missing Values<a class="headerlink" href="#missing-values" title="Permalink to this heading"></a></h2>
+<h2>Missing Values<a class="headerlink" href="#missing-values" title="Link to this heading"></a></h2>
 <p>Properties with empty or null values should be dropped from the JSON
 response unless the user asked specifically for the field (through
 <cite>field</cite> API parameter). In this case the value must be <strong>null</strong>,
