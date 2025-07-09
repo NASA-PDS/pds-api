@@ -56,10 +56,6 @@ This requirement is not impacted by the current version
 
 
 This requirement is not impacted by the current version
-## As an API user, I want to search for registered supplemental metadata ingested from external data sources ([#90](https://github.com/NASA-PDS/pds-api/issues/90)) 
-
-
-This requirement is not impacted by the current version
 ## As an user, I want to make requests using the PDAP protocol ([#109](https://github.com/NASA-PDS/pds-api/issues/109)) 
 
 
