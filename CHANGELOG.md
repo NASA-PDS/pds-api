@@ -1,8 +1,12 @@
 # Changelog
 
-## [«unknown»](https://github.com/NASA-PDS/pds-api/tree/«unknown») (2025-07-09)
+## [release/15.1.0](https://github.com/NASA-PDS/pds-api/tree/release/15.1.0) (2025-07-09)
 
-[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v14.0.0...«unknown»)
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/release/15.0.0...release/15.1.0)
+
+## [release/15.0.0](https://github.com/NASA-PDS/pds-api/tree/release/15.0.0) (2024-10-24)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-api/compare/v14.0.0...release/15.0.0)
 
 **Other closed issues:**
 
