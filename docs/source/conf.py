@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'PDS APIs'
-copyright = '2022 California Institute of Technology'
+copyright = '2022–2025 California Institute of Technology'
 author = 'NASA Planetary Data System'
 release = 'B15.0'
 version = 'B15.0'
@@ -36,7 +36,6 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
     'sphinx.ext.autosummary',
-    'sphinx_rtd_theme',
     'sphinx.ext.intersphinx',
     'sphinxcontrib.redoc',
     'sphinx.ext.autosectionlabel',
@@ -45,8 +44,6 @@ extensions = [
     'sphinx_copybutton'
 ]
 
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -136,7 +133,7 @@ html_logo = '_static/images/PDS_Planets.png'
 
 html_context = {
     'display_github': True,
-    "github_user": "nasa-pds",
+    "github_user": "NASA-PDS",
     "github_repo": "pds-api",
     "github_version": "main/docs/source/"
 }
@@ -147,8 +144,6 @@ html_css_files = [
 
 html_theme_options = {
     'canonical_url': '',
-    'logo_only': False,
-    'display_version': True,
     'prev_next_buttons_location': 'bottom',
     'style_external_links': True,
     # Toc options

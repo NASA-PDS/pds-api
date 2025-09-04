@@ -30,9 +30,9 @@ jobs:
 
       - name: Install Python and dependencies
         run: |
-          sudo apt-get install python3.9
+          sudo apt-get install python3.11
           
-          pip install -e '.[dev]'
+          pip install --editable '.[dev]'
 
       - name: Build the Docs
         id: make
@@ -72,10 +72,10 @@ jobs:
       - name: Install Python and Dependencies
         run: |
           # Install Python
-          sudo apt-get install python3.9
+          sudo apt-get install python3.11
           
           # Install Sphinx
-          pip install -r docs/requirements.txt
+          pip install --requirement requirements.txt
 
           # Install dependencies for PDF generation
           sudo apt install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra latexmk

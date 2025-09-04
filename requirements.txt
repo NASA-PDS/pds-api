@@ -1,0 +1,8 @@
+sphinx~=7.4.7
+sphinx-rtd-theme~=3.0.2
+sphinxcontrib-openapi~=0.7.0
+# sphinxcontrib-redoc requires Python no newer than 3.11 and sphinx < 8.0.0
+sphinxcontrib-redoc~=1.6.0
+sphinx-prompt~=1.8.0
+Sphinx-Substitution-Extensions==2022.2.16
+sphinx-copybutton~=0.5.0
