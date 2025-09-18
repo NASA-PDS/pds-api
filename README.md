@@ -14,7 +14,7 @@ Please visit our website at https://nasa-pds.github.io/pds-api/ for user documen
 
 ## Prerequisites
 
-* Python 3
+* Python 3.9–3.11; newer versions _will not work_ due to [sphinxcontrib-redoc](https://pypi.org/project/sphinxcontrib-redoc/) using the removed [pkg_resources API](https://setuptools.pypa.io/en/latest/pkg_resources.html)
 * For PDF generation, basiclatex and accompanying libraries are needed
 
     ```
@@ -61,8 +61,7 @@ To add a new specification or a new version of a specification:
 6. Generate the Sphinx documentation:
     
     ```
-    pip install -e '.[dev]'
-   
+    pip install --requirement requirements.txt
     sphinx-build -b html docs/source docs/build/html
     ```
 

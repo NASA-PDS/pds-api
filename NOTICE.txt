@@ -1,6 +1,6 @@
 PDS Application Programmer's Interface
 
-Copyright 2022, California Institute of Technology ("Caltech").
+Copyright 2022–2025, California Institute of Technology ("Caltech").
 U.S. Government sponsorship acknowledged.
 
 All rights reserved.
