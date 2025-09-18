@@ -239,7 +239,7 @@ For example
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' \
+   curl --location --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1' \
        --header 'Accept: application/json'
 
 
@@ -279,7 +279,7 @@ For example, run:
 .. code-block:: bash
    :substitutions:
 
-   curl --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1/members' \
+   curl --location --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1/members' \
        --header 'Accept: application/json'
 
 The same request can be used to get the observational products or documents of a collection from the collection's lidvid.
@@ -299,7 +299,7 @@ For example, run:
 .. code-block:: bash
    :substitutions:
 
-   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1/members/members' \
+   curl --location --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad::2.1/members/members' \
        --header 'Accept: application/json'
 
 
@@ -328,7 +328,7 @@ For example, run:
 .. code-block:: bash
    :substitutions:
 
-   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_raw:hp3_rad_raw_00004_20181130_085325/member-of/member-of' \
+   curl --location --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:insight_rad:data_raw:hp3_rad_raw_00004_20181130_085325/member-of/member-of' \
        --header 'Accept: application/json'
 
 
@@ -358,8 +358,8 @@ Sort the results by the harvest time, which is the time when products were loade
 .. code-block:: bash
    :substitutions:
 
-   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
-      --header 'Accept: application/json'
+   curl --location --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members' \
+      --header 'Accept: application/json' \
       --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time'
 
 You are getting the first 100 products, members of the collection, sorted by harvest time (time when they were loaded in the registry).
@@ -380,9 +380,9 @@ Use this latest harvest date and time as the reference for the next request:
 .. code-block:: bash
    :substitutions:
 
-   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
-      --header 'Accept: application/json'
-      --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time'
+   curl --location --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members' \
+      --header 'Accept: application/json' \
+      --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time' \
       --data-urlencode 'search-after=2023-05-26T05:53:24.611495Z'
 
 **3. Iterate Until Completion:**
@@ -397,10 +397,10 @@ You can adjust the default limit of 100 products per page using the limit parame
 .. code-block:: bash
    :substitutions:
 
-   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members'
-      --header 'Accept: application/json'
-      --data-urlencode 'limit=500'
-      --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time'
+   curl --location --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products/urn:nasa:pds:orex.ovirs:data_calibrated::11.0/members' \
+      --header 'Accept: application/json' \
+      --data-urlencode 'limit=500' \
+      --data-urlencode 'sort=ops:Harvest_Info.ops:harvest_date_time' \
       --data-urlencode 'search-after=2023-05-26T05:53:24.611495Z'
 
 
@@ -412,5 +412,37 @@ You can adjust the default limit of 100 products per page using the limit parame
 
 
 
+Get facets for a subset of the PDS archive
+-------------------------------------------------------
+
+Faceted search gives you an overview of the results returned by a query. For specified fields, the API response includes a list of the values found in the result set, along with the number of products associated with each value. These are called *facets*.
+
+You can facet on multiple fields.
+
+By default, the API returns the top 10 values (i.e., the most frequently occurring) for each faceted field. This default can be overridden using the `facet-limit` parameter.
+
+The following example retrieves the 100 most referenced investigation and target LIDVIDs across the entire archive:
 
 
+.. code-block:: bash
+   :substitutions:
+
+   curl --location --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+      --header 'Accept: application/json' \
+      --data-urlencode 'limit=0' \
+      --data-urlencode 'facet-fields=ref_lid_investigation,ref_lid_target' \
+      --data-urlencode 'facet-limit=100'
+
+
+You can also apply faceted search to a subset of the PDS archive. The following example lists the most frequently referenced targets associated with the *Ultraviolet Imaging Spectrograph* instrument on the *Cassini Orbiter*, using its LID `urn:nasa:pds:context:instrument:uvis.co`:
+
+.. code-block:: bash
+   :substitutions:
+
+   curl --location --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+      --header 'Accept: application/json' \
+      --data-urlencode 'limit=0' \
+      --data-urlencode 'q=ref_lid_instrument eq "urn:nasa:pds:context:instrument:uvis.co"' \
+      --data-urlencode 'facet-fields=ref_lid_target' \
+      --data-urlencode 'facet-limit=100' \
+      --data-urlencode 'limit=0'
