@@ -218,6 +218,79 @@ You will get a JSON response of the PDS products (any class of product, for exam
 
 You can get the result in different format using content negociation with the Accept header parameter.
 
+Search by Field Existence
+--------------------------
+
+The Search API supports an ``exists`` operator to query products based on whether specific fields are present in the metadata. This is useful for finding products with specific metadata fields or identifying incomplete records.
+
+The ``exists`` operator returns true only when:
+
+* The field is present in the document
+* The field contains a non-null value
+* For multi-valued fields, at least one value exists
+
+Search for Products with a Specific Field
+******************************************
+
+To find products that have bounding box coordinates:
+
+**Query:** ``(pds:Spatial_Domain.pds:Bounding_Coordinates exists)``
+
+.. code-block:: bash
+   :caption: curl command
+   :substitutions:
+
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+       --data-urlencode 'q=(pds:Spatial_Domain.pds:Bounding_Coordinates exists)'
+
+Search for Products Missing a Specific Field
+*********************************************
+
+To find investigations that are still ongoing (missing a stop date):
+
+**Query:** ``not (pds:Investigation.pds:stop_date_time exists)``
+
+.. code-block:: bash
+   :caption: curl command
+   :substitutions:
+
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+       --data-urlencode 'q=not (pds:Investigation.pds:stop_date_time exists)'
+
+Search Using Field Pattern Matching
+************************************
+
+You can use regex patterns (as quoted strings) to match multiple field names:
+
+**Query:** ``"pds:Target.*" exists``
+
+This will check for the existence of any field matching the pattern ``pds:Target.*`` (e.g., ``pds:Target.pds:name``, ``pds:Target.pds:type``, etc.).
+
+.. code-block:: bash
+   :caption: curl command
+   :substitutions:
+
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+       --data-urlencode 'q=("pds:Target.*" exists)'
+
+.. note::
+   When using pattern matching, if the regex matches zero fields in the OpenSearch mappings, the API will return an HTTP 400 BAD REQUEST error.
+
+Combining with Other Operators
+*******************************
+
+The ``exists`` operator can be combined with other query operators:
+
+**Query:** ``(pds:Target.pds:name exists) and (pds:Target.pds:type eq "Planet")``
+
+.. code-block:: bash
+   :caption: curl command
+   :substitutions:
+
+   curl -L --get 'https://pds.nasa.gov/api/search/|search_user_guide_api_version|/products' \
+       --data-urlencode 'q=(pds:Target.pds:name exists) and (pds:Target.pds:type eq "Planet")'
+
+
 Search by Time Range
 --------------------
 
