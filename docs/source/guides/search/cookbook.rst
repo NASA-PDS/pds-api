@@ -223,7 +223,7 @@ Search by Field Existence
 
 The Search API supports an ``exists`` operator to query products based on whether specific fields are present in the metadata. This is useful for finding products with specific metadata fields or identifying incomplete records.
 
-The ``exists`` operator returns true only when:
+The ``exists`` operator returns a non-empty array of documents only when:
 
 * The field is present in the document
 * The field contains a non-null value
