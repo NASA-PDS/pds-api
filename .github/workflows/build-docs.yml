@@ -7,39 +7,41 @@ name: Build Sphinx Docs
 on:
    push:
      branches:
-       - 'TBD'  # Cannot build these docs on main right now.
+       - '**'
+       - '!main'
      paths:
-       - 'docs/**'
+       - 'docs/source/**'
+       - '.github/workflows/*.yml'
+   workflow_dispatch:
 
 jobs:
   build: # job 1
-    name: 'Build Website Docs'
+    name: 'Build Docs'
     runs-on: ubuntu-latest
-    environment: github-pages
     if: github.actor != 'pdsen-ci'
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+          token: ${{ secrets.ADMIN_GITHUB_TOKEN || github.token }}
 
-      #- name: Set up Python 3
-      #  uses: actions/setup-python@v1
-      #  with:
-      #    python-version: '3.9'
+      - name: Set up Python 3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
 
-      - name: Install Python and dependencies
+      - name: Install dependencies
         run: |
-          sudo apt-get install python3.11
-          
-          pip install --editable '.[dev]'
+          pip install -r requirements.txt
 
-      - name: Build the Docs
+      - name: Make Sphinx
         id: make
         run: |
-          sphinx-build -b html docs/source docs/build
+          cd docs
+          make github
+          cd ..
 
-      - name: Commit Doc Updates
+      - name: Push LDDs to Github
         run: |
           git config --local user.email "pdsen-ci@jpl.nasa.gov"
           git config --local user.name "PDSEN CI Bot"
@@ -50,54 +52,4 @@ jobs:
         uses: ad-m/github-push-action@57116acb309081ee57864270b0e3c4cedbe45452
         with:
           github_token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-          branch: gh-pages
-          force: true
-
-  pdfgen: # job 1
-    name: 'Build PDF'
-    runs-on: ubuntu-latest
-    environment: main
-    if: github.actor != 'pdsen-ci'
-
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-
-      #- name: Set up Python 3
-      #  uses: actions/setup-python@v1
-      #  with:
-      #    python-version: '3.9'
-
-      - name: Install Python and Dependencies
-        run: |
-          # Install Python
-          sudo apt-get install python3.11
-          
-          # Install Sphinx
-          pip install --requirement requirements.txt
-
-          # Install dependencies for PDF generation
-          sudo apt install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra latexmk
-
-      - name: Make Sphinx
-        id: make
-        run: |
-          cd docs
-
-          make latexpdf
-          cp build/latex/*.pdf .
-
-      - name: Push LDDs to Github
-        run: |
-          git config --local user.email "pdsen-ci@jpl.nasa.gov"
-          git config --local user.name "PDSEN CI Bot"
-          git add -A ./*.pdf
-          git commit --allow-empty -m "Auto-gen PDF by PDSEN CI Bot"
-          
-      - name: Push changes
-        uses: ad-m/github-push-action@57116acb309081ee57864270b0e3c4cedbe45452
-        with:
-          github_token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-          branch: main
-          force: true
+          branch: ${{ github.ref }}
