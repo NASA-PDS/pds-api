@@ -1,55 +1,68 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java#apache-maven-with-a-settings-path
----
-
-name: Build Sphinx Docs
+name: Build and Deploy Docs
 
 on:
    push:
      branches:
-       - '**'
-       - '!main'
+       - 'main'
      paths:
-       - 'docs/source/**'
-       - '.github/workflows/*.yml'
+       - 'docs/**'
+       - 'src/**'
+
+   # Allows you to run this workflow manually from the Actions tab
    workflow_dispatch:
 
-jobs:
-  build: # job 1
-    name: 'Build Docs'
-    runs-on: ubuntu-latest
-    if: github.actor != 'pdsen-ci'
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    name: 'Build and Deploy Sphinx Docs'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    # Allow one concurrent deployment
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+
+    if: github.actor != 'pdsen-ci'
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.ADMIN_GITHUB_TOKEN || github.token }}
 
       - name: Set up Python 3
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
-
+        
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-
+          # Install Sphinx
+          pip install -r docs/requirements.txt
       - name: Make Sphinx
         id: make
         run: |
           cd docs
+          # Make the HTML docs and copy to main
           make github
           cd ..
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
-      - name: Push LDDs to Github
-        run: |
-          git config --local user.email "pdsen-ci@jpl.nasa.gov"
-          git config --local user.name "PDSEN CI Bot"
-          git add -A .
-          git commit --allow-empty -m "Auto-generated docs by PDSEN CI Bot"
-          
-      - name: Push changes
-        uses: ad-m/github-push-action@57116acb309081ee57864270b0e3c4cedbe45452
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
         with:
-          github_token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          # Upload entire repository
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
