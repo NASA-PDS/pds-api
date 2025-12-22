@@ -1,55 +1,69 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java#apache-maven-with-a-settings-path
----
-
-name: Build Sphinx Docs
+name: Build and Deploy Docs
 
 on:
-   push:
-     branches:
-       - '**'
-       - '!main'
-     paths:
-       - 'docs/source/**'
-       - '.github/workflows/*.yml'
-   workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'docs/**'
+      - 'src/**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow pushing to gh-pages
+permissions:
+  contents: write
 
 jobs:
-  build: # job 1
-    name: 'Build Docs'
+  build:
+    name: 'Build and Deploy Sphinx Docs'
     runs-on: ubuntu-latest
-    if: github.actor != 'pdsen-ci'
 
+    # Allow one concurrent deployment
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+
+    if: github.actor != 'pdsen-ci'
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.ADMIN_GITHUB_TOKEN || github.token }}
 
       - name: Set up Python 3
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          # Install Sphinx
+          pip install -r docs/requirements.txt
 
-      - name: Make Sphinx
-        id: make
+      - name: Build Sphinx documentation
         run: |
           cd docs
+          # Make the HTML docs and copy to main
           make github
           cd ..
 
-      - name: Push LDDs to Github
+      - name: Deploy to gh-pages branch
         run: |
-          git config --local user.email "pdsen-ci@jpl.nasa.gov"
-          git config --local user.name "PDSEN CI Bot"
-          git add -A .
-          git commit --allow-empty -m "Auto-generated docs by PDSEN CI Bot"
-          
-      - name: Push changes
-        uses: ad-m/github-push-action@57116acb309081ee57864270b0e3c4cedbe45452
-        with:
-          github_token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Create/checkout gh-pages branch
+          git checkout --orphan gh-pages
+
+          # Remove docs directory from staging (we only want the built site)
+          git rm -rf docs/
+
+          # Add all files (the built site is now in the root)
+          git add .
+
+          # Commit and force push to gh-pages
+          git commit -m "Deploy documentation from commit ${{ github.sha }}"
+          git push --force origin gh-pages
