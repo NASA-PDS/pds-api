@@ -1,15 +1,19 @@
 name: Build and Deploy Docs
 
 on:
-   push:
-     branches:
-       - 'main'
-     paths:
-       - 'docs/**'
-       - 'src/**'
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'docs/**'
+      - 'src/**'
 
-   # Allows you to run this workflow manually from the Actions tab
-   workflow_dispatch:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow pushing to gh-pages
+permissions:
+  contents: write
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -18,12 +22,8 @@ permissions:
   id-token: write
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
+  build:
     name: 'Build and Deploy Sphinx Docs'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     # Allow one concurrent deployment
@@ -42,27 +42,39 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.11'
-        
+
       - name: Install dependencies
         run: |
           # Install Sphinx
           pip install -r docs/requirements.txt
-      - name: Make Sphinx
-        id: make
+
+      - name: Build Sphinx documentation
         run: |
           cd docs
           # Make the HTML docs and copy to main
-          make github
+          make html
           cd ..
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          # Upload entire repository
-          path: '.'
+      - name: Deploy to gh-pages branch
+        run: |
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          # Fetch gh-pages branch if it exists
+          git fetch origin gh-pages:gh-pages || echo "gh-pages branch does not exist yet"
+
+          # Checkout gh-pages branch (create if it doesn't exist)
+          git checkout gh-pages 2>/dev/null || git checkout --orphan gh-pages
+
+          # Copy generated docs to base
+          cp -R docs/build/html/* .
+
+          # Add all files (the built site is now in the root from make github)
+          git add .
+
+          # Commit and push to gh-pages (preserving history)
+          git commit -m "Deploy documentation from commit ${{ github.sha }}" || echo "No changes to commit"
+          git push origin gh-pages
