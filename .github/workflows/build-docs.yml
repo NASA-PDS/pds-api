@@ -46,7 +46,7 @@ jobs:
         run: |
           cd docs
           # Make the HTML docs and copy to main
-          make github
+          make html
           cd ..
 
       - name: Deploy to gh-pages branch
@@ -61,8 +61,8 @@ jobs:
           # Checkout gh-pages branch (create if it doesn't exist)
           git checkout gh-pages 2>/dev/null || git checkout --orphan gh-pages
 
-          # Remove old content but keep .git directory
-          git rm -rf . || true
+          # Copy generated docs to base
+          cp -R docs/build/html/* .
 
           # Add all files (the built site is now in the root from make github)
           git add .
