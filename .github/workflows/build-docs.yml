@@ -1,0 +1,69 @@
+name: Build and Deploy Docs
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'docs/**'
+      - 'src/**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow pushing to gh-pages
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: 'Build and Deploy Sphinx Docs'
+    runs-on: ubuntu-latest
+
+    # Allow one concurrent deployment
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+
+    if: github.actor != 'pdsen-ci'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.ADMIN_GITHUB_TOKEN || github.token }}
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          # Install Sphinx
+          pip install -r docs/requirements.txt
+
+      - name: Build Sphinx documentation
+        run: |
+          cd docs
+          # Make the HTML docs and copy to main
+          make github
+          cd ..
+
+      - name: Deploy to gh-pages branch
+        run: |
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Create/checkout gh-pages branch
+          git checkout --orphan gh-pages
+
+          # Remove docs directory from staging (we only want the built site)
+          git rm -rf docs/
+
+          # Add all files (the built site is now in the root)
+          git add .
+
+          # Commit and force push to gh-pages
+          git commit -m "Deploy documentation from commit ${{ github.sha }}"
+          git push --force origin gh-pages
