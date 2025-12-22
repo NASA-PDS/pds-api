@@ -55,15 +55,18 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Create/checkout gh-pages branch
-          git checkout --orphan gh-pages
+          # Fetch gh-pages branch if it exists
+          git fetch origin gh-pages:gh-pages || echo "gh-pages branch does not exist yet"
 
-          # Remove docs directory from staging (we only want the built site)
-          git rm -rf docs/
+          # Checkout gh-pages branch (create if it doesn't exist)
+          git checkout gh-pages 2>/dev/null || git checkout --orphan gh-pages
 
-          # Add all files (the built site is now in the root)
+          # Remove old content but keep .git directory
+          git rm -rf . || true
+
+          # Add all files (the built site is now in the root from make github)
           git add .
 
-          # Commit and force push to gh-pages
-          git commit -m "Deploy documentation from commit ${{ github.sha }}"
-          git push --force origin gh-pages
+          # Commit and push to gh-pages (preserving history)
+          git commit -m "Deploy documentation from commit ${{ github.sha }}" || echo "No changes to commit"
+          git push origin gh-pages
