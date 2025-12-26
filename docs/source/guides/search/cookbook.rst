@@ -274,7 +274,7 @@ This will check for the existence of any field matching the pattern ``pds:Target
        --data-urlencode 'q=("pds:Target.*" exists)'
 
 .. note::
-   When using pattern matching, if the regex matches zero fields in the OpenSearch mappings, the API will return an HTTP 400 BAD REQUEST error.
+   When using pattern matching, if the regex does not match any fields or the matched fields do not exist in the queried documents, the API will return 0 results.
 
 Combining with Other Operators
 *******************************
