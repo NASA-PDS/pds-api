@@ -15,6 +15,12 @@ on:
 permissions:
   contents: write
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     name: 'Build and Deploy Sphinx Docs'
@@ -48,6 +54,8 @@ jobs:
           # Make the HTML docs and copy to main
           make html
           cd ..
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Deploy to gh-pages branch
         run: |
