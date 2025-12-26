@@ -65,6 +65,12 @@ To add a new specification or a new version of a specification:
     sphinx-build -b html docs/source docs/build/html
     ```
 
+## Branch Workflow
+
+The `develop` branch is now the default branch for managing in-work updates to the [registry-api](https://github.com/NASA-PDS/registry-api/).
+
+Once documentation updates are ready for production, they can be merged into `main`. When changes are merged to the `main` branch, the GitHub Action workflow will automatically build and publish the documentation to GitHub Pages at https://nasa-pds.github.io/pds-api/.
+
 ## Code of Conduct
 
 All users and developers of the NASA-PDS software are expected to abide by our [Code of Conduct](https://github.com/NASA-PDS/.github/blob/main/CODE_OF_CONDUCT.md). Please read this to ensure you understand the expectations of our community.
