@@ -159,18 +159,7 @@ However:
 -   The version is mandatory in the resource representations (result of a request)
 
 
-Pagination/Sort
----------------
+Pagination
+----------
 
-The query parameters for pagination are:
-
-+-----------+---------------------------------------------------------------+
-| Parameter | Description                                                   |
-+===========+===============================================================+
-| start     | Index of first item returned in the response                  |
-+-----------+---------------------------------------------------------------+
-| limit     | Maximum number of item expected in the response               |
-+-----------+---------------------------------------------------------------+
-
-See
-`https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/ <https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/>`_
+The PDS Search API uses cursor-based pagination via ``search-after`` and ``sort`` parameters, along with ``limit`` to control page size. For detailed usage and examples, see :ref:`guides/search/endpoints:Use pagination to get all products matching a request`.
