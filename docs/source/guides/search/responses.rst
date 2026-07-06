@@ -522,3 +522,59 @@ We conform to EDR specification for this aspect, see `EDR parameter response <ht
 
 This should not be mistaken for an actual PDS4 value since missing
 values in PDS4 labels. are detailed with a nil:reason attribute.
+
+
+XML Attributes in Responses
+-----------------------------
+
+PDS4 labels encode metadata in both element text content and XML attributes (e.g., ``unit``, ``xsi:nil``, ``nilReason``).
+Whether these attributes appear in the response — and whether they are searchable — depends on the response format.
+
++------------------------------------+-----------------------------+------------------------+
+| Response Format                    | XML Attributes Preserved?   | Searchable/Filterable? |
++====================================+=============================+========================+
+| ``application/json``               | No                          | No                     |
++------------------------------------+-----------------------------+------------------------+
+| ``application/xml``                | No                          | No                     |
++------------------------------------+-----------------------------+------------------------+
+| ``application/kvp+json``           | No                          | No                     |
++------------------------------------+-----------------------------+------------------------+
+| ``text/csv``                       | No                          | No                     |
++------------------------------------+-----------------------------+------------------------+
+| ``application/vnd.nasa.pds.pds4+json`` | Yes                     | No                     |
++------------------------------------+-----------------------------+------------------------+
+| ``application/vnd.nasa.pds.pds4+xml``  | Yes                     | No                     |
++------------------------------------+-----------------------------+------------------------+
+
+The ``pds4+json`` and ``pds4+xml`` formats directly translate the original PDS4 XML label into the response,
+so XML attribute values are preserved. For example, given a label element:
+
+.. code-block:: xml
+
+   <solar_longitude unit="deg">326.350</solar_longitude>
+
+**application/vnd.nasa.pds.pds4+xml** returns:
+
+.. code-block:: xml
+
+   <solar_longitude unit="deg">326.350</solar_longitude>
+
+**application/vnd.nasa.pds.pds4+json** returns:
+
+.. code-block:: json
+
+   "solar_longitude": {
+     "content": "326.350",
+     "unit": "deg"
+   }
+
+The default ``application/json`` and ``application/kvp+json`` formats are built from the search index,
+which currently indexes only element text content. XML attributes such as ``unit``, ``xsi:nil``, and
+``nilReason`` are not yet indexed and therefore do not appear in these formats and cannot be searched or filtered.
+
+Support for indexing and searching XML attribute values is planned. See:
+
+- `Registry Loader — index XML attributes from PDS4 label elements <https://github.com/NASA-PDS/registry-loader/issues/92>`_
+- `Registry API — search and filter on XML attribute values <https://github.com/NASA-PDS/registry-api/issues/789>`_
+
+For further discussion, see `How are XML attributes represented in the PDS Registry and API? <https://github.com/NASA-PDS/pds-api/discussions/300>`_
