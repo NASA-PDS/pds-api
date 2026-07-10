@@ -525,47 +525,55 @@ values in PDS4 labels. are detailed with a nil:reason attribute.
 
 
 XML Attributes in Responses
------------------------------
+---------------------------
 
 PDS4 labels encode metadata in both element text content and XML attributes (e.g., ``unit``, ``xsi:nil``, ``nilReason``).
 Whether these attributes appear in the response — and whether they are searchable — depends on the response format.
 
-+------------------------------------+-----------------------------+------------------------+
-| Response Format                    | XML Attributes Preserved?   | Searchable/Filterable? |
-+====================================+=============================+========================+
-| ``application/json``               | No                          | No                     |
-+------------------------------------+-----------------------------+------------------------+
-| ``application/xml``                | No                          | No                     |
-+------------------------------------+-----------------------------+------------------------+
-| ``application/kvp+json``           | No                          | No                     |
-+------------------------------------+-----------------------------+------------------------+
-| ``text/csv``                       | No                          | No                     |
-+------------------------------------+-----------------------------+------------------------+
-| ``application/vnd.nasa.pds.pds4+json`` | Yes                     | No                     |
-+------------------------------------+-----------------------------+------------------------+
-| ``application/vnd.nasa.pds.pds4+xml``  | Yes                     | No                     |
-+------------------------------------+-----------------------------+------------------------+
++----------------------------------------+-----------------------------+------------------------+
+| Response Format                        | XML Attributes Preserved?   | Searchable/Filterable? |
++========================================+=============================+========================+
+| ``application/json``                   | No                          | No                     |
++----------------------------------------+-----------------------------+------------------------+
+| ``application/xml``                    | No                          | No                     |
++----------------------------------------+-----------------------------+------------------------+
+| ``application/kvp+json``               | No                          | No                     |
++----------------------------------------+-----------------------------+------------------------+
+| ``text/csv``                           | No                          | No                     |
++----------------------------------------+-----------------------------+------------------------+
+| ``text/html``                          | No                          | No                     |
++----------------------------------------+-----------------------------+------------------------+
+| ``application/vnd.nasa.pds.pds4+json`` | Yes                         | No                     |
++----------------------------------------+-----------------------------+------------------------+
+| ``application/vnd.nasa.pds.pds4+xml``  | Yes                         | No                     |
++----------------------------------------+-----------------------------+------------------------+
 
-The ``pds4+json`` and ``pds4+xml`` formats directly translate the original PDS4 XML label into the response,
-so XML attribute values are preserved. For example, given a label element:
-
-.. code-block:: xml
-
-   <solar_longitude unit="deg">326.350</solar_longitude>
-
-**application/vnd.nasa.pds.pds4+xml** returns:
+The ``pds4+json`` and ``pds4+xml`` formats embed the original PDS4 XML label in the response (wrapped in
+API envelope elements), preserving all XML attribute values. For example, a label element:
 
 .. code-block:: xml
 
    <solar_longitude unit="deg">326.350</solar_longitude>
+
+**application/vnd.nasa.pds.pds4+xml** preserves the attribute inside the API wrapper:
+
+.. code-block:: xml
+
+   <pds_api:product ...>
+     ...
+     <solar_longitude unit="deg">326.350</solar_longitude>
+     ...
+   </pds_api:product>
 
 **application/vnd.nasa.pds.pds4+json** returns:
 
 .. code-block:: json
 
-   "solar_longitude": {
-     "content": "326.350",
-     "unit": "deg"
+   {
+     "solar_longitude": {
+       "content": "326.350",
+       "unit": "deg"
+     }
    }
 
 The default ``application/json`` and ``application/kvp+json`` formats are built from the search index,
