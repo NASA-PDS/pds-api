@@ -185,6 +185,49 @@ Response Formats
 
 ~~Working~~ Document: [PDS API - Response Formats](pds-api-response-formats.pdf)
 
+### XML Attributes and Response Formats
+
+PDS4 labels encode metadata in both element text content and XML attributes (e.g., `unit`, `xsi:nil`, `nilReason`). How these attributes appear depends on the response format requested:
+
+| Response Format | XML Attributes Preserved? | Searchable/Filterable? |
+|---|---|---|
+| `application/json` | No | No |
+| `application/xml` | No | No |
+| `application/kvp+json` | No | No |
+| `text/csv` | No | No |
+| `text/html` | No | No |
+| `application/vnd.nasa.pds.pds4+json` | Yes | No |
+| `application/vnd.nasa.pds.pds4+xml` | Yes | No |
+
+The `pds4+json` and `pds4+xml` formats embed the original PDS4 XML label in the response (wrapped in API envelope elements), preserving all XML attribute values. For example, a `solar_longitude` element with a `unit` attribute:
+
+**`application/vnd.nasa.pds.pds4+xml`** preserves the attribute inside the API wrapper:
+```xml
+<pds_api:product ...>
+  ...
+  <solar_longitude unit="deg">326.350</solar_longitude>
+  ...
+</pds_api:product>
+```
+
+**`application/vnd.nasa.pds.pds4+json`:**
+```json
+{
+  "solar_longitude": {
+    "content": "326.350",
+    "unit": "deg"
+  }
+}
+```
+
+In contrast, the default `application/json` and `application/kvp+json` formats are built from the search index, which currently indexes only element text content — XML attributes are not yet indexed and therefore do not appear in these formats and cannot be searched or filtered.
+
+Support for indexing and searching XML attribute values is planned:
+- [Registry Loader — index XML attributes from PDS4 label elements](https://github.com/NASA-PDS/registry-loader/issues/92)
+- [Registry API — search and filter on XML attribute values](https://github.com/NASA-PDS/registry-api/issues/789)
+
+See also: [pds-api discussion — How are XML attributes represented in the PDS Registry and API?](https://github.com/NASA-PDS/pds-api/discussions/300)
+
 
 Query Parameters
 ----------------
