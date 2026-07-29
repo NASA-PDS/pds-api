@@ -6,6 +6,8 @@ Search API User Guide
    The current guide is based on the PDS Search API version |search_user_guide_api_spec_version|
 
 .. Warning::
+   **Expected Degrated API Performance: Starting 07/29/2026 and for 2 weeks, users should expect degrated performance on the /members endpoints.** This is expected and temporary — the underlying metadata is being regenerated for more than 84 million products.
+
    Since our servers are not fully populated with all PDS data sets, the examples presented in this user guide may return empty results or 404 (Not Found) errors. If there is a data set you would like added, please contact the `PDS Help Desk <mailto:pds-operator@jpl.nasa.gov>`_ for assistance.
 
 

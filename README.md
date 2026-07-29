@@ -31,6 +31,11 @@ Please visit our website at https://nasa-pds.github.io/pds-api/ for user documen
     sudo /Library/TeX/texbin/tlmgr install varwidth
     sudo /Library/TeX/texbin/tlmgr install titlesec
     ```
+You might need to add the utilities installed into your path, for example with command:
+
+    export PATH="/usr/local/texlive/2026basic/bin/universal-darwin:$PATH"
+
+
 
 
 ## Generate the user's documentation
