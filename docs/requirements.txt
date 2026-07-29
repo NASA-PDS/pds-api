@@ -1,4 +1,5 @@
 sphinx~=7.4.7
+setuptools
 sphinx-rtd-theme~=3.0.2
 sphinxcontrib-openapi~=0.7.0
 # sphinxcontrib-redoc requires Python no newer than 3.11 and sphinx < 8.0.0
